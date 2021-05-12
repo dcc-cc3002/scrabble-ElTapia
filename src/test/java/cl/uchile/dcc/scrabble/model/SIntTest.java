@@ -2,6 +2,7 @@ package cl.uchile.dcc.scrabble.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
@@ -23,7 +24,7 @@ public class SIntTest {
     }
 
     @RepeatedTest(50)
-    void constructorTest(){
+    void constructorTest() {
         var expectedSInt = new SInt(testInt);
 
         assertEquals(expectedSInt, sInt, "SInt don't match. Seed " + seed);
@@ -40,5 +41,18 @@ public class SIntTest {
         assertEquals(String.valueOf(testInt), sInt.toString(), "String don't match. Seed " + seed);
         assertNotEquals(String.valueOf(differentInt), sInt.toString(), "String match. Seed " + seed);
 
+    }
+    @RepeatedTest(50)
+    void toSStringTest(){
+        SString expectedSString = new SString(String.valueOf(testInt));
+        assertEquals(expectedSString, sInt.toSString(), "SString don't match. Seed " + seed);
+
+        int differentInt;
+        do {
+            differentInt = rng.nextInt();
+        } while (differentInt == testInt);
+
+        SString differentSString = new SString(String.valueOf(differentInt));
+        assertNotEquals(differentSString, sInt.toSString(), "SString match. Seed " + seed);
     }
 }

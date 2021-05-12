@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model;
 
 import java.util.Objects;
 
-public class SInt {
+public class SInt implements ISString{
     private final int Int;
     public SInt(int Int){
         this.Int = Int;
@@ -25,5 +25,10 @@ public class SInt {
     @Override
     public String toString(){
         return String.valueOf(this.Int);
+    }
+
+    public SString toSString() {
+        String intString = this.toString();
+        return new SString(intString);
     }
 }
