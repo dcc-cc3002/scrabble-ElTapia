@@ -48,7 +48,7 @@ public class SStringTest {
         assertNotEquals(differentString, sString.toString(), "String match. Seed " + seed);
     }
 
-    @Test
+    @RepeatedTest(50)
     void toSStringTest(){
         var expectedSString = new SString(testString);
         assertEquals(expectedSString, sString.toSString(), "String don't match. Seed " + seed);
