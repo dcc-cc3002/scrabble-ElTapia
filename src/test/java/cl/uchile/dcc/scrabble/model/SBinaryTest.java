@@ -1,36 +1,48 @@
 package cl.uchile.dcc.scrabble.model;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.RepeatedTest;
+
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class SBinaryTest {
+    private final char [] binaryList = {'0', '1'};
     private SBinary sBinary;
-    private String testBinary ="110";
+    private String testBinary;
+    private int seed;
+    private Random rng;
 
     @BeforeEach
-    void setUp(){
+    void setUp(){;
+        seed = new Random().nextInt();
+        rng = new Random(seed);
+        int strSize= rng.nextInt(50);
+        testBinary = RandomStringUtils.random(strSize, 0, 2, false, true, binaryList, rng);
         sBinary = new SBinary(testBinary);
     }
 
-    @Test
+    @RepeatedTest(50)
     void constructorTest(){
         var expectedSBinary = new SBinary(testBinary);
 
-        assertEquals(expectedSBinary, sBinary);
-        assertEquals(expectedSBinary.hashCode(), sBinary.hashCode());
+        assertEquals(expectedSBinary, sBinary, "SBinary don't match. Seed " + seed);
+        assertEquals(expectedSBinary.hashCode(), sBinary.hashCode(), "Hashcode don't match. Seed " + seed);
 
-        var differentSBinary = new SBinary("101");
-        assertNotEquals(differentSBinary, sBinary);
-    }
+        String differentBinary;
 
-    @Test
-    void toStringTest(){
-        String expectedString = "110";
-        String differentString = "101";
+        do {
+            differentBinary= RandomStringUtils.random(rng.nextInt(50), 0, 2,
+                    false, true, binaryList, rng);
+        } while (differentBinary.equals(testBinary));
 
-        assertEquals(expectedString, sBinary.toString());
-        assertNotEquals(differentString, sBinary.toString());
+
+        var differentSBinary = new SBinary(differentBinary);
+        assertNotEquals(differentSBinary, sBinary, "SBinary match. Seed " + seed);
+
+        assertEquals(testBinary, sBinary.toString(), "String don't match. Seed " + seed);
+        assertNotEquals(differentBinary, sBinary.toString(), "String match. Seed " + seed);
     }
 }
