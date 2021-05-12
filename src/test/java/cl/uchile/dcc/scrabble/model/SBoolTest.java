@@ -2,6 +2,7 @@ package cl.uchile.dcc.scrabble.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
@@ -52,5 +53,13 @@ public class SBoolTest{
         assertNotEquals(expectedString, negateTestSBool.toString(), "String match. Seed " + seed);
         assertNotEquals(negateExpectedString, testSBool.toString(), "String match. Seed " + seed);
 
+    }
+    @RepeatedTest(10)
+    void toSStringTest(){
+        SString expectedSString = new SString(String.valueOf(boolTest));
+        SString negateExpectedSString = new SString(String.valueOf(!boolTest));
+
+        assertEquals(expectedSString, testSBool.toSString(), "SString don't match. Seed " + seed);
+        assertNotEquals(negateExpectedSString, testSBool.toSString(), "String match. Seed " + seed);
     }
 }
