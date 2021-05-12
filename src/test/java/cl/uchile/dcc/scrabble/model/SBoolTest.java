@@ -68,7 +68,7 @@ public class SBoolTest{
         SBool expectedSBool = new SBool(boolTest);
         SBool negateExpectedSBool = new SBool(!boolTest);
 
-        assertEquals(expectedSBool, testSBool.toSBool());
-        assertNotEquals(negateExpectedSBool, testSBool.toSBool());
+        assertEquals(expectedSBool, testSBool.toSBool(), "SBool don't match. Seed " + seed);
+        assertNotEquals(negateExpectedSBool, testSBool.toSBool(), "SBool match. Seed " + seed);
     }
 }

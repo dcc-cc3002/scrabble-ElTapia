@@ -49,7 +49,7 @@ public class SBinaryTest {
     @RepeatedTest(50)
     void toSStringTest(){
         SString expectedSString = new SString(testBinary);
-        assertEquals(expectedSString, sBinary.toSString());
+        assertEquals(expectedSString, sBinary.toSString(), "String don't match. Seed " + seed);
 
         String differentBinary;
         do {
@@ -58,6 +58,6 @@ public class SBinaryTest {
         } while (differentBinary.equals(testBinary));
         SString differentSString = new SString(differentBinary);
 
-        assertNotEquals(differentSString, sBinary.toSString());
+        assertNotEquals(differentSString, sBinary.toSString(), "SString match. Seed " + seed);
     }
 }
