@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model;
 
 import java.util.Objects;
 
-public class SString {
+public class SString implements ISString{
     private final String string;
     public SString(String string) {
         this.string = string;
@@ -25,5 +25,9 @@ public class SString {
     @Override
     public String toString(){
         return this.string;
+    }
+
+    public SString toSString() {
+        return this;
     }
 }

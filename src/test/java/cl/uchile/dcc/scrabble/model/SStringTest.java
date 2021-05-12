@@ -28,12 +28,10 @@ public class SStringTest {
 
     @RepeatedTest(50)
     void constructorTest(){
-        assertEquals(testString, sString.toString(), "String don't match. Seed" + seed);
-
         var expectedSString = new SString(testString);
 
-        assertEquals(expectedSString, sString, "SString don't match. Seed" + seed);
-        assertEquals(expectedSString.hashCode(), sString.hashCode(), "Hashcode don't match. Seed" + seed);
+        assertEquals(expectedSString, sString, "SString don't match. Seed " + seed);
+        assertEquals(expectedSString.hashCode(), sString.hashCode(), "Hashcode don't match. Seed " + seed);
 
         String differentString;
 
@@ -42,9 +40,27 @@ public class SStringTest {
                     Character.MAX_CODE_POINT, true, true, null, rng);
         } while (differentString.equals(testString));
 
-        assertNotEquals(differentString, sString.toString(), "String match. Seed" + seed);
 
         var differentSString = new SString(differentString);
-        assertNotEquals(differentSString, sString, "SString match. Seed" + seed);
+        assertNotEquals(differentSString, sString, "SString match. Seed " + seed);
+
+        assertEquals(testString, sString.toString(), "String don't match. Seed " + seed);
+        assertNotEquals(differentString, sString.toString(), "String match. Seed " + seed);
+    }
+
+    @Test
+    void toSStringTest(){
+        var expectedSString = new SString(testString);
+        assertEquals(expectedSString, sString.toSString(), "String don't match. Seed " + seed);
+
+        String differentString;
+
+        do {
+            differentString = RandomStringUtils.random(rng.nextInt(50), 0,
+                    Character.MAX_CODE_POINT, true, true, null, rng);
+        } while (differentString.equals(testString));
+
+        var differentSString = new SString(differentString);
+        assertNotEquals(differentSString, sString.toSString(), "SString match. Seed " + seed);
     }
 }
