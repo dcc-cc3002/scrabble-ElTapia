@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model;
 
 import java.util.Objects;
 
-public class SBool implements ISString{
+public class SBool implements ISString, ISBool{
     private final boolean bool;
     public SBool(boolean bool) {
         this.bool = bool;
@@ -30,5 +30,9 @@ public class SBool implements ISString{
     public SString toSString() {
         String boolString = this.toString();
         return new SString(boolString);
+    }
+
+    public SBool toSBool() {
+        return this;
     }
 }

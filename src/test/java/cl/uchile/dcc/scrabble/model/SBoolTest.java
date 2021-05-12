@@ -62,4 +62,13 @@ public class SBoolTest{
         assertEquals(expectedSString, testSBool.toSString(), "SString don't match. Seed " + seed);
         assertNotEquals(negateExpectedSString, testSBool.toSString(), "String match. Seed " + seed);
     }
+
+    @RepeatedTest(10)
+    public void toSBoolTest(){
+        SBool expectedSBool = new SBool(boolTest);
+        SBool negateExpectedSBool = new SBool(!boolTest);
+
+        assertEquals(expectedSBool, testSBool.toSBool());
+        assertNotEquals(negateExpectedSBool, testSBool.toSBool());
+    }
 }
