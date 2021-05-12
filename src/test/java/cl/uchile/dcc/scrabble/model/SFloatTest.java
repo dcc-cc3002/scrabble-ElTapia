@@ -1,37 +1,44 @@
 package cl.uchile.dcc.scrabble.model;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.RepeatedTest;
+
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class SFloatTest {
     private SFloat sFloat;
-    private double testFloat = 3.14;
+    private double testDouble;
+    private int seed;
+    private Random rng;
 
     @BeforeEach
     void setUp(){
-        sFloat = new SFloat(testFloat);
+        seed = new Random().nextInt();
+        rng = new Random(seed);
+        testDouble = rng.nextDouble();
+        sFloat = new SFloat(testDouble);
     }
 
-    @Test
+    @RepeatedTest(50)
     void constructorTest(){
-        var expectedSFloat = new SFloat(testFloat);
+        var expectedSFloat = new SFloat(testDouble);
 
-        assertEquals(expectedSFloat, sFloat);
-        assertEquals(expectedSFloat.hashCode(), sFloat.hashCode());
+        assertEquals(expectedSFloat, sFloat, "SFloat don't match. Seed " + seed);
+        assertEquals(expectedSFloat.hashCode(), sFloat.hashCode(), "Hashcode don't match. Seed " + seed);
 
-        var differentSFloat = new SFloat(2.56);
-        assertNotEquals(differentSFloat, sFloat);
-    }
+        Double differentDouble;
+        do {
+            differentDouble = rng.nextDouble();
+        } while (differentDouble == testDouble);
 
-    @Test
-    void toStringTest(){
-        String expectedString = "3.14";
-        String differentString = "2.56";
+        var differentSFloat = new SFloat(differentDouble);
+        assertNotEquals(differentSFloat, sFloat, "SFloat match. Seed " + seed);
 
-        assertEquals(expectedString, sFloat.toString());
-        assertNotEquals(differentString, sFloat.toString());
+        assertEquals(String.valueOf(testDouble), sFloat.toString(), "String don't match. Seed " + seed);
+        assertNotEquals(String.valueOf(differentDouble), sFloat.toString(), "String match. Seed " + seed);
+
     }
 }
