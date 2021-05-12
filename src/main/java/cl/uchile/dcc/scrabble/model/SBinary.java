@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model;
 
 import java.util.Objects;
 
-public class SBinary {
+public class SBinary implements ISString{
     private final String binary;
 
     public SBinary(String binary) {
@@ -28,4 +28,7 @@ public class SBinary {
         return this.binary;
     }
 
+    public SString toSString() {
+        return new SString(this.binary);
+    }
 }

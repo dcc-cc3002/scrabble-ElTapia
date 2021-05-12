@@ -2,6 +2,7 @@ package cl.uchile.dcc.scrabble.model;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
@@ -16,7 +17,7 @@ public class SBinaryTest {
     private Random rng;
 
     @BeforeEach
-    void setUp(){;
+    void setUp(){
         seed = new Random().nextInt();
         rng = new Random(seed);
         int strSize= rng.nextInt(50);
@@ -44,5 +45,19 @@ public class SBinaryTest {
 
         assertEquals(testBinary, sBinary.toString(), "String don't match. Seed " + seed);
         assertNotEquals(differentBinary, sBinary.toString(), "String match. Seed " + seed);
+    }
+    @RepeatedTest(50)
+    void toSStringTest(){
+        SString expectedSString = new SString(testBinary);
+        assertEquals(expectedSString, sBinary.toSString());
+
+        String differentBinary;
+        do {
+            differentBinary= RandomStringUtils.random(rng.nextInt(50), 0, 2,
+                    false, true, binaryList, rng);
+        } while (differentBinary.equals(testBinary));
+        SString differentSString = new SString(differentBinary);
+
+        assertNotEquals(differentSString, sBinary.toSString());
     }
 }
