@@ -2,6 +2,7 @@ package cl.uchile.dcc.scrabble.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
@@ -39,6 +40,19 @@ public class SFloatTest {
 
         assertEquals(String.valueOf(testDouble), sFloat.toString(), "String don't match. Seed " + seed);
         assertNotEquals(String.valueOf(differentDouble), sFloat.toString(), "String match. Seed " + seed);
+    }
 
+    @RepeatedTest(50)
+    void toSStringTest(){
+        SString expectedSString = new SString(String.valueOf(testDouble));
+        assertEquals(expectedSString, sFloat.toSString(), "SString don't match. Seed " + seed);
+
+        Double differentDouble;
+        do {
+            differentDouble = rng.nextDouble();
+        } while (differentDouble == testDouble);
+
+        SString differentSString = new SString(String.valueOf(differentDouble));
+        assertNotEquals(differentSString, sFloat.toSString(), "SString match. Seed " + seed);
     }
 }

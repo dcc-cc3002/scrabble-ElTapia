@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model;
 
 import java.util.Objects;
 
-public class SFloat {
+public class SFloat implements ISString{
     private final double Float;
     public SFloat(double Float){
         this.Float = Float;
@@ -27,4 +27,8 @@ public class SFloat {
         return String.valueOf(this.Float);
     }
 
+    public SString toSString() {
+        String doubleString = this.toString();
+        return new SString(doubleString);
+    }
 }
