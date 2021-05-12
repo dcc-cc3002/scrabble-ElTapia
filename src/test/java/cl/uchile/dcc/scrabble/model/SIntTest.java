@@ -1,38 +1,44 @@
 package cl.uchile.dcc.scrabble.model;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.RepeatedTest;
+
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class SIntTest {
     private SInt sInt;
-    private int testInt = 5;
+    private int testInt;
+    private int seed;
+    private Random rng;
 
     @BeforeEach
     void setUp(){
+        seed = new Random().nextInt();
+        rng = new Random(seed);
+        testInt = rng.nextInt();
         sInt = new SInt(testInt);
     }
 
-    @Test
+    @RepeatedTest(50)
     void constructorTest(){
         var expectedSInt = new SInt(testInt);
 
-        assertEquals(expectedSInt, sInt);
-        assertEquals(expectedSInt.hashCode(), sInt.hashCode());
+        assertEquals(expectedSInt, sInt, "SInt don't match. Seed " + seed);
+        assertEquals(expectedSInt.hashCode(), sInt.hashCode(), "Hashcode don't match. Seed " + seed);
 
-        var differentSInt = new SInt(2);
-        assertNotEquals(differentSInt, sInt);
+        int differentInt;
+        do {
+            differentInt = rng.nextInt();
+        } while (differentInt == testInt);
 
-    }
+        var differentSInt = new SInt(differentInt);
+        assertNotEquals(differentSInt, sInt, "SInt match. Seed " + seed);
 
-    @Test
-    void toStringTest(){
-        String expectedString = "5";
-        String differentString = "2";
+        assertEquals(String.valueOf(testInt), sInt.toString(), "String don't match. Seed " + seed);
+        assertNotEquals(String.valueOf(differentInt), sInt.toString(), "String match. Seed " + seed);
 
-        assertEquals(expectedString, sInt.toString());
-        assertNotEquals(differentString, sInt.toString());
     }
 }
