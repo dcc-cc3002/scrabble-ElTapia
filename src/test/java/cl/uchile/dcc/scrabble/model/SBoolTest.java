@@ -1,46 +1,56 @@
 package cl.uchile.dcc.scrabble.model;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.RepeatedTest;
+
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class SBoolTest{
-    private SBool trueSBool;
-    private SBool falseSBool;
+    private SBool testSBool;
+    private SBool negateTestSBool;
+    private boolean boolTest;
+    private int seed;
+    private Random rng;
 
     @BeforeEach
     void setUp(){
-        trueSBool = new SBool(true);
-        falseSBool = new SBool(false);
+        seed = new Random().nextInt();
+        rng = new Random(seed);
+        boolTest = rng.nextBoolean();
+
+        testSBool = new SBool(boolTest);
+        negateTestSBool = new SBool(!boolTest);
     }
 
-    @Test
+    @RepeatedTest(10)
     void constructorTest(){
-        var trueExpectedSBool = new SBool(true);
-        var falseExpectedSBool = new SBool(false);
 
-        assertEquals(trueExpectedSBool, trueSBool);
-        assertEquals(falseExpectedSBool, falseSBool);
+        var expectedSBool = new SBool(boolTest);
+        var negateExpectedSBool = new SBool(!boolTest);
 
-        assertEquals(trueExpectedSBool.hashCode(), trueSBool.hashCode());
-        assertEquals(falseExpectedSBool.hashCode(), falseSBool.hashCode());
+        assertEquals(expectedSBool, testSBool, "SBool don't match. Seed " + seed);
+        assertEquals(negateExpectedSBool, negateTestSBool, "SBool don't match. Seed " + seed);
 
-        assertNotEquals(trueExpectedSBool, falseSBool);
-        assertNotEquals(falseExpectedSBool, trueSBool);
+        assertEquals(expectedSBool.hashCode(), testSBool.hashCode(), "Hashcode don't match. Seed " + seed);
+        assertEquals(negateExpectedSBool.hashCode(), negateTestSBool.hashCode(), "Hashcode don't match. Seed " + seed);
+
+        assertNotEquals(expectedSBool, negateTestSBool, "SBool match. Seed " + seed);
+        assertNotEquals(negateExpectedSBool, testSBool, "SBool match. Seed " + seed);
     }
 
-    @Test
+    @RepeatedTest(10)
     void toStringTest(){
-        String trueExpectedString = "true";
-        String falseExpectedString = "false";
+        String expectedString = String.valueOf(boolTest);
+        String negateExpectedString = String.valueOf(!boolTest);
 
-        assertEquals(trueExpectedString, trueSBool.toString());
-        assertEquals(falseExpectedString, falseSBool.toString());
+        assertEquals(expectedString, testSBool.toString(), "String don't match. Seed " + seed);
+        assertEquals(negateExpectedString, negateTestSBool.toString(), "String don't match. Seed " + seed);
 
-        assertNotEquals(trueExpectedString, falseSBool.toString());
-        assertNotEquals(falseExpectedString, trueSBool.toString());
+        assertNotEquals(expectedString, negateTestSBool.toString(), "String match. Seed " + seed);
+        assertNotEquals(negateExpectedString, testSBool.toString(), "String match. Seed " + seed);
 
     }
 }
