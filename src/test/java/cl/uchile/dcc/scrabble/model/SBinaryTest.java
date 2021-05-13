@@ -67,4 +67,19 @@ public class SBinaryTest {
     void toSIntTest(){
 
     }
+
+    @RepeatedTest(50)
+    void toSBinaryTest(){
+        SBinary expectedSBinary = new SBinary(testBinary);
+        assertEquals(expectedSBinary, sBinary.toSBinary(), "SBinary don't match. Seed " + seed);
+
+        String differentBinary;
+        do {
+            differentBinary= RandomStringUtils.random(rng.nextInt(50), 0, 2,
+                    false, true, binaryList, rng);
+        } while (differentBinary.equals(testBinary));
+        SBinary differentSBinary = new SBinary(differentBinary);
+        assertNotEquals(differentSBinary, sBinary.toSBinary(), "SBinary match. Seed " + seed);
+
+    }
 }

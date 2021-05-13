@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model;
 
 import java.util.Objects;
 
-public class SBinary implements ISString, ISFloat, ISInt{
+public class SBinary implements ISString, ISFloat, ISInt, ISBinary{
     private final String binary;
 
     public SBinary(String binary) {
@@ -38,5 +38,9 @@ public class SBinary implements ISString, ISFloat, ISInt{
 
     public SInt toSInt(){
         return null;
+    }
+
+    public SBinary toSBinary() {
+        return this;
     }
 }

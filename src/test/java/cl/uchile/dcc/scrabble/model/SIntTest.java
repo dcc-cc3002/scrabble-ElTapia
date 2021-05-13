@@ -83,4 +83,7 @@ public class SIntTest {
         SInt differentSInt = new SInt(differentInt);
         assertNotEquals(differentSInt, sInt.toSInt(), "SInt match. Seed " + seed);
     }
+    @Test
+    void toSBinaryTest(){
+    }
 }
