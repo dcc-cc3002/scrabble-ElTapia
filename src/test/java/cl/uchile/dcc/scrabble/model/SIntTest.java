@@ -55,4 +55,20 @@ public class SIntTest {
         SString differentSString = new SString(String.valueOf(differentInt));
         assertNotEquals(differentSString, sInt.toSString(), "SString match. Seed " + seed);
     }
+
+    @RepeatedTest(50)
+    void toSFloatTest(){
+        String intString = String.valueOf(testInt);
+        SFloat expectedSFloat = new SFloat(Double.parseDouble(intString));
+        assertEquals(expectedSFloat, sInt.toSFloat());
+
+        int differentInt;
+        do {
+            differentInt = rng.nextInt();
+        } while (differentInt == testInt);
+        String differentIntString = String.valueOf(differentInt);
+        SFloat differentSFloat = new SFloat(Double.parseDouble(differentIntString));
+        assertNotEquals(differentSFloat, sInt.toSFloat());
+    }
+
 }

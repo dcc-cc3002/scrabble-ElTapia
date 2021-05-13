@@ -60,4 +60,7 @@ public class SBinaryTest {
 
         assertNotEquals(differentSString, sBinary.toSString(), "SString match. Seed " + seed);
     }
+    @Test
+    void toSFloatTest(){
+    }
 }

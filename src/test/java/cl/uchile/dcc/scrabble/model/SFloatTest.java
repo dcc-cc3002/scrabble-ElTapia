@@ -30,7 +30,7 @@ public class SFloatTest {
         assertEquals(expectedSFloat, sFloat, "SFloat don't match. Seed " + seed);
         assertEquals(expectedSFloat.hashCode(), sFloat.hashCode(), "Hashcode don't match. Seed " + seed);
 
-        Double differentDouble;
+        double differentDouble;
         do {
             differentDouble = rng.nextDouble();
         } while (differentDouble == testDouble);
@@ -47,12 +47,26 @@ public class SFloatTest {
         SString expectedSString = new SString(String.valueOf(testDouble));
         assertEquals(expectedSString, sFloat.toSString(), "SString don't match. Seed " + seed);
 
-        Double differentDouble;
+        double differentDouble;
         do {
             differentDouble = rng.nextDouble();
         } while (differentDouble == testDouble);
 
         SString differentSString = new SString(String.valueOf(differentDouble));
         assertNotEquals(differentSString, sFloat.toSString(), "SString match. Seed " + seed);
+    }
+
+    @RepeatedTest(50)
+    void toSFloatTest(){
+        SFloat expectedSFloat = new SFloat(testDouble);
+        assertEquals(expectedSFloat, sFloat.toSFloat(), "SFloat don't match. Seed " + seed);
+
+        double differentDouble;
+        do {
+            differentDouble = rng.nextDouble();
+        } while (differentDouble == testDouble);
+
+        SFloat differentSFloat = new SFloat(differentDouble);
+        assertNotEquals(differentSFloat, sFloat.toSFloat(), "SFloat match. Seed " + seed);
     }
 }
