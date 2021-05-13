@@ -60,7 +60,7 @@ public class SIntTest {
     void toSFloatTest(){
         String intString = String.valueOf(testInt);
         SFloat expectedSFloat = new SFloat(Double.parseDouble(intString));
-        assertEquals(expectedSFloat, sInt.toSFloat());
+        assertEquals(expectedSFloat, sInt.toSFloat(), "SFloat don't match. Seed " + seed);
 
         int differentInt;
         do {
@@ -68,7 +68,19 @@ public class SIntTest {
         } while (differentInt == testInt);
         String differentIntString = String.valueOf(differentInt);
         SFloat differentSFloat = new SFloat(Double.parseDouble(differentIntString));
-        assertNotEquals(differentSFloat, sInt.toSFloat());
+        assertNotEquals(differentSFloat, sInt.toSFloat(), "SFloat match. Seed " + seed);
     }
 
+    @RepeatedTest(50)
+    void toSIntTest(){
+        SInt expectedString = new SInt(testInt);
+        assertEquals(expectedString, sInt.toSInt(), "SInt don't match. Seed " + seed);
+
+        int differentInt;
+        do {
+            differentInt = rng.nextInt();
+        } while (differentInt == testInt);
+        SInt differentSInt = new SInt(differentInt);
+        assertNotEquals(differentSInt, sInt.toSInt(), "SInt match. Seed " + seed);
+    }
 }

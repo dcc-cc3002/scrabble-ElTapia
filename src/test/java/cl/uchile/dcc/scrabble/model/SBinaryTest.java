@@ -63,4 +63,8 @@ public class SBinaryTest {
     @Test
     void toSFloatTest(){
     }
+    @Test
+    void toSIntTest(){
+
+    }
 }

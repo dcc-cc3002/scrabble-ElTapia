@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model;
 
 import java.util.Objects;
 
-public class SInt implements ISString, ISFloat{
+public class SInt implements ISString, ISFloat, ISInt{
     private final int Int;
     public SInt(int Int){
         this.Int = Int;
@@ -35,5 +35,9 @@ public class SInt implements ISString, ISFloat{
     public SFloat toSFloat() {
         String stringSInt = this.toString();
         return new SFloat(Double.parseDouble(stringSInt));
+    }
+
+    public SInt toSInt() {
+        return this;
     }
 }
