@@ -2,15 +2,10 @@ package cl.uchile.dcc.scrabble.model;
 
 import java.util.Objects;
 
-public class SFloat implements ISString, ISFloat{
+public class SFloat extends abstractNumber{
     private final double Float;
     public SFloat(double Float){
         this.Float = Float;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(SFloat.class);
     }
 
     @Override
@@ -27,12 +22,14 @@ public class SFloat implements ISString, ISFloat{
         return String.valueOf(this.Float);
     }
 
+    @Override
     public SString toSString() {
         String doubleString = this.toString();
         return new SString(doubleString);
     }
 
+    @Override
     public SFloat toSFloat() {
-        return this;
+        return new SFloat(this.Float);
     }
 }

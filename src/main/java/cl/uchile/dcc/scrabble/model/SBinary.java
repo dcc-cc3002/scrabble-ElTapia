@@ -2,16 +2,11 @@ package cl.uchile.dcc.scrabble.model;
 
 import java.util.Objects;
 
-public class SBinary implements ISString, ISFloat, ISInt, ISBinary{
+public class SBinary extends abstractBaseNumber{
     private final String binary;
 
     public SBinary(String binary) {
         this.binary = binary;
-    }
-
-    @Override
-    public int hashCode(){
-        return Objects.hash(SBinary.class);
     }
 
     @Override
@@ -28,19 +23,23 @@ public class SBinary implements ISString, ISFloat, ISInt, ISBinary{
         return this.binary;
     }
 
+    @Override
     public SString toSString() {
         return new SString(this.binary);
     }
 
+    @Override
     public SFloat toSFloat(){
         return null;
     }
 
+    @Override
     public SInt toSInt(){
         return null;
     }
 
+    @Override
     public SBinary toSBinary() {
-        return this;
+        return new SBinary(this.binary);
     }
 }

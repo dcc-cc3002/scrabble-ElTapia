@@ -2,15 +2,10 @@ package cl.uchile.dcc.scrabble.model;
 
 import java.util.Objects;
 
-public class SBool implements ISString, ISBool{
+public class SBool extends abstractType{
     private final boolean bool;
     public SBool(boolean bool) {
         this.bool = bool;
-    }
-
-    @Override
-    public int hashCode(){
-        return Objects.hash(SBool.class);
     }
 
     @Override
@@ -27,12 +22,13 @@ public class SBool implements ISString, ISBool{
         return String.valueOf(this.bool);
     }
 
+    @Override
     public SString toSString() {
         String boolString = this.toString();
         return new SString(boolString);
     }
 
     public SBool toSBool() {
-        return this;
+        return new SBool(this.bool);
     }
 }

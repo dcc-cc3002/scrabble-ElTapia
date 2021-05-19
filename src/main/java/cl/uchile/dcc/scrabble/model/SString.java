@@ -1,16 +1,10 @@
 package cl.uchile.dcc.scrabble.model;
 
-import java.util.Objects;
 
-public class SString implements ISString{
+public class SString extends abstractType{
     private final String string;
     public SString(String string) {
         this.string = string;
-    }
-
-    @Override
-    public int hashCode(){
-        return Objects.hash(SString.class);
     }
 
     @Override
@@ -27,7 +21,8 @@ public class SString implements ISString{
         return this.string;
     }
 
+    @Override
     public SString toSString() {
-        return this;
+        return new SString(this.string);
     }
 }

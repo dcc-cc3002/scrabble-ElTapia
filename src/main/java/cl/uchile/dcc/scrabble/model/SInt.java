@@ -2,15 +2,10 @@ package cl.uchile.dcc.scrabble.model;
 
 import java.util.Objects;
 
-public class SInt implements ISString, ISFloat, ISInt, ISBinary{
+public class SInt extends abstractBaseNumber{
     private final int Int;
     public SInt(int Int){
         this.Int = Int;
-    }
-
-    @Override
-    public int hashCode(){
-        return Objects.hash(SInt.class);
     }
 
     @Override
@@ -27,20 +22,24 @@ public class SInt implements ISString, ISFloat, ISInt, ISBinary{
         return String.valueOf(this.Int);
     }
 
+    @Override
     public SString toSString() {
         String intString = this.toString();
         return new SString(intString);
     }
 
+    @Override
     public SFloat toSFloat() {
         String stringSInt = this.toString();
         return new SFloat(Double.parseDouble(stringSInt));
     }
 
+    @Override
     public SInt toSInt() {
-        return this;
+        return new SInt(this.Int);
     }
 
+    @Override
     public SBinary toSBinary(){
         return null;
     }
