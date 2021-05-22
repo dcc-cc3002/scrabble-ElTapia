@@ -3,7 +3,7 @@ package cl.uchile.dcc.scrabble.model;
 import java.util.Objects;
 
 public class SFloat extends abstractNumber{
-    private final double Float;
+    protected final double Float;
     public SFloat(double Float){
         this.Float = Float;
     }

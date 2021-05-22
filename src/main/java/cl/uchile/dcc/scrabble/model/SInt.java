@@ -3,7 +3,7 @@ package cl.uchile.dcc.scrabble.model;
 import java.util.Objects;
 
 public class SInt extends abstractBaseNumber{
-    private final int Int;
+    protected final int Int;
     public SInt(int Int){
         this.Int = Int;
     }

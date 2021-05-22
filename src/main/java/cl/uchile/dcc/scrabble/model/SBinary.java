@@ -3,7 +3,7 @@ package cl.uchile.dcc.scrabble.model;
 import java.util.Objects;
 
 public class SBinary extends abstractBaseNumber{
-    private final String binary;
+    protected final String binary;
 
     public SBinary(String binary) {
         this.binary = binary;

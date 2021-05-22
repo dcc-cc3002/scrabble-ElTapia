@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model;
 
 
 public class SString extends abstractType{
-    private final String string;
+    protected final String string;
     public SString(String string) {
         this.string = string;
     }
