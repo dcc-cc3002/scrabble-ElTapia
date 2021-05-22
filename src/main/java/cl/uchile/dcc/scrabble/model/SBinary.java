@@ -42,4 +42,16 @@ public class SBinary extends abstractBaseNumber{
     public SBinary toSBinary() {
         return new SBinary(this.binary);
     }
+
+    public SBinary negate() {
+        String negateStrBinary = "";
+        for(char c: this.binary.toCharArray()){
+            if (c != '0') {
+                negateStrBinary = negateStrBinary + "0";
+            } else {
+                negateStrBinary = negateStrBinary + "1";
+            }
+        }
+        return new SBinary(negateStrBinary);
+    }
 }

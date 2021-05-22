@@ -82,4 +82,11 @@ public class SBinaryTest {
         assertNotEquals(differentSBinary, sBinary.toSBinary(), "SBinary match. Seed " + seed);
 
     }
+    @Test
+    void negateTest(){
+        SBinary testBinary = new SBinary("101011");
+        SBinary expectedSBinary = new SBinary("010100");
+
+        assertEquals(expectedSBinary, testBinary.negate(), "SBinary don't match. Seed " + seed);
+    }
 }
