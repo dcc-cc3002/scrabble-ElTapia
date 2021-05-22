@@ -71,7 +71,7 @@ public class SBoolTest{
         assertNotEquals(negateExpectedSBool, testSBool.toSBool(), "SBool match. Seed " + seed);
     }
     @RepeatedTest(10)
-    void negateSBoolTest(){
+    void negateTest(){
         assertEquals(negateTestSBool, testSBool.negation(), "SBool don't match. Seed " + seed);
         assertNotEquals(testSBool, testSBool.negation(), "SBool match. Seed " + seed);
     }
@@ -92,5 +92,30 @@ public class SBoolTest{
         assertEquals(expectedFalseSBool, firstSBool.andSBool(toOperateSBool), "SBool don't match. Seed " + seed);
         assertEquals(expectedFalseSBool, toOperateSBool.andSBool(firstSBool), "SBool don't match. Seed " + seed);
         assertEquals(expectedFalseSBool, toOperateSBool.andSBool(toOperateSBool), "SBool don't match. Seed " + seed);
+    }
+
+    @Test
+    void orAndBinaryTest(){
+        SBool trueSBool = new SBool(true);
+        SBool falseSBool = new SBool(false);
+        SBinary toOperateSBinary = new SBinary("101001");
+
+        SBinary expectedTrueOrSBinary = new SBinary("111111");
+        SBinary expectedFalseOrSBinary = new SBinary("101001");
+
+        assertEquals(expectedTrueOrSBinary, trueSBool.orSBinary(toOperateSBinary), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedFalseOrSBinary, falseSBool.orSBinary(toOperateSBinary), "SBinary don't match. Seed " + seed);
+
+        assertNotEquals(expectedFalseOrSBinary, trueSBool.orSBinary(toOperateSBinary), "SBinary match. Seed " + seed);
+        assertNotEquals(expectedTrueOrSBinary, falseSBool.orSBinary(toOperateSBinary), "SBinary match. Seed " + seed);
+
+        SBinary expectedTrueAndSBinary = new SBinary("101001");
+        SBinary expectedFalseAndSBinary = new SBinary("000000");
+
+        assertEquals(expectedTrueAndSBinary, trueSBool.andSBinary(toOperateSBinary), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedFalseAndSBinary, falseSBool.andSBinary(toOperateSBinary), "SBinary don't match. Seed " + seed);
+
+        assertNotEquals(expectedFalseAndSBinary, trueSBool.andSBinary(toOperateSBinary), "SBinary match. Seed " + seed);
+        assertNotEquals(expectedTrueAndSBinary, falseSBool.andSBinary(toOperateSBinary), "SBinary match. Seed " + seed);
     }
 }

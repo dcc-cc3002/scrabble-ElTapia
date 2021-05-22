@@ -3,7 +3,7 @@ package cl.uchile.dcc.scrabble.model;
 import java.util.Objects;
 
 public class SBool extends abstractType{
-    private final boolean bool;
+    protected final boolean bool;
     public SBool(boolean bool) {
         this.bool = bool;
     }
@@ -42,5 +42,29 @@ public class SBool extends abstractType{
 
     public SBool andSBool(SBool toAndSBool) {
         return new SBool(this.bool & toAndSBool.bool);
+    }
+
+    public SBinary orSBinary(SBinary toOrSBinary) {
+        String outBinaryString = "";
+        for(char c: toOrSBinary.binary.toCharArray()){
+            if (c != '0'|this.bool) {
+                outBinaryString = outBinaryString + "1";
+            } else {
+                outBinaryString = outBinaryString + "0";
+            }
+        }
+        return new SBinary(outBinaryString);
+    }
+
+    public SBinary andSBinary(SBinary toAndSBinary) {
+        String outBinaryString = "";
+        for(char c: toAndSBinary.binary.toCharArray()){
+            if (c != '0'&this.bool) {
+                outBinaryString = outBinaryString + "1";
+            } else {
+                outBinaryString = outBinaryString + "0";
+            }
+        }
+        return new SBinary(outBinaryString);
     }
 }
