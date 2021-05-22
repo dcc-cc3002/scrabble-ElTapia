@@ -31,4 +31,16 @@ public class SBool extends abstractType{
     public SBool toSBool() {
         return new SBool(this.bool);
     }
+
+    public SBool negation() {
+        return new SBool(!this.bool);
+    }
+
+    public SBool orSBool(SBool toOrSBool) {
+        return new SBool(this.bool | toOrSBool.bool);
+    }
+
+    public SBool andSBool(SBool toAndSBool) {
+        return new SBool(this.bool & toAndSBool.bool);
+    }
 }

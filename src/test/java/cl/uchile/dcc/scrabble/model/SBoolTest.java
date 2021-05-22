@@ -14,12 +14,11 @@ public class SBoolTest{
     private SBool negateTestSBool;
     private boolean boolTest;
     private int seed;
-    private Random rng;
 
     @BeforeEach
     void setUp(){
         seed = new Random().nextInt();
-        rng = new Random(seed);
+        Random rng = new Random(seed);
         boolTest = rng.nextBoolean();
 
         testSBool = new SBool(boolTest);
@@ -64,11 +63,34 @@ public class SBoolTest{
     }
 
     @RepeatedTest(10)
-    public void toSBoolTest(){
+    void toSBoolTest(){
         SBool expectedSBool = new SBool(boolTest);
         SBool negateExpectedSBool = new SBool(!boolTest);
 
         assertEquals(expectedSBool, testSBool.toSBool(), "SBool don't match. Seed " + seed);
         assertNotEquals(negateExpectedSBool, testSBool.toSBool(), "SBool match. Seed " + seed);
+    }
+    @RepeatedTest(10)
+    void negateSBoolTest(){
+        assertEquals(negateTestSBool, testSBool.negation(), "SBool don't match. Seed " + seed);
+        assertNotEquals(testSBool, testSBool.negation(), "SBool match. Seed " + seed);
+    }
+
+    @Test
+    void orAndSBoolTest(){
+        SBool firstSBool = new SBool(true);
+        SBool toOperateSBool = new SBool(false);
+        SBool expectedTrueSBool = new SBool(true);
+        SBool expectedFalseSBool = new SBool(false);
+
+        assertEquals(expectedTrueSBool, firstSBool.orSBool(toOperateSBool), "SBool don't match. Seed " + seed);
+        assertEquals(expectedFalseSBool, toOperateSBool.orSBool(toOperateSBool), "SBool don't match. Seed " + seed);
+        assertEquals(expectedTrueSBool, firstSBool.orSBool(firstSBool), "SBool don't match. Seed " + seed);
+        assertEquals(expectedTrueSBool, toOperateSBool.orSBool(firstSBool), "SBool don't match. Seed " + seed);
+
+        assertEquals(expectedTrueSBool, firstSBool.andSBool(firstSBool), "SBool don't match. Seed " + seed);
+        assertEquals(expectedFalseSBool, firstSBool.andSBool(toOperateSBool), "SBool don't match. Seed " + seed);
+        assertEquals(expectedFalseSBool, toOperateSBool.andSBool(firstSBool), "SBool don't match. Seed " + seed);
+        assertEquals(expectedFalseSBool, toOperateSBool.andSBool(toOperateSBool), "SBool don't match. Seed " + seed);
     }
 }
