@@ -25,4 +25,24 @@ public class SString extends abstractType{
     public SString toSString() {
         return new SString(this.string);
     }
+
+    public SString addSString(SString toAddSString) {
+        return new SString(this.string + toAddSString.string);
+    }
+
+    public SString addSBool(SBool toAddSBool) {
+        return this.addSString(toAddSBool.toSString());
+    }
+
+    public SString addSFloat(SFloat toAddSFloat) {
+        return this.addSString(toAddSFloat.toSString());
+    }
+
+    public SString addSInt(SInt toAddSInt) {
+        return this.addSString(toAddSInt.toSString());
+    }
+
+    public SString addSBinary(SBinary toAddSBinary) {
+        return this.addSString(toAddSBinary.toSString());
+    }
 }
