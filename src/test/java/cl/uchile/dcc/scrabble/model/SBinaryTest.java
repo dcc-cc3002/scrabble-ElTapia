@@ -6,6 +6,17 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
+//TODO: Improve logic operators with binary tests with random variables
+//TODO: Improve logic operators with bool tests with random variables
+//TODO: Make repeated tests
+
+//TODO: Implement test for operator add with int and binary
+//TODO: Implement test for operator minus with int and binary
+//TODO: Implement test for operator times with int and binary
+//TODO: Implement test for operator divide with int and binary
+//TODO: Implement test for toSInt method
+
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 

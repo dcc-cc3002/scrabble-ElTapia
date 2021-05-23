@@ -2,6 +2,8 @@ package cl.uchile.dcc.scrabble.model;
 
 import java.util.Objects;
 
+//TODO: ADD DOCUMENTATION
+
 public abstract class abstractType {
 
     @Override

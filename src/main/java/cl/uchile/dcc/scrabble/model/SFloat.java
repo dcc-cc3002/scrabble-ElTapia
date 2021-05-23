@@ -2,6 +2,12 @@ package cl.uchile.dcc.scrabble.model;
 
 import java.util.Objects;
 
+//TODO: Implement operator add with int, float and binary
+//TODO: Implement operator minus with int, float and binary
+//TODO: Implement operator times with int, float and binary
+//TODO: Implement operator divide with int, float and binary
+
+
 public class SFloat extends abstractNumber implements IAddFloat{
     protected final double Float;
     public SFloat(double Float){

@@ -1,4 +1,9 @@
 package cl.uchile.dcc.scrabble.model;
+//TODO: Implement operator add with int, float and binary
+//TODO: Implement operator minus with int, float and binary
+//TODO: Implement operator times with int, float and binary
+//TODO: Implement operator divide with int, float and binary
+//TODO: Implement toSBinary method
 
 import java.util.Objects;
 

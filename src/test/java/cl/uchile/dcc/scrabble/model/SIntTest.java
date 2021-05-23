@@ -6,6 +6,12 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
+//TODO: Implement test for operator add with int, float and binary
+//TODO: Implement test for operator minus with int, float and binary
+//TODO: Implement test for operator times with int, float and binary
+//TODO: Implement test for operator divide with int, float and binary
+//TODO: Implement test for toSBinary method
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -84,6 +90,6 @@ public class SIntTest {
         assertNotEquals(differentSInt, sInt.toSInt(), "SInt match. Seed " + seed);
     }
     @Test
-    void toSBinaryTest(){
+    void addIntTest(){
     }
 }

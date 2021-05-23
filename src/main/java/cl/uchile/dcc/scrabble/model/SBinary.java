@@ -1,5 +1,11 @@
 package cl.uchile.dcc.scrabble.model;
 
+//TODO: Implement operator add with int and binary
+//TODO: Implement operator minus with int and binary
+//TODO: Implement operator times with int and binary
+//TODO: Implement operator divide with int and binary
+//TODO: Implement toSInt method
+//TODO: Implement toSFloat method
 
 public class SBinary extends abstractBaseNumber implements ILogic{
     protected final String binary;

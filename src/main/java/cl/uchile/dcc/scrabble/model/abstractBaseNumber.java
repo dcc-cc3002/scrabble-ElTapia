@@ -1,5 +1,7 @@
 package cl.uchile.dcc.scrabble.model;
 
+//TODO: ADD DOCUMENTATION
+
 public abstract class abstractBaseNumber extends abstractNumber{
     @Override
     public abstract boolean equals(Object obj);
