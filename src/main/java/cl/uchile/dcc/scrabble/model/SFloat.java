@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model;
 
 import java.util.Objects;
 
-public class SFloat extends abstractNumber{
+public class SFloat extends abstractNumber implements IAddFloat{
     protected final double Float;
     public SFloat(double Float){
         this.Float = Float;
@@ -31,5 +31,20 @@ public class SFloat extends abstractNumber{
     @Override
     public SFloat toSFloat() {
         return new SFloat(this.Float);
+    }
+
+    @Override
+    public abstractType addSInt(SInt toAddSInt) {
+        return null;
+    }
+
+    @Override
+    public abstractType addSFloat(SFloat toAddSFloat) {
+        return null;
+    }
+
+    @Override
+    public abstractType addSBinary(SBinary toAddSBinary) {
+        return null;
     }
 }

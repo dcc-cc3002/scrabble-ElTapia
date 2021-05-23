@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model;
 
-public abstract class abstractNumber extends abstractType{
+public abstract class abstractNumber extends abstractType implements IAddType{
     @Override
     public abstract boolean equals(Object obj);
 

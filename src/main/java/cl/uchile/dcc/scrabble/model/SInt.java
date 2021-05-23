@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model;
 
 import java.util.Objects;
 
-public class SInt extends abstractBaseNumber{
+public class SInt extends abstractBaseNumber implements IAddFloat{
     protected final int Int;
     public SInt(int Int){
         this.Int = Int;
@@ -41,6 +41,21 @@ public class SInt extends abstractBaseNumber{
 
     @Override
     public SBinary toSBinary(){
+        return null;
+    }
+
+    @Override
+    public abstractType addSInt(SInt toAddSInt) {
+        return null;
+    }
+
+    @Override
+    public abstractType addSFloat(SFloat toAddSFloat) {
+        return null;
+    }
+
+    @Override
+    public abstractType addSBinary(SBinary toAddSBinary) {
         return null;
     }
 }
