@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model;
 
 import java.util.Objects;
 
-//TODO: Implement operator add with int, float and binary
+//TODO: Implement operator add with binary
 //TODO: Implement operator minus with int, float and binary
 //TODO: Implement operator times with int, float and binary
 //TODO: Implement operator divide with int, float and binary
@@ -40,17 +40,17 @@ public class SFloat extends abstractNumber implements IAddFloat{
     }
 
     @Override
-    public abstractType addSInt(SInt toAddSInt) {
-        return null;
+    public SFloat addSInt(SInt toAddSInt) {
+        return new SFloat(this.Float + toAddSInt.Int);
     }
 
     @Override
-    public abstractType addSFloat(SFloat toAddSFloat) {
-        return null;
+    public SFloat addSFloat(SFloat toAddSFloat) {
+        return new SFloat(this.Float + toAddSFloat.Float);
     }
 
     @Override
-    public abstractType addSBinary(SBinary toAddSBinary) {
+    public SFloat addSBinary(SBinary toAddSBinary) {
         return null;
     }
 }
