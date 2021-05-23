@@ -1,6 +1,5 @@
 package cl.uchile.dcc.scrabble.model;
 
-import java.util.Objects;
 
 public class SBinary extends abstractBaseNumber implements ILogic{
     protected final String binary;
@@ -46,8 +45,8 @@ public class SBinary extends abstractBaseNumber implements ILogic{
     @Override
     public SBinary negate() {
         String negateStrBinary = "";
-        for(char c: this.binary.toCharArray()){
-            if (c != '0') {
+        for(char bit: this.binary.toCharArray()){
+            if (bit != '0') {
                 negateStrBinary = negateStrBinary + "0";
             } else {
                 negateStrBinary = negateStrBinary + "1";
@@ -57,23 +56,55 @@ public class SBinary extends abstractBaseNumber implements ILogic{
     }
 
     @Override
-    public SBool orSBool(SBool toOrSBool) {
-        return null;
-    }
-
-    @Override
-    public SBool andSBool(SBool toAndSBool) {
-        return null;
-    }
-
-    @Override
     public SBinary orSBinary(SBinary toOrSBinary) {
-        return null;
+        String outStringSBinary = "";
+        for(int i = 0; i < this.binary.length(); i++){
+            if (this.binary.charAt(i) != '0'|toOrSBinary.binary.charAt(i)!='0') {
+                outStringSBinary = outStringSBinary + "1";
+            } else {
+                outStringSBinary = outStringSBinary + "0";
+            }
+        }
+        return new SBinary(outStringSBinary);
     }
 
     @Override
     public SBinary andSBinary(SBinary toAndSBinary) {
-        return null;
+        String outStringSBinary = "";
+        for(int i = 0; i < this.binary.length(); i++){
+            if (this.binary.charAt(i) != '0' & toAndSBinary.binary.charAt(i)!='0') {
+                outStringSBinary = outStringSBinary + "1";
+            } else {
+                outStringSBinary = outStringSBinary + "0";
+            }
+        }
+        return new SBinary(outStringSBinary);
+    }
+
+    @Override
+    public SBinary orSBool(SBool toOrSBool) {
+        String outStringSBinary = "";
+        for(char bit: this.binary.toCharArray()){
+            if (bit != '0'|toOrSBool.bool) {
+                outStringSBinary = outStringSBinary + "1";
+            } else {
+                outStringSBinary = outStringSBinary + "0";
+            }
+        }
+        return new SBinary(outStringSBinary);
+    }
+
+    @Override
+    public SBinary andSBool(SBool toAndSBool) {
+        String outStringSBinary = "";
+        for(char bit: this.binary.toCharArray()){
+            if (bit != '0'&toAndSBool.bool) {
+                outStringSBinary = outStringSBinary + "1";
+            } else {
+                outStringSBinary = outStringSBinary + "0";
+            }
+        }
+        return new SBinary(outStringSBinary);
     }
 
     @Override
