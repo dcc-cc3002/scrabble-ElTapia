@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model;
 
 import java.util.Objects;
 
-public class SBool extends abstractType{
+public class SBool extends abstractType implements ILogic{
     protected final boolean bool;
     public SBool(boolean bool) {
         this.bool = bool;
@@ -32,18 +32,22 @@ public class SBool extends abstractType{
         return new SBool(this.bool);
     }
 
-    public SBool negation() {
+    @Override
+    public SBool negate() {
         return new SBool(!this.bool);
     }
 
+    @Override
     public SBool orSBool(SBool toOrSBool) {
         return new SBool(this.bool | toOrSBool.bool);
     }
 
+    @Override
     public SBool andSBool(SBool toAndSBool) {
         return new SBool(this.bool & toAndSBool.bool);
     }
 
+    @Override
     public SBinary orSBinary(SBinary toOrSBinary) {
         String outBinaryString = "";
         for(char c: toOrSBinary.binary.toCharArray()){
@@ -56,6 +60,7 @@ public class SBool extends abstractType{
         return new SBinary(outBinaryString);
     }
 
+    @Override
     public SBinary andSBinary(SBinary toAndSBinary) {
         String outBinaryString = "";
         for(char c: toAndSBinary.binary.toCharArray()){

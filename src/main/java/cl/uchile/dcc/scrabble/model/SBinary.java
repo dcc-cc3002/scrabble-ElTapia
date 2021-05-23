@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model;
 
 import java.util.Objects;
 
-public class SBinary extends abstractBaseNumber{
+public class SBinary extends abstractBaseNumber implements ILogic{
     protected final String binary;
 
     public SBinary(String binary) {
@@ -43,6 +43,7 @@ public class SBinary extends abstractBaseNumber{
         return new SBinary(this.binary);
     }
 
+    @Override
     public SBinary negate() {
         String negateStrBinary = "";
         for(char c: this.binary.toCharArray()){
@@ -53,5 +54,25 @@ public class SBinary extends abstractBaseNumber{
             }
         }
         return new SBinary(negateStrBinary);
+    }
+
+    @Override
+    public SBool orSBool(SBool toOrSBool) {
+        return null;
+    }
+
+    @Override
+    public SBool andSBool(SBool toAndSBool) {
+        return null;
+    }
+
+    @Override
+    public SBinary orSBinary(SBinary toOrSBinary) {
+        return null;
+    }
+
+    @Override
+    public SBinary andSBinary(SBinary toAndSBinary) {
+        return null;
     }
 }
