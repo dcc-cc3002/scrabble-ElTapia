@@ -72,8 +72,8 @@ public class SBoolTest{
     }
     @RepeatedTest(10)
     void negateTest(){
-        assertEquals(negateTestSBool, testSBool.negation(), "SBool don't match. Seed " + seed);
-        assertNotEquals(testSBool, testSBool.negation(), "SBool match. Seed " + seed);
+        assertEquals(negateTestSBool, testSBool.negate(), "SBool don't match. Seed " + seed);
+        assertNotEquals(testSBool, testSBool.negate(), "SBool match. Seed " + seed);
     }
 
     @Test
