@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-//TODO: Implement test for operator add with int, float and binary
+//TODO: Implement test for operator add with binary
 //TODO: Implement test for operator minus with int, float and binary
 //TODO: Implement test for operator times with int, float and binary
 //TODO: Implement test for operator divide with int, float and binary
@@ -102,13 +102,13 @@ public class SIntTest {
         int differentInt;
         do {
             differentInt = rng.nextInt();
-        } while (differentInt == testInt + toAddInt);
+        } while (differentInt == toAddInt);
         SInt differentSInt = new SInt(differentInt);
 
-        assertNotEquals(differentSInt, sInt.addSInt(otherSInt), "SInt match. Seed " + seed);
+        assertNotEquals(sInt.addSInt(differentSInt), sInt.addSInt(otherSInt), "SInt match. Seed " + seed);
 
         SInt zeroSInt = new SInt(0);
-        assertEquals(new SInt(testInt), sInt.addSInt(zeroSInt));
+        assertEquals(new SInt(testInt), sInt.addSInt(zeroSInt), "SInt don't match. Seed " + seed);
     }
     @RepeatedTest(50)
     void addSFloatTest(){
@@ -123,12 +123,12 @@ public class SIntTest {
         double differentDouble;
         do {
             differentDouble = rng.nextDouble();
-        } while (differentDouble == testInt + toAddDouble);
+        } while (differentDouble == toAddDouble);
         SFloat differentSFloat = new SFloat(differentDouble);
 
-        assertNotEquals(differentSFloat, sInt.addSFloat(toAddSFloat), "SFloat match. Seed " + seed);
+        assertNotEquals(sInt.addSFloat(differentSFloat), sInt.addSFloat(toAddSFloat), "SFloat match. Seed " + seed);
 
         SFloat zeroSFloat = new SFloat(0.0);
-        assertEquals(new SFloat(testInt), sInt.addSFloat(zeroSFloat));
+        assertEquals(new SFloat(testInt), sInt.addSFloat(zeroSFloat), "SFloat don't match. Seed " + seed);
     }
 }
