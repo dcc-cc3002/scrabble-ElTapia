@@ -1,5 +1,5 @@
 package cl.uchile.dcc.scrabble.model;
-//TODO: Implement operator add with int, float and binary
+//TODO: Implement operator add with binary
 //TODO: Implement operator minus with int, float and binary
 //TODO: Implement operator times with int, float and binary
 //TODO: Implement operator divide with int, float and binary
@@ -50,13 +50,13 @@ public class SInt extends abstractBaseNumber implements IAddFloat{
     }
 
     @Override
-    public abstractType addSInt(SInt toAddSInt) {
-        return null;
+    public SInt addSInt(SInt toAddSInt) {
+        return new SInt(this.Int + toAddSInt.Int);
     }
 
     @Override
-    public abstractType addSFloat(SFloat toAddSFloat) {
-        return null;
+    public SFloat addSFloat(SFloat toAddSFloat) {
+        return new SFloat(this.Int + toAddSFloat.Float);
     }
 
     @Override

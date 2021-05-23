@@ -89,7 +89,46 @@ public class SIntTest {
         SInt differentSInt = new SInt(differentInt);
         assertNotEquals(differentSInt, sInt.toSInt(), "SInt match. Seed " + seed);
     }
-    @Test
-    void addIntTest(){
+    @RepeatedTest(50)
+    void addSIntTest(){
+        int toAddInt = rng.nextInt();
+        SInt otherSInt = new SInt(toAddInt);
+
+        int expectedInt = testInt + toAddInt;
+        SInt expectedSInt = new SInt(expectedInt);
+
+        assertEquals(expectedSInt, sInt.addSInt(otherSInt), "SInt don't match. Seed " + seed);
+
+        int differentInt;
+        do {
+            differentInt = rng.nextInt();
+        } while (differentInt == testInt + toAddInt);
+        SInt differentSInt = new SInt(differentInt);
+
+        assertNotEquals(differentSInt, sInt.addSInt(otherSInt), "SInt match. Seed " + seed);
+
+        SInt zeroSInt = new SInt(0);
+        assertEquals(new SInt(testInt), sInt.addSInt(zeroSInt));
+    }
+    @RepeatedTest(50)
+    void addSFloatTest(){
+        double toAddDouble = rng.nextDouble();
+        SFloat toAddSFloat = new SFloat(toAddDouble);
+
+        double expectedDouble = testInt + toAddDouble;
+        SFloat expectedSFloat = new SFloat(expectedDouble);
+
+        assertEquals(expectedSFloat, sInt.addSFloat(toAddSFloat), "SFloat don't match. Seed " + seed);
+
+        double differentDouble;
+        do {
+            differentDouble = rng.nextDouble();
+        } while (differentDouble == testInt + toAddDouble);
+        SFloat differentSFloat = new SFloat(differentDouble);
+
+        assertNotEquals(differentSFloat, sInt.addSFloat(toAddSFloat), "SFloat match. Seed " + seed);
+
+        SFloat zeroSFloat = new SFloat(0.0);
+        assertEquals(new SFloat(testInt), sInt.addSFloat(zeroSFloat));
     }
 }
