@@ -80,7 +80,7 @@ public class SInt extends abstractBaseNumber implements IOpFloat {
     }
 
     @Override
-    public abstractType timesFloat(SFloat toAddSFloat) {
+    public abstractType timesSFloat(SFloat toAddSFloat) {
         return null;
     }
 
