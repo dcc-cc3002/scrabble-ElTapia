@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
-//TODO: Implement test for operator add with int, float and binary
+//TODO: Implement test for operator add with binary
 //TODO: Implement test for operator minus with int, float and binary
 //TODO: Implement test for operator times with int, float and binary
 //TODO: Implement test for operator divide with int, float and binary

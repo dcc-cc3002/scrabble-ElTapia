@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model;
 
-//TODO: Possibly implements methods that are in interface
+//COMPLETE: Possibly implements methods that are in interface
 //TODO: ADD DOCUMENTATION
 
 public abstract class abstractNumber extends abstractType implements IOpType {

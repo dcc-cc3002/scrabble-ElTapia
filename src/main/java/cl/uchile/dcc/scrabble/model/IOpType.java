@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model;
 
-//TODO: Modify interface to accept all kind of operators
+//COMPLETE: Modify interface to accept all kind of operators
 //TODO: ADD DOCUMENTATION
 
 public interface IOpType extends IAddType{
