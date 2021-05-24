@@ -45,18 +45,18 @@ public class SFloat extends abstractNumber implements IOpFloat {
     }
 
     @Override
-    public abstractType minusSInt(SInt toAddSInt) {
-        return null;
+    public SFloat minusSInt(SInt toAddSInt) {
+        return new SFloat(this.Float - toAddSInt.Int);
     }
 
     @Override
-    public abstractType timesSInt(SInt toAddSInt) {
-        return null;
+    public SFloat timesSInt(SInt toAddSInt) {
+        return new SFloat(this.Float * toAddSInt.Int);
     }
 
     @Override
-    public abstractType divideSInt(SInt toAddSInt) {
-        return null;
+    public SFloat divideSInt(SInt toAddSInt) {
+        return new SFloat(this.Float / toAddSInt.Int);
     }
 
     @Override
@@ -65,18 +65,18 @@ public class SFloat extends abstractNumber implements IOpFloat {
     }
 
     @Override
-    public abstractType minusSFloat(SFloat toAddSFloat) {
-        return null;
+    public SFloat minusSFloat(SFloat toAddSFloat) {
+        return new SFloat(this.Float - toAddSFloat.Float);
     }
 
     @Override
-    public abstractType timesFloat(SFloat toAddSFloat) {
-        return null;
+    public SFloat timesSFloat(SFloat toAddSFloat) {
+        return new SFloat(this.Float * toAddSFloat.Float);
     }
 
     @Override
-    public abstractType divideSFloat(SFloat toAddSFloat) {
-        return null;
+    public SFloat divideSFloat(SFloat toAddSFloat) {
+        return new SFloat(this.Float / toAddSFloat.Float);
     }
 
     @Override
