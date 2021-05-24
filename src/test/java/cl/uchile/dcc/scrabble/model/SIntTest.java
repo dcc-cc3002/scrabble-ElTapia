@@ -90,45 +90,87 @@ public class SIntTest {
         assertNotEquals(differentSInt, sInt.toSInt(), "SInt match. Seed " + seed);
     }
     @RepeatedTest(50)
-    void addSIntTest(){
-        int toAddInt = rng.nextInt();
-        SInt otherSInt = new SInt(toAddInt);
+    void opSIntTest(){
+        int toOpInt;
+        do {
+            toOpInt = rng.nextInt();
+        }while (toOpInt == 0);
 
-        int expectedInt = testInt + toAddInt;
-        SInt expectedSInt = new SInt(expectedInt);
+        SInt toOpSInt = new SInt(toOpInt);
 
-        assertEquals(expectedSInt, sInt.addSInt(otherSInt), "SInt don't match. Seed " + seed);
+        int expectedAddInt = testInt + toOpInt;
+        SInt expectedAddSInt = new SInt(expectedAddInt);
+
+        int expectedMinusInt = testInt - toOpInt;
+        SInt expectedMinusSInt = new SInt(expectedMinusInt);
+
+        int expectedTimesInt = testInt * toOpInt;
+        SInt expectedTimesSInt = new SInt(expectedTimesInt);
+
+        int expectedDivideInt = testInt / toOpInt;
+        SInt expectedDivideSInt = new SInt(expectedDivideInt);
+
+        assertEquals(expectedAddSInt, sInt.addSInt(toOpSInt), "SInt don't match. Seed " + seed);
+        assertEquals(expectedMinusSInt, sInt.minusSInt(toOpSInt), "SInt don't match. Seed " + seed);
+        assertEquals(expectedTimesSInt, sInt.timesSInt(toOpSInt), "SInt don't match. Seed " + seed);
+        assertEquals(expectedDivideSInt, sInt.divideSInt(toOpSInt), "SInt don't match. Seed " + seed);
 
         int differentInt;
         do {
             differentInt = rng.nextInt();
-        } while (differentInt == toAddInt);
+        } while (differentInt ==  toOpInt | differentInt == 0);
         SInt differentSInt = new SInt(differentInt);
 
-        assertNotEquals(sInt.addSInt(differentSInt), sInt.addSInt(otherSInt), "SInt match. Seed " + seed);
+        assertNotEquals(sInt.addSInt(differentSInt), sInt.addSInt(toOpSInt), "SInt match. Seed " + seed);
+        assertNotEquals(sInt.minusSInt(differentSInt), sInt.minusSInt(toOpSInt), "SInt match. Seed " + seed);
+        assertNotEquals(sInt.timesSInt(differentSInt), sInt.timesSInt(toOpSInt), "SInt match. Seed " + seed);
 
         SInt zeroSInt = new SInt(0);
         assertEquals(new SInt(testInt), sInt.addSInt(zeroSInt), "SInt don't match. Seed " + seed);
+        assertEquals(new SInt(testInt), sInt.minusSInt(zeroSInt), "SInt don't match. Seed " + seed);
+        assertEquals(zeroSInt, sInt.timesSInt(zeroSInt), "SInt don't match. Seed " + seed);
+        assertEquals(zeroSInt, zeroSInt.timesSInt(sInt), "SInt don't match. Seed " + seed);
     }
     @RepeatedTest(50)
     void addSFloatTest(){
-        double toAddDouble = rng.nextDouble();
-        SFloat toAddSFloat = new SFloat(toAddDouble);
+        double toOpDouble;
+        do {
+            toOpDouble = rng.nextDouble();
+        }while (toOpDouble == 0);
 
-        double expectedDouble = testInt + toAddDouble;
-        SFloat expectedSFloat = new SFloat(expectedDouble);
+        SFloat toOpSFloat = new SFloat(toOpDouble);
 
-        assertEquals(expectedSFloat, sInt.addSFloat(toAddSFloat), "SFloat don't match. Seed " + seed);
+        double expectedAddDouble = testInt + toOpDouble;
+        SFloat expectedAddSInt = new SFloat(expectedAddDouble);
+
+        double expectedMinusDouble = testInt - toOpDouble;
+        SFloat expectedMinusSFloat = new SFloat(expectedMinusDouble);
+
+        double expectedTimesDouble = testInt * toOpDouble;
+        SFloat expectedTimesSFloat = new SFloat(expectedTimesDouble);
+
+        double expectedDivideDouble = testInt / toOpDouble;
+        SFloat expectedDivideSFloat = new SFloat(expectedDivideDouble);
+
+        assertEquals(expectedAddSInt, sInt.addSFloat(toOpSFloat), "SFloat don't match. Seed " + seed);
+        assertEquals(expectedMinusSFloat, sInt.minusSFloat(toOpSFloat), "SFloat don't match. Seed " + seed);
+        assertEquals(expectedTimesSFloat, sInt.timesSFloat(toOpSFloat), "SFloat don't match. Seed " + seed);
+        assertEquals(expectedDivideSFloat, sInt.divideSFloat(toOpSFloat), "SFloat don't match. Seed " + seed);
 
         double differentDouble;
         do {
             differentDouble = rng.nextDouble();
-        } while (differentDouble == toAddDouble);
+        } while (differentDouble ==  toOpDouble | differentDouble == 0);
         SFloat differentSFloat = new SFloat(differentDouble);
 
-        assertNotEquals(sInt.addSFloat(differentSFloat), sInt.addSFloat(toAddSFloat), "SFloat match. Seed " + seed);
+        assertNotEquals(sInt.addSFloat(differentSFloat), sInt.addSFloat(toOpSFloat), "SFloat match. Seed " + seed);
+        assertNotEquals(sInt.minusSFloat(differentSFloat), sInt.minusSFloat(toOpSFloat), "SFloat match. Seed " + seed);
+        assertNotEquals(sInt.timesSFloat(differentSFloat), sInt.timesSFloat(toOpSFloat), "SFloat match. Seed " + seed);
+        assertNotEquals(sInt.divideSFloat(differentSFloat), sInt.divideSFloat(toOpSFloat), "SFloat match. Seed " + seed);
 
         SFloat zeroSFloat = new SFloat(0.0);
         assertEquals(new SFloat(testInt), sInt.addSFloat(zeroSFloat), "SFloat don't match. Seed " + seed);
+        assertEquals(new SFloat(testInt), sInt.minusSFloat(zeroSFloat), "SFloat don't match. Seed " + seed);
+        assertEquals(zeroSFloat, sInt.timesSFloat(zeroSFloat), "SFloat don't match. Seed " + seed);
     }
 }

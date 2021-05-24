@@ -55,18 +55,18 @@ public class SInt extends abstractBaseNumber implements IOpFloat {
     }
 
     @Override
-    public abstractType minusSInt(SInt toAddSInt) {
-        return null;
+    public SInt minusSInt(SInt toMinusSInt) {
+        return new SInt(this.Int - toMinusSInt.Int);
     }
 
     @Override
-    public abstractType timesSInt(SInt toAddSInt) {
-        return null;
+    public SInt timesSInt(SInt toTimesSInt) {
+        return new SInt(this.Int * toTimesSInt.Int);
     }
 
     @Override
-    public abstractType divideSInt(SInt toAddSInt) {
-        return null;
+    public SInt divideSInt(SInt toDivideSInt) {
+        return new SInt(this.Int / toDivideSInt.Int);
     }
 
     @Override
@@ -75,18 +75,18 @@ public class SInt extends abstractBaseNumber implements IOpFloat {
     }
 
     @Override
-    public abstractType minusSFloat(SFloat toAddSFloat) {
-        return null;
+    public abstractType minusSFloat(SFloat toMinusSFloat) {
+        return new SFloat(this.Int - toMinusSFloat.Float);
     }
 
     @Override
-    public abstractType timesSFloat(SFloat toAddSFloat) {
-        return null;
+    public abstractType timesSFloat(SFloat toTimesSFloat) {
+        return new SFloat(this.Int * toTimesSFloat.Float);
     }
 
     @Override
-    public abstractType divideSFloat(SFloat toAddSFloat) {
-        return null;
+    public abstractType divideSFloat(SFloat toDivideSFloat) {
+        return new SFloat(this.Int / toDivideSFloat.Float);
     }
 
     @Override
@@ -95,17 +95,17 @@ public class SInt extends abstractBaseNumber implements IOpFloat {
     }
 
     @Override
-    public abstractType minusSBinary(SBinary toAddSBinary) {
+    public abstractType minusSBinary(SBinary toMinusSBinary) {
         return null;
     }
 
     @Override
-    public abstractType timesSBinary(SBinary toAddSBinary) {
+    public abstractType timesSBinary(SBinary toTimesSBinary) {
         return null;
     }
 
     @Override
-    public abstractType divideSBinary(SBinary toAddSBinary) {
+    public abstractType divideSBinary(SBinary toDivideSBinary) {
         return null;
     }
 }
