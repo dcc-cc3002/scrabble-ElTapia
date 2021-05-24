@@ -158,7 +158,8 @@ public class SFloatTest {
         SFloat zeroSFloat = new SFloat(0.0);
         assertEquals(new SFloat(testDouble), sFloat.addSFloat(zeroSFloat), "SFloat don't match. Seed " + seed);
         assertEquals(new SFloat(testDouble), sFloat.minusSFloat(zeroSFloat), "SFloat don't match. Seed " + seed);
-        assertEquals(new SFloat(0.0), sFloat.timesSFloat(zeroSFloat), "SFloat don't match. Seed " + seed);
+        assertEquals(zeroSFloat, sFloat.timesSFloat(zeroSFloat), "SFloat don't match. Seed " + seed);
+        assertEquals(zeroSFloat, zeroSFloat.timesSFloat(sFloat), "SFloat don't match. Seed " + seed);
     }
 
     @Test
