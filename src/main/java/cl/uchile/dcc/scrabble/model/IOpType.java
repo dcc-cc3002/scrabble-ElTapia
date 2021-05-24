@@ -5,11 +5,11 @@ package cl.uchile.dcc.scrabble.model;
 
 public interface IOpType extends IAddType{
 
-    abstractType minusSInt(SInt toAddSInt);
-    abstractType timesSInt(SInt toAddSInt);
-    abstractType divideSInt(SInt toAddSInt);
+    abstractType minusSInt(SInt toMinusSInt);
+    abstractType timesSInt(SInt toTimesSInt);
+    abstractType divideSInt(SInt toDivideSInt);
 
-    abstractType minusSBinary(SBinary toAddSBinary);
-    abstractType timesSBinary(SBinary toAddSBinary);
-    abstractType divideSBinary(SBinary toAddSBinary);
+    abstractType minusSBinary(SBinary toMinusSBinary);
+    abstractType timesSBinary(SBinary toTimesSBinary);
+    abstractType divideSBinary(SBinary toDivideSBinary);
 }

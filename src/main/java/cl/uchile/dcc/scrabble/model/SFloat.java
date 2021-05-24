@@ -3,9 +3,10 @@ package cl.uchile.dcc.scrabble.model;
 import java.util.Objects;
 
 //TODO: Implement operator add with binary
-//TODO: Implement operator minus with int, float and binary
-//TODO: Implement operator times with int, float and binary
-//TODO: Implement operator divide with int, float and binary
+//TODO: Implement operator minus with binary
+//TODO: Implement operator times with binary
+//TODO: Implement operator divide with binary
+//TODO: Fix equals
 
 
 public class SFloat extends abstractNumber implements IOpFloat {
@@ -18,7 +19,7 @@ public class SFloat extends abstractNumber implements IOpFloat {
     public boolean equals(Object obj) {
         if (obj instanceof SFloat){
             var o = (SFloat) obj;
-            return Objects.equals(o.Float, this.Float);
+            return o.Float == this.Float;
         }
         return false;
     }
@@ -45,18 +46,18 @@ public class SFloat extends abstractNumber implements IOpFloat {
     }
 
     @Override
-    public SFloat minusSInt(SInt toAddSInt) {
-        return new SFloat(this.Float - toAddSInt.Int);
+    public SFloat minusSInt(SInt toMinusSInt) {
+        return new SFloat(this.Float - toMinusSInt.Int);
     }
 
     @Override
-    public SFloat timesSInt(SInt toAddSInt) {
-        return new SFloat(this.Float * toAddSInt.Int);
+    public SFloat timesSInt(SInt toTimesSInt) {
+        return new SFloat(this.Float * toTimesSInt.Int);
     }
 
     @Override
-    public SFloat divideSInt(SInt toAddSInt) {
-        return new SFloat(this.Float / toAddSInt.Int);
+    public SFloat divideSInt(SInt toDivideSInt) {
+        return new SFloat(this.Float / toDivideSInt.Int);
     }
 
     @Override
@@ -65,18 +66,18 @@ public class SFloat extends abstractNumber implements IOpFloat {
     }
 
     @Override
-    public SFloat minusSFloat(SFloat toAddSFloat) {
-        return new SFloat(this.Float - toAddSFloat.Float);
+    public SFloat minusSFloat(SFloat toMinusSFloat) {
+        return new SFloat(this.Float - toMinusSFloat.Float);
     }
 
     @Override
-    public SFloat timesSFloat(SFloat toAddSFloat) {
-        return new SFloat(this.Float * toAddSFloat.Float);
+    public SFloat timesSFloat(SFloat toTimesSFloat) {
+        return new SFloat(this.Float * toTimesSFloat.Float);
     }
 
     @Override
-    public SFloat divideSFloat(SFloat toAddSFloat) {
-        return new SFloat(this.Float / toAddSFloat.Float);
+    public SFloat divideSFloat(SFloat toDivideSFloat) {
+        return new SFloat(this.Float / toDivideSFloat.Float);
     }
 
     @Override
@@ -85,17 +86,17 @@ public class SFloat extends abstractNumber implements IOpFloat {
     }
 
     @Override
-    public abstractType minusSBinary(SBinary toAddSBinary) {
+    public abstractType minusSBinary(SBinary toMinusSBinary) {
         return null;
     }
 
     @Override
-    public abstractType timesSBinary(SBinary toAddSBinary) {
+    public abstractType timesSBinary(SBinary toTimesSBinary) {
         return null;
     }
 
     @Override
-    public abstractType divideSBinary(SBinary toAddSBinary) {
+    public abstractType divideSBinary(SBinary toDivideSBinary) {
         return null;
     }
 }

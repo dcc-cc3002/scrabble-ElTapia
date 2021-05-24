@@ -5,7 +5,7 @@ package cl.uchile.dcc.scrabble.model;
 //TODO: ADD DOCUMENTATION
 
 public interface IOpFloat extends IAddSFloat{
-    abstractType minusSFloat(SFloat toAddSFloat);
-    abstractType timesSFloat(SFloat toAddSFloat);
-    abstractType divideSFloat(SFloat toAddSFloat);
+    abstractType minusSFloat(SFloat toMinusSFloat);
+    abstractType timesSFloat(SFloat toTimesSFloat);
+    abstractType divideSFloat(SFloat toDivideSFloat);
 }
