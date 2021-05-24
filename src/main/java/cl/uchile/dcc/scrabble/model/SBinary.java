@@ -119,7 +119,37 @@ public class SBinary extends abstractBaseNumber implements ILogic{
     }
 
     @Override
+    public abstractType minusSInt(SInt toAddSInt) {
+        return null;
+    }
+
+    @Override
+    public abstractType timesSInt(SInt toAddSInt) {
+        return null;
+    }
+
+    @Override
+    public abstractType divideSInt(SInt toAddSInt) {
+        return null;
+    }
+
+    @Override
     public abstractType addSBinary(SBinary toAddSBinary) {
+        return null;
+    }
+
+    @Override
+    public abstractType minusSBinary(SBinary toAddSBinary) {
+        return null;
+    }
+
+    @Override
+    public abstractType timesSBinary(SBinary toAddSBinary) {
+        return null;
+    }
+
+    @Override
+    public abstractType divideSBinary(SBinary toAddSBinary) {
         return null;
     }
 }

@@ -8,7 +8,7 @@ import java.util.Objects;
 //TODO: Implement operator divide with int, float and binary
 
 
-public class SFloat extends abstractNumber implements IAddFloat{
+public class SFloat extends abstractNumber implements IOpFloat {
     protected final double Float;
     public SFloat(double Float){
         this.Float = Float;
@@ -45,12 +45,57 @@ public class SFloat extends abstractNumber implements IAddFloat{
     }
 
     @Override
+    public abstractType minusSInt(SInt toAddSInt) {
+        return null;
+    }
+
+    @Override
+    public abstractType timesSInt(SInt toAddSInt) {
+        return null;
+    }
+
+    @Override
+    public abstractType divideSInt(SInt toAddSInt) {
+        return null;
+    }
+
+    @Override
     public SFloat addSFloat(SFloat toAddSFloat) {
         return new SFloat(this.Float + toAddSFloat.Float);
     }
 
     @Override
+    public abstractType minusSFloat(SFloat toAddSFloat) {
+        return null;
+    }
+
+    @Override
+    public abstractType timesFloat(SFloat toAddSFloat) {
+        return null;
+    }
+
+    @Override
+    public abstractType divideSFloat(SFloat toAddSFloat) {
+        return null;
+    }
+
+    @Override
     public SFloat addSBinary(SBinary toAddSBinary) {
+        return null;
+    }
+
+    @Override
+    public abstractType minusSBinary(SBinary toAddSBinary) {
+        return null;
+    }
+
+    @Override
+    public abstractType timesSBinary(SBinary toAddSBinary) {
+        return null;
+    }
+
+    @Override
+    public abstractType divideSBinary(SBinary toAddSBinary) {
         return null;
     }
 }

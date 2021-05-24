@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model;
 
 
-public class SString extends abstractType implements IAddSString{
+public class SString extends abstractType implements IOpSString {
     protected final String string;
     public SString(String string) {
         this.string = string;

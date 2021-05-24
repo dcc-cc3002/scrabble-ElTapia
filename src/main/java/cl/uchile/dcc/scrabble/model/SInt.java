@@ -7,7 +7,7 @@ package cl.uchile.dcc.scrabble.model;
 
 import java.util.Objects;
 
-public class SInt extends abstractBaseNumber implements IAddFloat{
+public class SInt extends abstractBaseNumber implements IOpFloat {
     protected final int Int;
     public SInt(int Int){
         this.Int = Int;
@@ -55,12 +55,57 @@ public class SInt extends abstractBaseNumber implements IAddFloat{
     }
 
     @Override
+    public abstractType minusSInt(SInt toAddSInt) {
+        return null;
+    }
+
+    @Override
+    public abstractType timesSInt(SInt toAddSInt) {
+        return null;
+    }
+
+    @Override
+    public abstractType divideSInt(SInt toAddSInt) {
+        return null;
+    }
+
+    @Override
     public SFloat addSFloat(SFloat toAddSFloat) {
         return new SFloat(this.Int + toAddSFloat.Float);
     }
 
     @Override
+    public abstractType minusSFloat(SFloat toAddSFloat) {
+        return null;
+    }
+
+    @Override
+    public abstractType timesFloat(SFloat toAddSFloat) {
+        return null;
+    }
+
+    @Override
+    public abstractType divideSFloat(SFloat toAddSFloat) {
+        return null;
+    }
+
+    @Override
     public abstractType addSBinary(SBinary toAddSBinary) {
+        return null;
+    }
+
+    @Override
+    public abstractType minusSBinary(SBinary toAddSBinary) {
+        return null;
+    }
+
+    @Override
+    public abstractType timesSBinary(SBinary toAddSBinary) {
+        return null;
+    }
+
+    @Override
+    public abstractType divideSBinary(SBinary toAddSBinary) {
         return null;
     }
 }
