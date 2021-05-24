@@ -31,7 +31,7 @@ public class SBinaryTest {
     void setUp(){
         seed = new Random().nextInt();
         rng = new Random(seed);
-        int strSize= rng.nextInt(50);
+        int strSize= rng.nextInt(32);
         testBinary = RandomStringUtils.random(strSize, 0, 2, false, true, binaryList, rng);
         sBinary = new SBinary(testBinary);
     }
@@ -46,7 +46,7 @@ public class SBinaryTest {
         String differentBinary;
 
         do {
-            differentBinary= RandomStringUtils.random(rng.nextInt(50), 0, 2,
+            differentBinary= RandomStringUtils.random(rng.nextInt(32), 0, 2,
                     false, true, binaryList, rng);
         } while (differentBinary.equals(testBinary));
 
@@ -64,7 +64,7 @@ public class SBinaryTest {
 
         String differentBinary;
         do {
-            differentBinary= RandomStringUtils.random(rng.nextInt(50), 0, 2,
+            differentBinary= RandomStringUtils.random(rng.nextInt(32), 0, 2,
                     false, true, binaryList, rng);
         } while (differentBinary.equals(testBinary));
         SString differentSString = new SString(differentBinary);
@@ -86,7 +86,7 @@ public class SBinaryTest {
 
         String differentBinary;
         do {
-            differentBinary= RandomStringUtils.random(rng.nextInt(50), 0, 2,
+            differentBinary= RandomStringUtils.random(rng.nextInt(32), 0, 2,
                     false, true, binaryList, rng);
         } while (differentBinary.equals(testBinary));
         SBinary differentSBinary = new SBinary(differentBinary);
