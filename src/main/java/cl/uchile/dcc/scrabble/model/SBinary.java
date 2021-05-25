@@ -113,6 +113,15 @@ public class SBinary extends abstractBaseNumber implements ILogic{
         return new SBinary(outStringSBinary);
     }
 
+    public SBinary twosComplements() {
+        SBinary negateBinary = this.negate();
+        int intBinary = Integer.parseInt(negateBinary.binary, 2);
+        int resultInt = intBinary + 1;
+        String resultStringBinary = Integer.toBinaryString(resultInt);
+
+        return new SBinary(resultStringBinary);
+    }
+
     @Override
     public abstractType addSInt(SInt toAddSInt) {
         return null;
