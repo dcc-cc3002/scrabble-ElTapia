@@ -195,22 +195,30 @@ public class SBinary extends abstractBaseNumber implements ILogic {
     }
 
     @Override
-    public abstractType addSInt(SInt toAddSInt) {
-        return null;
+    public SBinary addSInt(SInt toAddSInt) {
+        SInt thisSInt = this.toSInt();
+        SInt resultSInt = thisSInt.addSInt(toAddSInt);
+        return resultSInt.toSBinary();
     }
 
     @Override
-    public abstractType minusSInt(SInt toMinusSInt) {
-        return null;
+    public SBinary minusSInt(SInt toMinusSInt) {
+        SInt thisSInt = this.toSInt();
+        SInt resultSInt = thisSInt.minusSInt(toMinusSInt);
+        return resultSInt.toSBinary();
     }
 
     @Override
-    public abstractType timesSInt(SInt toTimesSInt) {
-        return null;
+    public SBinary timesSInt(SInt toTimesSInt) {
+        SInt thisSInt = this.toSInt();
+        SInt resultSInt = thisSInt.timesSInt(toTimesSInt);
+        return resultSInt.toSBinary();
     }
 
     @Override
-    public abstractType divideSInt(SInt toDivideSInt) {
-        return null;
+    public SBinary divideSInt(SInt toDivideSInt) {
+        SInt thisSInt = this.toSInt();
+        SInt resultSInt = thisSInt.divideSInt(toDivideSInt);
+        return resultSInt.toSBinary();
     }
 }

@@ -280,5 +280,78 @@ public class SBinaryTest {
     }
     @Test
     void opSIntTest(){
+        String positiveBinary = "010011";
+        int toOpBinaryInt = 25;
+
+        SBinary positiveSBinary = new SBinary(positiveBinary);
+        SInt toOpSInt = new SInt(toOpBinaryInt);
+
+        SBinary expectedAddSBinary = new SBinary("0101100");
+        SBinary expectedMinusSBinary = new SBinary("1010");
+        SBinary expectedTimesSBinary = new SBinary("0111011011");
+        SBinary expectedDivideSBinary = new SBinary("0");
+
+        assertEquals(expectedAddSBinary, positiveSBinary.addSInt(toOpSInt), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedMinusSBinary, positiveSBinary.minusSInt(toOpSInt), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedTimesSBinary, positiveSBinary.timesSInt(toOpSInt), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedDivideSBinary, positiveSBinary.divideSInt(toOpSInt), "SBinary don't match. Seed " + seed);
+
+        SInt zeroSInt = new SInt(0);
+
+        assertEquals(new SBinary(positiveBinary), positiveSBinary.addSInt(zeroSInt), "SBinary don't match. Seed " + seed);
+        assertEquals(new SBinary(positiveBinary), positiveSBinary.minusSInt(zeroSInt), "SBinary don't match. Seed " + seed);
+        assertEquals(new SBinary("0"), positiveSBinary.timesSInt(zeroSInt), "SBinary don't match. Seed " + seed);
+
+        SInt minusOneSInt = new SInt(-1);
+        assertEquals(positiveSBinary.negate().addOne(), positiveSBinary.timesSInt(minusOneSInt), "SBinary don't match. Seed " + seed);
+        assertEquals(positiveSBinary.negate().addOne(), positiveSBinary.divideSInt(minusOneSInt), "SBinary don't match. Seed " + seed);
+
+        String otherBinaryString = "0110010";
+        int otherToOpInt = 9;
+
+        SBinary otherSBinary = new SBinary(otherBinaryString);
+        SInt otherToOpSInt = new SInt(otherToOpInt);
+
+        SBinary expectedOtherAddSBinary = new SBinary("0111011");
+        SBinary expectedOtherMinusSBinary = new SBinary("0101001");
+        SBinary expectedOtherTimesSBinary = new SBinary("0111000010");
+        SBinary expectedOtherDivideSBinary = new SBinary("0101");
+
+        assertEquals(expectedOtherAddSBinary, otherSBinary.addSInt(otherToOpSInt), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedOtherMinusSBinary, otherSBinary.minusSInt(otherToOpSInt), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedOtherTimesSBinary, otherSBinary.timesSInt(otherToOpSInt), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedOtherDivideSBinary, otherSBinary.divideSInt(otherToOpSInt), "SBinary don't match. Seed " + seed);
+
+        String minusBinary = "1010110";
+        int anotherToOpInt = 15;
+
+        SBinary minusSBinary = new SBinary(minusBinary);
+        SInt anotherToOpSInt = new SInt(anotherToOpInt);
+
+        SBinary expectedAnotherAddSBinary = new SBinary("100101");
+        SBinary expectedAnotherMinusSBinary = new SBinary("1000111");
+        SBinary expectedAnotherTimesSBinary = new SBinary("10110001010");
+        SBinary expectedAnotherDivideSBinary = new SBinary("110");
+
+        assertEquals(expectedAnotherAddSBinary, minusSBinary.addSInt(anotherToOpSInt), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedAnotherMinusSBinary, minusSBinary.minusSInt(anotherToOpSInt), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedAnotherTimesSBinary, minusSBinary.timesSInt(anotherToOpSInt), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedAnotherDivideSBinary, minusSBinary.divideSInt(anotherToOpSInt), "SBinary don't match. Seed " + seed);
+
+        String otherMinusBinary = "10010";
+        int minusToOpInt = -7;
+
+        SBinary otherMinusSBinary = new SBinary(otherMinusBinary);
+        SInt minusToOpSInt = new SInt(minusToOpInt);
+
+        SBinary expectedMinusAddSBinary = new SBinary("101100");
+        SBinary expectedMinusMinusSBinary = new SBinary("11000");
+        SBinary expectedMinusTimesSBinary = new SBinary("01010100");
+        SBinary expectedMinusDivideSBinary = new SBinary("010");
+
+        assertEquals(expectedMinusAddSBinary, otherMinusSBinary.addSInt(minusToOpSInt), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedMinusMinusSBinary, otherMinusSBinary.minusSInt(minusToOpSInt), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedMinusTimesSBinary, otherMinusSBinary.timesSInt(minusToOpSInt), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedMinusDivideSBinary, otherMinusSBinary.divideSInt(minusToOpSInt), "SBinary don't match. Seed " + seed);
     }
 }
