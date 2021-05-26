@@ -12,6 +12,7 @@ import java.util.Random;
 //TODO: Implement test for operator divide with int, float and binary
 //TODO: Implement test for toSBinary method
 
+import static cl.uchile.dcc.scrabble.model.SInt.positiveIntToBinaryString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -172,5 +173,35 @@ public class SIntTest {
         assertEquals(new SFloat(testInt), sInt.addSFloat(zeroSFloat), "SFloat don't match. Seed " + seed);
         assertEquals(new SFloat(testInt), sInt.minusSFloat(zeroSFloat), "SFloat don't match. Seed " + seed);
         assertEquals(zeroSFloat, sInt.timesSFloat(zeroSFloat), "SFloat don't match. Seed " + seed);
+    }
+    @Test
+    void sIntToSBinaryTest(){
+        int testInt = 0;
+        SInt sInt = new SInt(testInt);
+        SBinary expectedSBinary = new SBinary("0");
+
+        assertEquals(expectedSBinary, sInt.toSBinary(), "SInt don't match. Number " + testInt);
+        assertEquals("0", positiveIntToBinaryString(testInt), "String don't match. Number " + testInt);
+
+        int otherInt = 5;
+        SInt sOtherInt = new SInt(otherInt);
+        SBinary Other = new SBinary("0101");
+
+        assertEquals(Other, sOtherInt.toSBinary(), "SInt don't match. Number " + otherInt);
+        assertEquals("0101", positiveIntToBinaryString(otherInt), "String don't match. Number " + otherInt);
+
+        int negTestInt = -5;
+        SInt negSInt = new SInt(negTestInt);
+        SBinary expectedNegSBinary = new SBinary("1011");
+
+        assertEquals(expectedNegSBinary, negSInt.toSBinary(), "SInt don't match. Number " + otherInt);
+        assertEquals("0101", positiveIntToBinaryString(Math.abs(otherInt)), "String don't match. Number " + otherInt);
+
+        int anotherInt = 2147483647;
+        SInt anotherSInt = new SInt(anotherInt);
+        SBinary expectedAnotherSBinary = new SBinary("01111111111111111111111111111111");
+
+        assertEquals(expectedAnotherSBinary, anotherSInt.toSBinary(), "SInt don't match. Number " + anotherInt);
+        assertEquals("01111111111111111111111111111111", positiveIntToBinaryString(Math.abs(anotherInt)), "String don't match. Number " + anotherInt);
     }
 }

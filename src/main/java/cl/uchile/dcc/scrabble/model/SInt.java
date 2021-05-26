@@ -46,8 +46,28 @@ public class SInt extends abstractBaseNumber implements IOpFloat {
 
     @Override
     public SBinary toSBinary(){
-        return null;
+        SBinary sIntBinary;
+        int absInt = Math.abs(this.Int);
+
+        sIntBinary = new SBinary(positiveIntToBinaryString(absInt));
+        if(this.Int < 0){
+            sIntBinary = sIntBinary.twosComplements();
+        }
+        return sIntBinary;
     }
+
+    protected static String positiveIntToBinaryString(int positiveInt) {
+        String stringBinary = "";
+        while(positiveInt > 0){
+            stringBinary = String.valueOf(positiveInt%2) + stringBinary;
+            positiveInt /= 2;
+        }
+        if(stringBinary.equals("")){
+            return "0";
+        }
+        return "0" + stringBinary;
+    }
+
 
     @Override
     public SInt addSInt(SInt toAddSInt) {
