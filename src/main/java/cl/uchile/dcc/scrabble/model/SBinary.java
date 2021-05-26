@@ -114,12 +114,29 @@ public class SBinary extends abstractBaseNumber implements ILogic{
     }
 
     public SBinary twosComplements() {
-        SBinary negateBinary = this.negate();
-        int intBinary = Integer.parseInt(negateBinary.binary, 2);
-        int resultInt = intBinary + 1;
-        String resultStringBinary = Integer.toBinaryString(resultInt);
+        SBinary negateSBinary = this.negate();
+        return negateSBinary.addOne();
+    }
 
-        return new SBinary(resultStringBinary);
+    public SBinary addOne() {
+        StringBuilder resultString = new StringBuilder("");
+        StringBuilder builderBinary = new StringBuilder(this.binary);
+        int n = builderBinary.length()-1;
+
+        if(builderBinary.charAt(n)  == '0'){
+            builderBinary.setCharAt(n,'1');
+            return new SBinary(builderBinary.toString());
+        }
+        else if (builderBinary.charAt(n)  == '1'& n>0){
+            resultString.append("0");
+            SBinary recursionSBinary = new SBinary(builderBinary.substring(0, n));
+            SBinary recursionSBinaryOne = recursionSBinary.addOne();
+            return new SBinary(recursionSBinaryOne.binary + resultString);
+        }
+        else{
+            resultString.append("0");
+            return new SBinary("1" + resultString);
+        }
     }
 
     @Override

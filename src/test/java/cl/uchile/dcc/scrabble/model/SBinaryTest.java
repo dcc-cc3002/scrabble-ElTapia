@@ -131,6 +131,18 @@ public class SBinaryTest {
         assertEquals(expectedAndFalseSBool, testSBinary.andSBool(toOperateFalseSBool), "SBinary don't match. Seed " + seed);
     }
     @Test
+    void addOneTest(){
+        SBinary testSBinary = new SBinary("11111");
+        SBinary expectedSBinary = new SBinary("100000");
+
+        assertEquals(expectedSBinary, testSBinary.addOne());
+
+        SBinary otherSBinary = new SBinary("1001010101");
+        SBinary expectedOtherSBinary = new SBinary("1001010110");
+
+        assertEquals(expectedOtherSBinary, otherSBinary.addOne());
+    }
+    @Test
     void twosComplementsTest(){
         SBinary testSBinary = new SBinary("0101011");
         SBinary expectedSBinary = new SBinary("1010101");
