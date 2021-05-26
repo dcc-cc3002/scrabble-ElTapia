@@ -4,7 +4,7 @@ package cl.uchile.dcc.scrabble.model;
 //TODO: Implement operator minus with int and binary
 //TODO: Implement operator times with int and binary
 //TODO: Implement operator divide with int and binary
-//TODO: Implement toSInt method
+//COMPLETE: Implement toSInt method
 //TODO: Implement toSFloat method
 
 public class SBinary extends abstractBaseNumber implements ILogic{
@@ -32,15 +32,39 @@ public class SBinary extends abstractBaseNumber implements ILogic{
     public SString toSString() {
         return new SString(this.binary);
     }
-
     @Override
-    public SFloat toSFloat(){
-        return null;
+    public SInt toSInt(){
+        if (bitToInt(this.binary.charAt(0)) == 0) {
+            return new SInt(positiveBinToInt(this.binary));
+        } else {
+            return new SInt(negativeBinaryToInt(this.binary));
+        }
+    }
+
+    private static int negativeBinaryToInt(String binary) {
+        int n = binary.length() - 1;
+        int w = -bitToInt(binary.charAt(0)) * (int) Math.pow(2, n);
+        for (int i = n, j = 0; i > 0; i--, j++) {
+            w += (int) Math.pow(2, j) * (binary.charAt(i) == '1' ? 1 : 0);
+        }
+        return w;
+    }
+
+    private static int positiveBinToInt(String binary) {
+        int w = 0;
+        for (int i = binary.length() - 1, j = 0; i > 0; i--, j++) {
+            w += (int) Math.pow(2, j) * bitToInt(binary.charAt(i));
+        }
+        return w;
+    }
+
+    private static int bitToInt(char bit) {
+        return bit == '0' ? 0 : 1;
     }
 
     @Override
-    public SInt toSInt(){
-        return null;
+    public SFloat toSFloat(){
+        return this.toSInt().toSFloat();
     }
 
     @Override
@@ -119,7 +143,7 @@ public class SBinary extends abstractBaseNumber implements ILogic{
     }
 
     public SBinary addOne() {
-        StringBuilder resultString = new StringBuilder("");
+        StringBuilder resultString = new StringBuilder();
         StringBuilder builderBinary = new StringBuilder(this.binary);
         int n = builderBinary.length()-1;
 

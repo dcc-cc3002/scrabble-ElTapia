@@ -14,7 +14,8 @@ import java.util.Random;
 //TODO: Implement test for operator minus with int and binary
 //TODO: Implement test for operator times with int and binary
 //TODO: Implement test for operator divide with int and binary
-//TODO: Implement test for toSInt method
+//COMPLETE: Implement test for toSInt method
+//COMPLETE: Implement test for toSFloat method
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -72,13 +73,55 @@ public class SBinaryTest {
         assertNotEquals(differentSString, sBinary.toSString(), "SString match. Seed " + seed);
     }
     @Test
-    void toSFloatTest(){
-    }
-    @Test
-    void toSIntTest(){
+    void toSIntAndSFloatTest(){
+        String negativeBinary = "101010";
+        SBinary negativeSBinary = new SBinary(negativeBinary);
+        SInt expectedNegativeSInt = new SInt(-22);
+        SFloat expectedNegativeSFloat = new SFloat(-22.0);
 
-    }
+        assertEquals(expectedNegativeSInt, negativeSBinary.toSInt(), "SInt don't match. Seed " + seed);
+        assertEquals(expectedNegativeSFloat, negativeSBinary.toSFloat(), "SFloat don't match. Seed " + seed);
 
+        String zeroBinary = "0";
+        SBinary zeroSBinary = new SBinary(zeroBinary);
+        SInt expectedZeroSInt = new SInt(0);
+        SFloat expectedZeroSFloat = new SFloat(0.0);
+
+        assertEquals(expectedZeroSInt, zeroSBinary.toSInt(), "SInt don't match. Seed " + seed);
+        assertEquals(expectedZeroSFloat, zeroSBinary.toSFloat(), "SFloat don't match. Seed " + seed);
+
+        String oneBinary = "01";
+        SBinary oneSBinary = new SBinary(oneBinary);
+        SInt expectedOneSInt = new SInt(1);
+        SFloat expectedOneSFloat = new SFloat(1.0);
+
+        assertEquals(expectedOneSInt, oneSBinary.toSInt(), "SInt don't match. Seed " + seed);
+        assertEquals(expectedOneSFloat, oneSBinary.toSFloat(), "SFloat don't match. Seed " + seed);
+
+        String positiveBinary = "011101";
+        SBinary positiveSBinary = new SBinary(positiveBinary);
+        SInt expectedPositiveSInt = new SInt(29);
+        SFloat expectedPositiveSFloat = new SFloat(29.0);
+
+        assertEquals(expectedPositiveSInt, positiveSBinary.toSInt(), "SInt don't match. Seed " + seed);
+        assertEquals(expectedPositiveSFloat, positiveSBinary.toSFloat(), "SFloat don't match. Seed " + seed);
+
+        String largestBinary = "01111111111111111111111111111111";
+        SBinary largestSBinary = new SBinary(largestBinary);
+        SInt expectedLargestSInt = new SInt(2147483647);
+        SFloat expectedLargestSFloat = new SFloat(2147483647.0);
+
+        assertEquals(expectedLargestSInt, largestSBinary.toSInt(), "SInt don't match. Seed " + seed);
+        assertEquals(expectedLargestSFloat, largestSBinary.toSFloat(), "SFloat don't match. Seed " + seed);
+
+        String smallestBinary = "10000000000000000000000000000000";
+        SBinary smallestSBinary = new SBinary(smallestBinary);
+        SInt expectedSmallestSInt = new SInt(-2147483647);
+        SFloat expectedSmallestSFloat = new SFloat(-2147483647.0);
+
+        assertEquals(expectedSmallestSInt, smallestSBinary.toSInt(), "SInt don't match. Seed " + seed);
+        assertEquals(expectedSmallestSFloat, smallestSBinary.toSFloat(), "SFloat don't match. Seed " + seed);
+    }
     @RepeatedTest(50)
     void toSBinaryTest(){
         SBinary expectedSBinary = new SBinary(testBinary);
@@ -157,5 +200,8 @@ public class SBinaryTest {
         SBinary expectedAnotherSBinary = new SBinary("10");
         assertEquals(expectedAnotherSBinary, anotherSBinary.twosComplements(), "SBinary don't match. Seed " + seed);
 
+    }
+    @Test
+    void opSIntTest(){
     }
 }
