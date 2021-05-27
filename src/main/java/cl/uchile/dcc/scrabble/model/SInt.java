@@ -68,7 +68,6 @@ public class SInt extends abstractBaseNumber implements IOpFloat {
         return "0" + stringBinary;
     }
 
-
     @Override
     public SInt addSInt(SInt toAddSInt) {
         return new SInt(this.Int + toAddSInt.Int);
@@ -95,37 +94,37 @@ public class SInt extends abstractBaseNumber implements IOpFloat {
     }
 
     @Override
-    public abstractType minusSFloat(SFloat toMinusSFloat) {
+    public SFloat minusSFloat(SFloat toMinusSFloat) {
         return new SFloat(this.Int - toMinusSFloat.Float);
     }
 
     @Override
-    public abstractType timesSFloat(SFloat toTimesSFloat) {
+    public SFloat timesSFloat(SFloat toTimesSFloat) {
         return new SFloat(this.Int * toTimesSFloat.Float);
     }
 
     @Override
-    public abstractType divideSFloat(SFloat toDivideSFloat) {
+    public SFloat divideSFloat(SFloat toDivideSFloat) {
         return new SFloat(this.Int / toDivideSFloat.Float);
     }
 
     @Override
-    public abstractType addSBinary(SBinary toAddSBinary) {
-        return null;
+    public SInt addSBinary(SBinary toAddSBinary) {
+        return this.addSInt(toAddSBinary.toSInt());
     }
 
     @Override
-    public abstractType minusSBinary(SBinary toMinusSBinary) {
-        return null;
+    public SInt minusSBinary(SBinary toMinusSBinary) {
+        return this.minusSInt(toMinusSBinary.toSInt());
     }
 
     @Override
-    public abstractType timesSBinary(SBinary toTimesSBinary) {
-        return null;
+    public SInt timesSBinary(SBinary toTimesSBinary) {
+        return this.timesSInt(toTimesSBinary.toSInt());
     }
 
     @Override
-    public abstractType divideSBinary(SBinary toDivideSBinary) {
-        return null;
+    public SInt divideSBinary(SBinary toDivideSBinary) {
+        return this.divideSInt(toDivideSBinary.toSInt());
     }
 }
