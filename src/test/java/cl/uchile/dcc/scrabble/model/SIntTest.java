@@ -38,6 +38,7 @@ public class SIntTest {
         assertEquals(expectedSInt, sInt, "SInt don't match. Seed " + seed);
         assertEquals(expectedSInt.hashCode(), sInt.hashCode(), "Hashcode don't match. Seed " + seed);
         assertEquals(testInt, sInt.getInt(), "int don't match. Seed " + seed);
+        assertNotEquals(sInt, testInt, "Objects match. Seed " + seed);
 
         int differentInt;
         do {

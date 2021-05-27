@@ -34,6 +34,7 @@ public class SFloatTest {
         assertEquals(expectedSFloat, sFloat, "SFloat don't match. Seed " + seed);
         assertEquals(expectedSFloat.hashCode(), sFloat.hashCode(), "Hashcode don't match. Seed " + seed);
         assertEquals(testDouble, sFloat.getDouble(), "double don't match. Seed " + seed);
+        assertNotEquals(sFloat, testDouble, "Objects match. Seed " + seed);
 
         double differentDouble;
         do {

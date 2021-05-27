@@ -37,6 +37,8 @@ public class SBoolTest{
 
         assertEquals(expectedSBool, testSBool, "SBool don't match. Seed " + seed);
         assertEquals(negateExpectedSBool, negateTestSBool, "SBool don't match. Seed " + seed);
+        assertNotEquals(testSBool, boolTest, "Objects don't match. Seed " + seed);
+        assertNotEquals(negateTestSBool, !boolTest, "Objects match. Seed " + seed);
 
         assertEquals(expectedSBool.hashCode(), testSBool.hashCode(), "Hashcode don't match. Seed " + seed);
         assertEquals(negateExpectedSBool.hashCode(), negateTestSBool.hashCode(), "Hashcode don't match. Seed " + seed);

@@ -31,6 +31,7 @@ public class SStringTest {
 
         assertEquals(expectedSString, sString, "SString don't match. Seed " + seed);
         assertEquals(expectedSString.hashCode(), sString.hashCode(), "Hashcode don't match. Seed " + seed);
+        assertNotEquals(sString, testString, "Objects match. Seed " + seed);
 
         String differentString;
 

@@ -44,6 +44,8 @@ public class SBinaryTest {
         var expectedSBinary = new SBinary(testBinary);
 
         assertEquals(expectedSBinary, sBinary, "SBinary don't match. Seed " + seed);
+        assertNotEquals(sBinary, testBinary, "Objects match. Seed " + seed);
+
         assertEquals(expectedSBinary.hashCode(), sBinary.hashCode(), "Hashcode don't match. Seed " + seed);
         String differentBinary;
 
