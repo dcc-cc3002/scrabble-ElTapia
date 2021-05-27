@@ -61,12 +61,12 @@ public class SInt extends abstractBaseNumber implements IOpFloat {
     }
 
     protected static String positiveIntToBinaryString(int positiveInt) {
-        String stringBinary = "";
+        StringBuilder stringBinary = new StringBuilder();
         while(positiveInt > 0){
-            stringBinary = String.valueOf(positiveInt%2) + stringBinary;
+            stringBinary.insert(0, positiveInt % 2);
             positiveInt /= 2;
         }
-        if(stringBinary.equals("")){
+        if(stringBinary.toString().equals("")){
             return "0";
         }
         return "0" + stringBinary;

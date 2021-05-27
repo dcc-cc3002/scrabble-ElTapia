@@ -75,67 +75,67 @@ public class SBinary extends abstractBaseNumber implements ILogic {
 
     @Override
     public SBinary negate() {
-        String negateStrBinary = "";
+        StringBuilder negateStrBinary = new StringBuilder();
         for (char bit : this.binary.toCharArray()) {
             if (bit != '0') {
-                negateStrBinary = negateStrBinary + "0";
+                negateStrBinary.append("0");
             } else {
-                negateStrBinary = negateStrBinary + "1";
+                negateStrBinary.append("1");
             }
         }
-        return new SBinary(negateStrBinary);
+        return new SBinary(negateStrBinary.toString());
     }
 
     @Override
     public SBinary orSBinary(SBinary toOrSBinary) {
-        String outStringSBinary = "";
+        StringBuilder outStringSBinary = new StringBuilder();
         for (int i = 0; i < this.binary.length(); i++) {
             if (this.binary.charAt(i) != '0' | toOrSBinary.toString().charAt(i) != '0') {
-                outStringSBinary = outStringSBinary + "1";
+                outStringSBinary.append("1");
             } else {
-                outStringSBinary = outStringSBinary + "0";
+                outStringSBinary.append("0");
             }
         }
-        return new SBinary(outStringSBinary);
+        return new SBinary(outStringSBinary.toString());
     }
 
     @Override
     public SBinary andSBinary(SBinary toAndSBinary) {
-        String outStringSBinary = "";
+        StringBuilder outStringSBinary = new StringBuilder();
         for (int i = 0; i < this.binary.length(); i++) {
             if (this.binary.charAt(i) != '0' & toAndSBinary.toString().charAt(i) != '0') {
-                outStringSBinary = outStringSBinary + "1";
+                outStringSBinary.append("1");
             } else {
-                outStringSBinary = outStringSBinary + "0";
+                outStringSBinary.append("0");
             }
         }
-        return new SBinary(outStringSBinary);
+        return new SBinary(outStringSBinary.toString());
     }
 
     @Override
     public SBinary orSBool(SBool toOrSBool) {
-        String outStringSBinary = "";
+        StringBuilder outStringSBinary = new StringBuilder();
         for (char bit : this.binary.toCharArray()) {
             if (bit != '0' | toOrSBool.getBool()) {
-                outStringSBinary = outStringSBinary + "1";
+                outStringSBinary.append("1");
             } else {
-                outStringSBinary = outStringSBinary + "0";
+                outStringSBinary.append("0");
             }
         }
-        return new SBinary(outStringSBinary);
+        return new SBinary(outStringSBinary.toString());
     }
 
     @Override
     public SBinary andSBool(SBool toAndSBool) {
-        String outStringSBinary = "";
+        StringBuilder outStringSBinary = new StringBuilder();
         for (char bit : this.binary.toCharArray()) {
             if (bit != '0' & toAndSBool.getBool()) {
-                outStringSBinary = outStringSBinary + "1";
+                outStringSBinary.append("1");
             } else {
-                outStringSBinary = outStringSBinary + "0";
+                outStringSBinary.append("0");
             }
         }
-        return new SBinary(outStringSBinary);
+        return new SBinary(outStringSBinary.toString());
     }
 
     public SBinary twosComplements() {

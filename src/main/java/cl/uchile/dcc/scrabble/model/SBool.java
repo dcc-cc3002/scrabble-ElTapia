@@ -53,27 +53,27 @@ public class SBool extends abstractType implements ILogic{
 
     @Override
     public SBinary orSBinary(SBinary toOrSBinary) {
-        String outBinaryString = "";
+        StringBuilder outBinaryString = new StringBuilder();
         for(char c: toOrSBinary.toString().toCharArray()){
             if (c != '0'|this.bool) {
-                outBinaryString = outBinaryString + "1";
+                outBinaryString.append("1");
             } else {
-                outBinaryString = outBinaryString + "0";
+                outBinaryString.append("0");
             }
         }
-        return new SBinary(outBinaryString);
+        return new SBinary(outBinaryString.toString());
     }
 
     @Override
     public SBinary andSBinary(SBinary toAndSBinary) {
-        String outBinaryString = "";
+        StringBuilder outBinaryString = new StringBuilder();
         for(char c: toAndSBinary.toString().toCharArray()){
             if (c != '0'&this.bool) {
-                outBinaryString = outBinaryString + "1";
+                outBinaryString.append("1");
             } else {
-                outBinaryString = outBinaryString + "0";
+                outBinaryString.append("0");
             }
         }
-        return new SBinary(outBinaryString);
+        return new SBinary(outBinaryString.toString());
     }
 }
