@@ -45,6 +45,7 @@ public class SBinaryTest {
 
         assertEquals(expectedSBinary, sBinary, "SBinary don't match. Seed " + seed);
         assertEquals(expectedSBinary.hashCode(), sBinary.hashCode(), "Hashcode don't match. Seed " + seed);
+        assertEquals(testBinary, sBinary.getBinary(), "String don't match. Seed " + seed);
 
         String differentBinary;
 
@@ -59,6 +60,7 @@ public class SBinaryTest {
 
         assertEquals(testBinary, sBinary.toString(), "String don't match. Seed " + seed);
         assertNotEquals(differentBinary, sBinary.toString(), "String match. Seed " + seed);
+        assertNotEquals(differentBinary, sBinary.getBinary(), "String match. Seed " + seed);
     }
     @RepeatedTest(50)
     void toSStringTest(){
@@ -281,7 +283,7 @@ public class SBinaryTest {
     }
     @Test
     void opSIntTest(){
-        String positiveBinary = "010011";
+        String positiveBinary = "010011";//19
         int toOpBinaryInt = 25;
 
         SBinary positiveSBinary = new SBinary(positiveBinary);
@@ -307,7 +309,7 @@ public class SBinaryTest {
         assertEquals(positiveSBinary.negate().addOne(), positiveSBinary.timesSInt(minusOneSInt), "SBinary don't match. Seed " + seed);
         assertEquals(positiveSBinary.negate().addOne(), positiveSBinary.divideSInt(minusOneSInt), "SBinary don't match. Seed " + seed);
 
-        String otherBinaryString = "0110010";
+        String otherBinaryString = "0110010";//50
         int otherToOpInt = 9;
 
         SBinary otherSBinary = new SBinary(otherBinaryString);
@@ -323,7 +325,7 @@ public class SBinaryTest {
         assertEquals(expectedOtherTimesSBinary, otherSBinary.timesSInt(otherToOpSInt), "SBinary don't match. Seed " + seed);
         assertEquals(expectedOtherDivideSBinary, otherSBinary.divideSInt(otherToOpSInt), "SBinary don't match. Seed " + seed);
 
-        String minusBinary = "1010110";
+        String minusBinary = "1010110";//-42
         int anotherToOpInt = 15;
 
         SBinary minusSBinary = new SBinary(minusBinary);

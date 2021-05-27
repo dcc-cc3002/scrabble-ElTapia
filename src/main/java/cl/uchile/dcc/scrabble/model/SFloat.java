@@ -27,6 +27,10 @@ public class SFloat extends abstractNumber implements IOpFloat {
         return String.valueOf(this.Float);
     }
 
+    protected double getDouble(){
+        return this.Float;
+    }
+
     @Override
     public SString toSString() {
         String doubleString = this.toString();

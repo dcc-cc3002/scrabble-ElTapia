@@ -28,6 +28,10 @@ public class SBool extends abstractType implements ILogic{
         return new SString(boolString);
     }
 
+    protected boolean getBool(){
+        return this.bool;
+    }
+
     public SBool toSBool() {
         return new SBool(this.bool);
     }

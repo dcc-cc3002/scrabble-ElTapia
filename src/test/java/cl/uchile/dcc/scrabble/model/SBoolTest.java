@@ -40,9 +40,13 @@ public class SBoolTest{
 
         assertEquals(expectedSBool.hashCode(), testSBool.hashCode(), "Hashcode don't match. Seed " + seed);
         assertEquals(negateExpectedSBool.hashCode(), negateTestSBool.hashCode(), "Hashcode don't match. Seed " + seed);
+        assertEquals(!boolTest, negateTestSBool.getBool(), "Bool don't match. Seed " + seed);
+        assertEquals(boolTest, testSBool.getBool(), "Bool don't match. Seed " + seed);
 
         assertNotEquals(expectedSBool, negateTestSBool, "SBool match. Seed " + seed);
         assertNotEquals(negateExpectedSBool, testSBool, "SBool match. Seed " + seed);
+        assertNotEquals(!boolTest, testSBool.getBool(), "SBool match. Seed " + seed);
+        assertNotEquals(boolTest, negateTestSBool.getBool(), "SBool match. Seed " + seed);
     }
 
     @RepeatedTest(10)

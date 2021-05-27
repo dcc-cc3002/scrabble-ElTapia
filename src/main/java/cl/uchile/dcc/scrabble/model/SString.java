@@ -21,6 +21,10 @@ public class SString extends abstractType implements IOpSString {
         return this.string;
     }
 
+    protected String getString(){
+        return this.string;
+    }
+
     @Override
     public SString toSString() {
         return new SString(this.string);

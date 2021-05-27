@@ -1,9 +1,9 @@
 package cl.uchile.dcc.scrabble.model;
-//TODO: Implement operator add with binary
-//TODO: Implement operator minus with int, float and binary
-//TODO: Implement operator times with int, float and binary
-//TODO: Implement operator divide with int, float and binary
-//TODO: Implement toSBinary method
+//COMPLETE: Implement operator add with binary
+//COMPLETE: Implement operator minus with int, float and binary
+//COMPLETE: Implement operator times with int, float and binary
+//COMPLETE: Implement operator divide with int, float and binary
+//COMPLETE: Implement toSBinary method
 
 import java.util.Objects;
 
@@ -25,6 +25,10 @@ public class SInt extends abstractBaseNumber implements IOpFloat {
     @Override
     public String toString(){
         return String.valueOf(this.Int);
+    }
+
+    protected int getInt(){
+        return this.Int;
     }
 
     @Override

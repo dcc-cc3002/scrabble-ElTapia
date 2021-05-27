@@ -32,6 +32,7 @@ public class SStringTest {
 
         assertEquals(expectedSString, sString, "SString don't match. Seed " + seed);
         assertEquals(expectedSString.hashCode(), sString.hashCode(), "Hashcode don't match. Seed " + seed);
+        assertEquals(testString, sString.getString(), "String don't match. Seed " + seed);
 
         String differentString;
 
@@ -43,6 +44,7 @@ public class SStringTest {
 
         SString differentSString = new SString(differentString);
         assertNotEquals(differentSString, sString, "SString match. Seed " + seed);
+        assertNotEquals(differentString, sString.getString(), "String match. Seed " + seed);
 
         assertEquals(testString, sString.toString(), "String don't match. Seed " + seed);
         assertNotEquals(differentString, sString.toString(), "String match. Seed " + seed);
