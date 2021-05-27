@@ -45,8 +45,6 @@ public class SBinaryTest {
 
         assertEquals(expectedSBinary, sBinary, "SBinary don't match. Seed " + seed);
         assertEquals(expectedSBinary.hashCode(), sBinary.hashCode(), "Hashcode don't match. Seed " + seed);
-        assertEquals(testBinary, sBinary.getBinary(), "String don't match. Seed " + seed);
-
         String differentBinary;
 
         do {
@@ -60,7 +58,6 @@ public class SBinaryTest {
 
         assertEquals(testBinary, sBinary.toString(), "String don't match. Seed " + seed);
         assertNotEquals(differentBinary, sBinary.toString(), "String match. Seed " + seed);
-        assertNotEquals(differentBinary, sBinary.getBinary(), "String match. Seed " + seed);
     }
     @RepeatedTest(50)
     void toSStringTest(){

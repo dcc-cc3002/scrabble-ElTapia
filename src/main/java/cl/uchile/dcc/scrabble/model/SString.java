@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model;
 
 
 public class SString extends abstractType implements IOpSString {
-    protected final String string;
+    private final String string;
     public SString(String string) {
         this.string = string;
     }
@@ -21,17 +21,13 @@ public class SString extends abstractType implements IOpSString {
         return this.string;
     }
 
-    protected String getString(){
-        return this.string;
-    }
-
     @Override
     public SString toSString() {
         return new SString(this.string);
     }
 
     public SString addSString(SString toAddSString) {
-        return new SString(this.string + toAddSString.string);
+        return new SString(this.string + toAddSString.toString());
     }
 
     public SString addSBool(SBool toAddSBool) {

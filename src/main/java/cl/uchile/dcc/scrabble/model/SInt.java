@@ -8,7 +8,7 @@ package cl.uchile.dcc.scrabble.model;
 import java.util.Objects;
 
 public class SInt extends abstractBaseNumber implements IOpFloat {
-    protected final int Int;
+    private final int Int;
     public SInt(int Int){
         this.Int = Int;
     }
@@ -74,42 +74,42 @@ public class SInt extends abstractBaseNumber implements IOpFloat {
 
     @Override
     public SInt addSInt(SInt toAddSInt) {
-        return new SInt(this.Int + toAddSInt.Int);
+        return new SInt(this.Int + toAddSInt.getInt());
     }
 
     @Override
     public SInt minusSInt(SInt toMinusSInt) {
-        return new SInt(this.Int - toMinusSInt.Int);
+        return new SInt(this.Int - toMinusSInt.getInt());
     }
 
     @Override
     public SInt timesSInt(SInt toTimesSInt) {
-        return new SInt(this.Int * toTimesSInt.Int);
+        return new SInt(this.Int * toTimesSInt.getInt());
     }
 
     @Override
     public SInt divideSInt(SInt toDivideSInt) {
-        return new SInt(this.Int / toDivideSInt.Int);
+        return new SInt(this.Int / toDivideSInt.getInt());
     }
 
     @Override
     public SFloat addSFloat(SFloat toAddSFloat) {
-        return new SFloat(this.Int + toAddSFloat.Float);
+        return new SFloat(this.Int + toAddSFloat.getDouble());
     }
 
     @Override
     public SFloat minusSFloat(SFloat toMinusSFloat) {
-        return new SFloat(this.Int - toMinusSFloat.Float);
+        return new SFloat(this.Int - toMinusSFloat.getDouble());
     }
 
     @Override
     public SFloat timesSFloat(SFloat toTimesSFloat) {
-        return new SFloat(this.Int * toTimesSFloat.Float);
+        return new SFloat(this.Int * toTimesSFloat.getDouble());
     }
 
     @Override
     public SFloat divideSFloat(SFloat toDivideSFloat) {
-        return new SFloat(this.Int / toDivideSFloat.Float);
+        return new SFloat(this.Int / toDivideSFloat.getDouble());
     }
 
     @Override

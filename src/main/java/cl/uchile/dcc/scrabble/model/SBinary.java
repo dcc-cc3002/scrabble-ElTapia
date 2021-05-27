@@ -8,7 +8,7 @@ package cl.uchile.dcc.scrabble.model;
 //COMPLETE: Implement toSFloat method
 
 public class SBinary extends abstractBaseNumber implements ILogic {
-    protected final String binary;
+    private final String binary;
 
     public SBinary(String binary) {
         this.binary = binary;
@@ -25,10 +25,6 @@ public class SBinary extends abstractBaseNumber implements ILogic {
 
     @Override
     public String toString() {
-        return this.binary;
-    }
-
-    protected String getBinary(){
         return this.binary;
     }
 
@@ -94,7 +90,7 @@ public class SBinary extends abstractBaseNumber implements ILogic {
     public SBinary orSBinary(SBinary toOrSBinary) {
         String outStringSBinary = "";
         for (int i = 0; i < this.binary.length(); i++) {
-            if (this.binary.charAt(i) != '0' | toOrSBinary.binary.charAt(i) != '0') {
+            if (this.binary.charAt(i) != '0' | toOrSBinary.toString().charAt(i) != '0') {
                 outStringSBinary = outStringSBinary + "1";
             } else {
                 outStringSBinary = outStringSBinary + "0";
@@ -107,7 +103,7 @@ public class SBinary extends abstractBaseNumber implements ILogic {
     public SBinary andSBinary(SBinary toAndSBinary) {
         String outStringSBinary = "";
         for (int i = 0; i < this.binary.length(); i++) {
-            if (this.binary.charAt(i) != '0' & toAndSBinary.binary.charAt(i) != '0') {
+            if (this.binary.charAt(i) != '0' & toAndSBinary.toString().charAt(i) != '0') {
                 outStringSBinary = outStringSBinary + "1";
             } else {
                 outStringSBinary = outStringSBinary + "0";
@@ -120,7 +116,7 @@ public class SBinary extends abstractBaseNumber implements ILogic {
     public SBinary orSBool(SBool toOrSBool) {
         String outStringSBinary = "";
         for (char bit : this.binary.toCharArray()) {
-            if (bit != '0' | toOrSBool.bool) {
+            if (bit != '0' | toOrSBool.getBool()) {
                 outStringSBinary = outStringSBinary + "1";
             } else {
                 outStringSBinary = outStringSBinary + "0";
@@ -133,7 +129,7 @@ public class SBinary extends abstractBaseNumber implements ILogic {
     public SBinary andSBool(SBool toAndSBool) {
         String outStringSBinary = "";
         for (char bit : this.binary.toCharArray()) {
-            if (bit != '0' & toAndSBool.bool) {
+            if (bit != '0' & toAndSBool.getBool()) {
                 outStringSBinary = outStringSBinary + "1";
             } else {
                 outStringSBinary = outStringSBinary + "0";
@@ -159,7 +155,7 @@ public class SBinary extends abstractBaseNumber implements ILogic {
             resultString.append("0");
             SBinary recursionSBinary = new SBinary(builderBinary.substring(0, n));
             SBinary recursionSBinaryOne = recursionSBinary.addOne();
-            return new SBinary(recursionSBinaryOne.binary + resultString);
+            return new SBinary(recursionSBinaryOne.toString() + resultString);
         } else {
             resultString.append("0");
             return new SBinary("1" + resultString);
@@ -168,9 +164,9 @@ public class SBinary extends abstractBaseNumber implements ILogic {
 
     @Override
     public SBinary addSBinary(SBinary toAddSBinary) {
-        SInt sIntThis = this.toSInt();
+        SInt thisSInt = this.toSInt();
         SInt toAddSIntBinary = toAddSBinary.toSInt();
-        SInt resultSInt = sIntThis.addSInt(toAddSIntBinary);
+        SInt resultSInt = thisSInt.addSInt(toAddSIntBinary);
         return resultSInt.toSBinary();
     }
 
