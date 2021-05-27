@@ -1,12 +1,10 @@
 package cl.uchile.dcc.scrabble.model;
 
-import java.util.Objects;
-
-//TODO: Implement operator add with binary
-//TODO: Implement operator minus with binary
-//TODO: Implement operator times with binary
-//TODO: Implement operator divide with binary
-//TODO: Fix equals
+//COMPLETE: Implement operator add with binary
+//COMPLETE: Implement operator minus with binary
+//COMPLETE: Implement operator times with binary
+//COMPLETE: Implement operator divide with binary
+//COMPLETE: Fix equals
 
 
 public class SFloat extends abstractNumber implements IOpFloat {
@@ -82,21 +80,21 @@ public class SFloat extends abstractNumber implements IOpFloat {
 
     @Override
     public SFloat addSBinary(SBinary toAddSBinary) {
-        return null;
+        return this.addSInt(toAddSBinary.toSInt());
     }
 
     @Override
-    public abstractType minusSBinary(SBinary toMinusSBinary) {
-        return null;
+    public SFloat minusSBinary(SBinary toMinusSBinary) {
+        return this.minusSInt(toMinusSBinary.toSInt());
     }
 
     @Override
-    public abstractType timesSBinary(SBinary toTimesSBinary) {
-        return null;
+    public SFloat timesSBinary(SBinary toTimesSBinary) {
+        return this.timesSInt(toTimesSBinary.toSInt());
     }
 
     @Override
-    public abstractType divideSBinary(SBinary toDivideSBinary) {
-        return null;
+    public SFloat divideSBinary(SBinary toDivideSBinary) {
+        return this.divideSInt(toDivideSBinary.toSInt());
     }
 }
