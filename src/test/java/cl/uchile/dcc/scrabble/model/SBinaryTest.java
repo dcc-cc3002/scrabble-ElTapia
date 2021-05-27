@@ -9,12 +9,13 @@ import java.util.Random;
 //TODO: Improve logic operators with binary tests with random variables
 //TODO: Improve logic operators with bool tests with random variables
 //TODO: Improve operators with SBinary tests
+//TODO: Improve operators with SInt tests
 //TODO: Make repeated tests
 
-//TODO: Implement test for operator add with int and binary
-//TODO: Implement test for operator minus with int and binary
-//TODO: Implement test for operator times with int and binary
-//TODO: Implement test for operator divide with int and binary
+//COMPLETE: Implement test for operator add with int and binary
+//COMPLETE: Implement test for operator minus with int and binary
+//COMPLETE: Implement test for operator times with int and binary
+//COMPLETE: Implement test for operator divide with int and binary
 //COMPLETE: Implement test for toSInt method
 //COMPLETE: Implement test for toSFloat method
 
@@ -338,15 +339,15 @@ public class SBinaryTest {
         assertEquals(expectedAnotherTimesSBinary, minusSBinary.timesSInt(anotherToOpSInt), "SBinary don't match. Seed " + seed);
         assertEquals(expectedAnotherDivideSBinary, minusSBinary.divideSInt(anotherToOpSInt), "SBinary don't match. Seed " + seed);
 
-        String otherMinusBinary = "10010";
+        String otherMinusBinary = "10010";//-14
         int minusToOpInt = -7;
 
         SBinary otherMinusSBinary = new SBinary(otherMinusBinary);
         SInt minusToOpSInt = new SInt(minusToOpInt);
 
-        SBinary expectedMinusAddSBinary = new SBinary("101100");
-        SBinary expectedMinusMinusSBinary = new SBinary("11000");
-        SBinary expectedMinusTimesSBinary = new SBinary("01010100");
+        SBinary expectedMinusAddSBinary = new SBinary("101011");
+        SBinary expectedMinusMinusSBinary = new SBinary("1001");
+        SBinary expectedMinusTimesSBinary = new SBinary("01100010");
         SBinary expectedMinusDivideSBinary = new SBinary("010");
 
         assertEquals(expectedMinusAddSBinary, otherMinusSBinary.addSInt(minusToOpSInt), "SBinary don't match. Seed " + seed);
