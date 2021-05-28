@@ -2,15 +2,10 @@ package cl.uchile.dcc.scrabble.model;
 
 import java.util.Objects;
 
-public class SBool implements ISString, ISBool{
+public class SBool extends abstractType implements ILogic{
     private final boolean bool;
     public SBool(boolean bool) {
         this.bool = bool;
-    }
-
-    @Override
-    public int hashCode(){
-        return Objects.hash(SBool.class);
     }
 
     @Override
@@ -27,12 +22,58 @@ public class SBool implements ISString, ISBool{
         return String.valueOf(this.bool);
     }
 
+    @Override
     public SString toSString() {
         String boolString = this.toString();
         return new SString(boolString);
     }
 
+    protected boolean getBool(){
+        return this.bool;
+    }
+
     public SBool toSBool() {
-        return this;
+        return new SBool(this.bool);
+    }
+
+    @Override
+    public SBool negate() {
+        return new SBool(!this.bool);
+    }
+
+    @Override
+    public SBool orSBool(SBool toOrSBool) {
+        return new SBool(this.bool | toOrSBool.getBool());
+    }
+
+    @Override
+    public SBool andSBool(SBool toAndSBool) {
+        return new SBool(this.bool & toAndSBool.getBool());
+    }
+
+    @Override
+    public SBinary orSBinary(SBinary toOrSBinary) {
+        StringBuilder outBinaryString = new StringBuilder();
+        for(char c: toOrSBinary.toString().toCharArray()){
+            if (c != '0'|this.bool) {
+                outBinaryString.append("1");
+            } else {
+                outBinaryString.append("0");
+            }
+        }
+        return new SBinary(outBinaryString.toString());
+    }
+
+    @Override
+    public SBinary andSBinary(SBinary toAndSBinary) {
+        StringBuilder outBinaryString = new StringBuilder();
+        for(char c: toAndSBinary.toString().toCharArray()){
+            if (c != '0'&this.bool) {
+                outBinaryString.append("1");
+            } else {
+                outBinaryString.append("0");
+            }
+        }
+        return new SBinary(outBinaryString.toString());
     }
 }
