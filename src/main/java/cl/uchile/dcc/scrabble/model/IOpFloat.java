@@ -1,11 +1,26 @@
 package cl.uchile.dcc.scrabble.model;
-
-//COMPLETE: Modify interface to accept all kind of operators with float
-//COMPLETE: Possibly implement methods that are in father interface
-//TODO: ADD DOCUMENTATION
-
+/**
+ * Define subtraction, multiplication and division with Scrabble float
+ */
 public interface IOpFloat extends IAddSFloat{
-    abstractType minusSFloat(SFloat toMinusSFloat);
-    abstractType timesSFloat(SFloat toTimesSFloat);
-    abstractType divideSFloat(SFloat toDivideSFloat);
+    /**
+     * Subtract a Scrabble float
+     * @param toMinusSFloat Scrabble float
+     * @return Scrabble float
+     */
+    IOpFloat minusSFloat(SFloat toMinusSFloat);
+
+    /**
+     * Multiply a Scrabble float
+     * @param toTimesSFloat Scrabble float
+     * @return Scrabble float
+     */
+    IOpFloat timesSFloat(SFloat toTimesSFloat);
+
+    /**
+     * Divide a Scrabble float
+     * @param toDivideSFloat Scrabble float
+     * @return Scrabble float
+     */
+    IOpFloat divideSFloat(SFloat toDivideSFloat);
 }

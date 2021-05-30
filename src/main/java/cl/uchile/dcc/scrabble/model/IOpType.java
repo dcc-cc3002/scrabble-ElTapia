@@ -1,15 +1,47 @@
 package cl.uchile.dcc.scrabble.model;
-
-//COMPLETE: Modify interface to accept all kind of operators
-//TODO: ADD DOCUMENTATION
-
+/**
+ * Define subtraction, multiplication and division with Scrabble int and binary
+ */
 public interface IOpType extends IAddType{
+    /**
+     * Subtract a Scrabble int
+     * @param toMinusSInt Scrabble int
+     * @return Scrabble type
+     */
+    IOpType minusSInt(SInt toMinusSInt);
 
-    abstractType minusSInt(SInt toMinusSInt);
-    abstractType timesSInt(SInt toTimesSInt);
-    abstractType divideSInt(SInt toDivideSInt);
+    /**
+     * Multiply a Scrabble int
+     * @param toTimesSInt Scrabble int
+     * @return Scrabble type
+     */
+    IOpType timesSInt(SInt toTimesSInt);
 
-    abstractType minusSBinary(SBinary toMinusSBinary);
-    abstractType timesSBinary(SBinary toTimesSBinary);
-    abstractType divideSBinary(SBinary toDivideSBinary);
+    /**
+     * Divide a Scrabble int
+     * @param toDivideSInt Scrabble int
+     * @return Scrabble type
+     */
+    IOpType divideSInt(SInt toDivideSInt);
+
+    /**
+     * Subtract a Scrabble binary
+     * @param toMinusSBinary Scrabble binary
+     * @return Scrabble type
+     */
+    IOpType minusSBinary(SBinary toMinusSBinary);
+
+    /**
+     * Multiply a Scrabble binary
+     * @param toTimesSBinary Scrabble binary
+     * @return Scrabble type
+     */
+    IOpType timesSBinary(SBinary toTimesSBinary);
+
+    /**
+     * Divide a Scrabble binary
+     * @param toDivideSBinary Scrabble binary
+     * @return Scrabble type
+     */
+    IOpType divideSBinary(SBinary toDivideSBinary);
 }
