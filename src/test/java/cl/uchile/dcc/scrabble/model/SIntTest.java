@@ -3,17 +3,8 @@ package cl.uchile.dcc.scrabble.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-
 import java.util.Random;
 
-//COMPLETE: Implement test for operator add with binary
-//COMPLETE: Implement test for operator minus with binary
-//COMPLETE: Implement test for operator times with binary
-//COMPLETE: Implement test for operator divide with binary
-//COMPLETE: Implement test for toSBinary method
-//TODO: Improve tests for toSBinary
-
-import static cl.uchile.dcc.scrabble.model.SInt.positiveIntToBinaryString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -185,28 +176,24 @@ public class SIntTest {
         SBinary expectedSBinary = new SBinary("0");
 
         assertEquals(expectedSBinary, sInt.toSBinary(), "SInt don't match. Seed " + seed);
-        assertEquals("0", positiveIntToBinaryString(testInt), "String don't match. Seed " + seed);
 
         int otherInt = 5;
         SInt sOtherInt = new SInt(otherInt);
         SBinary Other = new SBinary("0101");
 
         assertEquals(Other, sOtherInt.toSBinary(), "SInt don't match. Seed " + seed);
-        assertEquals("0101", positiveIntToBinaryString(otherInt), "String don't match. Seed " + seed);
 
         int negTestInt = -5;
         SInt negSInt = new SInt(negTestInt);
         SBinary expectedNegSBinary = new SBinary("1011");
 
         assertEquals(expectedNegSBinary, negSInt.toSBinary(), "SInt don't match. Number " + otherInt);
-        assertEquals("0101", positiveIntToBinaryString(Math.abs(otherInt)), "String don't match. Seed " + seed);
 
         int anotherInt = 2147483647;
         SInt anotherSInt = new SInt(anotherInt);
         SBinary expectedAnotherSBinary = new SBinary("01111111111111111111111111111111");
 
         assertEquals(expectedAnotherSBinary, anotherSInt.toSBinary(), "SInt don't match. Seed " + seed);
-        assertEquals("01111111111111111111111111111111", positiveIntToBinaryString(Math.abs(anotherInt)), "String don't match. Seed " + seed);
     }
     @RepeatedTest(50)
     void opSBinaryTest(){

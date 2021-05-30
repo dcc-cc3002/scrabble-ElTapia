@@ -2,12 +2,6 @@ package cl.uchile.dcc.scrabble.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
-
-//COMPLETE: Implement test for operator add with binary
-//COMPLETE: Implement test for operator minus with int, float and binary
-//COMPLETE: Implement test for operator times with int, float and binary
-//COMPLETE: Implement test for operator divide with int, float and binary
-
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
