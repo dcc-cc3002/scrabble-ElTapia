@@ -1,24 +1,10 @@
 package cl.uchile.dcc.scrabble.model;
+
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-
 import java.util.Random;
-
-//TODO: Improve logic operators with binary tests with random variables
-//TODO: Improve logic operators with bool tests with random variables
-//TODO: Improve operators with SBinary tests
-//TODO: Improve operators with SInt tests
-//TODO: Make repeated tests
-
-//COMPLETE: Implement test for operator add with int and binary
-//COMPLETE: Implement test for operator minus with int and binary
-//COMPLETE: Implement test for operator times with int and binary
-//COMPLETE: Implement test for operator divide with int and binary
-//COMPLETE: Implement test for toSInt method
-//COMPLETE: Implement test for toSFloat method
-
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;

@@ -3,15 +3,10 @@ package cl.uchile.dcc.scrabble.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-
-//TODO: Improve logic operators with binary tests with random variables
-//TODO: Improve logic operators with bool tests with random variables
-//TODO: Make repeated tests
 
 public class SBoolTest{
     private SBool testSBool;

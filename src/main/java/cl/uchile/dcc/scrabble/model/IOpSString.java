@@ -1,8 +1,12 @@
 package cl.uchile.dcc.scrabble.model;
-
-//COMPLETE: Possibly implement methods that are in father interface
-//TODO: ADD DOCUMENTATION
-
+/**
+ * Define add with Scrabble string
+ */
 public interface IOpSString extends IAddSFloat{
-    SString addSString(SString toAddSString);
+    /**
+     * Concatenate a Scrabble string
+     * @param toAddSString Scrabble string
+     * @return Scrabble string
+     */
+    IOpSString addSString(SString toAddSString);
 }
