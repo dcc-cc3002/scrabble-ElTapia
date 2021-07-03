@@ -1,4 +1,10 @@
-package cl.uchile.dcc.scrabble.model;
+package cl.uchile.dcc.scrabble.model.Abstract;
+
+import cl.uchile.dcc.scrabble.model.Types.SBinary;
+import cl.uchile.dcc.scrabble.model.Types.SFloat;
+import cl.uchile.dcc.scrabble.model.Types.SInt;
+import cl.uchile.dcc.scrabble.model.Types.SString;
+
 /**
  * Abstract class that encapsulates Scrabble int and Binary.
  * Define common methods in Scrabble Int and binary

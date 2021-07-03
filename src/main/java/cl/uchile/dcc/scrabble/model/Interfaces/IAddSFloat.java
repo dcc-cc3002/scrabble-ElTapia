@@ -1,4 +1,7 @@
-package cl.uchile.dcc.scrabble.model;
+package cl.uchile.dcc.scrabble.model.Interfaces;
+
+import cl.uchile.dcc.scrabble.model.Types.SFloat;
+
 /**
  * Define add operation with Scrabble Float
  */

@@ -1,4 +1,8 @@
-package cl.uchile.dcc.scrabble.model;
+package cl.uchile.dcc.scrabble.model.Types;
+
+import cl.uchile.dcc.scrabble.model.Interfaces.ILogic;
+import cl.uchile.dcc.scrabble.model.Abstract.AbstractBaseNumber;
+
 /**
  * Scrabble binary type
  * Contains operation methods with other types and proper methods

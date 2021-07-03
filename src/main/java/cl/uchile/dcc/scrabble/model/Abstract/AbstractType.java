@@ -1,4 +1,5 @@
-package cl.uchile.dcc.scrabble.model;
+package cl.uchile.dcc.scrabble.model.Abstract;
+import cl.uchile.dcc.scrabble.model.Types.SString;
 import java.util.Objects;
 /**
  * Abstract class that represents a scrabble type.

@@ -1,4 +1,8 @@
-package cl.uchile.dcc.scrabble.model;
+package cl.uchile.dcc.scrabble.model.Types;
+
+import cl.uchile.dcc.scrabble.model.Interfaces.IOpSString;
+import cl.uchile.dcc.scrabble.model.Abstract.AbstractType;
+
 /**
  * Scrabble string that encapsulates a Java string.
  * Contains proper methods and operations with other Scrabble types.

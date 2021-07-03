@@ -1,10 +1,12 @@
-package cl.uchile.dcc.scrabble.model;
+package cl.uchile.dcc.scrabble.model.Types;
+import cl.uchile.dcc.scrabble.model.Interfaces.ILogic;
+import cl.uchile.dcc.scrabble.model.Abstract.AbstractType;
 import java.util.Objects;
 /**
  * Scrabble bool that encapsulates a Java Boolean.
  * Contains proper methods and operations with other Scrabble types.
  */
-public class SBool extends AbstractType implements ILogic{
+public class SBool extends AbstractType implements ILogic {
     private final boolean bool;
 
     /**
@@ -52,7 +54,7 @@ public class SBool extends AbstractType implements ILogic{
      * Get Java bool that encapsulates
      * @return Boolean
      */
-    protected boolean getBool(){
+    public boolean getBool(){
         return this.bool;
     }
 

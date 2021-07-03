@@ -1,4 +1,6 @@
-package cl.uchile.dcc.scrabble.model;
+package cl.uchile.dcc.scrabble.model.Types;
+import cl.uchile.dcc.scrabble.model.Interfaces.IOpFloat;
+import cl.uchile.dcc.scrabble.model.Abstract.AbstractBaseNumber;
 import java.util.Objects;
 /**
  * Scrabble int that encapsulates a Java int.
@@ -38,7 +40,7 @@ public class SInt extends AbstractBaseNumber implements IOpFloat {
      * Get Java int that encapsulates
      * @return int
      */
-    protected int getInt(){
+    public int getInt(){
         return this.Int;
     }
 

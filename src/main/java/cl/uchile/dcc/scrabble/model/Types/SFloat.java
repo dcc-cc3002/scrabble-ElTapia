@@ -1,4 +1,8 @@
-package cl.uchile.dcc.scrabble.model;
+package cl.uchile.dcc.scrabble.model.Types;
+
+import cl.uchile.dcc.scrabble.model.Interfaces.IOpFloat;
+import cl.uchile.dcc.scrabble.model.Abstract.AbstractNumber;
+
 /**
  * Scrabble float that encapsulates a Java double.
  * Contains proper methods and operations with other Scrabble types.
@@ -36,7 +40,7 @@ public class SFloat extends AbstractNumber implements IOpFloat {
      * Get Java double that encapsulates
      * @return double
      */
-    protected double getDouble(){
+    public double getDouble(){
         return this.Float;
     }
 

@@ -1,4 +1,8 @@
-package cl.uchile.dcc.scrabble.model;
+package cl.uchile.dcc.scrabble.model.Interfaces;
+
+import cl.uchile.dcc.scrabble.model.Types.SBinary;
+import cl.uchile.dcc.scrabble.model.Types.SInt;
+
 /**
  * Define subtraction, multiplication and division with Scrabble int and binary
  */
