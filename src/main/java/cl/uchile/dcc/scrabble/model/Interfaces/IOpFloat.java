@@ -5,7 +5,13 @@ import cl.uchile.dcc.scrabble.model.Types.SFloat;
 /**
  * Define subtraction, multiplication and division with Scrabble float
  */
-public interface IOpFloat extends IAddSFloat{
+public interface IOpFloat extends SType {
+    /**
+     * Add a Scrabble Float
+     * @param toAddSFloat Scrabble Float
+     * @return Scrabble type
+     */
+    IOpFloat addSFloat(SFloat toAddSFloat);
     /**
      * Subtract a Scrabble float
      * @param toMinusSFloat Scrabble float

@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.Abstract;
 
-import cl.uchile.dcc.scrabble.model.Interfaces.IOpType;
+import cl.uchile.dcc.scrabble.model.Interfaces.SType;
 import cl.uchile.dcc.scrabble.model.Types.SFloat;
 import cl.uchile.dcc.scrabble.model.Types.SString;
 
@@ -8,7 +8,7 @@ import cl.uchile.dcc.scrabble.model.Types.SString;
  * Abstract class that encapsulates Scrabble number types.
  * Implements operations with Scrabble int and binary, and define common methods.
  */
-public abstract class AbstractNumber extends AbstractType implements IOpType {
+public abstract class AbstractNumber extends AbstractType implements SType {
     /**
      * {@inheritDoc}
      * @param obj Object

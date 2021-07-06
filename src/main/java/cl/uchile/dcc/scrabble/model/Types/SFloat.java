@@ -2,6 +2,7 @@ package cl.uchile.dcc.scrabble.model.Types;
 
 import cl.uchile.dcc.scrabble.model.Interfaces.IOpFloat;
 import cl.uchile.dcc.scrabble.model.Abstract.AbstractNumber;
+import cl.uchile.dcc.scrabble.model.Interfaces.SType;
 
 /**
  * Scrabble float that encapsulates a Java double.
@@ -55,12 +56,59 @@ public class SFloat extends AbstractNumber implements IOpFloat {
     }
 
     /**
+     * Add this to a SString
+     *
+     * @param addend SString
+     * @return SString
+     */
+    @Override
+    public SString addToSString(SString addend) {
+        return new SString(this.Float + addend.toString());
+    }
+
+    /**
      * {@inheritDoc}
      * @return Scrabble float
      */
     @Override
     public SFloat toSFloat() {
         return new SFloat(this.Float);
+    }
+
+    /**
+     * Add operation
+     * @param addend IOpFloat
+     * @return IOpFloat
+     */
+    public IOpFloat add(IOpFloat addend){
+        return addend.addSFloat(this);
+    }
+
+    /**
+     * Minus operation
+     * @param addend IOpFloat
+     * @return IOpFloat
+     */
+    public IOpFloat minus(IOpFloat addend){
+        return addend.minusSFloat(this);
+    }
+
+    /**
+     * Times operation
+     * @param addend IOpFloat
+     * @return IOpFloat
+     */
+    public IOpFloat times(IOpFloat addend){
+        return addend.timesSFloat(this);
+    }
+
+    /**
+     * Divide operation
+     * @param addend IOpFloat
+     * @return IOpFloat
+     */
+    public IOpFloat divide(IOpFloat addend){
+        return addend.divideSFloat(this);
     }
 
     /**

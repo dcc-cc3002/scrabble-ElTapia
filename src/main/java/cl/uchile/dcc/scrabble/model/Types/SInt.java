@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.Types;
 import cl.uchile.dcc.scrabble.model.Interfaces.IOpFloat;
 import cl.uchile.dcc.scrabble.model.Abstract.AbstractBaseNumber;
+import cl.uchile.dcc.scrabble.model.Interfaces.SType;
 import java.util.Objects;
 /**
  * Scrabble int that encapsulates a Java int.
@@ -55,6 +56,17 @@ public class SInt extends AbstractBaseNumber implements IOpFloat {
     }
 
     /**
+     * Add this to a SString
+     *
+     * @param addend SString
+     * @return SString
+     */
+    @Override
+    public SString addToSString(SString addend) {
+        return new SString(this.Int + addend.toString());
+    }
+
+    /**
      * {@inheritDoc}
      * @return Scrabble float
      */
@@ -104,6 +116,43 @@ public class SInt extends AbstractBaseNumber implements IOpFloat {
             return "0";
         }
         return "0" + stringBinary;
+    }
+
+
+    /**
+     * Add operation
+     * @param addend IOpFloat
+     * @return IOpFloat
+     */
+    public SType add(SType addend){
+        return addend.addSInt(this);
+    }
+
+    /**
+     * Minus operation
+     * @param addend SType
+     * @return SType
+     */
+    public SType minus(SType addend){
+        return addend.minusSInt(this);
+    }
+
+    /**
+     * Times operation
+     * @param addend SType
+     * @return SType
+     */
+    public SType times(SType addend){
+        return addend.timesSInt(this);
+    }
+
+    /**
+     * Divide operation
+     * @param addend SType
+     * @return SType
+     */
+    public SType divide(SType addend){
+        return addend.divideSInt(this);
     }
 
     /**

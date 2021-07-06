@@ -36,4 +36,12 @@ public abstract class AbstractType {
      */
     public abstract SString toSString();
 
+
+    /**
+     * Add this to a SString
+     * @param addend SString
+     * @return SString
+     */
+    public abstract SString addToSString(SString addend);
+
 }

@@ -14,6 +14,20 @@ public interface ILogic {
     ILogic negate();
 
     /**
+     * Or operation. It specializes in classes
+     * @param operand ILogic
+     * @return ILogic
+     */
+    ILogic or(ILogic operand);
+
+    /**
+     * And operation. It specializes in classes
+     * @param conjunct ILogic
+     * @return ILogic
+     */
+    ILogic and(ILogic conjunct);
+
+    /**
      * Or logic operation with Scrabble bool
      * @param toOrSBool Scrabble Boolean
      * @return Scrabble type

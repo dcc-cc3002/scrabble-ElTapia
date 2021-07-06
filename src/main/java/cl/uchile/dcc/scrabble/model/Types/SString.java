@@ -1,13 +1,12 @@
 package cl.uchile.dcc.scrabble.model.Types;
 
-import cl.uchile.dcc.scrabble.model.Interfaces.IOpSString;
 import cl.uchile.dcc.scrabble.model.Abstract.AbstractType;
 
 /**
  * Scrabble string that encapsulates a Java string.
  * Contains proper methods and operations with other Scrabble types.
  */
-public class SString extends AbstractType implements IOpSString {
+public class SString extends AbstractType{
     private final String string;
 
     /**
@@ -51,51 +50,21 @@ public class SString extends AbstractType implements IOpSString {
     }
 
     /**
+     * Add this SString
+     * @param addend AbstractType
+     * @return SString
+     */
+    public SString add(AbstractType addend){
+        return addend.addToSString(this);
+    }
+
+    /**
      * {@inheritDoc}
      * @param toAddSString Scrabble string
      * @return Scrabble string
      */
     @Override
-    public SString addSString(SString toAddSString) {
+    public SString addToSString(SString toAddSString) {
         return new SString(this.string + toAddSString.toString());
-    }
-
-    /**
-     * {@inheritDoc}
-     * @param toAddSFloat Scrabble float
-     * @return Scrabble string
-     */
-    @Override
-    public SString addSFloat(SFloat toAddSFloat) {
-        return this.addSString(toAddSFloat.toSString());
-    }
-
-    /**
-     * {@inheritDoc}
-     * @param toAddSInt Scrabble int
-     * @return Scrabble string
-     */
-    @Override
-    public SString addSInt(SInt toAddSInt) {
-        return this.addSString(toAddSInt.toSString());
-    }
-
-    /**
-     * {@inheritDoc}
-     * @param toAddSBinary Scrabble binary
-     * @return Scrabble string
-     */
-    @Override
-    public SString addSBinary(SBinary toAddSBinary) {
-        return this.addSString(toAddSBinary.toSString());
-    }
-
-    /**
-     * Sum a Scrabble bool
-     * @param toAddSBool Scrabble bool
-     * @return new Scrabble string
-     */
-    public SString addSBool(SBool toAddSBool) {
-        return this.addSString(toAddSBool.toSString());
     }
 }

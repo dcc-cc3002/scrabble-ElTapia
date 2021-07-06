@@ -51,6 +51,17 @@ public class SBool extends AbstractType implements ILogic {
     }
 
     /**
+     * Add this to a SString
+     *
+     * @param addend SString
+     * @return SString
+     */
+    @Override
+    public SString addToSString(SString addend) {
+        return new SString(this.bool + addend.toString());
+    }
+
+    /**
      * Get Java bool that encapsulates
      * @return Boolean
      */
@@ -73,6 +84,28 @@ public class SBool extends AbstractType implements ILogic {
     @Override
     public SBool negate() {
         return new SBool(!this.bool);
+    }
+
+    /**
+     * Or operation. It specializes in classes
+     *
+     * @param operand ILogic
+     * @return ILogic
+     */
+    @Override
+    public ILogic or(ILogic operand) {
+        return operand.orSBool(this);
+    }
+
+    /**
+     * And operation. It specializes in classes
+     *
+     * @param conjunct ILogic
+     * @return ILogic
+     */
+    @Override
+    public ILogic and(ILogic conjunct) {
+        return conjunct.andSBool(this);
     }
 
     /**

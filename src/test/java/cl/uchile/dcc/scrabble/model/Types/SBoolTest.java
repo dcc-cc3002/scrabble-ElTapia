@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.Types;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -122,5 +123,73 @@ public class SBoolTest{
 
         assertNotEquals(expectedFalseAndSBinary, trueSBool.andSBinary(toOperateSBinary), "SBinary match. Seed " + seed);
         assertNotEquals(expectedTrueAndSBinary, falseSBool.andSBinary(toOperateSBinary), "SBinary match. Seed " + seed);
+    }
+
+    @Test
+    void orAndTest(){
+        SBool trueSBool = new SBool(true);
+        SBool falseSBool = new SBool(false);
+        SBinary toOperateSBinary = new SBinary("101001");
+
+        SBinary expectedTrueOrSBinary = new SBinary("111111");
+        SBinary expectedFalseOrSBinary = new SBinary("101001");
+
+        assertEquals(expectedTrueOrSBinary, trueSBool.or(toOperateSBinary), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedFalseOrSBinary, falseSBool.or(toOperateSBinary), "SBinary don't match. Seed " + seed);
+
+        assertNotEquals(expectedFalseOrSBinary, trueSBool.or(toOperateSBinary), "SBinary match. Seed " + seed);
+        assertNotEquals(expectedTrueOrSBinary, falseSBool.or(toOperateSBinary), "SBinary match. Seed " + seed);
+
+        SBinary expectedTrueAndSBinary = new SBinary("101001");
+        SBinary expectedFalseAndSBinary = new SBinary("000000");
+
+        assertEquals(expectedTrueAndSBinary, trueSBool.and(toOperateSBinary), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedFalseAndSBinary, falseSBool.and(toOperateSBinary), "SBinary don't match. Seed " + seed);
+
+        assertNotEquals(expectedFalseAndSBinary, trueSBool.and(toOperateSBinary), "SBinary match. Seed " + seed);
+        assertNotEquals(expectedTrueAndSBinary, falseSBool.and(toOperateSBinary), "SBinary match. Seed " + seed);
+
+
+        SBool firstSBool = new SBool(true);
+        SBool toOperateSBool = new SBool(false);
+        SBool expectedTrueSBool = new SBool(true);
+        SBool expectedFalseSBool = new SBool(false);
+
+        assertEquals(expectedTrueSBool, firstSBool.or(toOperateSBool), "SBool don't match. Seed " + seed);
+        assertEquals(expectedFalseSBool, toOperateSBool.or(toOperateSBool), "SBool don't match. Seed " + seed);
+        assertEquals(expectedTrueSBool, firstSBool.or(firstSBool), "SBool don't match. Seed " + seed);
+        assertEquals(expectedTrueSBool, toOperateSBool.or(firstSBool), "SBool don't match. Seed " + seed);
+
+        assertEquals(expectedTrueSBool, firstSBool.and(firstSBool), "SBool don't match. Seed " + seed);
+        assertEquals(expectedFalseSBool, firstSBool.and(toOperateSBool), "SBool don't match. Seed " + seed);
+        assertEquals(expectedFalseSBool, toOperateSBool.and(firstSBool), "SBool don't match. Seed " + seed);
+        assertEquals(expectedFalseSBool, toOperateSBool.and(toOperateSBool), "SBool don't match. Seed " + seed);
+    }
+
+    @RepeatedTest(50)
+    void addToStringTest() {
+        seed = new Random().nextInt();
+        Random rng = new Random(seed);
+        int strSize= rng.nextInt(50);
+        String testString = RandomStringUtils.random(strSize, 0, Character.MAX_CODE_POINT,
+            true, true, null, rng);
+        SString sString = new SString(testString);
+
+        boolean toAddBool = rng.nextBoolean();
+
+        SBool toAddSBool = new SBool(toAddBool);
+        SBool negateToAddSBool = new SBool(!toAddBool);
+
+        String expectedStringAddSBool = toAddBool + testString;
+        String negateExpectedStringAddSBool = !toAddBool + testString;
+
+        SString expectedAddSBool = new SString(expectedStringAddSBool);
+        SString negateExpectedAddSBool = new SString(negateExpectedStringAddSBool);
+
+        assertEquals(expectedAddSBool, toAddSBool.addToSString(sString), "SString don't match. Seed " + seed);
+        assertEquals(negateExpectedAddSBool, negateToAddSBool.addToSString(sString), "SString don't match. Seed " + seed);
+
+        assertNotEquals(negateExpectedAddSBool, toAddSBool.addToSString(sString), "SString match. Seed " + seed);
+        assertNotEquals(expectedAddSBool, negateToAddSBool.addToSString(sString), "SString match. Seed " + seed);
     }
 }

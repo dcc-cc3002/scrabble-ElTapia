@@ -2,12 +2,13 @@ package cl.uchile.dcc.scrabble.model.Types;
 
 import cl.uchile.dcc.scrabble.model.Interfaces.ILogic;
 import cl.uchile.dcc.scrabble.model.Abstract.AbstractBaseNumber;
+import cl.uchile.dcc.scrabble.model.Interfaces.SType;
 
 /**
  * Scrabble binary type
  * Contains operation methods with other types and proper methods
  */
-public class SBinary extends AbstractBaseNumber implements ILogic {
+public class SBinary extends AbstractBaseNumber implements ILogic{
     private final String binary;
 
     /**
@@ -48,6 +49,17 @@ public class SBinary extends AbstractBaseNumber implements ILogic {
     @Override
     public SString toSString() {
         return new SString(this.binary);
+    }
+
+    /**
+     * Add this to a SString
+     *
+     * @param addend SString
+     * @return SString
+     */
+    @Override
+    public SString addToSString(SString addend) {
+        return new SString(this.binary + addend.toString());
     }
 
     /**
@@ -132,6 +144,65 @@ public class SBinary extends AbstractBaseNumber implements ILogic {
             }
         }
         return new SBinary(negateStrBinary.toString());
+    }
+
+    /**
+     * Or operation. It specializes in classes
+     *
+     * @param operand ILogic
+     * @return ILogic
+     */
+    @Override
+    public ILogic or(ILogic operand) {
+        return operand.orSBinary(this);
+    }
+
+    /**
+     * And operation. It specializes in classes
+     *
+     * @param conjunct ILogic
+     * @return ILogic
+     */
+    @Override
+    public ILogic and(ILogic conjunct) {
+        return conjunct.andSBinary(this);
+    }
+
+    //Operations
+    /**
+     * Add operation
+     * @param addend SType
+     * @return SType
+     */
+    public SType add(SType addend) {
+        return addend.addSBinary(this);
+    }
+
+    /**
+     * Multiplication
+     * @param product SType
+     * @return SType
+     */
+    public SType times(SType product) {
+        return product.timesSBinary(this);
+    }
+
+    /**
+     * Minus operation
+     * @param subtractor SType
+     * @return SType
+     */
+    public SType minus(SType subtractor) {
+        return subtractor.minusSBinary(this);
+    }
+
+    /**
+     * Divide operation
+     * @param divisor SType
+     * @return SType
+     */
+    public SType divide(SType divisor) {
+        return divisor.divideSBinary(this);
     }
 
     /**
