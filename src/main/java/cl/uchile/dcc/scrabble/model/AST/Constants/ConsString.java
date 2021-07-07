@@ -57,7 +57,7 @@ public class ConsString implements Constant, IOperation {
    */
   @Override
   public int hashCode(){
-    return Objects.hash(AbstractType.class);
+    return Objects.hash(ConsString.class);
   }
 
   /**
@@ -75,8 +75,8 @@ public class ConsString implements Constant, IOperation {
   }
 
   /**
-   * Eval Operation.
-   * @return Constant - Is a single type
+   * Eval an operation
+   * @return Constant
    */
   @Override
   public Constant eval() {
@@ -95,4 +95,53 @@ public class ConsString implements Constant, IOperation {
     return new ConsString(result.toString());
   }
 
+  /**
+   * Convert to string constant
+   *
+   * @return Constant
+   */
+  @Override
+  public Constant toConstantStr() {
+    return Constant.super.toConstantStr();
+  }
+
+  /**
+   * Convert to int constant
+   *
+   * @return Constant
+   */
+  @Override
+  public Constant toConstantInt() {
+    return Constant.super.toConstantInt();
+  }
+
+  /**
+   * Convert to float constant
+   *
+   * @return Constant
+   */
+  @Override
+  public Constant toConstantFloat() {
+    return Constant.super.toConstantFloat();
+  }
+
+  /**
+   * Convert to binary constant
+   *
+   * @return Constant
+   */
+  @Override
+  public Constant toConstantBinary() {
+    return Constant.super.toConstantBinary();
+  }
+
+  /**
+   * Convert to bool constant
+   *
+   * @return Constant
+   */
+  @Override
+  public Constant toConstantBool() {
+    return Constant.super.toConstantBool();
+  }
 }
