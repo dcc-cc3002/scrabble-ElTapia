@@ -3,10 +3,7 @@ package cl.uchile.dcc.scrabble.model.AST.Composites;
 import cl.uchile.dcc.scrabble.model.AST.IOperation;
 import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
 
-/**
- * Add operation in composite pattern
- */
-public class Add implements IOperation {
+public class Sub implements IOperation{
 
   private final IOperation leftOp;
   private final IOperation rightOp;
@@ -16,7 +13,7 @@ public class Add implements IOperation {
    * @param leftOp IOperation
    * @param rightOp IOperation
    */
-  public Add(IOperation leftOp, IOperation rightOp){
+  public Sub(IOperation leftOp, IOperation rightOp){
     this.leftOp = leftOp;
     this.rightOp = rightOp;
   }
@@ -27,6 +24,6 @@ public class Add implements IOperation {
    */
   @Override
   public Constant eval() {
-    return rightOp.eval().add(leftOp.eval());
+    return rightOp.eval().sub(leftOp.eval());
   }
 }
