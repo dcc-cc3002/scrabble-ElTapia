@@ -302,7 +302,7 @@ public interface Constant {
    * @param constant Constant
    * @return Constant
    */
-  default Constant orConsBinary(Constant constant){
+  default Constant orConsBinary(ConsBinary constant){
     return null;
   }
 
@@ -311,7 +311,7 @@ public interface Constant {
    * @param constant Constant
    * @return Constant
    */
-  default Constant orConsBool(Constant constant){
+  default Constant orConsBool(ConsBool constant){
     return null;
   }
 
@@ -347,7 +347,7 @@ public interface Constant {
    * @param constant Constant
    * @return Constant
    */
-  default Constant andConsBinary(Constant constant){
+  default Constant andConsBinary(ConsBinary constant){
     return null;
   }
 
@@ -356,7 +356,7 @@ public interface Constant {
    * @param constant Constant
    * @return Constant
    */
-  default Constant andConsBool(Constant constant){
+  default Constant andConsBool(ConsBool constant){
     return null;
   }
 
