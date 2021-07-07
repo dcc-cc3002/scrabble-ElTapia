@@ -30,11 +30,62 @@ public interface Constant {
    * @param constant Constant
    * @return Constant
    */
-  Constant add(Constant constant);
+  default Constant add(Constant constant){
+    return null;
+  };
+
+
+  /**
+   * Subtract a constant. It uses Double Dispatch depending on Constant type
+   * @param constant Constant
+   * @return Constant
+   */
+  default Constant sub(Constant constant){
+    return null;
+  };
+
+
+  /**
+   * Multiply a constant. It uses Double Dispatch depending on Constant type
+   * @param constant Constant
+   * @return Constant
+   */
+  default Constant times(Constant constant){
+    return null;
+  };
+
+
+  /**
+   * Divide a constant. It uses Double Dispatch depending on Constant type
+   * @param constant Constant
+   * @return Constant
+   */
+  default Constant divide(Constant constant){
+    return null;
+  };
+
+
+  /**
+   * Or logic with constant. It uses Double Dispatch depending on Constant type
+   * @param constant Constant
+   * @return Constant
+   */
+  default Constant or(Constant constant){
+    return null;
+  };
+
+  /**
+   * And logic with constant. It uses Double Dispatch depending on Constant type
+   * @param constant Constant
+   * @return Constant
+   */
+  default Constant and(Constant constant){
+    return null;
+  };
 
   /**
    * Compares an object with a constan
-   * @param o Object
+   * @param obj Object
    * @return boolean
    */
   boolean equals(Object obj);
