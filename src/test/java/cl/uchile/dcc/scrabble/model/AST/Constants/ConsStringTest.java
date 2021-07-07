@@ -55,10 +55,6 @@ class ConsStringTest {
     assertNotEquals(differentString, consString.toString(), "ConsString match. Seed " + seed);
   }
 
-  @Test
-  void eval() {
-  }
-
   @RepeatedTest(50)
   void addConsStrTest() {
     String toAddString = RandomStringUtils.random(rng.nextInt(50), 0, Character.MAX_CODE_POINT,
