@@ -58,7 +58,7 @@ public class SBool extends AbstractType implements ILogic {
      */
     @Override
     public SString addToSString(SString addend) {
-        return new SString(this.bool + addend.toString());
+        return new SString(addend.toString() + this.bool);
     }
 
     /**
