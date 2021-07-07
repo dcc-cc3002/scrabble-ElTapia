@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.AST.Wrapper;
 
+import cl.uchile.dcc.scrabble.model.AST.Constants.*;
 import cl.uchile.dcc.scrabble.model.Abstract.AbstractType;
 import cl.uchile.dcc.scrabble.model.Types.*;
 
@@ -12,14 +13,38 @@ import cl.uchile.dcc.scrabble.model.Types.*;
  */
 public interface Constant {
 
+  /**
+   * Get SType that the constant encapsulate
+   * @return AbstractType
+   */
   AbstractType getSType();
+
+  /**
+   * String representation of a constant
+   * @return String
+   */
+  String toString();
+
+  /**
+   * Add a constant. It uses Double Dispatch depending on Constant type
+   * @param constant Constant
+   * @return Constant
+   */
+  Constant add(Constant constant);
+
+  /**
+   * Compares an object with a constan
+   * @param o Object
+   * @return boolean
+   */
+  boolean equals(Object obj);
 
   /**
    * Add a Constant string
    * @param constant Constant
    * @return Constant
    */
-  default Constant addConsStr(Constant constant){
+  default Constant addConsStr(ConsString constant){
     return null;
   }
 
@@ -331,6 +356,5 @@ public interface Constant {
   default Constant toConstantBool(){
     return null;
   }
-
 
 }
