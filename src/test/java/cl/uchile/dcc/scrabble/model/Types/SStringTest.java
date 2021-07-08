@@ -200,8 +200,8 @@ public class SStringTest {
         SBool toAddSBool = new SBool(toAddBool);
         SBool negateToAddSBool = new SBool(!toAddBool);
 
-        String expectedStringAddSBool = toAddBool + testString;
-        String negateExpectedStringAddSBool = !toAddBool + testString;
+        String expectedStringAddSBool =  testString + toAddBool;
+        String negateExpectedStringAddSBool =  testString + !toAddBool;
 
         SString expectedAddSBool = new SString(expectedStringAddSBool);
         SString negateExpectedAddSBool = new SString(negateExpectedStringAddSBool);
