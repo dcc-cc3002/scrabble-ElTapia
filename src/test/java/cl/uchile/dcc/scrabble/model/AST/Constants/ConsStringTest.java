@@ -61,10 +61,15 @@ class ConsStringTest {
         true, true, null, rng);
     ConsString toAddConsString = new ConsString(toAddString);
 
-    String expectedString = testString + toAddString;
+    String expectedString = toAddString + testString;
     ConsString expectedConsString = new ConsString(expectedString);
 
     assertEquals(expectedConsString, consString.addConsStr(toAddConsString), "ConsString don't match. Seed " + seed);
+
+    String expectedAddString = testString + toAddString;
+    ConsString expectedAddConsString = new ConsString(expectedAddString);
+
+    assertEquals(expectedAddConsString, consString.add(toAddConsString), "ConsString don't match. Seed " + seed);
 
     String differentString;
     do {
@@ -78,13 +83,9 @@ class ConsStringTest {
           Character.MAX_CODE_POINT, true, true, null, rng);
     } while (differentToAddString.equals(testString));
 
-    ConsString differentConsString = new ConsString(differentString + differentToAddString);
+    ConsString differentConsString = new ConsString(differentToAddString + differentString);
 
     assertNotEquals(differentConsString, consString.addConsStr(toAddConsString), "ConsString match. Seed " + seed);
-  }
-
-  @Test
-  void add() {
   }
 
 }
