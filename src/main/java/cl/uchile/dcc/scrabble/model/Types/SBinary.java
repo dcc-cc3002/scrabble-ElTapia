@@ -146,6 +146,8 @@ public class SBinary extends AbstractBaseNumber implements ILogic{
         return new SBinary(negateStrBinary.toString());
     }
 
+    //Operations
+
     /**
      * Or operation. It specializes in classes
      *
@@ -168,7 +170,6 @@ public class SBinary extends AbstractBaseNumber implements ILogic{
         return conjunct.andSBinary(this);
     }
 
-    //Operations
     /**
      * Add operation
      * @param addend SType

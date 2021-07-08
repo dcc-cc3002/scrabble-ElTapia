@@ -32,7 +32,7 @@ public interface Constant extends IComponent {
    */
   default Constant add(Constant constant){
     return null;
-  };
+  }
 
 
   /**
@@ -42,7 +42,7 @@ public interface Constant extends IComponent {
    */
   default Constant sub(Constant constant){
     return null;
-  };
+  }
 
 
   /**
@@ -52,7 +52,7 @@ public interface Constant extends IComponent {
    */
   default Constant times(Constant constant){
     return null;
-  };
+  }
 
 
   /**
@@ -62,7 +62,7 @@ public interface Constant extends IComponent {
    */
   default Constant divide(Constant constant){
     return null;
-  };
+  }
 
 
   /**
@@ -72,7 +72,7 @@ public interface Constant extends IComponent {
    */
   default Constant or(Constant constant){
     return null;
-  };
+  }
 
   /**
    * And logic with constant. It uses Double Dispatch depending on Constant type
@@ -81,7 +81,7 @@ public interface Constant extends IComponent {
    */
   default Constant and(Constant constant){
     return null;
-  };
+  }
 
   /**
    * Compares an object with a constan
@@ -104,7 +104,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant addConsInt(Constant constant){
+  default Constant addConsInt(ConsInt constant){
     return null;
   }
 
@@ -122,7 +122,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant addConsBinary(Constant constant){
+  default Constant addConsBinary(ConsBinary constant){
     return null;
   }
 
@@ -149,7 +149,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant subConsInt(Constant constant){
+  default Constant subConsInt(ConsInt constant){
     return null;
   }
 
@@ -167,7 +167,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant subConsBinary(Constant constant){
+  default Constant subConsBinary(ConsBinary constant){
     return null;
   }
 
@@ -194,7 +194,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant timesConsInt(Constant constant){
+  default Constant timesConsInt(ConsInt constant){
     return null;
   }
 
@@ -212,7 +212,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant timesConsBinary(Constant constant){
+  default Constant timesConsBinary(ConsBinary constant){
     return null;
   }
 
@@ -239,7 +239,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant divideConsInt(Constant constant){
+  default Constant divideConsInt(ConsInt constant){
     return null;
   }
 
@@ -257,7 +257,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant divideConsBinary(Constant constant){
+  default Constant divideConsBinary(ConsBinary constant){
     return null;
   }
 
