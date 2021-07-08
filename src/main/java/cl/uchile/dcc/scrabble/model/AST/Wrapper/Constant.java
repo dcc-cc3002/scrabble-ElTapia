@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.AST.Wrapper;
 
 import cl.uchile.dcc.scrabble.model.AST.Constants.*;
-import cl.uchile.dcc.scrabble.model.AST.IOperation;
+import cl.uchile.dcc.scrabble.model.AST.IComponent;
 import cl.uchile.dcc.scrabble.model.Abstract.AbstractType;
 
 //TODO: Segregar métodos en más interfaces
@@ -11,7 +11,7 @@ import cl.uchile.dcc.scrabble.model.Abstract.AbstractType;
  *
  * It will be used to implement composite pattern.
  */
-public interface Constant extends IOperation {
+public interface Constant extends IComponent {
 
   /**
    * Get SType that the constant encapsulate

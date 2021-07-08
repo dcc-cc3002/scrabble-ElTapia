@@ -1,6 +1,5 @@
 package cl.uchile.dcc.scrabble.model.AST.Constants;
 
-import cl.uchile.dcc.scrabble.model.AST.IOperation;
 import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
 import java.util.Objects;
 

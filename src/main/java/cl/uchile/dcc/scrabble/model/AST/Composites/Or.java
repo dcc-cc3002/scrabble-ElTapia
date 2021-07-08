@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.AST.Composites;
 
-import cl.uchile.dcc.scrabble.model.AST.IOperation;
+import cl.uchile.dcc.scrabble.model.AST.IComponent;
 import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
 
 public class Or extends AbstractOperation{
@@ -10,7 +10,7 @@ public class Or extends AbstractOperation{
    * @param leftOp IOperation
    * @param rightOp IOperation
    */
-  public Or(IOperation leftOp, IOperation rightOp){
+  public Or(IComponent leftOp, IComponent rightOp){
     super(leftOp, rightOp);
   }
 

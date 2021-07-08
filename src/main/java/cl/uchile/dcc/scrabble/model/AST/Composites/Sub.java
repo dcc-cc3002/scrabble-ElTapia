@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.AST.Composites;
 
-import cl.uchile.dcc.scrabble.model.AST.IOperation;
+import cl.uchile.dcc.scrabble.model.AST.IComponent;
 import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
 
 public class Sub extends AbstractOperation{
@@ -11,7 +11,7 @@ public class Sub extends AbstractOperation{
    * @param leftOp IOperation
    * @param rightOp IOperation
    */
-  public Sub(IOperation leftOp, IOperation rightOp){
+  public Sub(IComponent leftOp, IComponent rightOp){
     super(leftOp, rightOp);
   }
 
