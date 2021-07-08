@@ -1,10 +1,7 @@
 package cl.uchile.dcc.scrabble.model.AST.Constants;
 
-import cl.uchile.dcc.scrabble.model.AST.*;
 import cl.uchile.dcc.scrabble.model.AST.Wrapper.*;
-import cl.uchile.dcc.scrabble.model.Abstract.AbstractType;
 import cl.uchile.dcc.scrabble.model.Types.*;
-import java.util.Objects;
 
 //TODO: Agregar factories para facilitar constructor
 //COMPLETE: Arreglar casteo a suma
@@ -12,7 +9,7 @@ import java.util.Objects;
 /**
  * Constant String that represents a leaf of the AST. It wraps a Scrabble type.
  */
-public class ConsString implements Constant, IOperation {
+public class ConsString extends AbstractConstant {
   private final SString consString;
 
   /**
@@ -52,15 +49,6 @@ public class ConsString implements Constant, IOperation {
   }
 
   /**
-   * Get hashcode of type
-   * @return int
-   */
-  @Override
-  public int hashCode(){
-    return Objects.hash(ConsString.class);
-  }
-
-  /**
    * Compares an object with a constan
    * @param obj Object
    * @return boolean
@@ -75,15 +63,6 @@ public class ConsString implements Constant, IOperation {
   }
 
   /**
-   * Eval an operation
-   * @return Constant
-   */
-  @Override
-  public Constant eval() {
-    return this;
-  }
-
-  /**
    * Add a Constant string
    *
    * @param constant ConsString
@@ -91,7 +70,7 @@ public class ConsString implements Constant, IOperation {
    */
   @Override
   public Constant addConsStr(ConsString constant) {
-    SString result = constant.getSType().add(this.consString);
+    SString result = this.consString.add(constant.getSType());
     return new ConsString(result.toString());
   }
 
@@ -102,7 +81,7 @@ public class ConsString implements Constant, IOperation {
    */
   @Override
   public Constant toConstantStr() {
-    return Constant.super.toConstantStr();
+    return null;
   }
 
   /**
@@ -112,7 +91,7 @@ public class ConsString implements Constant, IOperation {
    */
   @Override
   public Constant toConstantInt() {
-    return Constant.super.toConstantInt();
+    return null;
   }
 
   /**
@@ -122,7 +101,7 @@ public class ConsString implements Constant, IOperation {
    */
   @Override
   public Constant toConstantFloat() {
-    return Constant.super.toConstantFloat();
+    return null;
   }
 
   /**
@@ -132,7 +111,7 @@ public class ConsString implements Constant, IOperation {
    */
   @Override
   public Constant toConstantBinary() {
-    return Constant.super.toConstantBinary();
+    return null;
   }
 
   /**
@@ -142,6 +121,6 @@ public class ConsString implements Constant, IOperation {
    */
   @Override
   public Constant toConstantBool() {
-    return Constant.super.toConstantBool();
+    return null;
   }
 }

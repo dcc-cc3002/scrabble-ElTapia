@@ -1,16 +1,14 @@
 package cl.uchile.dcc.scrabble.model.AST.Constants;
 
-import cl.uchile.dcc.scrabble.model.AST.IOperation;
 import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
 import cl.uchile.dcc.scrabble.model.Types.SBinary;
 import cl.uchile.dcc.scrabble.model.Types.SBool;
 import cl.uchile.dcc.scrabble.model.Types.SString;
-import java.util.Objects;
 
 /**
  * Constant boolean that represents a leaf of the AST. It wraps a Scrabble type.
  */
-public class ConsBool implements Constant, IOperation {
+public class ConsBool extends AbstractConstant{
   private final SBool consBool;
 
   /**
@@ -22,15 +20,6 @@ public class ConsBool implements Constant, IOperation {
   }
 
   /**
-   * Eval an operation
-   * @return Constant
-   */
-  @Override
-  public Constant eval() {
-    return this;
-  }
-
-  /**
    * Get SType that the constant encapsulate
    *
    * @return AbstractType
@@ -38,15 +27,6 @@ public class ConsBool implements Constant, IOperation {
   @Override
   public SBool getSType() {
     return new SBool(this.consBool.getBool());
-  }
-
-  /**
-   * Get hashcode of type
-   * @return int
-   */
-  @Override
-  public int hashCode(){
-    return Objects.hash(ConsBool.class);
   }
 
   /**
@@ -70,6 +50,16 @@ public class ConsBool implements Constant, IOperation {
   @Override
   public String toString(){
     return this.consBool.toString();
+  }
+
+  /**
+   * Negate a Constant
+   *
+   * @return Constant
+   */
+  @Override
+  public Constant negateConstant() {
+    return new ConsBool(this.consBool.negate().getBool());
   }
 
   /**
@@ -153,23 +143,13 @@ public class ConsBool implements Constant, IOperation {
   }
 
   /**
-   * Negate a Constant
-   *
-   * @return Constant
-   */
-  @Override
-  public Constant negateConstant() {
-    return new ConsBool(this.consBool.negate().getBool());
-  }
-
-  /**
    * Convert to string constant
    *
    * @return Constant
    */
   @Override
   public Constant toConstantStr() {
-    return Constant.super.toConstantStr();
+    return null;
   }
 
   /**
@@ -179,7 +159,7 @@ public class ConsBool implements Constant, IOperation {
    */
   @Override
   public Constant toConstantInt() {
-    return Constant.super.toConstantInt();
+    return null;
   }
 
   /**
@@ -189,7 +169,7 @@ public class ConsBool implements Constant, IOperation {
    */
   @Override
   public Constant toConstantFloat() {
-    return Constant.super.toConstantFloat();
+    return null;
   }
 
   /**
@@ -199,7 +179,7 @@ public class ConsBool implements Constant, IOperation {
    */
   @Override
   public Constant toConstantBinary() {
-    return Constant.super.toConstantBinary();
+    return null;
   }
 
   /**
@@ -209,6 +189,6 @@ public class ConsBool implements Constant, IOperation {
    */
   @Override
   public Constant toConstantBool() {
-    return Constant.super.toConstantBool();
+    return null;
   }
 }
