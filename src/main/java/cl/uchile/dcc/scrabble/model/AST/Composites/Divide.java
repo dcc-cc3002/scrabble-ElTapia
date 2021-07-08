@@ -3,9 +3,7 @@ package cl.uchile.dcc.scrabble.model.AST.Composites;
 import cl.uchile.dcc.scrabble.model.AST.IOperation;
 import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
 
-public class Divide implements IOperation {
-  private final IOperation leftOp;
-  private final IOperation rightOp;
+public class Divide extends AbstractOperation{
 
   /**
    * Constructor
@@ -13,8 +11,7 @@ public class Divide implements IOperation {
    * @param rightOp IOperation
    */
   public Divide(IOperation leftOp, IOperation rightOp){
-    this.leftOp = leftOp;
-    this.rightOp = rightOp;
+    super(leftOp, rightOp);
   }
 
   /**

@@ -6,10 +6,7 @@ import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
 /**
  * Add operation in composite pattern
  */
-public class Add implements IOperation {
-
-  private final IOperation leftOp;
-  private final IOperation rightOp;
+public class Add extends AbstractOperation {
 
   /**
    * Constructor
@@ -17,8 +14,7 @@ public class Add implements IOperation {
    * @param rightOp IOperation
    */
   public Add(IOperation leftOp, IOperation rightOp){
-    this.leftOp = leftOp;
-    this.rightOp = rightOp;
+    super(leftOp, rightOp);
   }
 
   /**
@@ -27,6 +23,6 @@ public class Add implements IOperation {
    */
   @Override
   public Constant eval() {
-    return rightOp.eval().add(leftOp.eval());
+    return this.leftOp.eval().add(this.rightOp.eval());
   }
 }

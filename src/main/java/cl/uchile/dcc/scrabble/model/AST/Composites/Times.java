@@ -3,9 +3,7 @@ package cl.uchile.dcc.scrabble.model.AST.Composites;
 import cl.uchile.dcc.scrabble.model.AST.IOperation;
 import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
 
-public class Times implements IOperation{
-  private final IOperation leftOp;
-  private final IOperation rightOp;
+public class Times extends AbstractOperation{
 
   /**
    * Constructor
@@ -13,8 +11,7 @@ public class Times implements IOperation{
    * @param rightOp IOperation
    */
   public Times(IOperation leftOp, IOperation rightOp){
-    this.leftOp = leftOp;
-    this.rightOp = rightOp;
+    super(leftOp, rightOp);
   }
 
   /**
