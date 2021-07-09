@@ -20,7 +20,7 @@ public class And extends AbstractOperation{
    */
   @Override
   public Constant eval() {
-    return rightOp.eval().and(leftOp.eval());
+    return leftOp.eval().and(rightOp.eval());
   }
 
 }

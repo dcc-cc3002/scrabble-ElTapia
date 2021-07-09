@@ -20,7 +20,7 @@ public class Times extends AbstractOperation{
    */
   @Override
   public Constant eval() {
-    return rightOp.eval().times(leftOp.eval());
+    return leftOp.eval().times(rightOp.eval());
   }
 
 }

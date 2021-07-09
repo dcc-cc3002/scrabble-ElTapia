@@ -20,7 +20,7 @@ public class Or extends AbstractOperation{
    */
   @Override
   public Constant eval() {
-    return rightOp.eval().or(leftOp.eval());
+    return leftOp.eval().or(rightOp.eval());
   }
 
 }

@@ -21,6 +21,6 @@ public class Sub extends AbstractOperation{
    */
   @Override
   public Constant eval() {
-    return rightOp.eval().sub(leftOp.eval());
+    return leftOp.eval().sub(rightOp.eval());
   }
 }

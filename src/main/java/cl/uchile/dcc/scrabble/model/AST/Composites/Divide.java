@@ -20,7 +20,7 @@ public class Divide extends AbstractOperation{
    */
   @Override
   public Constant eval() {
-    return rightOp.eval().divide(leftOp.eval());
+    return leftOp.eval().divide(rightOp.eval());
   }
 
 }
