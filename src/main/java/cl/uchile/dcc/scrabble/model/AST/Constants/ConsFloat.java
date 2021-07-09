@@ -1,8 +1,8 @@
 package cl.uchile.dcc.scrabble.model.AST.Constants;
 
 import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
-import cl.uchile.dcc.scrabble.model.Types.SBinary;
 import cl.uchile.dcc.scrabble.model.Types.SFloat;
+import cl.uchile.dcc.scrabble.model.Types.SString;
 
 public class ConsFloat extends AbstractConstant{
   private final SFloat consFloat;
@@ -58,7 +58,37 @@ public class ConsFloat extends AbstractConstant{
    */
   @Override
   public Constant add(Constant constant) {
-    return null;
+    return constant.addConsFloat(this);
+  }
+
+  /**
+   * Subtract a constant. It uses Double Dispatch depending on Constant type
+   * @param constant Constant
+   * @return Constant
+   */
+  @Override
+  public Constant sub(Constant constant){
+    return constant.subConsFloat(this);
+  }
+
+  /**
+   * Multiply a constant. It uses Double Dispatch depending on Constant type
+   * @param constant Constant
+   * @return Constant
+   */
+  @Override
+  public Constant times(Constant constant){
+    return constant.timesConsFloat(this);
+  }
+
+  /**
+   * Divide a constant. It uses Double Dispatch depending on Constant type
+   * @param constant Constant
+   * @return Constant
+   */
+  @Override
+  public Constant divide(Constant constant){
+    return constant.divideConsFloat(this);
   }
 
   /**
@@ -69,7 +99,8 @@ public class ConsFloat extends AbstractConstant{
    */
   @Override
   public Constant addConsStr(ConsString constant) {
-    return null;
+    SString result = constant.getSType().add(this.consFloat);
+    return new ConsString(result.toString());
   }
 
   /**
@@ -79,8 +110,9 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant addConsInt(Constant constant) {
-    return null;
+  public Constant addConsInt(ConsInt constant) {
+    SFloat result = this.consFloat.addSInt(constant.getSType());
+    return new ConsFloat(result.getDouble());
   }
 
   /**
@@ -90,8 +122,9 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant addConsFloat(Constant constant) {
-    return null;
+  public Constant addConsFloat(ConsFloat constant) {
+    SFloat result = this.consFloat.addSFloat(constant.getSType());
+    return new ConsFloat(result.getDouble());
   }
 
   /**
@@ -101,31 +134,11 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant addConsBinary(Constant constant) {
-    return null;
+  public Constant addConsBinary(ConsBinary constant) {
+    SFloat result = this.consFloat.addSBinary(constant.getSType());
+    return new ConsFloat(result.getDouble());
   }
 
-  /**
-   * Add a Constant Bool
-   *
-   * @param constant Constant
-   * @return Constant
-   */
-  @Override
-  public Constant addConsBool(Constant constant) {
-    return null;
-  }
-
-  /**
-   * Subtract a Constant string
-   *
-   * @param constant Constant
-   * @return Constant
-   */
-  @Override
-  public Constant subConsStr(Constant constant) {
-    return null;
-  }
 
   /**
    * Subtract a Constant int
@@ -134,8 +147,9 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant subConsInt(Constant constant) {
-    return null;
+  public Constant subConsInt(ConsInt constant) {
+    SFloat result = this.consFloat.minusSInt(constant.getSType());
+    return new ConsFloat(result.getDouble());
   }
 
   /**
@@ -145,8 +159,9 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant subConsFloat(Constant constant) {
-    return null;
+  public Constant subConsFloat(ConsFloat constant) {
+    SFloat result = this.consFloat.minusSFloat(constant.getSType());
+    return new ConsFloat(result.getDouble());
   }
 
   /**
@@ -156,31 +171,11 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant subConsBinary(Constant constant) {
-    return null;
+  public Constant subConsBinary(ConsBinary constant) {
+    SFloat result = this.consFloat.minusSBinary(constant.getSType());
+    return new ConsFloat(result.getDouble());
   }
 
-  /**
-   * Subtract a Scrabble Bool
-   *
-   * @param constant Constant
-   * @return Constant
-   */
-  @Override
-  public Constant subConsBool(Constant constant) {
-    return null;
-  }
-
-  /**
-   * Multiply a Constant string
-   *
-   * @param constant Constant
-   * @return Constant
-   */
-  @Override
-  public Constant timesConsStr(Constant constant) {
-    return null;
-  }
 
   /**
    * Multiply a Constant int
@@ -189,8 +184,9 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant timesConsInt(Constant constant) {
-    return null;
+  public Constant timesConsInt(ConsInt constant) {
+    SFloat result = this.consFloat.timesSInt(constant.getSType());
+    return new ConsFloat(result.getDouble());
   }
 
   /**
@@ -200,8 +196,9 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant timesConsFloat(Constant constant) {
-    return null;
+  public Constant timesConsFloat(ConsFloat constant) {
+    SFloat result = this.consFloat.timesSFloat(constant.getSType());
+    return new ConsFloat(result.getDouble());
   }
 
   /**
@@ -211,30 +208,9 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant timesConsBinary(Constant constant) {
-    return null;
-  }
-
-  /**
-   * Multiply a Constant Bool
-   *
-   * @param constant Constant
-   * @return Constant
-   */
-  @Override
-  public Constant timesConsBool(Constant constant) {
-    return null;
-  }
-
-  /**
-   * Divide a Constant string
-   *
-   * @param constant Constant
-   * @return Constant
-   */
-  @Override
-  public Constant divideConsStr(Constant constant) {
-    return null;
+  public Constant timesConsBinary(ConsBinary constant) {
+    SFloat result = this.consFloat.timesSBinary(constant.getSType());
+    return new ConsFloat(result.getDouble());
   }
 
   /**
@@ -244,8 +220,9 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant divideConsInt(Constant constant) {
-    return null;
+  public Constant divideConsInt(ConsInt constant) {
+    SFloat result = this.consFloat.divideSInt(constant.getSType());
+    return new ConsFloat(result.getDouble());
   }
 
   /**
@@ -255,8 +232,9 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant divideConsFloat(Constant constant) {
-    return null;
+  public Constant divideConsFloat(ConsFloat constant) {
+    SFloat result = this.consFloat.divideSFloat(constant.getSType());
+    return new ConsFloat(result.getDouble());
   }
 
   /**
@@ -266,139 +244,9 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant divideConsBinary(Constant constant) {
-    return null;
-  }
-
-  /**
-   * Divide a Scrabble Bool
-   *
-   * @param constant Constant
-   * @return Constant
-   */
-  @Override
-  public Constant divideConsBool(Constant constant) {
-    return null;
-  }
-
-  /**
-   * Logical Or with Constant string
-   *
-   * @param constant Constant
-   * @return Constant
-   */
-  @Override
-  public Constant orConsStr(Constant constant) {
-    return null;
-  }
-
-  /**
-   * Logical Or with Constant int
-   *
-   * @param constant Constant
-   * @return Constant
-   */
-  @Override
-  public Constant orConsInt(Constant constant) {
-    return null;
-  }
-
-  /**
-   * Logical Or with Constant float
-   *
-   * @param constant Constant
-   * @return Constant
-   */
-  @Override
-  public Constant orConsFloat(Constant constant) {
-    return null;
-  }
-
-  /**
-   * Logical Or with Constant binary
-   *
-   * @param constant Constant
-   * @return Constant
-   */
-  @Override
-  public Constant orConsBinary(ConsBinary constant) {
-    return null;
-  }
-
-  /**
-   * Logical Or with Constant Bool
-   *
-   * @param constant Constant
-   * @return Constant
-   */
-  @Override
-  public Constant orConsBool(ConsBool constant) {
-    return null;
-  }
-
-  /**
-   * Logical And with Constant string
-   *
-   * @param constant Constant
-   * @return Constant
-   */
-  @Override
-  public Constant andConsStr(Constant constant) {
-    return null;
-  }
-
-  /**
-   * Logical And with Constant int
-   *
-   * @param constant Constant
-   * @return Constant
-   */
-  @Override
-  public Constant andConsInt(Constant constant) {
-    return null;
-  }
-
-  /**
-   * Logical And with Constant float
-   *
-   * @param constant Constant
-   * @return Constant
-   */
-  @Override
-  public Constant andConsFloat(Constant constant) {
-    return null;
-  }
-
-  /**
-   * Logical And with Constant binary
-   *
-   * @param constant Constant
-   * @return Constant
-   */
-  @Override
-  public Constant andConsBinary(ConsBinary constant) {
-    return null;
-  }
-
-  /**
-   * Logical And with Constant Bool
-   *
-   * @param constant Constant
-   * @return Constant
-   */
-  @Override
-  public Constant andConsBool(ConsBool constant) {
-    return null;
-  }
-
-  /**
-   * Negate a Constant
-   *
-   * @return Constant
-   */
-  @Override
-  public Constant negateConstant() {
-    return null;
+  public Constant divideConsBinary(ConsBinary constant) {
+    SFloat result = this.consFloat.divideSBinary(constant.getSType());
+    return new ConsFloat(result.getDouble());
   }
 
   /**
