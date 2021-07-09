@@ -65,6 +65,6 @@ public class SString extends AbstractType{
      */
     @Override
     public SString addToSString(SString toAddSString) {
-        return new SString(this.string + toAddSString.toString());
+        return new SString(toAddSString.toString() + this.string);
     }
 }

@@ -2,13 +2,14 @@ package cl.uchile.dcc.scrabble.model.Types;
 
 import cl.uchile.dcc.scrabble.model.Interfaces.ILogic;
 import cl.uchile.dcc.scrabble.model.Abstract.AbstractBaseNumber;
-import cl.uchile.dcc.scrabble.model.Interfaces.SType;
+import cl.uchile.dcc.scrabble.model.Interfaces.IOpBinary;
+import cl.uchile.dcc.scrabble.model.Interfaces.SNumber;
 
 /**
  * Scrabble binary type
  * Contains operation methods with other types and proper methods
  */
-public class SBinary extends AbstractBaseNumber implements ILogic{
+public class SBinary extends AbstractBaseNumber implements ILogic, IOpBinary {
     private final String binary;
 
     /**
@@ -59,7 +60,7 @@ public class SBinary extends AbstractBaseNumber implements ILogic{
      */
     @Override
     public SString addToSString(SString addend) {
-        return new SString(this.binary + addend.toString());
+        return new SString(addend.toString() + this.binary);
     }
 
     /**
@@ -175,7 +176,7 @@ public class SBinary extends AbstractBaseNumber implements ILogic{
      * @param addend SType
      * @return SType
      */
-    public SType add(SType addend) {
+    public IOpBinary add(IOpBinary addend) {
         return addend.addSBinary(this);
     }
 
@@ -184,7 +185,7 @@ public class SBinary extends AbstractBaseNumber implements ILogic{
      * @param product SType
      * @return SType
      */
-    public SType times(SType product) {
+    public IOpBinary times(IOpBinary product) {
         return product.timesSBinary(this);
     }
 
@@ -193,7 +194,7 @@ public class SBinary extends AbstractBaseNumber implements ILogic{
      * @param subtractor SType
      * @return SType
      */
-    public SType minus(SType subtractor) {
+    public IOpBinary minus(IOpBinary subtractor) {
         return subtractor.minusSBinary(this);
     }
 
@@ -202,7 +203,7 @@ public class SBinary extends AbstractBaseNumber implements ILogic{
      * @param divisor SType
      * @return SType
      */
-    public SType divide(SType divisor) {
+    public IOpBinary divide(IOpBinary divisor) {
         return divisor.divideSBinary(this);
     }
 
@@ -319,7 +320,7 @@ public class SBinary extends AbstractBaseNumber implements ILogic{
     public SBinary addSBinary(SBinary toAddSBinary) {
         SInt thisSInt = this.toSInt();
         SInt toAddSIntBinary = toAddSBinary.toSInt();
-        SInt resultSInt = thisSInt.addSInt(toAddSIntBinary);
+        SInt resultSInt = toAddSIntBinary.addSInt(thisSInt);
         return resultSInt.toSBinary();
     }
 
@@ -332,7 +333,7 @@ public class SBinary extends AbstractBaseNumber implements ILogic{
     public SBinary minusSBinary(SBinary toMinusSBinary) {
         SInt sIntThis = this.toSInt();
         SInt toMinusSIntBinary = toMinusSBinary.toSInt();
-        SInt resultSInt = sIntThis.minusSInt(toMinusSIntBinary);
+        SInt resultSInt = toMinusSIntBinary.minusSInt(sIntThis);
         return resultSInt.toSBinary();
     }
 
@@ -345,7 +346,7 @@ public class SBinary extends AbstractBaseNumber implements ILogic{
     public SBinary timesSBinary(SBinary toTimesSBinary) {
         SInt sIntThis = this.toSInt();
         SInt toTimesSIntBinary = toTimesSBinary.toSInt();
-        SInt resultSInt = sIntThis.timesSInt(toTimesSIntBinary);
+        SInt resultSInt = toTimesSIntBinary.timesSInt(sIntThis);
         return resultSInt.toSBinary();
     }
 
@@ -358,7 +359,7 @@ public class SBinary extends AbstractBaseNumber implements ILogic{
     public SBinary divideSBinary(SBinary toDivideSBinary) {
         SInt sIntThis = this.toSInt();
         SInt toDivideSIntBinary = toDivideSBinary.toSInt();
-        SInt resultSInt = sIntThis.divideSInt(toDivideSIntBinary);
+        SInt resultSInt = toDivideSIntBinary.divideSInt(sIntThis);
         return resultSInt.toSBinary();
     }
 
@@ -368,10 +369,9 @@ public class SBinary extends AbstractBaseNumber implements ILogic{
      * @return Scrabble binary
      */
     @Override
-    public SBinary addSInt(SInt toAddSInt) {
+    public SInt addSInt(SInt toAddSInt) {
         SInt thisSInt = this.toSInt();
-        SInt resultSInt = thisSInt.addSInt(toAddSInt);
-        return resultSInt.toSBinary();
+        return toAddSInt.addSInt(thisSInt);
     }
 
     /**
@@ -380,10 +380,9 @@ public class SBinary extends AbstractBaseNumber implements ILogic{
      * @return Scrabble binary
      */
     @Override
-    public SBinary minusSInt(SInt toMinusSInt) {
+    public SInt minusSInt(SInt toMinusSInt) {
         SInt thisSInt = this.toSInt();
-        SInt resultSInt = thisSInt.minusSInt(toMinusSInt);
-        return resultSInt.toSBinary();
+        return thisSInt.minusSInt(toMinusSInt);
     }
 
     /**
@@ -392,10 +391,9 @@ public class SBinary extends AbstractBaseNumber implements ILogic{
      * @return Scrabble binary
      */
     @Override
-    public SBinary timesSInt(SInt toTimesSInt) {
+    public SInt timesSInt(SInt toTimesSInt) {
         SInt thisSInt = this.toSInt();
-        SInt resultSInt = thisSInt.timesSInt(toTimesSInt);
-        return resultSInt.toSBinary();
+        return toTimesSInt.timesSInt(thisSInt);
     }
 
     /**
@@ -404,9 +402,56 @@ public class SBinary extends AbstractBaseNumber implements ILogic{
      * @return Scrabble binary
      */
     @Override
-    public SBinary divideSInt(SInt toDivideSInt) {
+    public SInt divideSInt(SInt toDivideSInt) {
         SInt thisSInt = this.toSInt();
-        SInt resultSInt = thisSInt.divideSInt(toDivideSInt);
-        return resultSInt.toSBinary();
+        return thisSInt.divideSInt(toDivideSInt);
+    }
+
+    /**
+     * Sum a Scrabble Float
+     *
+     * @param toAddSFloat Scrabble Float
+     * @return Scrabble type
+     */
+    @Override
+    public SFloat addSFloat(SFloat toAddSFloat) {
+        SInt thisSInt = this.toSInt();
+        return thisSInt.addSFloat(toAddSFloat);
+    }
+
+    /**
+     * Subtract a Scrabble Float
+     *
+     * @param toMinusSFloat Scrabble Float
+     * @return Scrabble type
+     */
+    @Override
+    public SFloat minusSFloat(SFloat toMinusSFloat) {
+        SInt thisSInt = this.toSInt();
+        return thisSInt.minusSFloat(toMinusSFloat);
+    }
+
+    /**
+     * Multiply a Scrabble Float
+     *
+     * @param toTimesSFloat Scrabble Float
+     * @return Scrabble type
+     */
+    @Override
+    public SFloat timesSFloat(SFloat toTimesSFloat) {
+        SInt thisSInt = this.toSInt();
+        return thisSInt.timesSFloat(toTimesSFloat);
+    }
+
+    /**
+     * Divide a Scrabble Float
+     *
+     * @param toDivideSFloat Scrabble Float
+     * @return Scrabble type
+     */
+    @Override
+    public SFloat divideSFloat(SFloat toDivideSFloat) {
+        SInt thisSInt = this.toSInt();
+        return thisSInt.divideSFloat(toDivideSFloat);
     }
 }

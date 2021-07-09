@@ -1,14 +1,14 @@
 package cl.uchile.dcc.scrabble.model.Types;
-import cl.uchile.dcc.scrabble.model.Interfaces.IOpFloat;
+import cl.uchile.dcc.scrabble.model.Interfaces.IOpBinary;
 import cl.uchile.dcc.scrabble.model.Abstract.AbstractBaseNumber;
-import cl.uchile.dcc.scrabble.model.Interfaces.SType;
+import cl.uchile.dcc.scrabble.model.Interfaces.SNumber;
 import java.util.Objects;
 /**
  * Scrabble int that encapsulates a Java int.
  * Contains proper methods and operations with other Scrabble types,
  * in particular, some functions to transform from Java ints to binary strings
  */
-public class SInt extends AbstractBaseNumber implements IOpFloat {
+public class SInt extends AbstractBaseNumber implements IOpBinary {
     private final int Int;
     public SInt(int Int){
         this.Int = Int;
@@ -63,7 +63,7 @@ public class SInt extends AbstractBaseNumber implements IOpFloat {
      */
     @Override
     public SString addToSString(SString addend) {
-        return new SString(this.Int + addend.toString());
+        return new SString(addend.toString() + this.Int);
     }
 
     /**
@@ -124,7 +124,7 @@ public class SInt extends AbstractBaseNumber implements IOpFloat {
      * @param addend IOpFloat
      * @return IOpFloat
      */
-    public SType add(SType addend){
+    public SNumber add(SNumber addend){
         return addend.addSInt(this);
     }
 
@@ -133,7 +133,7 @@ public class SInt extends AbstractBaseNumber implements IOpFloat {
      * @param addend SType
      * @return SType
      */
-    public SType minus(SType addend){
+    public SNumber minus(SNumber addend){
         return addend.minusSInt(this);
     }
 
@@ -142,7 +142,7 @@ public class SInt extends AbstractBaseNumber implements IOpFloat {
      * @param addend SType
      * @return SType
      */
-    public SType times(SType addend){
+    public SNumber times(SNumber addend){
         return addend.timesSInt(this);
     }
 
@@ -151,7 +151,7 @@ public class SInt extends AbstractBaseNumber implements IOpFloat {
      * @param addend SType
      * @return SType
      */
-    public SType divide(SType addend){
+    public SNumber divide(SNumber addend){
         return addend.divideSInt(this);
     }
 
@@ -172,7 +172,7 @@ public class SInt extends AbstractBaseNumber implements IOpFloat {
      */
     @Override
     public SInt minusSInt(SInt toMinusSInt) {
-        return new SInt(this.Int - toMinusSInt.getInt());
+        return new SInt(toMinusSInt.getInt() - this.Int);
     }
 
     /**
@@ -192,7 +192,7 @@ public class SInt extends AbstractBaseNumber implements IOpFloat {
      */
     @Override
     public SInt divideSInt(SInt toDivideSInt) {
-        return new SInt(this.Int / toDivideSInt.getInt());
+        return new SInt(toDivideSInt.getInt() / this.Int);
     }
 
     /**
@@ -212,7 +212,7 @@ public class SInt extends AbstractBaseNumber implements IOpFloat {
      */
     @Override
     public SFloat minusSFloat(SFloat toMinusSFloat) {
-        return new SFloat(this.Int - toMinusSFloat.getDouble());
+        return new SFloat(toMinusSFloat.getDouble() - this.Int);
     }
 
     /**
@@ -232,7 +232,7 @@ public class SInt extends AbstractBaseNumber implements IOpFloat {
      */
     @Override
     public SFloat divideSFloat(SFloat toDivideSFloat) {
-        return new SFloat(this.Int / toDivideSFloat.getDouble());
+        return new SFloat(toDivideSFloat.getDouble() / this.Int);
     }
 
     /**
@@ -241,8 +241,10 @@ public class SInt extends AbstractBaseNumber implements IOpFloat {
      * @return Scrabble int
      */
     @Override
-    public SInt addSBinary(SBinary toAddSBinary) {
-        return this.addSInt(toAddSBinary.toSInt());
+    public SBinary addSBinary(SBinary toAddSBinary) {
+        SInt toAddSInt = toAddSBinary.toSInt();
+        SInt result = this.addSInt(toAddSInt);
+        return result.toSBinary();
     }
 
     /**
@@ -251,8 +253,10 @@ public class SInt extends AbstractBaseNumber implements IOpFloat {
      * @return Scrabble int
      */
     @Override
-    public SInt minusSBinary(SBinary toMinusSBinary) {
-        return this.minusSInt(toMinusSBinary.toSInt());
+    public SBinary minusSBinary(SBinary toMinusSBinary) {
+        SInt toMinusSInt = toMinusSBinary.toSInt();
+        SInt result = this.minusSInt(toMinusSInt);
+        return result.toSBinary();
     }
 
     /**
@@ -261,8 +265,10 @@ public class SInt extends AbstractBaseNumber implements IOpFloat {
      * @return Scrabble int
      */
     @Override
-    public SInt timesSBinary(SBinary toTimesSBinary) {
-        return this.timesSInt(toTimesSBinary.toSInt());
+    public SBinary timesSBinary(SBinary toTimesSBinary) {
+        SInt toTimesSInt = toTimesSBinary.toSInt();
+        SInt result = this.timesSInt(toTimesSInt);
+        return result.toSBinary();
     }
 
     /**
@@ -271,7 +277,9 @@ public class SInt extends AbstractBaseNumber implements IOpFloat {
      * @return Scrabble int
      */
     @Override
-    public SInt divideSBinary(SBinary toDivideSBinary) {
-        return this.divideSInt(toDivideSBinary.toSInt());
+    public SBinary divideSBinary(SBinary toDivideSBinary) {
+        SInt toDivideSInt = toDivideSBinary.toSInt();
+        SInt result = this.divideSInt(toDivideSInt);
+        return result.toSBinary();
     }
 }

@@ -1,14 +1,14 @@
 package cl.uchile.dcc.scrabble.model.Types;
 
-import cl.uchile.dcc.scrabble.model.Interfaces.IOpFloat;
+import cl.uchile.dcc.scrabble.model.Interfaces.IOpBinary;
 import cl.uchile.dcc.scrabble.model.Abstract.AbstractNumber;
-import cl.uchile.dcc.scrabble.model.Interfaces.SType;
+import cl.uchile.dcc.scrabble.model.Interfaces.SNumber;
 
 /**
  * Scrabble float that encapsulates a Java double.
  * Contains proper methods and operations with other Scrabble types.
  */
-public class SFloat extends AbstractNumber implements IOpFloat {
+public class SFloat extends AbstractNumber{
     private final double Float;
     public SFloat(double Float){
         this.Float = Float;
@@ -63,7 +63,7 @@ public class SFloat extends AbstractNumber implements IOpFloat {
      */
     @Override
     public SString addToSString(SString addend) {
-        return new SString(this.Float + addend.toString());
+        return new SString(addend.toString() + this.Float);
     }
 
     /**
@@ -80,7 +80,7 @@ public class SFloat extends AbstractNumber implements IOpFloat {
      * @param addend IOpFloat
      * @return IOpFloat
      */
-    public IOpFloat add(IOpFloat addend){
+    public SNumber add(SNumber addend){
         return addend.addSFloat(this);
     }
 
@@ -89,7 +89,7 @@ public class SFloat extends AbstractNumber implements IOpFloat {
      * @param addend IOpFloat
      * @return IOpFloat
      */
-    public IOpFloat minus(IOpFloat addend){
+    public SNumber minus(SNumber addend){
         return addend.minusSFloat(this);
     }
 
@@ -98,7 +98,7 @@ public class SFloat extends AbstractNumber implements IOpFloat {
      * @param addend IOpFloat
      * @return IOpFloat
      */
-    public IOpFloat times(IOpFloat addend){
+    public SNumber times(SNumber addend){
         return addend.timesSFloat(this);
     }
 
@@ -107,7 +107,7 @@ public class SFloat extends AbstractNumber implements IOpFloat {
      * @param addend IOpFloat
      * @return IOpFloat
      */
-    public IOpFloat divide(IOpFloat addend){
+    public SNumber divide(SNumber addend){
         return addend.divideSFloat(this);
     }
 
@@ -128,7 +128,7 @@ public class SFloat extends AbstractNumber implements IOpFloat {
      */
     @Override
     public SFloat minusSInt(SInt toMinusSInt) {
-        return new SFloat(this.Float - toMinusSInt.getInt());
+        return new SFloat(toMinusSInt.getInt() - this.Float);
     }
 
     /**
@@ -148,7 +148,7 @@ public class SFloat extends AbstractNumber implements IOpFloat {
      */
     @Override
     public SFloat divideSInt(SInt toDivideSInt) {
-        return new SFloat(this.Float / toDivideSInt.getInt());
+        return new SFloat(toDivideSInt.getInt() / this.Float);
     }
 
     /**
@@ -168,7 +168,7 @@ public class SFloat extends AbstractNumber implements IOpFloat {
      */
     @Override
     public SFloat minusSFloat(SFloat toMinusSFloat) {
-        return new SFloat(this.Float - toMinusSFloat.getDouble());
+        return new SFloat(toMinusSFloat.getDouble() - this.Float);
     }
 
     /**
@@ -188,46 +188,6 @@ public class SFloat extends AbstractNumber implements IOpFloat {
      */
     @Override
     public SFloat divideSFloat(SFloat toDivideSFloat) {
-        return new SFloat(this.Float / toDivideSFloat.getDouble());
-    }
-
-    /**
-     * {@inheritDoc}
-     * @param toAddSBinary Scrabble binary
-     * @return Scrabble float
-     */
-    @Override
-    public SFloat addSBinary(SBinary toAddSBinary) {
-        return this.addSInt(toAddSBinary.toSInt());
-    }
-
-    /**
-     * {@inheritDoc}
-     * @param toMinusSBinary Scrabble binary
-     * @return Scrabble float
-     */
-    @Override
-    public SFloat minusSBinary(SBinary toMinusSBinary) {
-        return this.minusSInt(toMinusSBinary.toSInt());
-    }
-
-    /**
-     * {@inheritDoc}
-     * @param toTimesSBinary Scrabble binary
-     * @return Scrabble float
-     */
-    @Override
-    public SFloat timesSBinary(SBinary toTimesSBinary) {
-        return this.timesSInt(toTimesSBinary.toSInt());
-    }
-
-    /**
-     * {@inheritDoc}
-     * @param toDivideSBinary Scrabble binary
-     * @return Scrabble float
-     */
-    @Override
-    public SFloat divideSBinary(SBinary toDivideSBinary) {
-        return this.divideSInt(toDivideSBinary.toSInt());
+        return new SFloat(toDivideSFloat.getDouble() / this.Float);
     }
 }
