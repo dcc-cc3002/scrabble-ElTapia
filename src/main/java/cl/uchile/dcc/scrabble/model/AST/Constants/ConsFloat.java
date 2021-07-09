@@ -127,17 +127,6 @@ public class ConsFloat extends AbstractConstant{
     return new ConsFloat(result.getDouble());
   }
 
-  /**
-   * Add a Constant binary
-   *
-   * @param constant Constant
-   * @return Constant
-   */
-  @Override
-  public Constant addConsBinary(ConsBinary constant) {
-    SFloat result = this.consFloat.addSBinary(constant.getSType());
-    return new ConsFloat(result.getDouble());
-  }
 
 
   /**
@@ -164,17 +153,6 @@ public class ConsFloat extends AbstractConstant{
     return new ConsFloat(result.getDouble());
   }
 
-  /**
-   * Subtract a Constant binary
-   *
-   * @param constant Constant
-   * @return Constant
-   */
-  @Override
-  public Constant subConsBinary(ConsBinary constant) {
-    SFloat result = this.consFloat.minusSBinary(constant.getSType());
-    return new ConsFloat(result.getDouble());
-  }
 
 
   /**
@@ -201,17 +179,6 @@ public class ConsFloat extends AbstractConstant{
     return new ConsFloat(result.getDouble());
   }
 
-  /**
-   * Multiply a Constant binary
-   *
-   * @param constant Constant
-   * @return Constant
-   */
-  @Override
-  public Constant timesConsBinary(ConsBinary constant) {
-    SFloat result = this.consFloat.timesSBinary(constant.getSType());
-    return new ConsFloat(result.getDouble());
-  }
 
   /**
    * Divide a Constant int
@@ -238,35 +205,14 @@ public class ConsFloat extends AbstractConstant{
   }
 
   /**
-   * Divide a Constant binary
-   *
-   * @param constant Constant
-   * @return Constant
-   */
-  @Override
-  public Constant divideConsBinary(ConsBinary constant) {
-    SFloat result = this.consFloat.divideSBinary(constant.getSType());
-    return new ConsFloat(result.getDouble());
-  }
-
-  /**
    * Convert to string constant
    *
    * @return Constant
    */
   @Override
   public Constant toConstantStr() {
-    return null;
-  }
-
-  /**
-   * Convert to int constant
-   *
-   * @return Constant
-   */
-  @Override
-  public Constant toConstantInt() {
-    return null;
+    SString result = this.consFloat.toSString();
+    return new ConsString(result.toString());
   }
 
   /**
@@ -276,26 +222,8 @@ public class ConsFloat extends AbstractConstant{
    */
   @Override
   public Constant toConstantFloat() {
-    return null;
+    SFloat result = this.consFloat.toSFloat();
+    return new ConsFloat(result.getDouble());
   }
 
-  /**
-   * Convert to binary constant
-   *
-   * @return Constant
-   */
-  @Override
-  public Constant toConstantBinary() {
-    return null;
-  }
-
-  /**
-   * Convert to bool constant
-   *
-   * @return Constant
-   */
-  @Override
-  public Constant toConstantBool() {
-    return null;
-  }
 }

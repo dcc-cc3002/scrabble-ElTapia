@@ -7,13 +7,15 @@ import cl.uchile.dcc.scrabble.model.Types.SInt;
 import cl.uchile.dcc.scrabble.model.Types.SString;
 
 public class ConsInt extends AbstractConstant {
+
   private final SInt consInt;
 
   /**
    * Constructor
+   *
    * @param Int int
    */
-  public ConsInt(int Int){
+  public ConsInt(int Int) {
     consInt = new SInt(Int);
   }
 
@@ -25,7 +27,7 @@ public class ConsInt extends AbstractConstant {
    */
   @Override
   public boolean equals(Object obj) {
-    if (obj instanceof ConsInt){
+    if (obj instanceof ConsInt) {
       var o = (ConsInt) obj;
       return o.getSType().equals(this.consInt);
     }
@@ -65,31 +67,34 @@ public class ConsInt extends AbstractConstant {
 
   /**
    * Subtract a constant. It uses Double Dispatch depending on Constant type
+   *
    * @param constant Constant
    * @return Constant
    */
   @Override
-  public Constant sub(Constant constant){
+  public Constant sub(Constant constant) {
     return constant.subConsInt(this);
   }
 
   /**
    * Multiply a constant. It uses Double Dispatch depending on Constant type
+   *
    * @param constant Constant
    * @return Constant
    */
   @Override
-  public Constant times(Constant constant){
+  public Constant times(Constant constant) {
     return constant.timesConsInt(this);
   }
 
   /**
    * Divide a constant. It uses Double Dispatch depending on Constant type
+   *
    * @param constant Constant
    * @return Constant
    */
   @Override
-  public Constant divide(Constant constant){
+  public Constant divide(Constant constant) {
     return constant.divideConsInt(this);
   }
 
@@ -137,8 +142,8 @@ public class ConsInt extends AbstractConstant {
    */
   @Override
   public Constant addConsBinary(ConsBinary constant) {
-    SInt result = this.consInt.addSBinary(constant.getSType());
-    return new ConsInt(result.getInt());
+    SBinary result = this.consInt.addSBinary(constant.getSType());
+    return new ConsBinary(result.toString());
   }
 
   /**
@@ -173,8 +178,8 @@ public class ConsInt extends AbstractConstant {
    */
   @Override
   public Constant subConsBinary(ConsBinary constant) {
-    SInt result = this.consInt.minusSBinary(constant.getSType());
-    return new ConsInt(result.getInt());
+    SBinary result = this.consInt.minusSBinary(constant.getSType());
+    return new ConsBinary(result.toString());
   }
 
 
@@ -210,8 +215,8 @@ public class ConsInt extends AbstractConstant {
    */
   @Override
   public Constant timesConsBinary(ConsBinary constant) {
-    SInt result = this.consInt.timesSBinary(constant.getSType());
-    return new ConsInt(result.getInt());
+    SBinary result = this.consInt.timesSBinary(constant.getSType());
+    return new ConsBinary(result.toString());
   }
 
   /**
@@ -246,8 +251,8 @@ public class ConsInt extends AbstractConstant {
    */
   @Override
   public Constant divideConsBinary(ConsBinary constant) {
-    SInt result = this.consInt.divideSBinary(constant.getSType());
-    return new ConsInt(result.getInt());
+    SBinary result = this.consInt.divideSBinary(constant.getSType());
+    return new ConsBinary(result.toString());
   }
 
   /**
@@ -257,7 +262,8 @@ public class ConsInt extends AbstractConstant {
    */
   @Override
   public Constant toConstantStr() {
-    return null;
+    SString result = this.consInt.toSString();
+    return new ConsString(result.toString());
   }
 
   /**
@@ -267,7 +273,8 @@ public class ConsInt extends AbstractConstant {
    */
   @Override
   public Constant toConstantInt() {
-    return null;
+    SInt result = this.consInt.toSInt();
+    return new ConsInt(result.getInt());
   }
 
   /**
@@ -277,7 +284,8 @@ public class ConsInt extends AbstractConstant {
    */
   @Override
   public Constant toConstantFloat() {
-    return null;
+    SFloat result = this.consInt.toSFloat();
+    return new ConsFloat(result.getDouble());
   }
 
   /**
@@ -289,15 +297,5 @@ public class ConsInt extends AbstractConstant {
   public Constant toConstantBinary() {
     SBinary result = this.consInt.toSBinary();
     return new ConsBinary(result.toString());
-  }
-
-  /**
-   * Convert to bool constant
-   *
-   * @return Constant
-   */
-  @Override
-  public Constant toConstantBool() {
-    return null;
   }
 }

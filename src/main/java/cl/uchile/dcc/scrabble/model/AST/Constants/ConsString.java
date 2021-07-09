@@ -81,46 +81,8 @@ public class ConsString extends AbstractConstant {
    */
   @Override
   public Constant toConstantStr() {
-    return null;
+    SString result = this.consString.toSString();
+    return new ConsString(result.toString());
   }
 
-  /**
-   * Convert to int constant
-   *
-   * @return Constant
-   */
-  @Override
-  public Constant toConstantInt() {
-    return null;
-  }
-
-  /**
-   * Convert to float constant
-   *
-   * @return Constant
-   */
-  @Override
-  public Constant toConstantFloat() {
-    return null;
-  }
-
-  /**
-   * Convert to binary constant
-   *
-   * @return Constant
-   */
-  @Override
-  public Constant toConstantBinary() {
-    return null;
-  }
-
-  /**
-   * Convert to bool constant
-   *
-   * @return Constant
-   */
-  @Override
-  public Constant toConstantBool() {
-    return null;
-  }
 }

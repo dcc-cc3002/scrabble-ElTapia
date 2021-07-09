@@ -149,37 +149,8 @@ public class ConsBool extends AbstractConstant{
    */
   @Override
   public Constant toConstantStr() {
-    return null;
-  }
-
-  /**
-   * Convert to int constant
-   *
-   * @return Constant
-   */
-  @Override
-  public Constant toConstantInt() {
-    return null;
-  }
-
-  /**
-   * Convert to float constant
-   *
-   * @return Constant
-   */
-  @Override
-  public Constant toConstantFloat() {
-    return null;
-  }
-
-  /**
-   * Convert to binary constant
-   *
-   * @return Constant
-   */
-  @Override
-  public Constant toConstantBinary() {
-    return null;
+    SString result = this.consBool.toSString();
+    return new ConsString(result.toString());
   }
 
   /**
@@ -189,6 +160,7 @@ public class ConsBool extends AbstractConstant{
    */
   @Override
   public Constant toConstantBool() {
-    return null;
+    SBool result = this.consBool.toSBool();
+    return new ConsBool(result.getBool());
   }
 }
