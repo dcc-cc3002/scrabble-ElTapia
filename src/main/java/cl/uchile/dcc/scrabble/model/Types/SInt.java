@@ -8,7 +8,7 @@ import java.util.Objects;
  * Contains proper methods and operations with other Scrabble types,
  * in particular, some functions to transform from Java ints to binary strings
  */
-public class SInt extends AbstractBaseNumber implements IOpBinary {
+public class SInt extends AbstractBaseNumber{
     private final int Int;
     public SInt(int Int){
         this.Int = Int;
@@ -202,7 +202,7 @@ public class SInt extends AbstractBaseNumber implements IOpBinary {
      */
     @Override
     public SFloat addSFloat(SFloat toAddSFloat) {
-        return new SFloat(this.Int + toAddSFloat.getDouble());
+        return new SFloat(toAddSFloat.getDouble() + this.Int);
     }
 
     /**

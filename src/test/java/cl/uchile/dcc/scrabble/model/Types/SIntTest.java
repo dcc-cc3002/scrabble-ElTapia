@@ -98,13 +98,13 @@ public class SIntTest {
         int expectedAddInt = testInt + toOpInt;
         SInt expectedAddSInt = new SInt(expectedAddInt);
 
-        int expectedMinusInt = testInt - toOpInt;
+        int expectedMinusInt = toOpInt - testInt;
         SInt expectedMinusSInt = new SInt(expectedMinusInt);
 
         int expectedTimesInt = testInt * toOpInt;
         SInt expectedTimesSInt = new SInt(expectedTimesInt);
 
-        int expectedDivideInt = testInt / toOpInt;
+        int expectedDivideInt = toOpInt / testInt;
         SInt expectedDivideSInt = new SInt(expectedDivideInt);
 
         assertEquals(expectedAddSInt, sInt.addSInt(toOpSInt), "SInt don't match. Seed " + seed);
@@ -115,13 +115,13 @@ public class SIntTest {
         int expectedAdd = testInt + toOpInt;
         SInt expectedToAddSInt = new SInt(expectedAdd);
 
-        int expectedMinus = toOpInt - testInt;
+        int expectedMinus = testInt - toOpInt;
         SInt expectedToMinusSInt = new SInt(expectedMinus);
 
         int expectedTimes = testInt * toOpInt;
         SInt expectedToTimesSInt = new SInt(expectedTimes);
 
-        int expectedDivide = toOpInt / testInt;
+        int expectedDivide = testInt / toOpInt;
         SInt expectedToDivideSInt = new SInt(expectedDivide);
 
         assertEquals(expectedToAddSInt, sInt.add(toOpSInt), "SInt don't match. Seed " + seed);
@@ -145,12 +145,12 @@ public class SIntTest {
 
         SInt zeroSInt = new SInt(0);
         assertEquals(new SInt(testInt), sInt.addSInt(zeroSInt), "SInt don't match. Seed " + seed);
-        assertEquals(new SInt(testInt), sInt.minusSInt(zeroSInt), "SInt don't match. Seed " + seed);
+        assertEquals(new SInt(-testInt), sInt.minusSInt(zeroSInt), "SInt don't match. Seed " + seed);
         assertEquals(zeroSInt, sInt.timesSInt(zeroSInt), "SInt don't match. Seed " + seed);
         assertEquals(zeroSInt, zeroSInt.timesSInt(sInt), "SInt don't match. Seed " + seed);
 
         assertEquals(new SInt(testInt), sInt.add(zeroSInt), "SInt don't match. Seed " + seed);
-        assertEquals(new SInt(-testInt), sInt.minus(zeroSInt), "SInt don't match. Seed " + seed);
+        assertEquals(new SInt(testInt), sInt.minus(zeroSInt), "SInt don't match. Seed " + seed);
         assertEquals(zeroSInt, sInt.times(zeroSInt), "SInt don't match. Seed " + seed);
         assertEquals(zeroSInt, zeroSInt.times(sInt), "SInt don't match. Seed " + seed);
     }
@@ -166,13 +166,13 @@ public class SIntTest {
         double expectedAddDouble = testInt + toOpDouble;
         SFloat expectedAddSInt = new SFloat(expectedAddDouble);
 
-        double expectedMinusDouble = testInt - toOpDouble;
+        double expectedMinusDouble = toOpDouble - testInt;
         SFloat expectedMinusSFloat = new SFloat(expectedMinusDouble);
 
         double expectedTimesDouble = testInt * toOpDouble;
         SFloat expectedTimesSFloat = new SFloat(expectedTimesDouble);
 
-        double expectedDivideDouble = testInt / toOpDouble;
+        double expectedDivideDouble = toOpDouble / testInt;
         SFloat expectedDivideSFloat = new SFloat(expectedDivideDouble);
 
         assertEquals(expectedAddSInt, sInt.addSFloat(toOpSFloat), "SFloat don't match. Seed " + seed);
@@ -183,13 +183,13 @@ public class SIntTest {
         double expectedAdd = testInt + toOpDouble;
         SFloat expectedAddFloat = new SFloat(expectedAdd);
 
-        double expectedMinus = toOpDouble - testInt;
+        double expectedMinus = testInt - toOpDouble;
         SFloat expectedMinusFloat = new SFloat(expectedMinus);
 
         double expectedTimes = testInt * toOpDouble;
         SFloat expectedTimesFloat = new SFloat(expectedTimes);
 
-        double expectedDivide = toOpDouble / testInt;
+        double expectedDivide = testInt / toOpDouble;
         SFloat expectedDivideFloat = new SFloat(expectedDivide);
 
         assertEquals(expectedAddFloat, sInt.add(toOpSFloat), "SFloat don't match. Seed " + seed);
@@ -215,11 +215,11 @@ public class SIntTest {
 
         SFloat zeroSFloat = new SFloat(0.0);
         assertEquals(new SFloat(testInt), sInt.addSFloat(zeroSFloat), "SFloat don't match. Seed " + seed);
-        assertEquals(new SFloat(testInt), sInt.minusSFloat(zeroSFloat), "SFloat don't match. Seed " + seed);
+        assertEquals(new SFloat(-testInt), sInt.minusSFloat(zeroSFloat), "SFloat don't match. Seed " + seed);
         assertEquals(zeroSFloat, sInt.timesSFloat(zeroSFloat), "SFloat don't match. Seed " + seed);
 
         assertEquals(new SFloat(testInt), sInt.add(zeroSFloat), "SFloat don't match. Seed " + seed);
-        assertEquals(new SFloat(-testInt), sInt.minus(zeroSFloat), "SFloat don't match. Seed " + seed);
+        assertEquals(new SFloat(testInt), sInt.minus(zeroSFloat), "SFloat don't match. Seed " + seed);
         assertEquals(zeroSFloat, sInt.times(zeroSFloat), "SFloat don't match. Seed " + seed);
     }
     @Test
@@ -254,43 +254,43 @@ public class SIntTest {
         SBinary toOpSBinary = new SBinary(toOpBinary);
 
         SInt expectedAddSInt = new SInt(testInt+19);
-        SInt expectedMinusSInt = new SInt(testInt-19);
+        SInt expectedMinusSInt = new SInt(19-testInt);
         SInt expectedTimesSInt = new SInt(testInt*19);
-        SInt expectedDivideSInt = new SInt(testInt/19);
+        SInt expectedDivideSInt = new SInt(19/testInt);
 
-        assertEquals(expectedAddSInt, sInt.addSBinary(toOpSBinary), "SInt don't match. Seed " + seed);
-        assertEquals(expectedMinusSInt, sInt.minusSBinary(toOpSBinary), "SInt don't match. Seed " + seed);
-        assertEquals(expectedTimesSInt, sInt.timesSBinary(toOpSBinary), "SInt don't match. Seed " + seed);
-        assertEquals(expectedDivideSInt, sInt.divideSBinary(toOpSBinary), "SInt don't match. Seed " + seed);
+        assertEquals(expectedAddSInt.toSBinary(), sInt.addSBinary(toOpSBinary), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedMinusSInt.toSBinary(), sInt.minusSBinary(toOpSBinary), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedTimesSInt.toSBinary(), sInt.timesSBinary(toOpSBinary), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedDivideSInt.toSBinary(), sInt.divideSBinary(toOpSBinary), "SBinary don't match. Seed " + seed);
 
 
         SInt expectedAdd = new SInt(testInt+19);
-        SInt expectedMinus = new SInt(19-testInt);
+        SInt expectedMinus = new SInt(testInt-19);
         SInt expectedTimes = new SInt(testInt*19);
-        SInt expectedDivide = new SInt(19/testInt);
+        SInt expectedDivide = new SInt(testInt/19);
 
-        assertEquals(expectedAdd.toSBinary(), sInt.add(toOpSBinary), "SBinary don't match. Seed " + seed);
-        assertEquals(expectedMinus.toSBinary(), sInt.minus(toOpSBinary), "SBinary don't match. Seed " + seed);
-        assertEquals(expectedTimes.toSBinary(), sInt.times(toOpSBinary), "SBinary don't match. Seed " + seed);
-        assertEquals(expectedDivide.toSBinary(), sInt.divide(toOpSBinary), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedAdd, sInt.add(toOpSBinary), "SInt don't match. Seed " + seed);
+        assertEquals(expectedMinus, sInt.minus(toOpSBinary), "SInt don't match. Seed " + seed);
+        assertEquals(expectedTimes, sInt.times(toOpSBinary), "SInt don't match. Seed " + seed);
+        assertEquals(expectedDivide, sInt.divide(toOpSBinary), "SInt don't match. Seed " + seed);
 
 
         SBinary zeroSBinary = new SBinary("0");
 
-        assertEquals(new SInt(testInt), sInt.addSBinary(zeroSBinary), "SInt don't match. Seed " + seed);
-        assertEquals(new SInt(testInt), sInt.minusSBinary(zeroSBinary), "SInt don't match. Seed " + seed);
-        assertEquals(new SInt(0), sInt.timesSBinary(zeroSBinary), "SInt don't match. Seed " + seed);
+        assertEquals(sInt.toSBinary(), sInt.addSBinary(zeroSBinary), "SBinary don't match. Seed " + seed);
+        assertEquals(sInt.toSBinary().negate().addOne(), sInt.minusSBinary(zeroSBinary), "SBinary don't match. Seed " + seed);
+        assertEquals(zeroSBinary, sInt.timesSBinary(zeroSBinary), "SBinary don't match. Seed " + seed);
 
-        assertEquals(sInt.toSBinary(), sInt.add(zeroSBinary), "SBinary don't match. Seed " + seed);
-        assertEquals(sInt.toSBinary().negate().addOne(), sInt.minus(zeroSBinary), "SBinary don't match. Seed " + seed);
-        assertEquals(new SBinary("0"), sInt.times(zeroSBinary), "SBinary don't match. Seed " + seed);
+        assertEquals(sInt, sInt.add(zeroSBinary), "SInt don't match. Seed " + seed);
+        assertEquals(sInt, sInt.minus(zeroSBinary), "SInt don't match. Seed " + seed);
+        assertEquals(new SInt(0), sInt.times(zeroSBinary), "SInt don't match. Seed " + seed);
 
         SBinary minusOneSBinary = new SBinary("1");
-        assertEquals(new SInt(-testInt), sInt.timesSBinary(minusOneSBinary), "SInt don't match. Seed " + seed);
-        assertEquals(new SInt(-testInt), sInt.divideSBinary(minusOneSBinary), "SInt don't match. Seed " + seed);
+        assertEquals(sInt.toSBinary().negate().addOne(), sInt.timesSBinary(minusOneSBinary), "SBinary don't match. Seed " + seed);
+        assertEquals(new SBinary("0"), sInt.divideSBinary(minusOneSBinary), "SBinary don't match. Seed " + seed);
 
-        assertEquals(sInt.toSBinary().negate().addOne(), sInt.times(minusOneSBinary), "SBinary don't match. Seed " + seed);
-        assertEquals(new SBinary("0"), sInt.divide(minusOneSBinary), "SBinary don't match. Seed " + seed);
+        assertEquals(new SInt(-testInt), sInt.times(minusOneSBinary), "SInt don't match. Seed " + seed);
+        assertEquals(new SInt(-testInt), sInt.divide(minusOneSBinary), "SInt don't match. Seed " + seed);
 
         String otherToOpBinaryString = "0110010";//50
         SBinary otherToOpSBinary = new SBinary(otherToOpBinaryString);
@@ -300,20 +300,20 @@ public class SIntTest {
         SInt expectedOtherTimesSInt = new SInt(testInt*50);
         SInt expectedOtherDivideSInt = new SInt(testInt/50);
 
-        assertEquals(expectedOtherAddSInt, sInt.addSBinary(otherToOpSBinary), "SInt don't match. Seed " + seed);
-        assertEquals(expectedOtherMinusSInt, sInt.minusSBinary(otherToOpSBinary), "SInt don't match. Seed " + seed);
-        assertEquals(expectedOtherTimesSInt, sInt.timesSBinary(otherToOpSBinary), "SInt don't match. Seed " + seed);
-        assertEquals(expectedOtherDivideSInt, sInt.divideSBinary(otherToOpSBinary), "SInt don't match. Seed " + seed);
+        assertEquals(expectedOtherAddSInt, sInt.add(otherToOpSBinary), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedOtherMinusSInt, sInt.minus(otherToOpSBinary), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedOtherTimesSInt, sInt.times(otherToOpSBinary), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedOtherDivideSInt, sInt.divide(otherToOpSBinary), "SBinary don't match. Seed " + seed);
 
         SInt expectedOtherAdd = new SInt(testInt+50);
         SInt expectedOtherMinus = new SInt(50-testInt);
         SInt expectedOtherTimes = new SInt(testInt*50);
         SInt expectedOtherDivide = new SInt(50/testInt);
 
-        assertEquals(expectedOtherAdd.toSBinary(), sInt.add(otherToOpSBinary), "SBinary don't match. Seed " + seed);
-        assertEquals(expectedOtherMinus.toSBinary(), sInt.minus(otherToOpSBinary), "SBinary don't match. Seed " + seed);
-        assertEquals(expectedOtherTimes.toSBinary(), sInt.times(otherToOpSBinary), "SBinary don't match. Seed " + seed);
-        assertEquals(expectedOtherDivide.toSBinary(), sInt.divide(otherToOpSBinary), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedOtherAdd.toSBinary(), sInt.addSBinary(otherToOpSBinary), "SInt don't match. Seed " + seed);
+        assertEquals(expectedOtherMinus.toSBinary(), sInt.minusSBinary(otherToOpSBinary), "SInt don't match. Seed " + seed);
+        assertEquals(expectedOtherTimes.toSBinary(), sInt.timesSBinary(otherToOpSBinary), "SInt don't match. Seed " + seed);
+        assertEquals(expectedOtherDivide.toSBinary(), sInt.divideSBinary(otherToOpSBinary), "SInt don't match. Seed " + seed);
 
         String otherMinusBinary = "10010";//-14
         SBinary otherMinusSBinary = new SBinary(otherMinusBinary);
@@ -323,20 +323,20 @@ public class SIntTest {
         SInt expectedMinusTimesSInt = new SInt(testInt*-14);
         SInt expectedMinusDivideSInt = new SInt(testInt/-14);
 
-        assertEquals(expectedMinusAddSInt, sInt.addSBinary(otherMinusSBinary), "SInt don't match. Seed " + seed);
-        assertEquals(expectedMinusMinusSInt, sInt.minusSBinary(otherMinusSBinary), "SInt don't match. Seed " + seed);
-        assertEquals(expectedMinusTimesSInt, sInt.timesSBinary(otherMinusSBinary), "SInt don't match. Seed " + seed);
-        assertEquals(expectedMinusDivideSInt, sInt.divideSBinary(otherMinusSBinary), "SInt don't match. Seed " + seed);
+        assertEquals(expectedMinusAddSInt, sInt.add(otherMinusSBinary), "SInt don't match. Seed " + seed);
+        assertEquals(expectedMinusMinusSInt, sInt.minus(otherMinusSBinary), "SInt don't match. Seed " + seed);
+        assertEquals(expectedMinusTimesSInt, sInt.times(otherMinusSBinary), "SInt don't match. Seed " + seed);
+        assertEquals(expectedMinusDivideSInt, sInt.divide(otherMinusSBinary), "SInt don't match. Seed " + seed);
 
         SInt expectedMinusAdd = new SInt(-14+testInt);
         SInt expectedMinusMinus = new SInt(-14-testInt);
         SInt expectedMinusTimes = new SInt(testInt*-14);
         SInt expectedMinusDivide = new SInt(-14/testInt);
 
-        assertEquals(expectedMinusAdd.toSBinary(), sInt.add(otherMinusSBinary), "SBinary don't match. Seed " + seed);
-        assertEquals(expectedMinusMinus.toSBinary(), sInt.minus(otherMinusSBinary), "SBinary don't match. Seed " + seed);
-        assertEquals(expectedMinusTimes.toSBinary(), sInt.times(otherMinusSBinary), "SBinary don't match. Seed " + seed);
-        assertEquals(expectedMinusDivide.toSBinary(), sInt.divide(otherMinusSBinary), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedMinusAdd.toSBinary(), sInt.addSBinary(otherMinusSBinary), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedMinusMinus.toSBinary(), sInt.minusSBinary(otherMinusSBinary), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedMinusTimes.toSBinary(), sInt.timesSBinary(otherMinusSBinary), "SBinary don't match. Seed " + seed);
+        assertEquals(expectedMinusDivide.toSBinary(), sInt.divideSBinary(otherMinusSBinary), "SBinary don't match. Seed " + seed);
     }
 
     @RepeatedTest(50)
@@ -350,7 +350,7 @@ public class SIntTest {
 
         int toAddInt = rng.nextInt();
         SInt toAddSInt = new SInt(toAddInt);
-        String expectedString = toAddInt + testString;
+        String expectedString = testString + toAddInt;
         SString expectedSString = new SString(expectedString);
 
         assertEquals(expectedSString, toAddSInt.addToSString(sString), "SString don't match. Seed " + seed);

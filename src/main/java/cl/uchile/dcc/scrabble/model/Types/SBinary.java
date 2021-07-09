@@ -9,7 +9,7 @@ import cl.uchile.dcc.scrabble.model.Interfaces.SNumber;
  * Scrabble binary type
  * Contains operation methods with other types and proper methods
  */
-public class SBinary extends AbstractBaseNumber implements ILogic, IOpBinary {
+public class SBinary extends AbstractBaseNumber implements ILogic{
     private final String binary;
 
     /**
@@ -320,7 +320,7 @@ public class SBinary extends AbstractBaseNumber implements ILogic, IOpBinary {
     public SBinary addSBinary(SBinary toAddSBinary) {
         SInt thisSInt = this.toSInt();
         SInt toAddSIntBinary = toAddSBinary.toSInt();
-        SInt resultSInt = toAddSIntBinary.addSInt(thisSInt);
+        SInt resultSInt = thisSInt.addSInt(toAddSIntBinary);
         return resultSInt.toSBinary();
     }
 
@@ -333,7 +333,7 @@ public class SBinary extends AbstractBaseNumber implements ILogic, IOpBinary {
     public SBinary minusSBinary(SBinary toMinusSBinary) {
         SInt sIntThis = this.toSInt();
         SInt toMinusSIntBinary = toMinusSBinary.toSInt();
-        SInt resultSInt = toMinusSIntBinary.minusSInt(sIntThis);
+        SInt resultSInt = sIntThis.minusSInt(toMinusSIntBinary);
         return resultSInt.toSBinary();
     }
 
@@ -346,7 +346,7 @@ public class SBinary extends AbstractBaseNumber implements ILogic, IOpBinary {
     public SBinary timesSBinary(SBinary toTimesSBinary) {
         SInt sIntThis = this.toSInt();
         SInt toTimesSIntBinary = toTimesSBinary.toSInt();
-        SInt resultSInt = toTimesSIntBinary.timesSInt(sIntThis);
+        SInt resultSInt = sIntThis.timesSInt(toTimesSIntBinary);
         return resultSInt.toSBinary();
     }
 
@@ -359,7 +359,7 @@ public class SBinary extends AbstractBaseNumber implements ILogic, IOpBinary {
     public SBinary divideSBinary(SBinary toDivideSBinary) {
         SInt sIntThis = this.toSInt();
         SInt toDivideSIntBinary = toDivideSBinary.toSInt();
-        SInt resultSInt = toDivideSIntBinary.divideSInt(sIntThis);
+        SInt resultSInt = sIntThis.divideSInt(toDivideSIntBinary);
         return resultSInt.toSBinary();
     }
 

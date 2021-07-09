@@ -68,7 +68,7 @@ public class SStringTest {
                 true, true, null, rng);
         SString toAddSString = new SString(toAddString);
 
-        String expectedString = testString + toAddString;
+        String expectedString = toAddString + testString;
         SString expectedSString = new SString(expectedString);
 
         assertEquals(expectedSString, sString.addToSString(toAddSString), "SString don't match. Seed " + seed);
@@ -85,7 +85,7 @@ public class SStringTest {
                     Character.MAX_CODE_POINT, true, true, null, rng);
         } while (differentToAddString.equals(testString));
 
-        SString differentSString = new SString(differentString + differentToAddString);
+        SString differentSString = new SString(differentToAddString + differentString);
 
         assertNotEquals(differentSString, sString.addToSString(toAddSString), "SString match. Seed " + seed);
     }
@@ -104,7 +104,7 @@ public class SStringTest {
             2, false, true, binaryList, rng);
         SBinary toAddSBinary = new SBinary(toAddStringBinary);
 
-        String expectedString = toAddStringBinary + testString;
+        String expectedString =  testString + toAddStringBinary;
         SString expectedSString = new SString(expectedString);
 
         assertEquals(expectedSString, sString.add(toAddSBinary), "SString don't match. Seed " + seed);
@@ -136,7 +136,7 @@ public class SStringTest {
 
         int toAddInt = rng.nextInt();
         SInt toAddSInt = new SInt(toAddInt);
-        String expectedString = toAddInt + testString;
+        String expectedString =  testString + toAddInt;
         SString expectedSString = new SString(expectedString);
 
         assertEquals(expectedSString, sString.add(toAddSInt), "SString don't match. Seed " + seed);
@@ -167,7 +167,7 @@ public class SStringTest {
         double toAddDouble = rng.nextDouble();
         SFloat toAddSFloat = new SFloat(toAddDouble);
 
-        String expectedString = toAddDouble + testString;
+        String expectedString = testString + toAddDouble;
         SString expectedSString = new SString(expectedString);
 
         assertEquals(expectedSString, sString.add(toAddSFloat), "SString don't match. Seed " + seed);

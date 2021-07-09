@@ -84,13 +84,13 @@ public class SFloatTest {
         double expectedAddDouble = testDouble + toOpInt;
         SFloat expectedAddSFloat = new SFloat(expectedAddDouble);
 
-        double expectedMinusDouble = testDouble - toOpInt;
+        double expectedMinusDouble = toOpInt - testDouble;
         SFloat expectedMinusSFloat = new SFloat(expectedMinusDouble);
 
         double expectedTimesDouble = testDouble * toOpInt;
         SFloat expectedTimesSFloat = new SFloat(expectedTimesDouble);
 
-        double expectedDivideDouble = testDouble / toOpInt;
+        double expectedDivideDouble = toOpInt / testDouble;
         SFloat expectedDivideSFloat = new SFloat(expectedDivideDouble);
 
         assertEquals(expectedAddSFloat, sFloat.addSInt(toOpSInt), "SFloat don't match. Seed " + seed);
@@ -101,13 +101,13 @@ public class SFloatTest {
         double expectedAdd = testDouble + toOpInt;
         SFloat expectedAddFloat = new SFloat(expectedAdd);
 
-        double expectedMinus = toOpInt - testDouble;
+        double expectedMinus = testDouble - toOpInt;
         SFloat expectedMinusFloat = new SFloat(expectedMinus);
 
         double expectedTimes = testDouble * toOpInt;
         SFloat expectedTimesFloat = new SFloat(expectedTimes);
 
-        double expectedDivide = toOpInt / testDouble;
+        double expectedDivide = testDouble / toOpInt;
         SFloat expectedDivideFloat = new SFloat(expectedDivide);
 
         assertEquals(expectedAddFloat, sFloat.add(toOpSInt), "SFloat don't match. Seed " + seed);
@@ -134,11 +134,11 @@ public class SFloatTest {
 
         SInt zeroSInt = new SInt(0);
         assertEquals(new SFloat(testDouble), sFloat.addSInt(zeroSInt), "SFloat don't match. Seed " + seed);
-        assertEquals(new SFloat(testDouble), sFloat.minusSInt(zeroSInt), "SFloat don't match. Seed " + seed);
+        assertEquals(new SFloat(-testDouble), sFloat.minusSInt(zeroSInt), "SFloat don't match. Seed " + seed);
         assertEquals(new SFloat(0), sFloat.timesSInt(zeroSInt), "SFloat don't match. Seed " + seed);
 
         assertEquals(new SFloat(testDouble), sFloat.add(zeroSInt), "SFloat don't match. Seed " + seed);
-        assertEquals(new SFloat(-testDouble), sFloat.minus(zeroSInt), "SFloat don't match. Seed " + seed);
+        assertEquals(new SFloat(testDouble), sFloat.minus(zeroSInt), "SFloat don't match. Seed " + seed);
         assertEquals(new SFloat(0), sFloat.times(zeroSInt), "SFloat don't match. Seed " + seed);
     }
 
@@ -154,13 +154,13 @@ public class SFloatTest {
         double expectedAddDouble = testDouble + toOpDouble;
         SFloat expectedAddSFloat = new SFloat(expectedAddDouble);
 
-        double expectedMinusDouble = testDouble - toOpDouble;
+        double expectedMinusDouble = toOpDouble - testDouble;
         SFloat expectedMinusSFloat = new SFloat(expectedMinusDouble);
 
         double expectedTimesDouble = testDouble * toOpDouble;
         SFloat expectedTimesSFloat = new SFloat(expectedTimesDouble);
 
-        double expectedDivideDouble = testDouble / toOpDouble;
+        double expectedDivideDouble = toOpDouble / testDouble;
         SFloat expectedDivideSFloat = new SFloat(expectedDivideDouble);
 
         assertEquals(expectedAddSFloat, sFloat.addSFloat(toOpSFloat), "SFloat don't match. Seed " + seed);
@@ -171,13 +171,13 @@ public class SFloatTest {
         double expectedAdd = testDouble + toOpDouble;
         SFloat expectedAddFloat = new SFloat(expectedAdd);
 
-        double expectedMinus = toOpDouble - testDouble;
+        double expectedMinus = testDouble - toOpDouble;
         SFloat expectedMinusFloat = new SFloat(expectedMinus);
 
         double expectedTimes = testDouble * toOpDouble;
         SFloat expectedTimesFloat = new SFloat(expectedTimes);
 
-        double expectedDivide = toOpDouble / testDouble;
+        double expectedDivide = testDouble / toOpDouble;
         SFloat expectedDivideFloat = new SFloat(expectedDivide);
 
         assertEquals(expectedAddFloat, sFloat.add(toOpSFloat), "SFloat don't match. Seed " + seed);
@@ -203,12 +203,12 @@ public class SFloatTest {
 
         SFloat zeroSFloat = new SFloat(0.0);
         assertEquals(new SFloat(testDouble), sFloat.addSFloat(zeroSFloat), "SFloat don't match. Seed " + seed);
-        assertEquals(new SFloat(testDouble), sFloat.minusSFloat(zeroSFloat), "SFloat don't match. Seed " + seed);
+        assertEquals(new SFloat(-testDouble), sFloat.minusSFloat(zeroSFloat), "SFloat don't match. Seed " + seed);
         assertEquals(zeroSFloat, sFloat.timesSFloat(zeroSFloat), "SFloat don't match. Seed " + seed);
         assertEquals(zeroSFloat, zeroSFloat.timesSFloat(sFloat), "SFloat don't match. Seed " + seed);
 
         assertEquals(new SFloat(testDouble), sFloat.add(zeroSFloat), "SFloat don't match. Seed " + seed);
-        assertEquals(new SFloat(-testDouble), sFloat.minus(zeroSFloat), "SFloat don't match. Seed " + seed);
+        assertEquals(new SFloat(testDouble), sFloat.minus(zeroSFloat), "SFloat don't match. Seed " + seed);
         assertEquals(zeroSFloat, sFloat.times(zeroSFloat), "SFloat don't match. Seed " + seed);
         assertEquals(zeroSFloat, zeroSFloat.times(sFloat), "SFloat don't match. Seed " + seed);
     }
@@ -218,25 +218,25 @@ public class SFloatTest {
         String toOpBinary = "010011"; //19
         SBinary toOpSBinary = new SBinary(toOpBinary);
 
-        SFloat expectedAddSFloat = new SFloat(testDouble+19);
+        SFloat expectedAddSFloat = new SFloat(19+testDouble);
         SFloat expectedMinusSFloat = new SFloat(testDouble-19);
         SFloat expectedTimesSFloat = new SFloat(testDouble*19);
         SFloat expectedDivideSFloat = new SFloat(testDouble/19);
 
-        assertEquals(expectedAddSFloat, sFloat.addSBinary(toOpSBinary), "SFloat don't match. Seed " + seed);
-        assertEquals(expectedMinusSFloat, sFloat.minusSBinary(toOpSBinary), "SFloat don't match. Seed " + seed);
-        assertEquals(expectedTimesSFloat, sFloat.timesSBinary(toOpSBinary), "SFloat don't match. Seed " + seed);
-        assertEquals(expectedDivideSFloat, sFloat.divideSBinary(toOpSBinary), "SFloat don't match. Seed " + seed);
+        assertEquals(expectedAddSFloat, sFloat.add(toOpSBinary), "SFloat don't match. Seed " + seed);
+        assertEquals(expectedMinusSFloat, sFloat.minus(toOpSBinary), "SFloat don't match. Seed " + seed);
+        assertEquals(expectedTimesSFloat, sFloat.times(toOpSBinary), "SFloat don't match. Seed " + seed);
+        assertEquals(expectedDivideSFloat, sFloat.divide(toOpSBinary), "SFloat don't match. Seed " + seed);
 
         SBinary zeroSBinary = new SBinary("0");
 
-        assertEquals(new SFloat(testDouble), sFloat.addSBinary(zeroSBinary), "SFloat don't match. Seed " + seed);
-        assertEquals(new SFloat(testDouble), sFloat.minusSBinary(zeroSBinary), "SFloat don't match. Seed " + seed);
-        assertEquals(new SFloat(0), sFloat.timesSBinary(zeroSBinary), "SFloat don't match. Seed " + seed);
+        assertEquals(new SFloat(testDouble), sFloat.add(zeroSBinary), "SFloat don't match. Seed " + seed);
+        assertEquals(new SFloat(testDouble), sFloat.minus(zeroSBinary), "SFloat don't match. Seed " + seed);
+        assertEquals(new SFloat(0), sFloat.times(zeroSBinary), "SFloat don't match. Seed " + seed);
 
         SBinary minusOneSBinary = new SBinary("1");
-        assertEquals(new SFloat(-testDouble), sFloat.timesSBinary(minusOneSBinary), "SFloat don't match. Seed " + seed);
-        assertEquals(new SFloat(-testDouble), sFloat.divideSBinary(minusOneSBinary), "SFloat don't match. Seed " + seed);
+        assertEquals(new SFloat(-testDouble), sFloat.times(minusOneSBinary), "SFloat don't match. Seed " + seed);
+        assertEquals(new SFloat(-testDouble), sFloat.divide(minusOneSBinary), "SFloat don't match. Seed " + seed);
 
         String otherToOpBinaryString = "01101100101110101010000";//3562832
         SBinary otherToOpSBinary = new SBinary(otherToOpBinaryString);
@@ -246,10 +246,10 @@ public class SFloatTest {
         SFloat expectedOtherTimesSFloat = new SFloat(testDouble*3562832);
         SFloat expectedOtherDivideSFloat = new SFloat(testDouble/3562832);
 
-        assertEquals(expectedOtherAddSFloat, sFloat.addSBinary(otherToOpSBinary), "SFloat don't match. Seed " + seed);
-        assertEquals(expectedOtherMinusSFloat, sFloat.minusSBinary(otherToOpSBinary), "SFloat don't match. Seed " + seed);
-        assertEquals(expectedOtherTimesSFloat, sFloat.timesSBinary(otherToOpSBinary), "SFloat don't match. Seed " + seed);
-        assertEquals(expectedOtherDivideSFloat, sFloat.divideSBinary(otherToOpSBinary), "SFloat don't match. Seed " + seed);
+        assertEquals(expectedOtherAddSFloat, sFloat.add(otherToOpSBinary), "SFloat don't match. Seed " + seed);
+        assertEquals(expectedOtherMinusSFloat, sFloat.minus(otherToOpSBinary), "SFloat don't match. Seed " + seed);
+        assertEquals(expectedOtherTimesSFloat, sFloat.times(otherToOpSBinary), "SFloat don't match. Seed " + seed);
+        assertEquals(expectedOtherDivideSFloat, sFloat.divide(otherToOpSBinary), "SFloat don't match. Seed " + seed);
 
         String minusToOpBinaryString = "11101100101110101010000";//-631472
         SBinary minusToOpSBinary = new SBinary(minusToOpBinaryString);
@@ -259,10 +259,10 @@ public class SFloatTest {
         SFloat expectedMinusTimesSFloat = new SFloat(testDouble*-631472);
         SFloat expectedMinusDivideSFloat = new SFloat(testDouble/-631472);
 
-        assertEquals(expectedMinusAddSFloat, sFloat.addSBinary(minusToOpSBinary), "SFloat don't match. Seed " + seed);
-        assertEquals(expectedMinusMinusSFloat, sFloat.minusSBinary(minusToOpSBinary), "SFloat don't match. Seed " + seed);
-        assertEquals(expectedMinusTimesSFloat, sFloat.timesSBinary(minusToOpSBinary), "SFloat don't match. Seed " + seed);
-        assertEquals(expectedMinusDivideSFloat, sFloat.divideSBinary(minusToOpSBinary), "SFloat don't match. Seed " + seed);
+        assertEquals(expectedMinusAddSFloat, sFloat.add(minusToOpSBinary), "SFloat don't match. Seed " + seed);
+        assertEquals(expectedMinusMinusSFloat, sFloat.minus(minusToOpSBinary), "SFloat don't match. Seed " + seed);
+        assertEquals(expectedMinusTimesSFloat, sFloat.times(minusToOpSBinary), "SFloat don't match. Seed " + seed);
+        assertEquals(expectedMinusDivideSFloat, sFloat.divide(minusToOpSBinary), "SFloat don't match. Seed " + seed);
     }
 
     @RepeatedTest(50)
@@ -277,7 +277,7 @@ public class SFloatTest {
         double toAddDouble = rng.nextDouble();
         SFloat toAddSFloat = new SFloat(toAddDouble);
 
-        String expectedString = toAddDouble + testString;
+        String expectedString = testString + toAddDouble;
         SString expectedSString = new SString(expectedString);
 
         assertEquals(expectedSString, toAddSFloat.addToSString(sString), "SString don't match. Seed " + seed);
