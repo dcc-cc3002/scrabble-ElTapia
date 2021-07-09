@@ -113,7 +113,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant addConsFloat(Constant constant){
+  default Constant addConsFloat(ConsFloat constant){
     return null;
   }
 
@@ -158,7 +158,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant subConsFloat(Constant constant){
+  default Constant subConsFloat(ConsFloat constant){
     return null;
   }
 
@@ -203,7 +203,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant timesConsFloat(Constant constant){
+  default Constant timesConsFloat(ConsFloat constant){
     return null;
   }
 
@@ -248,7 +248,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant divideConsFloat(Constant constant){
+  default Constant divideConsFloat(ConsFloat constant){
     return null;
   }
 
