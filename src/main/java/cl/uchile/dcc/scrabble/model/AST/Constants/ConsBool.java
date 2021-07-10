@@ -20,6 +20,14 @@ public class ConsBool extends AbstractConstant{
   }
 
   /**
+   * Constructor
+   * @param sBool SBool
+   */
+  public ConsBool(SBool sBool){
+    consBool = sBool;
+  }
+
+  /**
    * Get SType that the constant encapsulate
    *
    * @return AbstractType
@@ -59,7 +67,7 @@ public class ConsBool extends AbstractConstant{
    */
   @Override
   public Constant negateConstant() {
-    return new ConsBool(this.consBool.negate().getBool());
+    return new ConsBool(this.consBool.negate());
   }
 
   /**
@@ -91,7 +99,7 @@ public class ConsBool extends AbstractConstant{
   @Override
   public Constant addConsStr(ConsString constant) {
     SString result = this.consBool.addToSString(constant.getSType());
-    return new ConsString(result.toString());
+    return new ConsString(result);
   }
 
   /**
@@ -103,7 +111,7 @@ public class ConsBool extends AbstractConstant{
   @Override
   public Constant orConsBinary(ConsBinary constant) {
     SBinary result = this.consBool.orSBinary(constant.getSType());
-    return new ConsBinary(result.toString());
+    return new ConsBinary(result);
   }
 
   /**
@@ -115,7 +123,7 @@ public class ConsBool extends AbstractConstant{
   @Override
   public Constant orConsBool(ConsBool constant) {
     SBool result = this.consBool.orSBool(constant.getSType());
-    return new ConsBool(result.getBool());
+    return new ConsBool(result);
   }
 
   /**
@@ -127,7 +135,7 @@ public class ConsBool extends AbstractConstant{
   @Override
   public Constant andConsBinary(ConsBinary constant) {
     SBinary result = this.consBool.andSBinary(constant.getSType());
-    return new ConsBinary(result.toString());
+    return new ConsBinary(result);
   }
 
   /**
@@ -139,7 +147,7 @@ public class ConsBool extends AbstractConstant{
   @Override
   public Constant andConsBool(ConsBool constant) {
     SBool result = this.consBool.andSBool(constant.getSType());
-    return new ConsBool(result.getBool());
+    return new ConsBool(result);
   }
 
   /**
@@ -150,7 +158,7 @@ public class ConsBool extends AbstractConstant{
   @Override
   public Constant toConstantStr() {
     SString result = this.consBool.toSString();
-    return new ConsString(result.toString());
+    return new ConsString(result);
   }
 
   /**
@@ -161,7 +169,7 @@ public class ConsBool extends AbstractConstant{
   @Override
   public Constant toConstantBool() {
     SBool result = this.consBool.toSBool();
-    return new ConsBool(result.getBool());
+    return new ConsBool(result);
   }
 
   /**

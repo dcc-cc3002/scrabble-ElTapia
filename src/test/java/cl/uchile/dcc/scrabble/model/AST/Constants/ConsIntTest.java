@@ -26,10 +26,13 @@ class ConsIntTest {
   @RepeatedTest(50)
   void constructorTest() {
     ConsInt expectedConsInt = new ConsInt(testInt);
+    SInt expectedSInt = new SInt(testInt);
+    ConsInt expectedConsSInt = new ConsInt(expectedSInt);
 
     assertEquals(expectedConsInt, consInt, "ConsInt don't match. Seed " + seed);
+    assertEquals(expectedConsSInt, consInt, "ConsInt don't match. Seed " + seed);
     assertEquals(expectedConsInt.hashCode(), consInt.hashCode(), "Hashcode don't match. Seed " + seed);
-    assertEquals(new SInt(testInt), consInt.getSType(), "SInt don't match. Seed " + seed);
+    assertEquals(expectedSInt, consInt.getSType(), "SInt don't match. Seed " + seed);
     assertNotEquals(consInt, testInt, "Objects match. Seed " + seed);
 
     int differentInt;
@@ -38,7 +41,11 @@ class ConsIntTest {
     } while (differentInt == testInt);
 
     ConsInt differentConsInt = new ConsInt(differentInt);
-    assertNotEquals(new SInt(differentInt), consInt.getSType(), "SInt match. Seed " + seed);
+    SInt differentSInt = new SInt(differentInt);
+    ConsInt differentConsSInt = new ConsInt(differentSInt);
+
+    assertNotEquals(differentSInt, consInt.getSType(), "SInt match. Seed " + seed);
+    assertNotEquals(differentConsSInt, consInt, "ConsInt match. Seed " + seed);
     assertNotEquals(differentConsInt, consInt, "ConsInt match. Seed " + seed);
 
     assertEquals(String.valueOf(testInt), consInt.toString(), "String don't match. Seed " + seed);

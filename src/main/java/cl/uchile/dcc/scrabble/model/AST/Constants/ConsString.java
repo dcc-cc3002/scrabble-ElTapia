@@ -13,11 +13,19 @@ public class ConsString extends AbstractConstant {
   private final SString consString;
 
   /**
-   * Constructor
+   * Constructor with native java
    * @param string String
    */
   public ConsString(String string){
     consString = new SString(string);
+  }
+
+  /**
+   * Constructor with SType
+   * @param sString String
+   */
+  public ConsString(SString sString){
+    consString = sString;
   }
 
   /**
@@ -71,7 +79,7 @@ public class ConsString extends AbstractConstant {
   @Override
   public Constant addConsStr(ConsString constant) {
     SString result = this.consString.addToSString(constant.getSType());
-    return new ConsString(result.toString());
+    return new ConsString(result);
   }
 
   /**
@@ -82,7 +90,7 @@ public class ConsString extends AbstractConstant {
   @Override
   public Constant toConstantStr() {
     SString result = this.consString.toSString();
-    return new ConsString(result.toString());
+    return new ConsString(result);
   }
 
   /**

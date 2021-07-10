@@ -34,8 +34,10 @@ class ConsBinaryTest {
   void constructorTest() {
     ConsBinary expectedConsBinary = new ConsBinary(testBinary);
     SBinary expectedSBinary = new SBinary(testBinary);
+    ConsBinary expectedConsSBinary = new ConsBinary(expectedSBinary);
 
     assertEquals(expectedConsBinary, consBinary, "ConsBinary don't match. Seed " + seed);
+    assertEquals(expectedConsSBinary, consBinary, "ConsBinary don't match. Seed " + seed);
     assertNotEquals(consBinary, testBinary, "Objects match. Seed " + seed);
 
     assertEquals(expectedConsBinary.hashCode(), consBinary.hashCode(),
@@ -50,7 +52,10 @@ class ConsBinaryTest {
 
     ConsBinary differentConsBinary = new ConsBinary(differentBinary);
     SBinary differentSBinary = new SBinary(differentBinary);
+    ConsBinary differentConsSBinary = new ConsBinary(differentSBinary);
+
     assertNotEquals(differentConsBinary, consBinary, "ConsBinary match. Seed " + seed);
+    assertNotEquals(differentConsSBinary, consBinary, "ConsBinary match. Seed " + seed);
     assertNotEquals(differentSBinary, consBinary.getSType());
 
     assertEquals(testBinary, consBinary.toString(), "String don't match. Seed " + seed);

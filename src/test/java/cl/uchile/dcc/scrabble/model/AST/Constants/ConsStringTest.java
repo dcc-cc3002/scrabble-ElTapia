@@ -29,8 +29,10 @@ class ConsStringTest {
   void constructorTest(){
     ConsString expectedConsString = new ConsString(testString);
     SString expectedSString = new SString(testString);
+    ConsString expectedConsSString = new ConsString(expectedSString);
 
     assertEquals(expectedConsString, consString, "ConsString don't match. Seed " + seed);
+    assertEquals(expectedConsSString, consString, "ConsString don't match. Seed " + seed);
     assertEquals(expectedConsString.hashCode(), consString.hashCode(), "Hashcode don't match. Seed " + seed);
     assertEquals(expectedSString, consString.getSType());
     assertEquals(consString, consString.eval());
@@ -46,7 +48,10 @@ class ConsStringTest {
 
     ConsString differentConsString = new ConsString(differentString);
     SString differentSString = new SString(differentString);
+    ConsString differentConsSString = new ConsString(differentSString);
+
     assertNotEquals(differentConsString, consString, "ConsString match. Seed " + seed);
+    assertNotEquals(differentConsSString, consString, "ConsString match. Seed " + seed);
     assertNotEquals(differentSString, consString.getSType());
     assertNotEquals(differentConsString, consString.eval());
 

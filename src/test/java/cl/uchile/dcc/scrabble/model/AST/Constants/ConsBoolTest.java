@@ -31,25 +31,37 @@ class ConsBoolTest {
     var expectedConsBool = new ConsBool(boolTest);
     var negateExpectedConsBool = new ConsBool(!boolTest);
 
+    SBool expectedSBool = new SBool(boolTest);
+    SBool negateExpectedSBool = new SBool(!boolTest);
+
+    ConsBool expectedConsSBool = new ConsBool(expectedSBool);
+    ConsBool negateExpectedConsSBool = new ConsBool(negateExpectedSBool);
+
     assertEquals(expectedConsBool, consBool, "ConsBool don't match. Seed " + seed);
     assertEquals(negateExpectedConsBool, negateTestConsBool, "ConsBool don't match. Seed " + seed);
     assertEquals(consBool, consBool.eval(), "ConsBool don't match. Seed " + seed);
     assertEquals(negateTestConsBool, negateTestConsBool.eval(), "ConsBool don't match. Seed " + seed);
+
+    assertEquals(expectedConsSBool, consBool, "ConsBool don't match. Seed " + seed);
+    assertEquals(negateExpectedConsSBool, negateTestConsBool, "ConsBool don't match. Seed " + seed);
+
     assertNotEquals(consBool, boolTest, "Objects match. Seed " + seed);
     assertNotEquals(negateTestConsBool, !boolTest, "Objects match. Seed " + seed);
 
     assertEquals(expectedConsBool.hashCode(), consBool.hashCode(), "Hashcode don't match. Seed " + seed);
     assertEquals(negateExpectedConsBool.hashCode(), negateTestConsBool.hashCode(), "Hashcode don't match. Seed " + seed);
 
-    assertEquals(new SBool(!boolTest), negateTestConsBool.getSType(), "SBool don't match. Seed " + seed);
-    assertEquals(new SBool(boolTest), consBool.getSType(), "SBool don't match. Seed " + seed);
+    assertEquals(negateExpectedSBool, negateTestConsBool.getSType(), "SBool don't match. Seed " + seed);
+    assertEquals(expectedSBool, consBool.getSType(), "SBool don't match. Seed " + seed);
 
     assertNotEquals(expectedConsBool, negateTestConsBool, "ConsBool match. Seed " + seed);
     assertNotEquals(negateExpectedConsBool, consBool, "ConsBool match. Seed " + seed);
+    assertNotEquals(expectedConsSBool, negateTestConsBool, "ConsBool match. Seed " + seed);
+    assertNotEquals(negateExpectedConsSBool, consBool, "ConsBool match. Seed " + seed);
     assertNotEquals(expectedConsBool, negateTestConsBool.eval(), "ConsBool match. Seed " + seed);
     assertNotEquals(negateExpectedConsBool, consBool.eval(), "ConsBool match. Seed " + seed);
-    assertNotEquals(new SBool(!boolTest), consBool.getSType(), "ConsBool match. Seed " + seed);
-    assertNotEquals(new SBool(boolTest), negateTestConsBool.getSType(), "SBool match. Seed " + seed);
+    assertNotEquals(negateExpectedSBool, consBool.getSType(), "ConsBool match. Seed " + seed);
+    assertNotEquals(expectedSBool, negateTestConsBool.getSType(), "SBool match. Seed " + seed);
   }
 
   @RepeatedTest(10)

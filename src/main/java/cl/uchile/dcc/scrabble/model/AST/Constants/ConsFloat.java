@@ -8,11 +8,19 @@ public class ConsFloat extends AbstractConstant{
   private final SFloat consFloat;
 
   /**
-   * Constructor
+   * Constructor with native Java
    * @param Float double
    */
   public ConsFloat(double Float){
     consFloat = new SFloat(Float);
+  }
+
+  /**
+   * Constructor with SType
+   * @param sFloat SFloat
+   */
+  public ConsFloat(SFloat sFloat){
+    consFloat = sFloat;
   }
 
   /**
@@ -100,7 +108,7 @@ public class ConsFloat extends AbstractConstant{
   @Override
   public Constant addConsStr(ConsString constant) {
     SString result = this.consFloat.addToSString(constant.getSType());
-    return new ConsString(result.toString());
+    return new ConsString(result);
   }
 
   /**
@@ -112,7 +120,7 @@ public class ConsFloat extends AbstractConstant{
   @Override
   public Constant addConsInt(ConsInt constant) {
     SFloat result = this.consFloat.addSInt(constant.getSType());
-    return new ConsFloat(result.getDouble());
+    return new ConsFloat(result);
   }
 
   /**
@@ -124,7 +132,7 @@ public class ConsFloat extends AbstractConstant{
   @Override
   public Constant addConsFloat(ConsFloat constant) {
     SFloat result = this.consFloat.addSFloat(constant.getSType());
-    return new ConsFloat(result.getDouble());
+    return new ConsFloat(result);
   }
 
   /**
@@ -136,7 +144,7 @@ public class ConsFloat extends AbstractConstant{
   @Override
   public Constant subConsInt(ConsInt constant) {
     SFloat result = this.consFloat.minusSInt(constant.getSType());
-    return new ConsFloat(result.getDouble());
+    return new ConsFloat(result);
   }
 
   /**
@@ -148,7 +156,7 @@ public class ConsFloat extends AbstractConstant{
   @Override
   public Constant subConsFloat(ConsFloat constant) {
     SFloat result = this.consFloat.minusSFloat(constant.getSType());
-    return new ConsFloat(result.getDouble());
+    return new ConsFloat(result);
   }
 
 
@@ -162,7 +170,7 @@ public class ConsFloat extends AbstractConstant{
   @Override
   public Constant timesConsInt(ConsInt constant) {
     SFloat result = this.consFloat.timesSInt(constant.getSType());
-    return new ConsFloat(result.getDouble());
+    return new ConsFloat(result);
   }
 
   /**
@@ -174,7 +182,7 @@ public class ConsFloat extends AbstractConstant{
   @Override
   public Constant timesConsFloat(ConsFloat constant) {
     SFloat result = this.consFloat.timesSFloat(constant.getSType());
-    return new ConsFloat(result.getDouble());
+    return new ConsFloat(result);
   }
 
 
@@ -187,7 +195,7 @@ public class ConsFloat extends AbstractConstant{
   @Override
   public Constant divideConsInt(ConsInt constant) {
     SFloat result = this.consFloat.divideSInt(constant.getSType());
-    return new ConsFloat(result.getDouble());
+    return new ConsFloat(result);
   }
 
   /**
@@ -199,7 +207,7 @@ public class ConsFloat extends AbstractConstant{
   @Override
   public Constant divideConsFloat(ConsFloat constant) {
     SFloat result = this.consFloat.divideSFloat(constant.getSType());
-    return new ConsFloat(result.getDouble());
+    return new ConsFloat(result);
   }
 
   /**
@@ -210,7 +218,7 @@ public class ConsFloat extends AbstractConstant{
   @Override
   public Constant toConstantStr() {
     SString result = this.consFloat.toSString();
-    return new ConsString(result.toString());
+    return new ConsString(result);
   }
 
   /**
@@ -221,7 +229,7 @@ public class ConsFloat extends AbstractConstant{
   @Override
   public Constant toConstantFloat() {
     SFloat result = this.consFloat.toSFloat();
-    return new ConsFloat(result.getDouble());
+    return new ConsFloat(result);
   }
 
   /**

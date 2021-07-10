@@ -29,10 +29,13 @@ class ConsFloatTest {
   @RepeatedTest(50)
   void constructorTest(){
     ConsFloat expectedConsFloat = new ConsFloat(testDouble);
+    SFloat expectedSFloat = new SFloat(testDouble);
+    ConsFloat expectedConsSFloat = new ConsFloat(expectedSFloat);
 
     assertEquals(expectedConsFloat, consFloat, "ConsFloat don't match. Seed " + seed);
+    assertEquals(expectedConsSFloat, consFloat, "ConsFloat don't match. Seed " + seed);
     assertEquals(expectedConsFloat.hashCode(), consFloat.hashCode(), "Hashcode don't match. Seed " + seed);
-    assertEquals(new SFloat(testDouble), consFloat.getSType(), "SFloat don't match. Seed " + seed);
+    assertEquals(expectedSFloat, consFloat.getSType(), "SFloat don't match. Seed " + seed);
     assertNotEquals(consFloat, testDouble, "Objects match. Seed " + seed);
 
     double differentDouble;
@@ -41,8 +44,12 @@ class ConsFloatTest {
     } while (differentDouble == testDouble);
 
     ConsFloat differentConsFloat = new ConsFloat(differentDouble);
-    assertNotEquals(new SFloat(differentDouble), consFloat.getSType(), "SFloat match. Seed " + seed);
+    SFloat differentSFloat = new SFloat(differentDouble);
+    ConsFloat differentConsSFloat = new ConsFloat(differentSFloat);
+
+    assertNotEquals(differentSFloat, consFloat.getSType(), "SFloat match. Seed " + seed);
     assertNotEquals(differentConsFloat, consFloat, "ConsFloat match. Seed " + seed);
+    assertNotEquals(differentConsSFloat, consFloat, "ConsFloat match. Seed " + seed);
 
     assertEquals(String.valueOf(testDouble), consFloat.toString(), "String don't match. Seed " + seed);
     assertNotEquals(String.valueOf(differentDouble), consFloat.toString(), "String match. Seed " + seed);
