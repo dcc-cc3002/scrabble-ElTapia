@@ -23,4 +23,12 @@ public class Times extends AbstractOperation{
     return leftOp.eval().times(rightOp.eval());
   }
 
+  /**
+   * String representation of an AST
+   * @return String
+   */
+  @Override
+  public String stringRep(){
+    return leftOp.stringRep() + " times " + rightOp.stringRep();
+  }
 }

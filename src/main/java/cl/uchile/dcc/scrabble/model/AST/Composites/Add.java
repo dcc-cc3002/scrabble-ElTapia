@@ -10,8 +10,8 @@ public class Add extends AbstractOperation {
 
   /**
    * Constructor
-   * @param leftOp IOperation
-   * @param rightOp IOperation
+   * @param leftOp IComponent
+   * @param rightOp IComponent
    */
   public Add(IComponent leftOp, IComponent rightOp){
     super(leftOp, rightOp);
@@ -24,5 +24,14 @@ public class Add extends AbstractOperation {
   @Override
   public Constant eval() {
     return this.leftOp.eval().add(this.rightOp.eval());
+  }
+
+  /**
+   * String representation of an AST
+   * @return String
+   */
+  @Override
+  public String stringRep() {
+    return leftOp.stringRep() + " add " + rightOp.stringRep();
   }
 }

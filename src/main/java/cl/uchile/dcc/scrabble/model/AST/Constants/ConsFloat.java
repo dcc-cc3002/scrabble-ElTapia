@@ -224,4 +224,14 @@ public class ConsFloat extends AbstractConstant{
     return new ConsFloat(result.getDouble());
   }
 
+  /**
+   * String representation of an AST
+   *
+   * @return String
+   */
+  @Override
+  public String stringRep() {
+    return "Float(" + this.toString() + ")\n";
+  }
+
 }

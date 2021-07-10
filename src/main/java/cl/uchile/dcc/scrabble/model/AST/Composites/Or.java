@@ -23,4 +23,13 @@ public class Or extends AbstractOperation{
     return leftOp.eval().or(rightOp.eval());
   }
 
+  /**
+   * String representation of an AST
+   * @return String
+   */
+  @Override
+  public String stringRep(){
+    return leftOp.stringRep() + " or " + rightOp.stringRep();
+  }
+
 }

@@ -298,4 +298,14 @@ public class ConsInt extends AbstractConstant {
     SBinary result = this.consInt.toSBinary();
     return new ConsBinary(result.toString());
   }
+
+  /**
+   * String representation of an AST
+   *
+   * @return String
+   */
+  @Override
+  public String stringRep() {
+    return "Int(" + this.toString() + ")\n";
+  }
 }

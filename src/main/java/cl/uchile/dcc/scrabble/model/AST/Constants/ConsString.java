@@ -85,4 +85,14 @@ public class ConsString extends AbstractConstant {
     return new ConsString(result.toString());
   }
 
+  /**
+   * String representation of an AST
+   *
+   * @return String
+   */
+  @Override
+  public String stringRep() {
+    return "String(" + this.toString() + ")\n";
+  }
+
 }

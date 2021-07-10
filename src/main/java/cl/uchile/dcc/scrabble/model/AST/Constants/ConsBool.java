@@ -163,4 +163,14 @@ public class ConsBool extends AbstractConstant{
     SBool result = this.consBool.toSBool();
     return new ConsBool(result.getBool());
   }
+
+  /**
+   * String representation of an AST
+   *
+   * @return String
+   */
+  @Override
+  public String stringRep() {
+    return "Bool(" + this.toString() + ")\n";
+  }
 }

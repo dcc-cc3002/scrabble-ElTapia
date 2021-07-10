@@ -8,8 +8,8 @@ public abstract class AbstractOperation implements IComponent {
 
   /**
    * Constructor
-   * @param leftOp IOperation
-   * @param rightOp IOperation
+   * @param leftOp IComponent
+   * @param rightOp IComponent
    */
   public AbstractOperation(IComponent leftOp, IComponent rightOp){
     this.leftOp = leftOp;
