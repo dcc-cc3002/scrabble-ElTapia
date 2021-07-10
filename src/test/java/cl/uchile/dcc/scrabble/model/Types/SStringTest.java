@@ -92,12 +92,6 @@ public class SStringTest {
 
     @RepeatedTest(50)
     void addWithBinaryTest(){
-        seed = new Random().nextInt();
-        rng = new Random(seed);
-        int strSize= rng.nextInt(50);
-        String testString = RandomStringUtils.random(strSize, 0, Character.MAX_CODE_POINT,
-            true, true, null, rng);
-        SString sString = new SString(testString);
 
         char [] binaryList = {'0', '1'};
         String toAddStringBinary = RandomStringUtils.random(rng.nextInt(50), 0,
@@ -127,12 +121,6 @@ public class SStringTest {
 
     @RepeatedTest(50)
     void addWithIntTest(){
-        seed = new Random().nextInt();
-        rng = new Random(seed);
-        int strSize= rng.nextInt(50);
-        String testString = RandomStringUtils.random(strSize, 0, Character.MAX_CODE_POINT,
-            true, true, null, rng);
-        SString sString = new SString(testString);
 
         int toAddInt = rng.nextInt();
         SInt toAddSInt = new SInt(toAddInt);
@@ -157,13 +145,6 @@ public class SStringTest {
 
     @RepeatedTest(50)
     void addWithFloat(){
-        seed = new Random().nextInt();
-        rng = new Random(seed);
-        int strSize= rng.nextInt(50);
-        String testString = RandomStringUtils.random(strSize, 0, Character.MAX_CODE_POINT,
-            true, true, null, rng);
-        SString sString = new SString(testString);
-
         double toAddDouble = rng.nextDouble();
         SFloat toAddSFloat = new SFloat(toAddDouble);
 
@@ -188,12 +169,6 @@ public class SStringTest {
 
     @RepeatedTest(50)
     void addWithBool() {
-        seed = new Random().nextInt();
-        Random rng = new Random(seed);
-        int strSize= rng.nextInt(50);
-        String testString = RandomStringUtils.random(strSize, 0, Character.MAX_CODE_POINT,
-            true, true, null, rng);
-        SString sString = new SString(testString);
 
         boolean toAddBool = rng.nextBoolean();
 
