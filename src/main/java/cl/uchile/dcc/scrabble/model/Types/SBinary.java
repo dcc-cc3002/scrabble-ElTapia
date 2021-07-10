@@ -21,6 +21,23 @@ public class SBinary extends AbstractBaseNumber implements ILogic{
     }
 
     /**
+     * Fill a binary string with 0's or 1's depending on first digit
+     * @param binaryStr String
+     * @param i Int
+     * @return String
+     */
+    private static String fillDigits(String binaryStr, int i) {
+        String fill = "";
+        if(binaryStr.startsWith("1")){
+            fill = "1".repeat(i);
+        }
+        if(binaryStr.startsWith("0")){
+            fill = "0".repeat(i);
+        }
+        return fill + binaryStr;
+    }
+
+    /**
      * {@inheritDoc}
      * @param obj Object to compare
      * @return if equal to this binary
@@ -29,7 +46,15 @@ public class SBinary extends AbstractBaseNumber implements ILogic{
     public boolean equals(Object obj) {
         if (obj instanceof SBinary) {
             var o = (SBinary) obj;
-            return o.binary.equals(this.binary);
+
+            int thisLength = this.binary.length();
+            int entryLength = o.toString().length();
+
+            int maxLength = Math.max(thisLength, entryLength);
+            String newThisBinary = fillDigits(this.binary, maxLength-thisLength);
+            String newEntryBinary = fillDigits(o.toString(), maxLength-entryLength);
+
+            return newEntryBinary.equals(newThisBinary);
         }
         return false;
     }
@@ -214,9 +239,16 @@ public class SBinary extends AbstractBaseNumber implements ILogic{
      */
     @Override
     public SBinary orSBinary(SBinary toOrSBinary) {
+        int thisLength = this.binary.length();
+        int entryLength = toOrSBinary.toString().length();
+
+        int maxLength = Math.max(thisLength, entryLength);
+        String newThisBinary = fillDigits(this.binary, maxLength-thisLength);
+        String newEntryBinary = fillDigits(toOrSBinary.toString(), maxLength-entryLength);
+
         StringBuilder outStringSBinary = new StringBuilder();
-        for (int i = 0; i < this.binary.length(); i++) {
-            if (this.binary.charAt(i) != '0' | toOrSBinary.toString().charAt(i) != '0') {
+        for (int i = 0; i < maxLength; i++) {
+            if (newThisBinary.charAt(i) != '0' | newEntryBinary.charAt(i) != '0') {
                 outStringSBinary.append("1");
             } else {
                 outStringSBinary.append("0");
@@ -232,9 +264,16 @@ public class SBinary extends AbstractBaseNumber implements ILogic{
      */
     @Override
     public SBinary andSBinary(SBinary toAndSBinary) {
+        int thisLength = this.binary.length();
+        int entryLength = toAndSBinary.toString().length();
+
+        int maxLength = Math.max(thisLength, entryLength);
+        String newThisBinary = fillDigits(this.binary, maxLength-thisLength);
+        String newEntryBinary = fillDigits(toAndSBinary.toString(), maxLength-entryLength);
+
         StringBuilder outStringSBinary = new StringBuilder();
-        for (int i = 0; i < this.binary.length(); i++) {
-            if (this.binary.charAt(i) != '0' & toAndSBinary.toString().charAt(i) != '0') {
+        for (int i = 0; i < maxLength; i++) {
+            if (newThisBinary.charAt(i) != '0' & newEntryBinary.charAt(i) != '0') {
                 outStringSBinary.append("1");
             } else {
                 outStringSBinary.append("0");

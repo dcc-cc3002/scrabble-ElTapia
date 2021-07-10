@@ -26,7 +26,7 @@ public class SBinaryTest {
         toOpSBinary = new SBinary(testBinary);
     }
 
-    @RepeatedTest(50)
+    @RepeatedTest(100)
     void constructorTest() {
         var expectedSBinary = new SBinary(testBinary);
 
@@ -47,6 +47,14 @@ public class SBinaryTest {
 
         assertEquals(testBinary, toOpSBinary.toString(), "String don't match. Seed " + seed);
         assertNotEquals(differentBinary, toOpSBinary.toString(), "String match. Seed " + seed);
+
+        SBinary largerBinary = new SBinary("00001101");
+        SBinary shorterBinary = new SBinary("01101");
+        assertEquals(largerBinary, shorterBinary);
+
+        SBinary largerMinusBinary = new SBinary("11111101");
+        SBinary shorterMinusBinary = new SBinary("101");
+        assertEquals(largerMinusBinary, shorterMinusBinary);
     }
 
     @RepeatedTest(50)
@@ -158,6 +166,17 @@ public class SBinaryTest {
         assertEquals(expectedOrSBinary, testSBinary.orSBinary(toOperateSBinary),
             "SBinary don't match. Seed " + seed);
         assertEquals(expectedAndSBinary, testSBinary.andSBinary(toOperateSBinary),
+            "SBinary don't match. Seed " + seed);
+
+        SBinary testLargerSBinary = new SBinary("11111101011");
+        SBinary toOpSBinary = new SBinary("110010");
+
+        SBinary expectedOrLargerSBinary = new SBinary("11111111011");
+        SBinary expectedAndLargerSBinary = new SBinary("11111100010");
+
+        assertEquals(expectedOrLargerSBinary, testLargerSBinary.orSBinary(toOpSBinary),
+            "SBinary don't match. Seed " + seed);
+        assertEquals(expectedAndLargerSBinary, testLargerSBinary.andSBinary(toOpSBinary),
             "SBinary don't match. Seed " + seed);
     }
 
