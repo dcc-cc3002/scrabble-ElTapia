@@ -1,16 +1,16 @@
-package cl.uchile.dcc.scrabble.model.AST.Composites;
+package cl.uchile.dcc.scrabble.model.AST.Composites.DualOp;
 
 import cl.uchile.dcc.scrabble.model.AST.IComponent;
 import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
 
-public class Or extends AbstractOperation{
+public class Divide extends AbstractDualOperation {
 
   /**
    * Constructor
    * @param leftOp IOperation
    * @param rightOp IOperation
    */
-  public Or(IComponent leftOp, IComponent rightOp){
+  public Divide(IComponent leftOp, IComponent rightOp){
     super(leftOp, rightOp);
   }
 
@@ -20,7 +20,7 @@ public class Or extends AbstractOperation{
    */
   @Override
   public Constant eval() {
-    return leftOp.eval().or(rightOp.eval());
+    return leftOp.eval().divide(rightOp.eval());
   }
 
   /**
@@ -29,7 +29,7 @@ public class Or extends AbstractOperation{
    */
   @Override
   public String stringRep(){
-    return leftOp.stringRep() + " or " + rightOp.stringRep();
+    return leftOp.stringRep() + " divide " + rightOp.stringRep();
   }
 
 }

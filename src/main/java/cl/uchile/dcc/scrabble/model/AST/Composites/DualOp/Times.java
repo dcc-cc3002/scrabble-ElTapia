@@ -1,9 +1,9 @@
-package cl.uchile.dcc.scrabble.model.AST.Composites;
+package cl.uchile.dcc.scrabble.model.AST.Composites.DualOp;
 
 import cl.uchile.dcc.scrabble.model.AST.IComponent;
 import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
 
-public class Times extends AbstractOperation{
+public class Times extends AbstractDualOperation {
 
   /**
    * Constructor

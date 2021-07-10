@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.AST.Composites;
+package cl.uchile.dcc.scrabble.model.AST.Composites.DualOp;
 
 import cl.uchile.dcc.scrabble.model.AST.IComponent;
 import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
@@ -6,7 +6,7 @@ import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
 /**
  * Add operation in composite pattern
  */
-public class Add extends AbstractOperation {
+public class Add extends AbstractDualOperation {
 
   /**
    * Constructor
