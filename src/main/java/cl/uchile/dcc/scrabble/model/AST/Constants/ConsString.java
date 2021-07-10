@@ -70,7 +70,7 @@ public class ConsString extends AbstractConstant {
    */
   @Override
   public Constant addConsStr(ConsString constant) {
-    SString result = this.consString.add(constant.getSType());
+    SString result = this.consString.addToSString(constant.getSType());
     return new ConsString(result.toString());
   }
 

@@ -106,7 +106,7 @@ public class ConsInt extends AbstractConstant {
    */
   @Override
   public Constant addConsStr(ConsString constant) {
-    SString result = constant.getSType().add(this.consInt);
+    SString result = this.consInt.addToSString(constant.getSType());
     return new ConsString(result.toString());
   }
 

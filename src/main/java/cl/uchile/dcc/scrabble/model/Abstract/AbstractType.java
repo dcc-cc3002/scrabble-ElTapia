@@ -4,7 +4,7 @@ import java.util.Objects;
 /**
  * Abstract class that represents a scrabble type.
  */
-public abstract class AbstractType {
+public abstract class AbstractType{
 
     /**
      * Get hashcode of type

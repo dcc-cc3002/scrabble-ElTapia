@@ -131,7 +131,7 @@ public class ConsBinary extends AbstractConstant{
    */
   @Override
   public Constant addConsStr(ConsString constant) {
-    SString result = constant.getSType().add(this.consBinary);
+    SString result = this.consBinary.addToSString(constant.getSType());
     return new ConsString(result.toString());
   }
 

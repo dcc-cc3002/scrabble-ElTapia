@@ -90,7 +90,7 @@ public class ConsBool extends AbstractConstant{
    */
   @Override
   public Constant addConsStr(ConsString constant) {
-    SString result = constant.getSType().add(this.consBool);
+    SString result = this.consBool.addToSString(constant.getSType());
     return new ConsString(result.toString());
   }
 

@@ -99,7 +99,7 @@ public class ConsFloat extends AbstractConstant{
    */
   @Override
   public Constant addConsStr(ConsString constant) {
-    SString result = constant.getSType().add(this.consFloat);
+    SString result = this.consFloat.addToSString(constant.getSType());
     return new ConsString(result.toString());
   }
 
@@ -126,8 +126,6 @@ public class ConsFloat extends AbstractConstant{
     SFloat result = this.consFloat.addSFloat(constant.getSType());
     return new ConsFloat(result.getDouble());
   }
-
-
 
   /**
    * Subtract a Constant int
