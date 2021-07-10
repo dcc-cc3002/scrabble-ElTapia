@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model.AST.Wrapper;
 
 import cl.uchile.dcc.scrabble.model.AST.Constants.*;
 import cl.uchile.dcc.scrabble.model.AST.IComponent;
-import cl.uchile.dcc.scrabble.model.Abstract.AbstractType;
+import cl.uchile.dcc.scrabble.model.Interfaces.SType;
 
 //TODO: Segregar métodos en más interfaces
 
@@ -17,7 +17,7 @@ public interface Constant extends IComponent {
    * Get SType that the constant encapsulate
    * @return AbstractType
    */
-  AbstractType getSType();
+  SType getSType();
 
   /**
    * String representation of a constant

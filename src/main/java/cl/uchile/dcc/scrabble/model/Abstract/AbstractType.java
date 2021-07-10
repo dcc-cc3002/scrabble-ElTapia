@@ -1,10 +1,11 @@
 package cl.uchile.dcc.scrabble.model.Abstract;
+import cl.uchile.dcc.scrabble.model.Interfaces.SType;
 import cl.uchile.dcc.scrabble.model.Types.SString;
 import java.util.Objects;
 /**
  * Abstract class that represents a scrabble type.
  */
-public abstract class AbstractType{
+public abstract class AbstractType implements SType{
 
     /**
      * Get hashcode of type
@@ -29,19 +30,5 @@ public abstract class AbstractType{
      */
     @Override
     public abstract String toString();
-
-    /**
-     * Convert Scrabble type to Scrabble String
-     * @return Scrabble string
-     */
-    public abstract SString toSString();
-
-
-    /**
-     * Add this to a SString
-     * @param addend SString
-     * @return SString
-     */
-    public abstract SString addToSString(SString addend);
 
 }
