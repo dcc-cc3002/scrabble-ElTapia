@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.AST.Constants;
 
 import cl.uchile.dcc.scrabble.model.AST.Wrapper.*;
+import cl.uchile.dcc.scrabble.model.STypeFactories.SStringFactory;
 import cl.uchile.dcc.scrabble.model.Types.*;
 
 //TODO: Agregar factories para facilitar constructor
@@ -17,7 +18,7 @@ public class ConsString extends AbstractConstant {
    * @param string String
    */
   public ConsString(String string){
-    consString = new SString(string);
+    consString = SStringFactory.createSString(string);
   }
 
   /**
@@ -25,7 +26,7 @@ public class ConsString extends AbstractConstant {
    * @param sString String
    */
   public ConsString(SString sString){
-    consString = sString;
+    consString = SStringFactory.checkSString(sString);
   }
 
   /**

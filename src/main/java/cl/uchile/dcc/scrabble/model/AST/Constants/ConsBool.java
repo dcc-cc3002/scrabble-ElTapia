@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.AST.Constants;
 
 import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
+import cl.uchile.dcc.scrabble.model.STypeFactories.SBoolFactory;
 import cl.uchile.dcc.scrabble.model.Types.SBinary;
 import cl.uchile.dcc.scrabble.model.Types.SBool;
 import cl.uchile.dcc.scrabble.model.Types.SString;
@@ -16,7 +17,7 @@ public class ConsBool extends AbstractConstant{
    * @param bool boolean
    */
   public ConsBool(boolean bool){
-    consBool = new SBool(bool);
+    consBool = SBoolFactory.createSBool(bool);
   }
 
   /**
@@ -24,7 +25,7 @@ public class ConsBool extends AbstractConstant{
    * @param sBool SBool
    */
   public ConsBool(SBool sBool){
-    consBool = sBool;
+    consBool = SBoolFactory.checkSBool(sBool);
   }
 
   /**

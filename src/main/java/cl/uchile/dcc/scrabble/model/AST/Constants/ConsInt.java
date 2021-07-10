@@ -1,10 +1,8 @@
 package cl.uchile.dcc.scrabble.model.AST.Constants;
 
 import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
-import cl.uchile.dcc.scrabble.model.Types.SBinary;
-import cl.uchile.dcc.scrabble.model.Types.SFloat;
-import cl.uchile.dcc.scrabble.model.Types.SInt;
-import cl.uchile.dcc.scrabble.model.Types.SString;
+import cl.uchile.dcc.scrabble.model.STypeFactories.SIntFactory;
+import cl.uchile.dcc.scrabble.model.Types.*;
 
 public class ConsInt extends AbstractConstant {
 
@@ -16,7 +14,7 @@ public class ConsInt extends AbstractConstant {
    * @param Int int
    */
   public ConsInt(int Int) {
-    consInt = new SInt(Int);
+    consInt = SIntFactory.createSInt(Int);
   }
 
   /**
@@ -25,7 +23,7 @@ public class ConsInt extends AbstractConstant {
    * @param sInt SInt
    */
   public ConsInt(SInt sInt) {
-    consInt = sInt;
+    consInt = SIntFactory.checkSInt(sInt);
   }
 
   /**

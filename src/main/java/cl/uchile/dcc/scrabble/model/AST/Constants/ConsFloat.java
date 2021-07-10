@@ -1,8 +1,8 @@
 package cl.uchile.dcc.scrabble.model.AST.Constants;
 
 import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
-import cl.uchile.dcc.scrabble.model.Types.SFloat;
-import cl.uchile.dcc.scrabble.model.Types.SString;
+import cl.uchile.dcc.scrabble.model.STypeFactories.SFloatFactory;
+import cl.uchile.dcc.scrabble.model.Types.*;
 
 public class ConsFloat extends AbstractConstant{
   private final SFloat consFloat;
@@ -11,8 +11,8 @@ public class ConsFloat extends AbstractConstant{
    * Constructor with native Java
    * @param Float double
    */
-  public ConsFloat(double Float){
-    consFloat = new SFloat(Float);
+  public ConsFloat(double entryFloat){
+    consFloat = SFloatFactory.createSFloat(entryFloat);
   }
 
   /**
@@ -20,7 +20,7 @@ public class ConsFloat extends AbstractConstant{
    * @param sFloat SFloat
    */
   public ConsFloat(SFloat sFloat){
-    consFloat = sFloat;
+    consFloat = SFloatFactory.checkSFloat(sFloat);
   }
 
   /**

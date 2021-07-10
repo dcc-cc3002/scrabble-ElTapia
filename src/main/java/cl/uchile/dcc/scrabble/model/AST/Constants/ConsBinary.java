@@ -1,10 +1,8 @@
 package cl.uchile.dcc.scrabble.model.AST.Constants;
 
 import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
-import cl.uchile.dcc.scrabble.model.Types.SBinary;
-import cl.uchile.dcc.scrabble.model.Types.SFloat;
-import cl.uchile.dcc.scrabble.model.Types.SInt;
-import cl.uchile.dcc.scrabble.model.Types.SString;
+import cl.uchile.dcc.scrabble.model.STypeFactories.SBinaryFactory;
+import cl.uchile.dcc.scrabble.model.Types.*;
 
 public class ConsBinary extends AbstractConstant{
   private final SBinary consBinary;
@@ -14,7 +12,7 @@ public class ConsBinary extends AbstractConstant{
    * @param binary String
    */
   public ConsBinary(String binary){
-    consBinary = new SBinary(binary);
+    consBinary = SBinaryFactory.createSBinary(binary);
   }
 
   /**
@@ -22,7 +20,7 @@ public class ConsBinary extends AbstractConstant{
    * @param sBinary SBinary
    */
   public ConsBinary(SBinary sBinary){
-    consBinary = sBinary;
+    consBinary = SBinaryFactory.checkSBinary(sBinary);
   }
 
   /**
