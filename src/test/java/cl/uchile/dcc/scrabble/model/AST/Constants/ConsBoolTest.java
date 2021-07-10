@@ -65,6 +65,24 @@ class ConsBoolTest {
     assertNotEquals(negateExpectedString, consBool.toString(), "String match. Seed " + seed);
   }
   @RepeatedTest(10)
+  void toConsStringTest(){
+    ConsString expectedSString = new ConsString(String.valueOf(boolTest));
+    ConsString negateExpectedSString = new ConsString(String.valueOf(!boolTest));
+
+    assertEquals(expectedSString, consBool.toConstantStr(), "ConsString don't match. Seed " + seed);
+    assertNotEquals(negateExpectedSString, consBool.toConstantStr(), "ConsString match. Seed " + seed);
+  }
+
+  @RepeatedTest(10)
+  void toConsBoolTest(){
+    ConsBool expectedSBool = new ConsBool(boolTest);
+    ConsBool negateExpectedSBool = new ConsBool(!boolTest);
+
+    assertEquals(expectedSBool, consBool.toConstantBool(), "ConsBool don't match. Seed " + seed);
+    assertNotEquals(negateExpectedSBool, consBool.toConstantBool(), "ConsBool match. Seed " + seed);
+  }
+
+  @RepeatedTest(10)
   void negateConstantTest(){
     assertEquals(negateTestConsBool, consBool.negateConstant(), "ConsBool don't match. Seed " + seed);
     assertNotEquals(consBool, consBool.negateConstant(), "ConsBool match. Seed " + seed);
@@ -123,5 +141,37 @@ class ConsBoolTest {
     assertEquals(expectedFalseConsBool, firstConsBool.and(toOperateConsBool), "ConsBool don't match. Seed " + seed);
     assertEquals(expectedFalseConsBool, toOperateConsBool.and(firstConsBool), "ConsBool don't match. Seed " + seed);
     assertEquals(expectedFalseConsBool, toOperateConsBool.and(toOperateConsBool), "ConsBool don't match. Seed " + seed);
+  }
+  @Test
+  void orAndConsBinaryTest(){
+    ConsBool trueConsBool = new ConsBool(true);
+    ConsBool falseConsBool = new ConsBool(false);
+    ConsBinary toOperateConsBinary = new ConsBinary("101001");
+
+    ConsBinary expectedTrueOrConsBinary = new ConsBinary("111111");
+    ConsBinary expectedFalseOrConsBinary = new ConsBinary("101001");
+
+    assertEquals(expectedTrueOrConsBinary, trueConsBool.orConsBinary(toOperateConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(expectedFalseOrConsBinary, falseConsBool.orConsBinary(toOperateConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(expectedTrueOrConsBinary, trueConsBool.or(toOperateConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(expectedFalseOrConsBinary, falseConsBool.or(toOperateConsBinary), "ConsBinary don't match. Seed " + seed);
+
+    assertNotEquals(expectedFalseOrConsBinary, trueConsBool.orConsBinary(toOperateConsBinary), "ConsBinary match. Seed " + seed);
+    assertNotEquals(expectedTrueOrConsBinary, falseConsBool.orConsBinary(toOperateConsBinary), "ConsBinary match. Seed " + seed);
+    assertNotEquals(expectedFalseOrConsBinary, trueConsBool.or(toOperateConsBinary), "ConsBinary match. Seed " + seed);
+    assertNotEquals(expectedTrueOrConsBinary, falseConsBool.or(toOperateConsBinary), "ConsBinary match. Seed " + seed);
+
+    ConsBinary expectedTrueAndSBinary = new ConsBinary("101001");
+    ConsBinary expectedFalseAndSBinary = new ConsBinary("000000");
+
+    assertEquals(expectedTrueAndSBinary, trueConsBool.andConsBinary(toOperateConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(expectedFalseAndSBinary, falseConsBool.andConsBinary(toOperateConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(expectedTrueAndSBinary, trueConsBool.and(toOperateConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(expectedFalseAndSBinary, falseConsBool.and(toOperateConsBinary), "ConsBinary don't match. Seed " + seed);
+
+    assertNotEquals(expectedFalseAndSBinary, trueConsBool.andConsBinary(toOperateConsBinary), "ConsBinary match. Seed " + seed);
+    assertNotEquals(expectedTrueAndSBinary, falseConsBool.andConsBinary(toOperateConsBinary), "ConsBinary match. Seed " + seed);
+    assertNotEquals(expectedFalseAndSBinary, trueConsBool.and(toOperateConsBinary), "ConsBinary match. Seed " + seed);
+    assertNotEquals(expectedTrueAndSBinary, falseConsBool.and(toOperateConsBinary), "ConsBinary match. Seed " + seed);
   }
 }

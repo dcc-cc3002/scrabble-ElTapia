@@ -8,6 +8,7 @@ import java.util.Random;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 class ConsIntTest {
   private ConsInt consInt;
@@ -43,6 +44,75 @@ class ConsIntTest {
     assertEquals(String.valueOf(testInt), consInt.toString(), "String don't match. Seed " + seed);
     assertNotEquals(String.valueOf(differentInt), consInt.toString(), "String match. Seed " + seed);
   }
+  @RepeatedTest(50)
+  void toConsStringTest(){
+    ConsString expectedConsString = new ConsString(String.valueOf(testInt));
+    assertEquals(expectedConsString, consInt.toConstantStr(), "ConsString don't match. Seed " + seed);
+
+    int differentInt;
+    do {
+      differentInt = rng.nextInt();
+    } while (differentInt == testInt);
+
+    ConsString differentConsString = new ConsString(String.valueOf(differentInt));
+    assertNotEquals(differentConsString, consInt.toConstantStr(), "ConsString match. Seed " + seed);
+  }
+
+  @RepeatedTest(50)
+  void toConsFloatTest(){
+    String intString = String.valueOf(testInt);
+    ConsFloat expectedConsFloat = new ConsFloat(Double.parseDouble(intString));
+    assertEquals(expectedConsFloat, consInt.toConstantFloat(), "ConsFloat don't match. Seed " + seed);
+
+    int differentInt;
+    do {
+      differentInt = rng.nextInt();
+    } while (differentInt == testInt);
+    String differentIntString = String.valueOf(differentInt);
+    ConsFloat differentConsFloat = new ConsFloat(Double.parseDouble(differentIntString));
+    assertNotEquals(differentConsFloat, consInt.toConstantFloat(), "ConsFloat match. Seed " + seed);
+  }
+
+  @RepeatedTest(50)
+  void toConsIntTest(){
+    ConsInt expectedConsInt = new ConsInt(testInt);
+    assertEquals(expectedConsInt, consInt.toConstantInt(), "ConsInt don't match. Seed " + seed);
+
+    int differentInt;
+    do {
+      differentInt = rng.nextInt();
+    } while (differentInt == testInt);
+    ConsInt differentConsInt = new ConsInt(differentInt);
+    assertNotEquals(differentConsInt, consInt.toConstantInt(), "ConsInt match. Seed " + seed);
+  }
+
+  @Test
+  void toConsBinaryTest(){
+    int testInt = 0;
+    ConsInt ConsInt = new ConsInt(testInt);
+    ConsBinary expectedConsBinary = new ConsBinary("0");
+
+    assertEquals(expectedConsBinary, ConsInt.toConstantBinary(), "ConsBinary don't match. Seed " + seed);
+
+    int otherInt = 5;
+    ConsInt ConsOtherInt = new ConsInt(otherInt);
+    ConsBinary Other = new ConsBinary("0101");
+
+    assertEquals(Other, ConsOtherInt.toConstantBinary(), "ConsBinary don't match. Seed " + seed);
+
+    int negTestInt = -5;
+    ConsInt negConsInt = new ConsInt(negTestInt);
+    ConsBinary expectedNegConsBinary = new ConsBinary("1011");
+
+    assertEquals(expectedNegConsBinary, negConsInt.toConstantBinary(), "ConsBinary don't match. Number " + otherInt);
+
+    int anotherInt = 2147483647;
+    ConsInt anotherConsInt = new ConsInt(anotherInt);
+    ConsBinary expectedAnotherConsBinary = new ConsBinary("01111111111111111111111111111111");
+
+    assertEquals(expectedAnotherConsBinary, anotherConsInt.toConstantBinary(), "ConsBinary don't match. Seed " + seed);
+  }
+
 
   @RepeatedTest(50)
   void opConsIntTest(){
@@ -65,10 +135,10 @@ class ConsIntTest {
     int expectedDivideInt = testInt / toOpInt;
     ConsInt expectedDivideConsInt = new ConsInt(expectedDivideInt);
 
-    assertEquals(expectedAddConsInt, consInt.addConsInt(toOpConsInt), "ConsInt don't match. Seed " + seed);
-    assertEquals(expectedMinusConsInt, consInt.subConsInt(toOpConsInt), "ConsInt don't match. Seed " + seed);
-    assertEquals(expectedTimesConsInt, consInt.timesConsInt(toOpConsInt), "ConsInt don't match. Seed " + seed);
-    assertEquals(expectedDivideConsInt, consInt.divideConsInt(toOpConsInt), "ConsInt don't match. Seed " + seed);
+    assertEquals(expectedAddConsInt, consInt.add(toOpConsInt), "ConsInt don't match. Seed " + seed);
+    assertEquals(expectedMinusConsInt, consInt.sub(toOpConsInt), "ConsInt don't match. Seed " + seed);
+    assertEquals(expectedTimesConsInt, consInt.times(toOpConsInt), "ConsInt don't match. Seed " + seed);
+    assertEquals(expectedDivideConsInt, consInt.divide(toOpConsInt), "ConsInt don't match. Seed " + seed);
 
     int expectedAdd = testInt + toOpInt;
     ConsInt expectedToAddConsInt = new ConsInt(expectedAdd);
@@ -82,10 +152,10 @@ class ConsIntTest {
     int expectedDivide = toOpInt / testInt;
     ConsInt expectedToDivideConsInt = new ConsInt(expectedDivide);
 
-    assertEquals(expectedToAddConsInt, consInt.add(toOpConsInt), "ConsInt don't match. Seed " + seed);
-    assertEquals(expectedToMinusConsInt, consInt.sub(toOpConsInt), "ConsInt don't match. Seed " + seed);
-    assertEquals(expectedToTimesConsInt, consInt.times(toOpConsInt), "ConsInt don't match. Seed " + seed);
-    assertEquals(expectedToDivideConsInt, consInt.divide(toOpConsInt), "ConsInt don't match. Seed " + seed);
+    assertEquals(expectedToAddConsInt, consInt.addConsInt(toOpConsInt), "ConsInt don't match. Seed " + seed);
+    assertEquals(expectedToMinusConsInt, consInt.subConsInt(toOpConsInt), "ConsInt don't match. Seed " + seed);
+    assertEquals(expectedToTimesConsInt, consInt.timesConsInt(toOpConsInt), "ConsInt don't match. Seed " + seed);
+    assertEquals(expectedToDivideConsInt, consInt.divideConsInt(toOpConsInt), "ConsInt don't match. Seed " + seed);
 
     int differentInt;
     do {
@@ -102,15 +172,15 @@ class ConsIntTest {
     assertNotEquals(consInt.times(differentConsInt), consInt.times(toOpConsInt), "ConsInt match. Seed " + seed);
 
     ConsInt zeroConsInt = new ConsInt(0);
-    assertEquals(new ConsInt(testInt), consInt.addConsInt(zeroConsInt), "ConsInt don't match. Seed " + seed);
-    assertEquals(new ConsInt(testInt), consInt.subConsInt(zeroConsInt), "ConsInt don't match. Seed " + seed);
-    assertEquals(zeroConsInt, consInt.timesConsInt(zeroConsInt), "ConsInt don't match. Seed " + seed);
-    assertEquals(zeroConsInt, zeroConsInt.timesConsInt(consInt), "ConsInt don't match. Seed " + seed);
-
     assertEquals(new ConsInt(testInt), consInt.add(zeroConsInt), "ConsInt don't match. Seed " + seed);
-    assertEquals(new ConsInt(-testInt), consInt.sub(zeroConsInt), "ConsInt don't match. Seed " + seed);
+    assertEquals(new ConsInt(testInt), consInt.sub(zeroConsInt), "ConsInt don't match. Seed " + seed);
     assertEquals(zeroConsInt, consInt.times(zeroConsInt), "ConsInt don't match. Seed " + seed);
-    assertEquals(zeroConsInt, zeroConsInt.times(consInt), "ConsInt don't match. Seed " + seed);
+    assertEquals(zeroConsInt, zeroConsInt.divide(consInt), "ConsInt don't match. Seed " + seed);
+
+    assertEquals(new ConsInt(testInt), consInt.addConsInt(zeroConsInt), "ConsInt don't match. Seed " + seed);
+    assertEquals(new ConsInt(-testInt), consInt.subConsInt(zeroConsInt), "ConsInt don't match. Seed " + seed);
+    assertEquals(zeroConsInt, consInt.timesConsInt(zeroConsInt), "ConsInt don't match. Seed " + seed);
+    assertEquals(zeroConsInt, consInt.divideConsInt(zeroConsInt), "ConsInt don't match. Seed " + seed);
   }
 
   @RepeatedTest(50)
@@ -134,10 +204,10 @@ class ConsIntTest {
     double expectedDivideDouble = testInt / toOpDouble;
     ConsFloat expectedDivideConsFloat = new ConsFloat(expectedDivideDouble);
 
-    assertEquals(expectedAddConsFloat, consInt.addConsFloat(toOpConsFloat), "ConsFloat don't match. Seed " + seed);
-    assertEquals(expectedMinusConsFloat, consInt.subConsFloat(toOpConsFloat), "ConsFloat don't match. Seed " + seed);
-    assertEquals(expectedTimesConsFloat, consInt.timesConsFloat(toOpConsFloat), "ConsFloat don't match. Seed " + seed);
-    assertEquals(expectedDivideConsFloat, consInt.divideConsFloat(toOpConsFloat), "ConsFloat don't match. Seed " + seed);
+    assertEquals(expectedAddConsFloat, consInt.add(toOpConsFloat), "ConsFloat don't match. Seed " + seed);
+    assertEquals(expectedMinusConsFloat, consInt.sub(toOpConsFloat), "ConsFloat don't match. Seed " + seed);
+    assertEquals(expectedTimesConsFloat, consInt.times(toOpConsFloat), "ConsFloat don't match. Seed " + seed);
+    assertEquals(expectedDivideConsFloat, consInt.divide(toOpConsFloat), "ConsFloat don't match. Seed " + seed);
 
     double expectedAdd = testInt + toOpDouble;
     ConsFloat expectedAddFloat = new ConsFloat(expectedAdd);
@@ -151,10 +221,10 @@ class ConsIntTest {
     double expectedDivide = toOpDouble / testInt;
     ConsFloat expectedDivideFloat = new ConsFloat(expectedDivide);
 
-    assertEquals(expectedAddFloat, consInt.add(toOpConsFloat), "ConsFloat don't match. Seed " + seed);
-    assertEquals(expectedMinusFloat, consInt.sub(toOpConsFloat), "ConsFloat don't match. Seed " + seed);
-    assertEquals(expectedTimesFloat, consInt.times(toOpConsFloat), "ConsFloat don't match. Seed " + seed);
-    assertEquals(expectedDivideFloat, consInt.divide(toOpConsFloat), "ConsFloat don't match. Seed " + seed);
+    assertEquals(expectedAddFloat, consInt.addConsFloat(toOpConsFloat), "ConsFloat don't match. Seed " + seed);
+    assertEquals(expectedMinusFloat, consInt.subConsFloat(toOpConsFloat), "ConsFloat don't match. Seed " + seed);
+    assertEquals(expectedTimesFloat, consInt.timesConsFloat(toOpConsFloat), "ConsFloat don't match. Seed " + seed);
+    assertEquals(expectedDivideFloat, consInt.divideConsFloat(toOpConsFloat), "ConsFloat don't match. Seed " + seed);
 
     double differentDouble;
     do {
@@ -173,13 +243,13 @@ class ConsIntTest {
     assertNotEquals(consInt.divide(differentConsFloat), consInt.divide(toOpConsFloat), "ConsFloat match. Seed " + seed);
 
     ConsFloat zeroConsFloat = new ConsFloat(0.0);
-    assertEquals(new ConsFloat(testInt), consInt.addConsFloat(zeroConsFloat), "ConsFloat don't match. Seed " + seed);
-    assertEquals(new ConsFloat(testInt), consInt.subConsFloat(zeroConsFloat), "ConsFloat don't match. Seed " + seed);
-    assertEquals(zeroConsFloat, consInt.timesConsFloat(zeroConsFloat), "ConsFloat don't match. Seed " + seed);
-
     assertEquals(new ConsFloat(testInt), consInt.add(zeroConsFloat), "ConsFloat don't match. Seed " + seed);
-    assertEquals(new ConsFloat(-testInt), consInt.sub(zeroConsFloat), "ConsFloat don't match. Seed " + seed);
+    assertEquals(new ConsFloat(testInt), consInt.sub(zeroConsFloat), "ConsFloat don't match. Seed " + seed);
     assertEquals(zeroConsFloat, consInt.times(zeroConsFloat), "ConsFloat don't match. Seed " + seed);
+
+    assertEquals(new ConsFloat(testInt), consInt.addConsFloat(zeroConsFloat), "ConsFloat don't match. Seed " + seed);
+    assertEquals(new ConsFloat(-testInt), consInt.subConsFloat(zeroConsFloat), "ConsFloat don't match. Seed " + seed);
+    assertEquals(zeroConsFloat, consInt.timesConsFloat(zeroConsFloat), "ConsFloat don't match. Seed " + seed);
   }
   @RepeatedTest(50)
   void opConsBinaryTest(){
@@ -191,10 +261,10 @@ class ConsIntTest {
     ConsInt expectedTimesConsInt = new ConsInt(testInt*19);
     ConsInt expectedDivideConsInt = new ConsInt(testInt/19);
 
-    assertEquals(expectedAddConsInt, consInt.addConsBinary(toOpConsBinary), "ConsInt don't match. Seed " + seed);
-    assertEquals(expectedMinusConsInt, consInt.subConsBinary(toOpConsBinary), "ConsInt don't match. Seed " + seed);
-    assertEquals(expectedTimesConsInt, consInt.timesConsBinary(toOpConsBinary), "ConsInt don't match. Seed " + seed);
-    assertEquals(expectedDivideConsInt, consInt.divideConsBinary(toOpConsBinary), "ConsInt don't match. Seed " + seed);
+    assertEquals(expectedAddConsInt, consInt.add(toOpConsBinary), "ConsInt don't match. Seed " + seed);
+    assertEquals(expectedMinusConsInt, consInt.sub(toOpConsBinary), "ConsInt don't match. Seed " + seed);
+    assertEquals(expectedTimesConsInt, consInt.times(toOpConsBinary), "ConsInt don't match. Seed " + seed);
+    assertEquals(expectedDivideConsInt, consInt.divide(toOpConsBinary), "ConsInt don't match. Seed " + seed);
 
 
     ConsInt expectedAdd = new ConsInt(testInt+19);
@@ -202,28 +272,28 @@ class ConsIntTest {
     ConsInt expectedTimes = new ConsInt(testInt*19);
     ConsInt expectedDivide = new ConsInt(19/testInt);
 
-    assertEquals(expectedAdd.toConstantBinary(), consInt.add(toOpConsBinary), "ConsBinary don't match. Seed " + seed);
-    assertEquals(expectedMinus.toConstantBinary(), consInt.sub(toOpConsBinary), "ConsBinary don't match. Seed " + seed);
-    assertEquals(expectedTimes.toConstantBinary(), consInt.times(toOpConsBinary), "ConsBinary don't match. Seed " + seed);
-    assertEquals(expectedDivide.toConstantBinary(), consInt.divide(toOpConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(expectedAdd.toConstantBinary(), consInt.addConsBinary(toOpConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(expectedMinus.toConstantBinary(), consInt.subConsBinary(toOpConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(expectedTimes.toConstantBinary(), consInt.timesConsBinary(toOpConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(expectedDivide.toConstantBinary(), consInt.divideConsBinary(toOpConsBinary), "ConsBinary don't match. Seed " + seed);
 
 
     ConsBinary zeroConsBinary = new ConsBinary("0");
 
-    assertEquals(new ConsInt(testInt), consInt.addConsBinary(zeroConsBinary), "ConsInt don't match. Seed " + seed);
-    assertEquals(new ConsInt(testInt), consInt.subConsBinary(zeroConsBinary), "ConsInt don't match. Seed " + seed);
-    assertEquals(new ConsInt(0), consInt.timesConsBinary(zeroConsBinary), "ConsInt don't match. Seed " + seed);
+    assertEquals(new ConsInt(testInt), consInt.add(zeroConsBinary), "ConsInt don't match. Seed " + seed);
+    assertEquals(new ConsInt(testInt), consInt.sub(zeroConsBinary), "ConsInt don't match. Seed " + seed);
+    assertEquals(new ConsInt(0), consInt.times(zeroConsBinary), "ConsInt don't match. Seed " + seed);
 
-    assertEquals(consInt.toConstantBinary(), consInt.add(zeroConsBinary), "ConsBinary don't match. Seed " + seed);
-    assertEquals(new ConsBinary(consInt.getSType().toSBinary().negate().addOne().toString()), consInt.sub(zeroConsBinary), "ConsBinary don't match. Seed " + seed);
-    assertEquals(new ConsBinary("0"), consInt.times(zeroConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(consInt.toConstantBinary(), consInt.addConsBinary(zeroConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(new ConsBinary(consInt.getSType().toSBinary().negate().addOne().toString()), consInt.subConsBinary(zeroConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(new ConsBinary("0"), consInt.timesConsBinary(zeroConsBinary), "ConsBinary don't match. Seed " + seed);
 
     ConsBinary minusOneConsBinary = new ConsBinary("1");
-    assertEquals(new ConsInt(-testInt), consInt.timesConsBinary(minusOneConsBinary), "ConsInt don't match. Seed " + seed);
-    assertEquals(new ConsInt(-testInt), consInt.divideConsBinary(minusOneConsBinary), "ConsInt don't match. Seed " + seed);
+    assertEquals(new ConsInt(-testInt), consInt.times(minusOneConsBinary), "ConsInt don't match. Seed " + seed);
+    assertEquals(new ConsInt(-testInt), consInt.divide(minusOneConsBinary), "ConsInt don't match. Seed " + seed);
 
-    assertEquals(new ConsBinary(consInt.getSType().toSBinary().negate().addOne().toString()), consInt.times(minusOneConsBinary), "ConsBinary don't match. Seed " + seed);
-    assertEquals(new ConsBinary("0"), consInt.divide(minusOneConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(new ConsBinary(consInt.getSType().toSBinary().negate().addOne().toString()), consInt.timesConsBinary(minusOneConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(new ConsBinary("0"), consInt.divideConsBinary(minusOneConsBinary), "ConsBinary don't match. Seed " + seed);
 
     String otherToOpBinaryString = "0110010";//50
     ConsBinary otherToOpConsBinary = new ConsBinary(otherToOpBinaryString);
@@ -233,20 +303,20 @@ class ConsIntTest {
     ConsInt expectedOtherTimesConsInt = new ConsInt(testInt*50);
     ConsInt expectedOtherDivideConsInt = new ConsInt(testInt/50);
 
-    assertEquals(expectedOtherAddConsInt, consInt.addConsBinary(otherToOpConsBinary), "ConsInt don't match. Seed " + seed);
-    assertEquals(expectedOtherMinusConsInt, consInt.subConsBinary(otherToOpConsBinary), "ConsInt don't match. Seed " + seed);
-    assertEquals(expectedOtherTimesConsInt, consInt.timesConsBinary(otherToOpConsBinary), "ConsInt don't match. Seed " + seed);
-    assertEquals(expectedOtherDivideConsInt, consInt.divideConsBinary(otherToOpConsBinary), "ConsInt don't match. Seed " + seed);
+    assertEquals(expectedOtherAddConsInt, consInt.add(otherToOpConsBinary), "ConsInt don't match. Seed " + seed);
+    assertEquals(expectedOtherMinusConsInt, consInt.sub(otherToOpConsBinary), "ConsInt don't match. Seed " + seed);
+    assertEquals(expectedOtherTimesConsInt, consInt.times(otherToOpConsBinary), "ConsInt don't match. Seed " + seed);
+    assertEquals(expectedOtherDivideConsInt, consInt.divide(otherToOpConsBinary), "ConsInt don't match. Seed " + seed);
 
     ConsInt expectedOtherAdd = new ConsInt(testInt+50);
     ConsInt expectedOtherMinus = new ConsInt(50-testInt);
     ConsInt expectedOtherTimes = new ConsInt(testInt*50);
     ConsInt expectedOtherDivide = new ConsInt(50/testInt);
 
-    assertEquals(expectedOtherAdd.toConstantBinary(), consInt.add(otherToOpConsBinary), "ConsBinary don't match. Seed " + seed);
-    assertEquals(expectedOtherMinus.toConstantBinary(), consInt.sub(otherToOpConsBinary), "ConsBinary don't match. Seed " + seed);
-    assertEquals(expectedOtherTimes.toConstantBinary(), consInt.times(otherToOpConsBinary), "ConsBinary don't match. Seed " + seed);
-    assertEquals(expectedOtherDivide.toConstantBinary(), consInt.divide(otherToOpConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(expectedOtherAdd.toConstantBinary(), consInt.addConsBinary(otherToOpConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(expectedOtherMinus.toConstantBinary(), consInt.subConsBinary(otherToOpConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(expectedOtherTimes.toConstantBinary(), consInt.timesConsBinary(otherToOpConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(expectedOtherDivide.toConstantBinary(), consInt.divideConsBinary(otherToOpConsBinary), "ConsBinary don't match. Seed " + seed);
 
     String otherMinusBinary = "10010";//-14
     ConsBinary otherMinusConsBinary = new ConsBinary(otherMinusBinary);
@@ -256,20 +326,20 @@ class ConsIntTest {
     ConsInt expectedMinusTimesConsInt = new ConsInt(testInt*-14);
     ConsInt expectedMinusDivideConsInt = new ConsInt(testInt/-14);
 
-    assertEquals(expectedMinusAddConsInt, consInt.addConsBinary(otherMinusConsBinary), "ConsInt don't match. Seed " + seed);
-    assertEquals(expectedMinusMinusConsInt, consInt.subConsBinary(otherMinusConsBinary), "ConsInt don't match. Seed " + seed);
-    assertEquals(expectedMinusTimesConsInt, consInt.timesConsBinary(otherMinusConsBinary), "ConsInt don't match. Seed " + seed);
-    assertEquals(expectedMinusDivideConsInt, consInt.divideConsBinary(otherMinusConsBinary), "ConsInt don't match. Seed " + seed);
+    assertEquals(expectedMinusAddConsInt, consInt.add(otherMinusConsBinary), "ConsInt don't match. Seed " + seed);
+    assertEquals(expectedMinusMinusConsInt, consInt.sub(otherMinusConsBinary), "ConsInt don't match. Seed " + seed);
+    assertEquals(expectedMinusTimesConsInt, consInt.times(otherMinusConsBinary), "ConsInt don't match. Seed " + seed);
+    assertEquals(expectedMinusDivideConsInt, consInt.divide(otherMinusConsBinary), "ConsInt don't match. Seed " + seed);
 
     ConsInt expectedMinusAdd = new ConsInt(-14+testInt);
     ConsInt expectedMinusMinus = new ConsInt(-14-testInt);
     ConsInt expectedMinusTimes = new ConsInt(testInt*-14);
     ConsInt expectedMinusDivide = new ConsInt(-14/testInt);
 
-    assertEquals(expectedMinusAdd.toConstantBinary(), consInt.add(otherMinusConsBinary), "ConsBinary don't match. Seed " + seed);
-    assertEquals(expectedMinusMinus.toConstantBinary(), consInt.sub(otherMinusConsBinary), "ConsBinary don't match. Seed " + seed);
-    assertEquals(expectedMinusTimes.toConstantBinary(), consInt.times(otherMinusConsBinary), "ConsBinary don't match. Seed " + seed);
-    assertEquals(expectedMinusDivide.toConstantBinary(), consInt.divide(otherMinusConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(expectedMinusAdd.toConstantBinary(), consInt.addConsBinary(otherMinusConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(expectedMinusMinus.toConstantBinary(), consInt.subConsBinary(otherMinusConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(expectedMinusTimes.toConstantBinary(), consInt.timesConsBinary(otherMinusConsBinary), "ConsBinary don't match. Seed " + seed);
+    assertEquals(expectedMinusDivide.toConstantBinary(), consInt.divideConsBinary(otherMinusConsBinary), "ConsBinary don't match. Seed " + seed);
   }
 
   @RepeatedTest(50)
@@ -283,7 +353,7 @@ class ConsIntTest {
 
     int toAddInt = rng.nextInt();
     ConsInt toAddConsInt = new ConsInt(toAddInt);
-    String expectedString = toAddInt + testString;
+    String expectedString = testString + toAddInt;
     ConsString expectedConsString = new ConsString(expectedString);
 
     assertEquals(expectedConsString, toAddConsInt.addConsStr(sString), "ConsString don't match. Seed " + seed);
