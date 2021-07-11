@@ -58,7 +58,7 @@ public class ConsInt extends AbstractConstant {
    */
   @Override
   public SInt getSType() {
-    return new SInt(this.consInt.getInt());
+    return SIntFactory.checkSInt(this.consInt);
   }
 
   /**
