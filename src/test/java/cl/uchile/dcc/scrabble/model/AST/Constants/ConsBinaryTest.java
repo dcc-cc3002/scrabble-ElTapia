@@ -19,7 +19,7 @@ public class ConsBinaryTest {
 
   @BeforeEach
   protected void setUp() {
-    seed = new Random().nextInt()
+    seed = new Random().nextInt();
     rng = new Random(seed);
     int strSize = rng.nextInt(32);
     testBinary = RandomStringUtils.random(strSize, 0, 2, false, true, binaryList, rng);
