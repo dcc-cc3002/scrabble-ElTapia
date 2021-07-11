@@ -29,8 +29,8 @@ class SStringFactoryTest extends ConsStringTest {
   }
 
   @RepeatedTest(50)
-  void createAndCheckSBinary() {
-    SBinaryFactory.cleanFactory();
+  void createAndCheck() {
+    SStringFactory.cleanFactory();
 
     assertSame(SStringFactory.createSString(testString), SStringFactory.createSString(testString));
     assertSame(SStringFactory.createSString(testString), consString.getSType());

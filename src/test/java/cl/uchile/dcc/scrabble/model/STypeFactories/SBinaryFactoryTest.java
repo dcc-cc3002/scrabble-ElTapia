@@ -26,7 +26,7 @@ class SBinaryFactoryTest extends ConsBinaryTest  {
   }
 
   @RepeatedTest(50)
-  void createAndCheckSBinary() {
+  void createAndCheck() {
     SBinaryFactory.cleanFactory();
 
     assertSame(SBinaryFactory.createSBinary(testBinary), SBinaryFactory.createSBinary(testBinary));
