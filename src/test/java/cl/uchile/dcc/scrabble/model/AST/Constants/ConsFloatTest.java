@@ -1,12 +1,10 @@
 package cl.uchile.dcc.scrabble.model.AST.Constants;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-import cl.uchile.dcc.scrabble.model.Types.SBinary;
+import cl.uchile.dcc.scrabble.model.AST.Wrapper.IConstant;
 import cl.uchile.dcc.scrabble.model.Types.SFloat;
-import cl.uchile.dcc.scrabble.model.Types.SInt;
-import cl.uchile.dcc.scrabble.model.Types.SString;
 import java.util.Random;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
@@ -301,5 +299,97 @@ public class ConsFloatTest {
     ConsString differentConsString = new ConsString(differentString + differentToAddDouble);
 
     assertNotEquals(differentConsString, consFloat.addConsStr(ConsString), "ConsString match. Seed " + seed);
+  }
+
+  @RepeatedTest(100)
+  void nullOpTests(){
+    IConstant nullConstant = NullConstant.getInstance();
+
+    assertSame(nullConstant, consFloat.add(nullConstant));
+    assertSame(nullConstant, consFloat.sub(nullConstant));
+    assertSame(nullConstant, consFloat.times(nullConstant));
+    assertSame(nullConstant, consFloat.divide(nullConstant));
+    assertSame(nullConstant, consFloat.and(nullConstant));
+    assertSame(nullConstant, consFloat.or(nullConstant));
+
+    assertSame(nullConstant, consFloat.addNull(nullConstant));
+    assertSame(nullConstant, consFloat.subNull(nullConstant));
+    assertSame(nullConstant, consFloat.timesNull(nullConstant));
+    assertSame(nullConstant, consFloat.divideNull(nullConstant));
+    assertSame(nullConstant, consFloat.andNull(nullConstant));
+    assertSame(nullConstant, consFloat.orNull(nullConstant));
+
+    int testInt = rng.nextInt();
+    ConsInt consInt = new ConsInt(testInt);
+
+    assertSame(nullConstant, consFloat.andConsInt(consInt));
+    assertSame(nullConstant, consFloat.orConsInt(consInt));
+
+    assertSame(nullConstant, consFloat.and(consInt));
+    assertSame(nullConstant, consFloat.or(consInt));
+
+    double testOtherDouble = rng.nextDouble();
+    ConsFloat otherConsFloat = new ConsFloat(testOtherDouble);
+
+    assertSame(nullConstant, consFloat.andConsFloat(otherConsFloat));
+    assertSame(nullConstant, consFloat.orConsFloat(otherConsFloat));
+
+    assertSame(nullConstant, consFloat.and(otherConsFloat));
+    assertSame(nullConstant, consFloat.or(otherConsFloat));
+
+    char[] binaryList = {'0', '1'};
+    int binSize = rng.nextInt(32);
+    String testBinary = RandomStringUtils.random(binSize, 0, 2, false, true, binaryList, rng);
+    ConsBinary consBinary = new ConsBinary(testBinary);
+
+    assertSame(nullConstant, consFloat.addConsBinary(consBinary));
+    assertSame(nullConstant, consFloat.subConsBinary(consBinary));
+    assertSame(nullConstant, consFloat.timesConsBinary(consBinary));
+    assertSame(nullConstant, consFloat.divideConsBinary(consBinary));
+    assertSame(nullConstant, consFloat.andConsBinary(consBinary));
+    assertSame(nullConstant, consFloat.orConsBinary(consBinary));
+
+    assertSame(nullConstant, consFloat.and(consBinary));
+    assertSame(nullConstant, consFloat.or(consBinary));
+
+    boolean testBool = rng.nextBoolean();
+    ConsBool consBool = new ConsBool(testBool);
+
+    assertSame(nullConstant, consFloat.addConsBool(consBool));
+    assertSame(nullConstant, consFloat.subConsBool(consBool));
+    assertSame(nullConstant, consFloat.timesConsBool(consBool));
+    assertSame(nullConstant, consFloat.divideConsBool(consBool));
+    assertSame(nullConstant, consFloat.andConsBool(consBool));
+    assertSame(nullConstant, consFloat.orConsBool(consBool));
+
+    assertSame(nullConstant, consFloat.sub(consBool));
+    assertSame(nullConstant, consFloat.times(consBool));
+    assertSame(nullConstant, consFloat.divide(consBool));
+    assertSame(nullConstant, consFloat.and(consBool));
+    assertSame(nullConstant, consFloat.or(consBool));
+
+    int strSize = rng.nextInt(50);
+    String otherString = RandomStringUtils.random(strSize, 0, Character.MAX_CODE_POINT,
+        true, true, null, rng);
+    ConsString otherConsString = new ConsString(otherString);
+
+    assertSame(nullConstant, consFloat.subConsStr(otherConsString));
+    assertSame(nullConstant, consFloat.timesConsStr(otherConsString));
+    assertSame(nullConstant, consFloat.divideConsStr(otherConsString));
+    assertSame(nullConstant, consFloat.andConsStr(otherConsString));
+    assertSame(nullConstant, consFloat.orConsStr(otherConsString));
+
+    assertSame(nullConstant, consFloat.add(otherConsString));
+    assertSame(nullConstant, consFloat.sub(otherConsString));
+    assertSame(nullConstant, consFloat.times(otherConsString));
+    assertSame(nullConstant, consFloat.divide(otherConsString));
+    assertSame(nullConstant, consFloat.and(otherConsString));
+    assertSame(nullConstant, consFloat.or(otherConsString));
+
+    assertSame(nullConstant, consFloat.toConstantInt());
+    assertSame(nullConstant, consFloat.toConstantBinary());
+    assertSame(nullConstant, consFloat.toConstantBool());
+    assertSame(nullConstant, consFloat.negateConstant());
+
   }
 }

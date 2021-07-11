@@ -1,8 +1,9 @@
 package cl.uchile.dcc.scrabble.model.AST.Constants;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import cl.uchile.dcc.scrabble.model.AST.Wrapper.IConstant;
 import cl.uchile.dcc.scrabble.model.Types.SBinary;
 import java.util.Random;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -629,6 +630,77 @@ public class ConsBinaryTest {
 
     ConsString differentSString = new ConsString(differentString + differentToAddStringBinary);
     assertNotEquals(differentSString, toAddSBinary.addConsStr(sString), "ConsString match. Seed " + seed);
+  }
+
+  @RepeatedTest(50)
+  void nullOpTests(){
+    IConstant nullConstant = NullConstant.getInstance();
+
+    assertSame(nullConstant, consBinary.add(nullConstant));
+    assertSame(nullConstant, consBinary.sub(nullConstant));
+    assertSame(nullConstant, consBinary.times(nullConstant));
+    assertSame(nullConstant, consBinary.divide(nullConstant));
+    assertSame(nullConstant, consBinary.and(nullConstant));
+    assertSame(nullConstant, consBinary.or(nullConstant));
+
+    assertSame(nullConstant, consBinary.addNull(nullConstant));
+    assertSame(nullConstant, consBinary.subNull(nullConstant));
+    assertSame(nullConstant, consBinary.timesNull(nullConstant));
+    assertSame(nullConstant, consBinary.divideNull(nullConstant));
+    assertSame(nullConstant, consBinary.andNull(nullConstant));
+    assertSame(nullConstant, consBinary.orNull(nullConstant));
+
+    int testInt = rng.nextInt();
+    ConsInt consInt = new ConsInt(testInt);
+
+    assertSame(nullConstant, consBinary.andConsInt(consInt));
+    assertSame(nullConstant, consBinary.orConsInt(consInt));
+    assertSame(nullConstant, consBinary.and(consInt));
+    assertSame(nullConstant, consBinary.or(consInt));
+
+    double testDouble = rng.nextDouble();
+    ConsFloat consFloat = new ConsFloat(testDouble);
+
+    assertSame(nullConstant, consBinary.add(consFloat));
+    assertSame(nullConstant, consBinary.sub(consFloat));
+    assertSame(nullConstant, consBinary.times(consFloat));
+    assertSame(nullConstant, consBinary.divide(consFloat));
+    assertSame(nullConstant, consBinary.and(consFloat));
+    assertSame(nullConstant, consBinary.or(consFloat));
+    assertSame(nullConstant, consBinary.andConsFloat(consFloat));
+    assertSame(nullConstant, consBinary.orConsFloat(consFloat));
+
+    boolean testBool = rng.nextBoolean();
+    ConsBool consBool = new ConsBool(testBool);
+
+    assertSame(nullConstant, consBinary.addConsBool(consBool));
+    assertSame(nullConstant, consBinary.subConsBool(consBool));
+    assertSame(nullConstant, consBinary.timesConsBool(consBool));
+    assertSame(nullConstant, consBinary.divideConsBool(consBool));
+    assertSame(nullConstant, consBinary.add(consBool));
+    assertSame(nullConstant, consBinary.sub(consBool));
+    assertSame(nullConstant, consBinary.times(consBool));
+    assertSame(nullConstant, consBinary.divide(consBool));
+
+    int strSize = rng.nextInt(50);
+    String otherString = RandomStringUtils.random(strSize, 0, Character.MAX_CODE_POINT,
+        true, true, null, rng);
+    ConsString otherConsString = new ConsString(otherString);
+
+    assertSame(nullConstant, consBinary.add(otherConsString));
+    assertSame(nullConstant, consBinary.sub(otherConsString));
+    assertSame(nullConstant, consBinary.times(otherConsString));
+    assertSame(nullConstant, consBinary.divide(otherConsString));
+    assertSame(nullConstant, consBinary.and(otherConsString));
+
+    assertSame(nullConstant, consBinary.subConsStr(otherConsString));
+    assertSame(nullConstant, consBinary.timesConsStr(otherConsString));
+    assertSame(nullConstant, consBinary.divideConsStr(otherConsString));
+    assertSame(nullConstant, consBinary.andConsStr(otherConsString));
+    assertSame(nullConstant, consBinary.orConsStr(otherConsString));
+
+    assertSame(nullConstant, consBinary.toConstantBool());
+
   }
 
 }
