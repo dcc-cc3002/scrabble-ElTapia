@@ -31,6 +31,21 @@ public class SStringFactory {
     if(!createdStrings.containsKey(sString.toString())) {
       createdStrings.put(sString.toString(), sString);
     }
-    return sString;
+    return createdStrings.get(sString.toString());
+  }
+
+  /**
+   * Clear the dictionary
+   */
+  public static void cleanFactory(){
+    createdStrings.clear();
+  }
+
+  /**
+   * Check if the dictionary is empty
+   * @return boolean
+   */
+  public static boolean isEmpty(){
+    return createdStrings.isEmpty();
   }
 }
