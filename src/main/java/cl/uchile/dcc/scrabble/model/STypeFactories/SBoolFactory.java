@@ -8,7 +8,7 @@ import java.util.Map;
  * SBool factory. It optimize use of memory.
  */
 public class SBoolFactory {
-  private static final Map<Boolean, SBool> createdBools = new HashMap<>();
+  private static final Map<Boolean, SBool> createdBooleans = new HashMap<>();
 
   /**
    * Create a SBool, checking if is in the dictionary
@@ -16,10 +16,10 @@ public class SBoolFactory {
    * @return SBool
    */
   public static SBool createSBool(boolean bool) {
-    if(!createdBools.containsKey(bool)) {
-      createdBools.put(bool, new SBool(bool));
+    if(!createdBooleans.containsKey(bool)) {
+      createdBooleans.put(bool, new SBool(bool));
     }
-    return createdBools.get(bool);
+    return createdBooleans.get(bool);
   }
 
   /**
@@ -28,9 +28,25 @@ public class SBoolFactory {
    * @return SBool
    */
   public static SBool checkSBool(SBool sBool) {
-    if(!createdBools.containsKey(sBool.getBool())) {
-      createdBools.put(sBool.getBool(), sBool);
+    if(!createdBooleans.containsKey(sBool.getBool())) {
+      createdBooleans.put(sBool.getBool(), sBool);
     }
-    return sBool;
+    return createdBooleans.get(sBool.getBool());
+  }
+
+  /**
+   * Clear the dictionary
+   */
+  public static void cleanFactory(){
+    createdBooleans.clear();
+  }
+
+  /**
+   * Check if the dictionary is empty
+   * @return boolean
+   */
+  public static boolean isEmpty(){
+    return createdBooleans.isEmpty();
   }
 }
+
