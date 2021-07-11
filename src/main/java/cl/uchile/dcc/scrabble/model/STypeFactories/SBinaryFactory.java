@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * SBinary factory. It optimize use of memory.
  */
-public class SBinaryFactory {
+public class SBinaryFactory{
   private static final Map<String, SBinary> createdBinaries = new HashMap<>();
 
   /**
@@ -31,6 +31,22 @@ public class SBinaryFactory {
     if(!createdBinaries.containsKey(sBinary.toString())) {
       createdBinaries.put(sBinary.toString(), sBinary);
     }
-    return sBinary;
+    return createdBinaries.get(sBinary.toString());
   }
+
+  /**
+   * Clear the dictionary
+   */
+  public static void cleanFactory(){
+    createdBinaries.clear();
+  }
+
+  /**
+   * Check if the dictionary is empty
+   * @return boolean
+   */
+  public static boolean isEmpty(){
+    return createdBinaries.isEmpty();
+  }
+
 }
