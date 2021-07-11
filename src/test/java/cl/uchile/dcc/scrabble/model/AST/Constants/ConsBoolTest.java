@@ -9,14 +9,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
-class ConsBoolTest {
-  private ConsBool consBool;
-  private ConsBool negateTestConsBool;
-  private boolean boolTest;
-  private int seed;
+public class ConsBoolTest {
+  protected ConsBool consBool;
+  protected ConsBool negateTestConsBool;
+  protected boolean boolTest;
+  protected int seed;
 
   @BeforeEach
-  void setUp() {
+  protected void setUp() {
     seed = new Random().nextInt();
     Random rng = new Random(seed);
     boolTest = rng.nextBoolean();
