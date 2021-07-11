@@ -4,10 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import cl.uchile.dcc.scrabble.model.Types.SBinary;
-import cl.uchile.dcc.scrabble.model.Types.SBool;
-import cl.uchile.dcc.scrabble.model.Types.SFloat;
-import cl.uchile.dcc.scrabble.model.Types.SInt;
-import cl.uchile.dcc.scrabble.model.Types.SString;
 import java.util.Random;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,10 +41,33 @@ class ConsBinaryTest {
     assertEquals(expectedSBinary, expectedConsBinary.getSType());
     String differentBinary;
 
+    String fillTest;
+
     do {
       differentBinary = RandomStringUtils.random(rng.nextInt(32), 0, 2,
           false, true, binaryList, rng);
-    } while (differentBinary.equals(testBinary));
+      int max = Math.max(differentBinary.length(), testBinary.length());
+      int i_dif = max - differentBinary.length();
+      int i_test = max - testBinary.length();
+
+      String fill = "";
+      if(differentBinary.startsWith("1")){
+        fill = "1".repeat(i_dif);
+      }
+      if(differentBinary.startsWith("0")){
+        fill = "0".repeat(i_dif);
+      }
+
+      fillTest = "";
+      if(testBinary.startsWith("1")){
+        fillTest = "1".repeat(i_test);
+      }
+      if(testBinary.startsWith("0")){
+        fillTest = "0".repeat(i_test);
+      }
+
+      differentBinary = fill + differentBinary;
+    } while (differentBinary.equals(fillTest + testBinary));
 
     ConsBinary differentConsBinary = new ConsBinary(differentBinary);
     SBinary differentSBinary = new SBinary(differentBinary);
