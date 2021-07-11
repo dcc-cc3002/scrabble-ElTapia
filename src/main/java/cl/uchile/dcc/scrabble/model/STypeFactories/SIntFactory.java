@@ -31,6 +31,21 @@ public class SIntFactory {
     if(!createdInts.containsKey(sInt.getInt())) {
       createdInts.put(sInt.getInt(), sInt);
     }
-    return sInt;
+    return createdInts.get(sInt.getInt());
+  }
+
+  /**
+   * Clear the dictionary
+   */
+  public static void cleanFactory(){
+    createdInts.clear();
+  }
+
+  /**
+   * Check if the dictionary is empty
+   * @return boolean
+   */
+  public static boolean isEmpty(){
+    return createdInts.isEmpty();
   }
 }
