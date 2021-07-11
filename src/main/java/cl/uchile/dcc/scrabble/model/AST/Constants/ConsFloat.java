@@ -55,7 +55,7 @@ public class ConsFloat extends AbstractConstant{
    */
   @Override
   public SFloat getSType() {
-    return new SFloat(this.consFloat.getDouble());
+    return SFloatFactory.checkSFloat(this.consFloat);
   }
 
   /**
