@@ -32,6 +32,21 @@ public class SFloatFactory {
     if(!createdFloats.containsKey(sFloat.getDouble())) {
       createdFloats.put(sFloat.getDouble(), sFloat);
     }
-    return sFloat;
+    return createdFloats.get(sFloat.getDouble());
+  }
+
+  /**
+   * Clear the dictionary
+   */
+  public static void cleanFactory(){
+    createdFloats.clear();
+  }
+
+  /**
+   * Check if the dictionary is empty
+   * @return boolean
+   */
+  public static boolean isEmpty(){
+    return createdFloats.isEmpty();
   }
 }
