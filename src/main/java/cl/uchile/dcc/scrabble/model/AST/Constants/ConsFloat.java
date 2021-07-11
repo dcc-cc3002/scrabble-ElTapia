@@ -9,7 +9,7 @@ public class ConsFloat extends AbstractConstant{
 
   /**
    * Constructor with native Java
-   * @param Float double
+   * @param entryFloat double
    */
   public ConsFloat(double entryFloat){
     consFloat = SFloatFactory.createSFloat(entryFloat);
