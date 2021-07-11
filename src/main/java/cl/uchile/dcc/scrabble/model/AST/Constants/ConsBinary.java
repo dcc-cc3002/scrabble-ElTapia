@@ -55,7 +55,7 @@ public class ConsBinary extends AbstractConstant{
    */
   @Override
   public SBinary getSType() {
-    return new SBinary(this.consBinary.toString());
+    return SBinaryFactory.checkSBinary(this.consBinary);
   }
 
   /**
