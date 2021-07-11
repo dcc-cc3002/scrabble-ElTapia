@@ -23,13 +23,4 @@ public class Sub extends AbstractDualOperation {
   public IConstant eval() {
     return leftOp.eval().sub(rightOp.eval());
   }
-
-  /**
-   * String representation of an AST
-   * @return String
-   */
-  @Override
-  public String stringRep(){
-    return leftOp.stringRep() + " sub " + rightOp.stringRep();
-  }
 }

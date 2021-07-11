@@ -9,10 +9,4 @@ public interface IComponent {
    * @return Constant
    */
   IConstant eval();
-
-  /**
-   * String representation of an AST
-   * @return String
-   */
-  String stringRep();
 }

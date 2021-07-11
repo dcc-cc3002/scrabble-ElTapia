@@ -24,13 +24,4 @@ public class Negate extends AbstractSingleOperation {
   public IConstant eval() {
     return this.Op.eval().negateConstant();
   }
-
-  /**
-   * String representation of an AST
-   * @return String
-   */
-  @Override
-  public String stringRep() {
-    return "Negate(" + Op.stringRep() + ")";
-  }
 }

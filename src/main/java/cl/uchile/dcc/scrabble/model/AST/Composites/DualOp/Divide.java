@@ -23,13 +23,4 @@ public class Divide extends AbstractDualOperation {
     return leftOp.eval().divide(rightOp.eval());
   }
 
-  /**
-   * String representation of an AST
-   * @return String
-   */
-  @Override
-  public String stringRep(){
-    return leftOp.stringRep() + " divide " + rightOp.stringRep();
-  }
-
 }

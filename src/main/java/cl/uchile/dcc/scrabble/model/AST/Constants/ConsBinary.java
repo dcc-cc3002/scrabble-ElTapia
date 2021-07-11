@@ -391,13 +391,4 @@ public class ConsBinary extends AbstractConstant{
     return new ConsBinary(this.consBinary);
   }
 
-  /**
-   * String representation of an AST
-   *
-   * @return String
-   */
-  @Override
-  public String stringRep() {
-    return "Binary(" + this.toString() + ")\n";
-  }
 }

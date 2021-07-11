@@ -182,14 +182,4 @@ public class ConsBool extends AbstractConstant{
   public IConstant eval() {
     return new ConsBool(this.consBool);
   }
-
-  /**
-   * String representation of an AST
-   *
-   * @return String
-   */
-  @Override
-  public String stringRep() {
-    return "Bool(" + this.toString() + ")\n";
-  }
 }

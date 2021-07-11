@@ -24,13 +24,4 @@ public class ToInt extends AbstractSingleOperation {
   public IConstant eval() {
     return this.Op.eval().toConstantInt();
   }
-
-  /**
-   * String representation of an AST
-   * @return String
-   */
-  @Override
-  public String stringRep() {
-    return "ToInt(" + Op.stringRep() + ")";
-  }
 }

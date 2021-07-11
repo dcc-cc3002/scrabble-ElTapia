@@ -315,14 +315,4 @@ public class ConsInt extends AbstractConstant {
   public IConstant eval() {
     return new ConsInt(this.consInt);
   }
-
-  /**
-   * String representation of an AST
-   *
-   * @return String
-   */
-  @Override
-  public String stringRep() {
-    return "Int(" + this.toString() + ")\n";
-  }
 }

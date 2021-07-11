@@ -25,13 +25,4 @@ public class Add extends AbstractDualOperation {
   public IConstant eval() {
     return this.leftOp.eval().add(this.rightOp.eval());
   }
-
-  /**
-   * String representation of an AST
-   * @return String
-   */
-  @Override
-  public String stringRep() {
-    return leftOp.stringRep() + " add " + rightOp.stringRep();
-  }
 }

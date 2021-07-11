@@ -23,13 +23,4 @@ public class And extends AbstractDualOperation {
     return leftOp.eval().and(rightOp.eval());
   }
 
-  /**
-   * String representation of an AST
-   * @return String
-   */
-  @Override
-  public String stringRep(){
-    return leftOp.stringRep() + " and " + rightOp.stringRep();
-  }
-
 }

@@ -24,13 +24,4 @@ public class ToFloat extends AbstractSingleOperation {
   public IConstant eval() {
     return this.Op.eval().toConstantFloat();
   }
-
-  /**
-   * String representation of an AST
-   * @return String
-   */
-  @Override
-  public String stringRep() {
-    return "ToFloat(" + Op.stringRep() + ")";
-  }
 }

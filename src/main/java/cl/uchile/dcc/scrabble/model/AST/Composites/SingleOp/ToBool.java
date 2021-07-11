@@ -24,13 +24,4 @@ public class ToBool extends AbstractSingleOperation {
   public IConstant eval() {
     return this.Op.eval().toConstantBool();
   }
-
-  /**
-   * String representation of an AST
-   * @return String
-   */
-  @Override
-  public String stringRep() {
-    return "ToBool(" + Op.stringRep() + ")";
-  }
 }

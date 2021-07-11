@@ -24,13 +24,4 @@ public class ToString extends AbstractSingleOperation {
   public IConstant eval() {
     return this.Op.eval().toConstantStr();
   }
-
-  /**
-   * String representation of an AST
-   * @return String
-   */
-  @Override
-  public String stringRep() {
-    return "ToString(" + Op.stringRep() + ")";
-  }
 }

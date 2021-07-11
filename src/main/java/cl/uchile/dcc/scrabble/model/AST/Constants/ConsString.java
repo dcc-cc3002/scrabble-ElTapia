@@ -103,15 +103,4 @@ public class ConsString extends AbstractConstant {
   public IConstant eval() {
     return new ConsString(this.consString);
   }
-
-  /**
-   * String representation of an AST
-   *
-   * @return String
-   */
-  @Override
-  public String stringRep() {
-    return "String(" + this.toString() + ")\n";
-  }
-
 }

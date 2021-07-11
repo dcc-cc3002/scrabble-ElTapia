@@ -52,14 +52,4 @@ public class NullConstant implements IConstant {
   public String toString(){
     return "null";
   }
-
-  /**
-   * String representation of an AST
-   *
-   * @return String
-   */
-  @Override
-  public String stringRep() {
-    return this.toString();
-  }
 }

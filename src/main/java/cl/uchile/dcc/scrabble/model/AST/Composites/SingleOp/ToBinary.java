@@ -24,13 +24,4 @@ public class ToBinary extends AbstractSingleOperation {
   public IConstant eval() {
     return this.Op.eval().toConstantBinary();
   }
-
-  /**
-   * String representation of an AST
-   * @return String
-   */
-  @Override
-  public String stringRep() {
-    return "ToBinary(" + Op.stringRep() + ")";
-  }
 }
