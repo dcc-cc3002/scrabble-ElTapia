@@ -4,10 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import cl.uchile.dcc.scrabble.model.AST.Constants.ConsBoolTest;
 import cl.uchile.dcc.scrabble.model.Types.SBool;
-import cl.uchile.dcc.scrabble.model.Types.SString;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
 
 class SBoolFactoryTest extends ConsBoolTest {
 

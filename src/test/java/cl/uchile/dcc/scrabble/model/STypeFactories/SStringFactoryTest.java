@@ -2,13 +2,10 @@ package cl.uchile.dcc.scrabble.model.STypeFactories;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import cl.uchile.dcc.scrabble.model.AST.Constants.ConsString;
 import cl.uchile.dcc.scrabble.model.AST.Constants.ConsStringTest;
-import cl.uchile.dcc.scrabble.model.Types.SBinary;
 import cl.uchile.dcc.scrabble.model.Types.SString;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
 
 class SStringFactoryTest extends ConsStringTest {
 
