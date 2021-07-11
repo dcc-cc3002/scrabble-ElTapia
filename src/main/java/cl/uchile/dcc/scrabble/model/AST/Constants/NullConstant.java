@@ -36,16 +36,6 @@ public class NullConstant implements IConstant {
   }
 
   /**
-   * Compares an object with a constan
-   * @param obj Object
-   * @return boolean
-   */
-  @Override
-  public boolean equals(Object obj){
-    return obj instanceof NullConstant;
-  }
-
-  /**
    * String representation of a constant
    * @return String
    */
