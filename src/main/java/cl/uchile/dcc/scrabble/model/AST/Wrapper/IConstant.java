@@ -18,13 +18,6 @@ public interface IConstant extends IComponent {
   String toString();
 
   /**
-   * Compares an object with a constan
-   * @param obj Object
-   * @return boolean
-   */
-  boolean equals(Object obj);
-
-  /**
    * Add a constant. It uses Double Dispatch depending on Constant type
    * @param IConstant Constant
    * @return Constant
@@ -358,7 +351,7 @@ public interface IConstant extends IComponent {
    * @param nullConstant NullConstant
    * @return IConstant
    */
-  default IConstant addNull(NullConstant nullConstant){
+  default IConstant addNull(IConstant nullConstant){
     return NullConstant.getInstance();
   }
 
@@ -367,7 +360,7 @@ public interface IConstant extends IComponent {
    * @param nullConstant NullConstant
    * @return IConstant
    */
-  default IConstant subNull(NullConstant nullConstant){
+  default IConstant subNull(IConstant nullConstant){
     return NullConstant.getInstance();
   }
 
@@ -376,7 +369,7 @@ public interface IConstant extends IComponent {
    * @param nullConstant NullConstant
    * @return IConstant
    */
-  default IConstant timesNull(NullConstant nullConstant){
+  default IConstant timesNull(IConstant nullConstant){
     return NullConstant.getInstance();
   }
 
@@ -385,7 +378,7 @@ public interface IConstant extends IComponent {
    * @param nullConstant NullConstant
    * @return IConstant
    */
-  default IConstant divideNull(NullConstant nullConstant){
+  default IConstant divideNull(IConstant nullConstant){
     return NullConstant.getInstance();
   }
 
@@ -394,7 +387,7 @@ public interface IConstant extends IComponent {
    * @param nullConstant NullConstant
    * @return IConstant
    */
-  default IConstant andNull(NullConstant nullConstant){
+  default IConstant andNull(IConstant nullConstant){
     return NullConstant.getInstance();
   }
 
@@ -403,7 +396,7 @@ public interface IConstant extends IComponent {
    * @param nullConstant NullConstant
    * @return IConstant
    */
-  default IConstant orNull(NullConstant nullConstant){
+  default IConstant orNull(IConstant nullConstant){
     return NullConstant.getInstance();
   }
 
