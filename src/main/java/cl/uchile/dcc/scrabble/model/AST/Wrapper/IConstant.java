@@ -2,9 +2,7 @@ package cl.uchile.dcc.scrabble.model.AST.Wrapper;
 
 import cl.uchile.dcc.scrabble.model.AST.Constants.*;
 import cl.uchile.dcc.scrabble.model.AST.IComponent;
-import cl.uchile.dcc.scrabble.model.Interfaces.SType;
 
-//TODO: Segregar métodos en más interfaces
 
 /**
  * Interface to wrap Scrabble STypes. Implements methods that are not allowed.
@@ -20,12 +18,19 @@ public interface IConstant extends IComponent {
   String toString();
 
   /**
+   * Compares an object with a constan
+   * @param obj Object
+   * @return boolean
+   */
+  boolean equals(Object obj);
+
+  /**
    * Add a constant. It uses Double Dispatch depending on Constant type
    * @param IConstant Constant
    * @return Constant
    */
   default IConstant add(IConstant IConstant){
-    return null;
+    return NullConstant.getInstance();
   }
 
 
@@ -35,7 +40,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant sub(IConstant IConstant){
-    return null;
+    return NullConstant.getInstance();
   }
 
 
@@ -45,7 +50,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant times(IConstant IConstant){
-    return null;
+    return NullConstant.getInstance();
   }
 
 
@@ -55,7 +60,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant divide(IConstant IConstant){
-    return null;
+    return NullConstant.getInstance();
   }
 
 
@@ -65,7 +70,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant or(IConstant IConstant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -74,15 +79,8 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant and(IConstant IConstant){
-    return null;
+    return NullConstant.getInstance();
   }
-
-  /**
-   * Compares an object with a constan
-   * @param obj Object
-   * @return boolean
-   */
-  boolean equals(Object obj);
 
   /**
    * Add a Constant string
@@ -90,7 +88,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant addConsStr(ConsString constant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -99,7 +97,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant addConsInt(ConsInt constant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -108,7 +106,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant addConsFloat(ConsFloat constant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -117,7 +115,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant addConsBinary(ConsBinary constant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -126,7 +124,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant addConsBool(IConstant IConstant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -135,7 +133,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant subConsStr(IConstant IConstant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -144,7 +142,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant subConsInt(ConsInt constant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -153,7 +151,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant subConsFloat(ConsFloat constant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -162,7 +160,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant subConsBinary(ConsBinary constant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -171,7 +169,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant subConsBool(IConstant IConstant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -180,7 +178,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant timesConsStr(IConstant IConstant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -189,7 +187,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant timesConsInt(ConsInt constant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -198,7 +196,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant timesConsFloat(ConsFloat constant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -207,7 +205,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant timesConsBinary(ConsBinary constant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -216,7 +214,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant timesConsBool(IConstant IConstant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -225,7 +223,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant divideConsStr(IConstant IConstant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -234,7 +232,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant divideConsInt(ConsInt constant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -243,7 +241,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant divideConsFloat(ConsFloat constant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -252,7 +250,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant divideConsBinary(ConsBinary constant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -261,7 +259,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant divideConsBool(IConstant IConstant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -270,7 +268,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant orConsStr(IConstant IConstant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -279,7 +277,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant orConsInt(IConstant IConstant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -288,7 +286,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant orConsFloat(IConstant IConstant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -297,7 +295,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant orConsBinary(ConsBinary constant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -306,7 +304,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant orConsBool(ConsBool constant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -315,7 +313,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant andConsStr(IConstant IConstant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -324,7 +322,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant andConsInt(IConstant IConstant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -333,7 +331,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant andConsFloat(IConstant IConstant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -342,7 +340,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant andConsBinary(ConsBinary constant){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -351,7 +349,62 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant andConsBool(ConsBool constant){
-    return null;
+    return NullConstant.getInstance();
+  }
+
+
+  /**
+   * Add with null
+   * @param nullConstant NullConstant
+   * @return IConstant
+   */
+  default IConstant addNull(NullConstant nullConstant){
+    return NullConstant.getInstance();
+  }
+
+  /**
+   * Sub with null
+   * @param nullConstant NullConstant
+   * @return IConstant
+   */
+  default IConstant subNull(NullConstant nullConstant){
+    return NullConstant.getInstance();
+  }
+
+  /**
+   * Times with null
+   * @param nullConstant NullConstant
+   * @return IConstant
+   */
+  default IConstant timesNull(NullConstant nullConstant){
+    return NullConstant.getInstance();
+  }
+
+  /**
+   * Divide with null
+   * @param nullConstant NullConstant
+   * @return IConstant
+   */
+  default IConstant divideNull(NullConstant nullConstant){
+    return NullConstant.getInstance();
+  }
+
+  /**
+   * And with null
+   * @param nullConstant NullConstant
+   * @return IConstant
+   */
+  default IConstant andNull(NullConstant nullConstant){
+    return NullConstant.getInstance();
+  }
+
+  /**
+   * Or with null
+   * @param nullConstant NullConstant
+   * @return IConstant
+   */
+  default IConstant orNull(NullConstant nullConstant){
+    return NullConstant.getInstance();
   }
 
   /**
@@ -359,7 +412,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant negateConstant(){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -367,7 +420,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant toConstantStr(){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -375,7 +428,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant toConstantInt(){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -383,7 +436,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant toConstantFloat(){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -391,7 +444,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant toConstantBinary(){
-    return null;
+    return NullConstant.getInstance();
   }
 
   /**
@@ -399,7 +452,7 @@ public interface IConstant extends IComponent {
    * @return Constant
    */
   default IConstant toConstantBool(){
-    return null;
+    return NullConstant.getInstance();
   }
 
 }
