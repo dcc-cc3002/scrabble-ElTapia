@@ -1,12 +1,13 @@
 package cl.uchile.dcc.scrabble.model.AST.Constants;
 
-import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
+import cl.uchile.dcc.scrabble.model.AST.Wrapper.IConstant;
+import cl.uchile.dcc.scrabble.model.Interfaces.SType;
 import java.util.Objects;
 
 /**
  * Abstract class that contains generic methods for constants.
  */
-public abstract class AbstractConstant implements Constant{
+public abstract class AbstractConstant implements IConstant {
 
   /**
    * Get hashcode of type
@@ -31,5 +32,11 @@ public abstract class AbstractConstant implements Constant{
    */
   @Override
   public abstract String toString();
+
+  /**
+   * Get SType that the constant encapsulate
+   * @return AbstractType
+   */
+  public abstract SType getSType();
 
 }

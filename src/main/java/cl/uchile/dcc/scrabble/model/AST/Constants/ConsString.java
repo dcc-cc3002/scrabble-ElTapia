@@ -35,7 +35,7 @@ public class ConsString extends AbstractConstant {
    * @return Constant
    */
   @Override
-  public Constant add(Constant otherCons){
+  public IConstant add(IConstant otherCons){
     return otherCons.addConsStr(this);
   }
 
@@ -78,7 +78,7 @@ public class ConsString extends AbstractConstant {
    * @return Constant
    */
   @Override
-  public Constant addConsStr(ConsString constant) {
+  public IConstant addConsStr(ConsString constant) {
     SString result = this.consString.addToSString(constant.getSType());
     return new ConsString(result);
   }
@@ -89,7 +89,7 @@ public class ConsString extends AbstractConstant {
    * @return Constant
    */
   @Override
-  public Constant toConstantStr() {
+  public IConstant toConstantStr() {
     SString result = this.consString.toSString();
     return new ConsString(result);
   }
@@ -100,7 +100,7 @@ public class ConsString extends AbstractConstant {
    * @return Constant
    */
   @Override
-  public Constant eval() {
+  public IConstant eval() {
     return new ConsString(this.consString);
   }
 

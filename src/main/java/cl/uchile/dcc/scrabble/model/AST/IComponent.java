@@ -8,7 +8,7 @@ public interface IComponent {
    * Eval an operation
    * @return Constant
    */
-  Constant eval();
+  IConstant eval();
 
   /**
    * String representation of an AST

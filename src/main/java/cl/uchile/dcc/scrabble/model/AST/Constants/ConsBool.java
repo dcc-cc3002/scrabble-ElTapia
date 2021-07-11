@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.AST.Constants;
 
-import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
+import cl.uchile.dcc.scrabble.model.AST.Wrapper.IConstant;
 import cl.uchile.dcc.scrabble.model.STypeFactories.SBoolFactory;
 import cl.uchile.dcc.scrabble.model.Types.SBinary;
 import cl.uchile.dcc.scrabble.model.Types.SBool;
@@ -67,28 +67,28 @@ public class ConsBool extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant negateConstant() {
+  public IConstant negateConstant() {
     return new ConsBool(this.consBool.negate());
   }
 
   /**
    * Or logic with constant. It uses Double Dispatch depending on Constant type
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
   @Override
-  public Constant or(Constant constant){
-    return constant.orConsBool(this);
+  public IConstant or(IConstant IConstant){
+    return IConstant.orConsBool(this);
   }
 
   /**
    * And logic with constant. It uses Double Dispatch depending on Constant type
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
   @Override
-  public Constant and(Constant constant){
-    return constant.andConsBool(this);
+  public IConstant and(IConstant IConstant){
+    return IConstant.andConsBool(this);
   }
 
   /**
@@ -98,7 +98,7 @@ public class ConsBool extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant addConsStr(ConsString constant) {
+  public IConstant addConsStr(ConsString constant) {
     SString result = this.consBool.addToSString(constant.getSType());
     return new ConsString(result);
   }
@@ -110,7 +110,7 @@ public class ConsBool extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant orConsBinary(ConsBinary constant) {
+  public IConstant orConsBinary(ConsBinary constant) {
     SBinary result = this.consBool.orSBinary(constant.getSType());
     return new ConsBinary(result);
   }
@@ -122,7 +122,7 @@ public class ConsBool extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant orConsBool(ConsBool constant) {
+  public IConstant orConsBool(ConsBool constant) {
     SBool result = this.consBool.orSBool(constant.getSType());
     return new ConsBool(result);
   }
@@ -134,7 +134,7 @@ public class ConsBool extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant andConsBinary(ConsBinary constant) {
+  public IConstant andConsBinary(ConsBinary constant) {
     SBinary result = this.consBool.andSBinary(constant.getSType());
     return new ConsBinary(result);
   }
@@ -146,7 +146,7 @@ public class ConsBool extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant andConsBool(ConsBool constant) {
+  public IConstant andConsBool(ConsBool constant) {
     SBool result = this.consBool.andSBool(constant.getSType());
     return new ConsBool(result);
   }
@@ -157,7 +157,7 @@ public class ConsBool extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant toConstantStr() {
+  public IConstant toConstantStr() {
     SString result = this.consBool.toSString();
     return new ConsString(result);
   }
@@ -168,7 +168,7 @@ public class ConsBool extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant toConstantBool() {
+  public IConstant toConstantBool() {
     SBool result = this.consBool.toSBool();
     return new ConsBool(result);
   }
@@ -179,7 +179,7 @@ public class ConsBool extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant eval() {
+  public IConstant eval() {
     return new ConsBool(this.consBool);
   }
 

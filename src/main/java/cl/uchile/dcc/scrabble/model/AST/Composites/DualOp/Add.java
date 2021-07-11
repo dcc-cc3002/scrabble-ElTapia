@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.AST.Composites.DualOp;
 
 import cl.uchile.dcc.scrabble.model.AST.IComponent;
-import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
+import cl.uchile.dcc.scrabble.model.AST.Wrapper.IConstant;
 
 /**
  * Add operation in composite pattern
@@ -22,7 +22,7 @@ public class Add extends AbstractDualOperation {
    * @return Constant
    */
   @Override
-  public Constant eval() {
+  public IConstant eval() {
     return this.leftOp.eval().add(this.rightOp.eval());
   }
 

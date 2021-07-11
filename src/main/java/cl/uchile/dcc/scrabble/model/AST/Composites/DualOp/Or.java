@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.AST.Composites.DualOp;
 
 import cl.uchile.dcc.scrabble.model.AST.IComponent;
-import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
+import cl.uchile.dcc.scrabble.model.AST.Wrapper.IConstant;
 
 public class Or extends AbstractDualOperation {
 
@@ -19,7 +19,7 @@ public class Or extends AbstractDualOperation {
    * @return Constant
    */
   @Override
-  public Constant eval() {
+  public IConstant eval() {
     return leftOp.eval().or(rightOp.eval());
   }
 

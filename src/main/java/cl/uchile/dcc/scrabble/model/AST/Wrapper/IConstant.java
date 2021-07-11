@@ -11,13 +11,7 @@ import cl.uchile.dcc.scrabble.model.Interfaces.SType;
  *
  * It will be used to implement composite pattern.
  */
-public interface Constant extends IComponent {
-
-  /**
-   * Get SType that the constant encapsulate
-   * @return AbstractType
-   */
-  SType getSType();
+public interface IConstant extends IComponent {
 
   /**
    * String representation of a constant
@@ -27,59 +21,59 @@ public interface Constant extends IComponent {
 
   /**
    * Add a constant. It uses Double Dispatch depending on Constant type
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
-  default Constant add(Constant constant){
+  default IConstant add(IConstant IConstant){
     return null;
   }
 
 
   /**
    * Subtract a constant. It uses Double Dispatch depending on Constant type
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
-  default Constant sub(Constant constant){
+  default IConstant sub(IConstant IConstant){
     return null;
   }
 
 
   /**
    * Multiply a constant. It uses Double Dispatch depending on Constant type
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
-  default Constant times(Constant constant){
+  default IConstant times(IConstant IConstant){
     return null;
   }
 
 
   /**
    * Divide a constant. It uses Double Dispatch depending on Constant type
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
-  default Constant divide(Constant constant){
+  default IConstant divide(IConstant IConstant){
     return null;
   }
 
 
   /**
    * Or logic with constant. It uses Double Dispatch depending on Constant type
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
-  default Constant or(Constant constant){
+  default IConstant or(IConstant IConstant){
     return null;
   }
 
   /**
    * And logic with constant. It uses Double Dispatch depending on Constant type
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
-  default Constant and(Constant constant){
+  default IConstant and(IConstant IConstant){
     return null;
   }
 
@@ -95,7 +89,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant addConsStr(ConsString constant){
+  default IConstant addConsStr(ConsString constant){
     return null;
   }
 
@@ -104,7 +98,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant addConsInt(ConsInt constant){
+  default IConstant addConsInt(ConsInt constant){
     return null;
   }
 
@@ -113,7 +107,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant addConsFloat(ConsFloat constant){
+  default IConstant addConsFloat(ConsFloat constant){
     return null;
   }
 
@@ -122,25 +116,25 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant addConsBinary(ConsBinary constant){
+  default IConstant addConsBinary(ConsBinary constant){
     return null;
   }
 
   /**
    * Add a Constant Bool
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
-  default Constant addConsBool(Constant constant){
+  default IConstant addConsBool(IConstant IConstant){
     return null;
   }
 
   /**
    * Subtract a Constant string
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
-  default Constant subConsStr(Constant constant){
+  default IConstant subConsStr(IConstant IConstant){
     return null;
   }
 
@@ -149,7 +143,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant subConsInt(ConsInt constant){
+  default IConstant subConsInt(ConsInt constant){
     return null;
   }
 
@@ -158,7 +152,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant subConsFloat(ConsFloat constant){
+  default IConstant subConsFloat(ConsFloat constant){
     return null;
   }
 
@@ -167,25 +161,25 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant subConsBinary(ConsBinary constant){
+  default IConstant subConsBinary(ConsBinary constant){
     return null;
   }
 
   /**
    * Subtract a Scrabble Bool
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
-  default Constant subConsBool(Constant constant){
+  default IConstant subConsBool(IConstant IConstant){
     return null;
   }
 
   /**
    * Multiply a Constant string
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
-  default Constant timesConsStr(Constant constant){
+  default IConstant timesConsStr(IConstant IConstant){
     return null;
   }
 
@@ -194,7 +188,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant timesConsInt(ConsInt constant){
+  default IConstant timesConsInt(ConsInt constant){
     return null;
   }
 
@@ -203,7 +197,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant timesConsFloat(ConsFloat constant){
+  default IConstant timesConsFloat(ConsFloat constant){
     return null;
   }
 
@@ -212,25 +206,25 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant timesConsBinary(ConsBinary constant){
+  default IConstant timesConsBinary(ConsBinary constant){
     return null;
   }
 
   /**
    * Multiply a Constant Bool
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
-  default Constant timesConsBool(Constant constant){
+  default IConstant timesConsBool(IConstant IConstant){
     return null;
   }
 
   /**
    * Divide a Constant string
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
-  default Constant divideConsStr(Constant constant){
+  default IConstant divideConsStr(IConstant IConstant){
     return null;
   }
 
@@ -239,7 +233,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant divideConsInt(ConsInt constant){
+  default IConstant divideConsInt(ConsInt constant){
     return null;
   }
 
@@ -248,7 +242,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant divideConsFloat(ConsFloat constant){
+  default IConstant divideConsFloat(ConsFloat constant){
     return null;
   }
 
@@ -257,43 +251,43 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant divideConsBinary(ConsBinary constant){
+  default IConstant divideConsBinary(ConsBinary constant){
     return null;
   }
 
   /**
    * Divide a Scrabble Bool
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
-  default Constant divideConsBool(Constant constant){
+  default IConstant divideConsBool(IConstant IConstant){
     return null;
   }
 
   /**
    * Logical Or with Constant string
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
-  default Constant orConsStr(Constant constant){
+  default IConstant orConsStr(IConstant IConstant){
     return null;
   }
 
   /**
    * Logical Or with Constant int
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
-  default Constant orConsInt(Constant constant){
+  default IConstant orConsInt(IConstant IConstant){
     return null;
   }
 
   /**
    * Logical Or with Constant float
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
-  default Constant orConsFloat(Constant constant){
+  default IConstant orConsFloat(IConstant IConstant){
     return null;
   }
 
@@ -302,7 +296,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant orConsBinary(ConsBinary constant){
+  default IConstant orConsBinary(ConsBinary constant){
     return null;
   }
 
@@ -311,34 +305,34 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant orConsBool(ConsBool constant){
+  default IConstant orConsBool(ConsBool constant){
     return null;
   }
 
   /**
    * Logical And with Constant string
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
-  default Constant andConsStr(Constant constant){
+  default IConstant andConsStr(IConstant IConstant){
     return null;
   }
 
   /**
    * Logical And with Constant int
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
-  default Constant andConsInt(Constant constant){
+  default IConstant andConsInt(IConstant IConstant){
     return null;
   }
 
   /**
    * Logical And with Constant float
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
-  default Constant andConsFloat(Constant constant){
+  default IConstant andConsFloat(IConstant IConstant){
     return null;
   }
 
@@ -347,7 +341,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant andConsBinary(ConsBinary constant){
+  default IConstant andConsBinary(ConsBinary constant){
     return null;
   }
 
@@ -356,7 +350,7 @@ public interface Constant extends IComponent {
    * @param constant Constant
    * @return Constant
    */
-  default Constant andConsBool(ConsBool constant){
+  default IConstant andConsBool(ConsBool constant){
     return null;
   }
 
@@ -364,7 +358,7 @@ public interface Constant extends IComponent {
    * Negate a Constant
    * @return Constant
    */
-  default Constant negateConstant(){
+  default IConstant negateConstant(){
     return null;
   }
 
@@ -372,7 +366,7 @@ public interface Constant extends IComponent {
    * Convert to string constant
    * @return Constant
    */
-  default Constant toConstantStr(){
+  default IConstant toConstantStr(){
     return null;
   }
 
@@ -380,7 +374,7 @@ public interface Constant extends IComponent {
    * Convert to int constant
    * @return Constant
    */
-  default Constant toConstantInt(){
+  default IConstant toConstantInt(){
     return null;
   }
 
@@ -388,7 +382,7 @@ public interface Constant extends IComponent {
    * Convert to float constant
    * @return Constant
    */
-  default Constant toConstantFloat(){
+  default IConstant toConstantFloat(){
     return null;
   }
 
@@ -396,7 +390,7 @@ public interface Constant extends IComponent {
    * Convert to binary constant
    * @return Constant
    */
-  default Constant toConstantBinary(){
+  default IConstant toConstantBinary(){
     return null;
   }
 
@@ -404,7 +398,7 @@ public interface Constant extends IComponent {
    * Convert to bool constant
    * @return Constant
    */
-  default Constant toConstantBool(){
+  default IConstant toConstantBool(){
     return null;
   }
 

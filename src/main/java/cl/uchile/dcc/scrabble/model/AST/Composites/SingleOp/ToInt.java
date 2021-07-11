@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.AST.Composites.SingleOp;
 
 import cl.uchile.dcc.scrabble.model.AST.IComponent;
-import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
+import cl.uchile.dcc.scrabble.model.AST.Wrapper.IConstant;
 
 /**
  * To Int operation in composite pattern
@@ -21,7 +21,7 @@ public class ToInt extends AbstractSingleOperation {
    * @return Constant
    */
   @Override
-  public Constant eval() {
+  public IConstant eval() {
     return this.Op.eval().toConstantInt();
   }
 

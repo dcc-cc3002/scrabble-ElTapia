@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.AST.Constants;
 
-import cl.uchile.dcc.scrabble.model.AST.Wrapper.Constant;
+import cl.uchile.dcc.scrabble.model.AST.Wrapper.IConstant;
 import cl.uchile.dcc.scrabble.model.STypeFactories.SFloatFactory;
 import cl.uchile.dcc.scrabble.model.Types.*;
 
@@ -61,42 +61,42 @@ public class ConsFloat extends AbstractConstant{
   /**
    * Add a constant. It uses Double Dispatch depending on Constant type
    *
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
   @Override
-  public Constant add(Constant constant) {
-    return constant.addConsFloat(this);
+  public IConstant add(IConstant IConstant) {
+    return IConstant.addConsFloat(this);
   }
 
   /**
    * Subtract a constant. It uses Double Dispatch depending on Constant type
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
   @Override
-  public Constant sub(Constant constant){
-    return constant.subConsFloat(this);
+  public IConstant sub(IConstant IConstant){
+    return IConstant.subConsFloat(this);
   }
 
   /**
    * Multiply a constant. It uses Double Dispatch depending on Constant type
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
   @Override
-  public Constant times(Constant constant){
-    return constant.timesConsFloat(this);
+  public IConstant times(IConstant IConstant){
+    return IConstant.timesConsFloat(this);
   }
 
   /**
    * Divide a constant. It uses Double Dispatch depending on Constant type
-   * @param constant Constant
+   * @param IConstant Constant
    * @return Constant
    */
   @Override
-  public Constant divide(Constant constant){
-    return constant.divideConsFloat(this);
+  public IConstant divide(IConstant IConstant){
+    return IConstant.divideConsFloat(this);
   }
 
   /**
@@ -106,7 +106,7 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant addConsStr(ConsString constant) {
+  public IConstant addConsStr(ConsString constant) {
     SString result = this.consFloat.addToSString(constant.getSType());
     return new ConsString(result);
   }
@@ -118,7 +118,7 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant addConsInt(ConsInt constant) {
+  public IConstant addConsInt(ConsInt constant) {
     SFloat result = this.consFloat.addSInt(constant.getSType());
     return new ConsFloat(result);
   }
@@ -130,7 +130,7 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant addConsFloat(ConsFloat constant) {
+  public IConstant addConsFloat(ConsFloat constant) {
     SFloat result = this.consFloat.addSFloat(constant.getSType());
     return new ConsFloat(result);
   }
@@ -142,7 +142,7 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant subConsInt(ConsInt constant) {
+  public IConstant subConsInt(ConsInt constant) {
     SFloat result = this.consFloat.minusSInt(constant.getSType());
     return new ConsFloat(result);
   }
@@ -154,7 +154,7 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant subConsFloat(ConsFloat constant) {
+  public IConstant subConsFloat(ConsFloat constant) {
     SFloat result = this.consFloat.minusSFloat(constant.getSType());
     return new ConsFloat(result);
   }
@@ -168,7 +168,7 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant timesConsInt(ConsInt constant) {
+  public IConstant timesConsInt(ConsInt constant) {
     SFloat result = this.consFloat.timesSInt(constant.getSType());
     return new ConsFloat(result);
   }
@@ -180,7 +180,7 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant timesConsFloat(ConsFloat constant) {
+  public IConstant timesConsFloat(ConsFloat constant) {
     SFloat result = this.consFloat.timesSFloat(constant.getSType());
     return new ConsFloat(result);
   }
@@ -193,7 +193,7 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant divideConsInt(ConsInt constant) {
+  public IConstant divideConsInt(ConsInt constant) {
     SFloat result = this.consFloat.divideSInt(constant.getSType());
     return new ConsFloat(result);
   }
@@ -205,7 +205,7 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant divideConsFloat(ConsFloat constant) {
+  public IConstant divideConsFloat(ConsFloat constant) {
     SFloat result = this.consFloat.divideSFloat(constant.getSType());
     return new ConsFloat(result);
   }
@@ -216,7 +216,7 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant toConstantStr() {
+  public IConstant toConstantStr() {
     SString result = this.consFloat.toSString();
     return new ConsString(result);
   }
@@ -227,7 +227,7 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant toConstantFloat() {
+  public IConstant toConstantFloat() {
     SFloat result = this.consFloat.toSFloat();
     return new ConsFloat(result);
   }
@@ -238,7 +238,7 @@ public class ConsFloat extends AbstractConstant{
    * @return Constant
    */
   @Override
-  public Constant eval() {
+  public IConstant eval() {
     return new ConsFloat(this.consFloat);
   }
 
