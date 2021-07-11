@@ -35,7 +35,7 @@ public class ConsBool extends AbstractConstant{
    */
   @Override
   public SBool getSType() {
-    return new SBool(this.consBool.getBool());
+    return SBoolFactory.checkSBool(this.consBool);
   }
 
   /**
