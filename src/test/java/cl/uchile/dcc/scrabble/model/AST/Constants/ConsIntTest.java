@@ -10,14 +10,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
-class ConsIntTest {
-  private ConsInt consInt;
-  private int testInt;
-  private int seed;
-  private Random rng;
+public class ConsIntTest {
+  protected ConsInt consInt;
+  protected int testInt;
+  protected int seed;
+  protected Random rng;
 
   @BeforeEach
-  void setUp() {
+  protected void setUp() {
     seed = new Random().nextInt();
     rng = new Random(seed);
     testInt = rng.nextInt();
