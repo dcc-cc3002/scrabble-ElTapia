@@ -8,15 +8,15 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
-class ConsStringTest {
+public class ConsStringTest {
 
-  private ConsString consString;
-  private String testString;
-  private int seed;
-  private Random rng;
+  protected ConsString consString;
+  protected String testString;
+  protected int seed;
+  protected Random rng;
 
   @BeforeEach
-  void setUp() {
+  protected void setUp() {
     seed = new Random().nextInt();
     rng = new Random(seed);
     int strSize= rng.nextInt(50);
