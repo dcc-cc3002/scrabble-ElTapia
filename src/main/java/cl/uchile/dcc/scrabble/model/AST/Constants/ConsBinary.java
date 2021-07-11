@@ -382,6 +382,16 @@ public class ConsBinary extends AbstractConstant{
   }
 
   /**
+   * Eval an operation
+   *
+   * @return Constant
+   */
+  @Override
+  public Constant eval() {
+    return new ConsBinary(this.consBinary);
+  }
+
+  /**
    * String representation of an AST
    *
    * @return String

@@ -95,6 +95,16 @@ public class ConsString extends AbstractConstant {
   }
 
   /**
+   * Eval an operation
+   *
+   * @return Constant
+   */
+  @Override
+  public Constant eval() {
+    return new ConsString(this.consString);
+  }
+
+  /**
    * String representation of an AST
    *
    * @return String

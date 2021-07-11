@@ -174,6 +174,16 @@ public class ConsBool extends AbstractConstant{
   }
 
   /**
+   * Eval an operation
+   *
+   * @return Constant
+   */
+  @Override
+  public Constant eval() {
+    return new ConsBool(this.consBool);
+  }
+
+  /**
    * String representation of an AST
    *
    * @return String

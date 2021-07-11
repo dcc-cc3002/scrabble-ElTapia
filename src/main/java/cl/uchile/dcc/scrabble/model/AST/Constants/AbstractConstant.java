@@ -26,15 +26,6 @@ public abstract class AbstractConstant implements Constant{
   public abstract boolean equals(Object obj);
 
   /**
-   * Eval an operation
-   * @return Constant
-   */
-  @Override
-  public Constant eval() {
-    return this;
-  }
-
-  /**
    * String representation of a constant
    * @return String
    */

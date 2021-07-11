@@ -233,6 +233,16 @@ public class ConsFloat extends AbstractConstant{
   }
 
   /**
+   * Eval an operation
+   *
+   * @return Constant
+   */
+  @Override
+  public Constant eval() {
+    return new ConsFloat(this.consFloat);
+  }
+
+  /**
    * String representation of an AST
    *
    * @return String

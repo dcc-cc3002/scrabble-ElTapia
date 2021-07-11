@@ -307,6 +307,16 @@ public class ConsInt extends AbstractConstant {
   }
 
   /**
+   * Eval an operation
+   *
+   * @return Constant
+   */
+  @Override
+  public Constant eval() {
+    return new ConsInt(this.consInt);
+  }
+
+  /**
    * String representation of an AST
    *
    * @return String
