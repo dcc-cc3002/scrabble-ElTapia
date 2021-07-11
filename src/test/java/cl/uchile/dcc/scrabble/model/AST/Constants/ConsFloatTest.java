@@ -12,14 +12,14 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
-class ConsFloatTest {
-  private ConsFloat consFloat;
-  private double testDouble;
-  private int seed;
-  private Random rng;
+public class ConsFloatTest {
+  protected ConsFloat consFloat;
+  protected double testDouble;
+  protected int seed;
+  protected Random rng;
 
   @BeforeEach
-  void setUp() {
+  protected void setUp() {
     seed = new Random().nextInt();
     rng = new Random(seed);
     testDouble = rng.nextDouble();
