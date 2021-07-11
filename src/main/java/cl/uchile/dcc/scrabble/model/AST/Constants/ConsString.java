@@ -45,7 +45,7 @@ public class ConsString extends AbstractConstant {
    */
   @Override
   public SString getSType() {
-    return new SString(this.consString.toString());
+    return SStringFactory.checkSString(this.consString);
   }
 
   /**
