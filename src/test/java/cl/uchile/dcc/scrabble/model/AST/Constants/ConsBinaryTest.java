@@ -10,15 +10,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
-class ConsBinaryTest {
-  private final char[] binaryList = {'0', '1'};
-  private ConsBinary consBinary;
-  private String testBinary;
-  private int seed;
-  private Random rng;
+public class ConsBinaryTest {
+  protected final char[] binaryList = {'0', '1'};
+  protected ConsBinary consBinary;
+  protected String testBinary;
+  protected int seed;
+  protected Random rng;
 
   @BeforeEach
-  void setUp() {
+  protected void setUp() {
     seed = new Random().nextInt();
     rng = new Random(seed);
     int strSize = rng.nextInt(32);
