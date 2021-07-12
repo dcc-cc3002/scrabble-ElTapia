@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.AST.Composites.SingleOp;
 
 import cl.uchile.dcc.scrabble.model.AST.IComponent;
-import cl.uchile.dcc.scrabble.model.AST.Wrapper.IConstant;
+import cl.uchile.dcc.scrabble.model.AST.Wrappers.IConstant;
 
 /**
  * To Float operation in composite pattern

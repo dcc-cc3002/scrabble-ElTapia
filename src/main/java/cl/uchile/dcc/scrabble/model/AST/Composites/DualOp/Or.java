@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.AST.Composites.DualOp;
 
 import cl.uchile.dcc.scrabble.model.AST.IComponent;
-import cl.uchile.dcc.scrabble.model.AST.Wrapper.IConstant;
+import cl.uchile.dcc.scrabble.model.AST.Wrappers.IConstant;
 
 public class Or extends AbstractDualOperation {
 

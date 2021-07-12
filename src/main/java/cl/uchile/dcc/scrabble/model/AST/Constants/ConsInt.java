@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.AST.Constants;
 
-import cl.uchile.dcc.scrabble.model.AST.Wrapper.IConstant;
+import cl.uchile.dcc.scrabble.model.AST.Wrappers.IConstant;
 import cl.uchile.dcc.scrabble.model.STypeFactories.SIntFactory;
 import cl.uchile.dcc.scrabble.model.Types.*;
 

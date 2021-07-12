@@ -3,7 +3,7 @@ package cl.uchile.dcc.scrabble.model.AST.Constants;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-import cl.uchile.dcc.scrabble.model.AST.Wrapper.IConstant;
+import cl.uchile.dcc.scrabble.model.AST.Wrappers.IConstant;
 import cl.uchile.dcc.scrabble.model.Types.SInt;
 import java.util.Random;
 import org.apache.commons.lang3.RandomStringUtils;

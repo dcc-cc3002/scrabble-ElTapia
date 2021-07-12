@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model.AST.Constants;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import cl.uchile.dcc.scrabble.model.AST.Wrapper.IConstant;
+import cl.uchile.dcc.scrabble.model.AST.Wrappers.IConstant;
 import cl.uchile.dcc.scrabble.model.Types.SString;
 import java.util.Random;
 import org.apache.commons.lang3.RandomStringUtils;

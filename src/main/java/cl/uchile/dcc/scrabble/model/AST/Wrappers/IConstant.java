@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.AST.Wrapper;
+package cl.uchile.dcc.scrabble.model.AST.Wrappers;
 
 import cl.uchile.dcc.scrabble.model.AST.Constants.*;
 import cl.uchile.dcc.scrabble.model.AST.IComponent;
@@ -55,7 +55,6 @@ public interface IConstant extends IComponent {
   default IConstant divide(IConstant IConstant){
     return NullConstant.getInstance();
   }
-
 
   /**
    * Or logic with constant. It uses Double Dispatch depending on Constant type
