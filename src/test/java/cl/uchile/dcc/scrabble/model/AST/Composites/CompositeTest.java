@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.AST.Composites;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import cl.uchile.dcc.scrabble.model.AST.Composites.DualOp.*;
 import cl.uchile.dcc.scrabble.model.AST.Composites.SingleOp.*;
@@ -64,7 +64,7 @@ public abstract class CompositeTest {
   }
 
   @Test
-  void example() {
+  void examples() {
     Add example = new Add(
         new Or(
             new ConsBinary("01000"),
@@ -76,6 +76,19 @@ public abstract class CompositeTest {
         )
         ,new ConsFloat(6.9)
     );
-    assertEquals(NullConstant.getInstance(), example.eval());
+    assertSame(NullConstant.getInstance(), example.eval());
+
+    Add example2 = new Add(
+        new ConsFloat(6.9),
+        new Or(
+            new ConsBinary("01000"),
+            new ToBinary(
+                new Sub(
+                    new ConsInt(25),
+                    new ConsBinary("0101")
+                ))
+        )
+    );
+    assertEquals(new ConsFloat(34.9), example2.eval());
   }
 }
