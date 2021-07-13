@@ -15,8 +15,6 @@ _University of Chile_.
 Se realizan los siguientes supuestos de entradas al programa:
 * Los números binarios reciben strings de largo a lo más 32 y con solo 0's y 1's. 
   Largos mayores provocarán que el programa no funcione correctamente.
-* Las operaciones or y and entre binarios deben realizarse para binarios del mismo tamaño.
-* No se consideran iguales binarios con mismo valor entero pero con más 0's o 1's a la izquierda.
 * Las operaciones y transformaciones no son necesariamente bidireccionales, es decir que algunos tipos operan con la derecha con otros tipos
 pero no se pueden operar por la izquierda con estos mismos.
 * Se asumen que las entradas a los constructores de las clases son correctos.
@@ -28,6 +26,37 @@ Se especifican los siguientes tests para cada clase:
 * SInt --> SIntTest
 * SFloat --> SFloatTest
 * SBinary --> SBinaryTest
+
+
+* ConsString --> ConsStringTest
+* ConsBool --> ConsBoolTest
+* ConsInt --> ConsIntTest
+* ConsFloat --> ConsFloatTest
+* ConsBinary --> ConsBinaryTest
+
+
+* Add --> AddTest
+* Sub --> SubTest
+* Times --> TimesTest
+* Divide --> DivideTest
+* Or --> OrTest
+* And --> AndTest
+
+
+* ToString --> ToStringTest
+* ToInt --> ToIntTest
+* ToFloat --> ToFloatTest
+* ToBinary --> ToBinaryTest
+* ToBool --> ToBoolTest
+* Negate --> NegateTest
+
+
+* SBinaryFactory --> SBinaryFactoryTest
+* SIntFactory --> SIntFactoryTest
+* SStringFactory --> SStringFactoryTest
+* SFloatFactory --> SFloatFactoryTest
+* SBoolFactory --> SBoolFactoryTest
+
 
 Las transformaciones que se pueden realizar quedan especificadas como sigue:
 * String transforma a String.
@@ -43,3 +72,22 @@ Por otro lado, los tipos pueden realizar las siguientes operaciones por la derec
 * Int suma, resta, multiplica y divide con Float, Int y Binary.
 * Binary suma, resta multiplica y divide con Int y Binary. Además de conjunción y disyunción lógica
 con Bool y Binary
+  
+
+Las clases "ConsType" corresponden a adapters permiten realizar todo tipo de operaciones, donde las operaciones inválidas retornarán NullConstant.
+Implementan una interfaz con todas las operaciones posibles y por defecto retornarán NullConstant, redefiniendo tales operaciones de manera interna.
+
+
+Luego, para crear AST's y evaluarlos, es importante verificar si las operaciones que se quieran realizar son válidas, según lo descrito más arriba,
+y así evitar que retornen Null.
+
+Con respecto a la clase NullConstant, se cumplen los siguientes puntos:
+* Solo puede operar con las clases "ConsType".
+* Cualquier operación con esta clase retorna NullConstant.
+* Es una única instancia.
+* Operaciones inválidas entre ConsTypes retornan NullConstant.
+
+Con respecto a los factories, se cumplen las siguientes suposiciones:
+* Cada una posee diccionario propio y cada factory cumple con crear un SType en específico.
+* Las factories **no crean** adapters, al revés, los adapters utilizan las factories para almacenar cada uno su propio SType.
+* Cada factory entrega una misma instancia.
