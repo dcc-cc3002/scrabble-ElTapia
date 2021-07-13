@@ -1,6 +1,6 @@
-package cl.uchile.dcc.scrabble.model.Abstract;
+package cl.uchile.dcc.scrabble.model.Types.Abstract;
 
-import cl.uchile.dcc.scrabble.model.Interfaces.IOpBinary;
+import cl.uchile.dcc.scrabble.model.Types.Interfaces.IOpBinary;
 import cl.uchile.dcc.scrabble.model.Types.SBinary;
 import cl.uchile.dcc.scrabble.model.Types.SFloat;
 import cl.uchile.dcc.scrabble.model.Types.SInt;

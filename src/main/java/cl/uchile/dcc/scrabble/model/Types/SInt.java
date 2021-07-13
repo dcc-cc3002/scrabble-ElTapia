@@ -1,7 +1,6 @@
 package cl.uchile.dcc.scrabble.model.Types;
-import cl.uchile.dcc.scrabble.model.Interfaces.IOpBinary;
-import cl.uchile.dcc.scrabble.model.Abstract.AbstractBaseNumber;
-import cl.uchile.dcc.scrabble.model.Interfaces.SNumber;
+import cl.uchile.dcc.scrabble.model.Types.Abstract.AbstractBaseNumber;
+import cl.uchile.dcc.scrabble.model.Types.Interfaces.SNumber;
 import java.util.Objects;
 /**
  * Scrabble int that encapsulates a Java int.

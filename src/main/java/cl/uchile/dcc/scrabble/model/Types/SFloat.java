@@ -1,8 +1,7 @@
 package cl.uchile.dcc.scrabble.model.Types;
 
-import cl.uchile.dcc.scrabble.model.Interfaces.IOpBinary;
-import cl.uchile.dcc.scrabble.model.Abstract.AbstractNumber;
-import cl.uchile.dcc.scrabble.model.Interfaces.SNumber;
+import cl.uchile.dcc.scrabble.model.Types.Abstract.AbstractNumber;
+import cl.uchile.dcc.scrabble.model.Types.Interfaces.SNumber;
 
 /**
  * Scrabble float that encapsulates a Java double.

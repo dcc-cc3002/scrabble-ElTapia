@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.Types;
 
-import cl.uchile.dcc.scrabble.model.Abstract.AbstractType;
+import cl.uchile.dcc.scrabble.model.Types.Abstract.AbstractType;
 
 /**
  * Scrabble string that encapsulates a Java string.

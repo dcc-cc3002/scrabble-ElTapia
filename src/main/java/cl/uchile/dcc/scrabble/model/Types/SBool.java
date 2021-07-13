@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.Types;
-import cl.uchile.dcc.scrabble.model.Interfaces.ILogic;
-import cl.uchile.dcc.scrabble.model.Abstract.AbstractType;
+import cl.uchile.dcc.scrabble.model.Types.Interfaces.ILogic;
+import cl.uchile.dcc.scrabble.model.Types.Abstract.AbstractType;
 import java.util.Objects;
 /**
  * Scrabble bool that encapsulates a Java Boolean.

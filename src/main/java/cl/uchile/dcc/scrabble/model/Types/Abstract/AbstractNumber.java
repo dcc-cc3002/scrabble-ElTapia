@@ -1,6 +1,6 @@
-package cl.uchile.dcc.scrabble.model.Abstract;
+package cl.uchile.dcc.scrabble.model.Types.Abstract;
 
-import cl.uchile.dcc.scrabble.model.Interfaces.SNumber;
+import cl.uchile.dcc.scrabble.model.Types.Interfaces.SNumber;
 import cl.uchile.dcc.scrabble.model.Types.SFloat;
 import cl.uchile.dcc.scrabble.model.Types.SString;
 

@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.Interfaces;
+package cl.uchile.dcc.scrabble.model.Types.Interfaces;
 
 import cl.uchile.dcc.scrabble.model.Types.SFloat;
 import cl.uchile.dcc.scrabble.model.Types.SInt;
