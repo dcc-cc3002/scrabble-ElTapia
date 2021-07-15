@@ -1,5 +1,4 @@
 module scrabble.main {
-  exports cl.uchile.dcc.scrabble.gui;
-  requires javafx.controls;
-  requires org.jetbrains.annotations;
+    requires javafx.controls;
+    exports cl.uchile.dcc.scrabble.gui;
 }
