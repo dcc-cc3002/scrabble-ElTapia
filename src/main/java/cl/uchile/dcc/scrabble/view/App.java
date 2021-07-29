@@ -1,13 +1,10 @@
 package cl.uchile.dcc.scrabble.view;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -24,18 +21,33 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
         window = stage;
-        window.setTitle("Display calculator");
+        window.setTitle("Display panes");
 
-        Button calculatorButton = new Button("Display Calculator");
-        calculatorButton.setOnAction(e -> {
-            calcResult = CalculatorBox.display("Hi, I am a calculator");
+        NumbersPane numberPane = new NumbersPane();
+
+        Button intButton = new Button("Display int pane");
+        intButton.setOnAction(e -> {
+            calcResult = numberPane.displayIntBox();
             System.out.println(calcResult);
         });
 
-        StackPane stackPane = new StackPane();
-        stackPane.getChildren().add(calculatorButton);
+        Button binaryButton = new Button("Display binary pane");
+        binaryButton.setOnAction(e -> {
+            calcResult = numberPane.displayBinaryBox();
+            System.out.println(calcResult);
+        });
 
-        Scene scene = new Scene(stackPane, 500, 500);
+        Button floatButton = new Button("Display float pane");
+        floatButton.setOnAction(e -> {
+            calcResult = numberPane.displayFloatBox();
+            System.out.println(calcResult);
+        });
+
+        VBox layout = new VBox(10);
+        layout.setPadding(new Insets(20));
+        layout.getChildren().addAll(intButton, binaryButton, floatButton);
+
+        Scene scene = new Scene(layout, 500, 500);
         window.setScene(scene);
         window.show();
     }
@@ -43,4 +55,7 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
+
+
+
 }
