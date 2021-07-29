@@ -49,70 +49,70 @@ public class NumbersPane {
     button1.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     button1.setOnAction(e -> {
       result += 1;
-      propResult.concat(1);
+      propResult.setValue(result);
     });
 
     button2 = new Button("2");
     button2.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     button2.setOnAction(e -> {
       result += 2;
-      propResult.concat(2);
+      propResult.setValue(result);
     });
 
     button3 = new Button("3");
     button3.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     button3.setOnAction(e -> {
       result += 3;
-      propResult.concat(3);
+      propResult.setValue(result);
     });
 
     button4 = new Button("4");
     button4.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     button4.setOnAction(e -> {
       result += 4;
-      propResult.concat(4);
+      propResult.setValue(result);
     });
 
     button5 = new Button("5");
     button5.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     button5.setOnAction(e -> {
       result += 5;
-      propResult.concat(5);
+      propResult.setValue(result);
     });
 
     button6 = new Button("6");
     button6.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     button6.setOnAction(e -> {
       result += 6;
-      propResult.concat(6);
+      propResult.setValue(result);
     });
 
     button7 = new Button("7");
     button7.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     button7.setOnAction(e -> {
       result += 7;
-      propResult.concat(7);
+      propResult.setValue(result);
     });
 
     button8 = new Button("8");
     button8.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     button8.setOnAction(e -> {
       result += 8;
-      propResult.concat(8);
+      propResult.setValue(result);
     });
 
     button9 = new Button("9");
     button9.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     button9.setOnAction(e -> {
       result += 9;
-      propResult.concat(9);
+      propResult.setValue(result);
     });
 
     button0 = new Button("0");
     button0.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     button0.setOnAction(e -> {
       result += 0;
-      propResult.concat(0);
+      propResult.setValue(result);
     });
 
     dotButton = new Button(".");
@@ -123,7 +123,7 @@ public class NumbersPane {
     dotButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     dotButton.setOnAction(e -> {
       result += ".";
-      propResult.concat(".");
+      propResult.setValue(result);
       isDisabled.setValue(true);
     });
 
@@ -135,7 +135,7 @@ public class NumbersPane {
     });
   }
 
-  public String displayIntBox() {
+  public StringProperty displayIntBox() {
     result = "";
     propResult = new SimpleStringProperty(this, "result", result);
 
@@ -154,58 +154,71 @@ public class NumbersPane {
     column3.setPercentWidth(34);
 
     RowConstraints row1 = new RowConstraints();
-    row1.setPercentHeight(25);
+    row1.setPercentHeight(10);
     RowConstraints row2 = new RowConstraints();
-    row2.setPercentHeight(25);
+    row2.setPercentHeight(22.5);
     RowConstraints row3 = new RowConstraints();
-    row3.setPercentHeight(25);
+    row3.setPercentHeight(22.5);
     RowConstraints row4 = new RowConstraints();
-    row4.setPercentHeight(25);
+    row4.setPercentHeight(22.5);
+    RowConstraints row5 = new RowConstraints();
+    row4.setPercentHeight(22.5);
 
     gridPane.getColumnConstraints().addAll(column1, column2, column3);
-    gridPane.getRowConstraints().addAll(row1, row2, row3, row4);
+    gridPane.getRowConstraints().addAll(row1, row2, row3, row4, row5);
+
+    Label numberLabel = new Label("Int number: ");
+    Label resultLabel = new Label();
+    resultLabel.setMaxWidth(200);
+
+    //Add first label
+    gridPane.add(numberLabel, 0, 0);
+
+    //Add second label
+    gridPane.add(resultLabel, 1, 0, 2, 1);
+    resultLabel.textProperty().bind(propResult);
 
     //Button 1
-    gridPane.add(button1, 0, 0);
+    gridPane.add(button1, 0, 1);
 
     //Button 2
-    gridPane.add(button2, 1, 0);
+    gridPane.add(button2, 1, 1);
 
     //Button 3
-    gridPane.add(button3, 2, 0);
+    gridPane.add(button3, 2, 1);
 
     //Button 4
-    gridPane.add(button4, 0, 1);
+    gridPane.add(button4, 0, 2);
 
     //Button 5
-    gridPane.add(button5, 1, 1);
+    gridPane.add(button5, 1, 2);
 
     //Button 6
-    gridPane.add(button6, 2, 1);
+    gridPane.add(button6, 2, 2);
 
     //Button 7
-    gridPane.add(button7, 0, 2);
+    gridPane.add(button7, 0, 3);
 
     //Button 8
-    gridPane.add(button8, 1, 2);
+    gridPane.add(button8, 1, 3);
 
     //Button 9
-    gridPane.add(button9, 2, 2);
+    gridPane.add(button9, 2, 3);
 
     //Button 0
-    gridPane.add(button0, 1, 3);
+    gridPane.add(button0, 1, 4);
 
     //Confirm button
-    gridPane.add(confirmButton, 2, 3);
+    gridPane.add(confirmButton, 2, 4);
 
     Scene scene = new Scene(gridPane, 400, 400);
     window.setScene(scene);
     window.showAndWait();
 
-    return result;
+    return propResult;
   }
 
-  public String displayBinaryBox() {
+  public StringProperty displayBinaryBox() {
     result = "";
     propResult = new SimpleStringProperty(this, "result", result);
 
@@ -224,27 +237,40 @@ public class NumbersPane {
     column3.setPercentWidth(34);
 
     RowConstraints row1 = new RowConstraints();
+    RowConstraints row2 = new RowConstraints();
     row1.setPercentHeight(50);
+    row2.setPercentHeight(50);
     gridPane.getColumnConstraints().addAll(column1, column2, column3);
-    gridPane.getRowConstraints().addAll(row1);
+    gridPane.getRowConstraints().addAll(row1, row2);
+
+    Label numberLabel = new Label("Binary number: ");
+    Label resultLabel = new Label();
+    resultLabel.setMaxWidth(200);
+
+    //Add first label
+    gridPane.add(numberLabel, 0, 0);
+
+    //Add second label
+    gridPane.add(resultLabel, 1, 0, 2, 1);
+    resultLabel.textProperty().bind(propResult);
 
     //Button 1
-    gridPane.add(button1, 0, 0);
+    gridPane.add(button1, 0, 1);
 
     //Button 0
-    gridPane.add(button0, 1, 0);
+    gridPane.add(button0, 1, 1);
 
     //Confirm button
-    gridPane.add(confirmButton, 2, 0);
+    gridPane.add(confirmButton, 2, 1);
 
     Scene scene = new Scene(gridPane, 400, 400);
     window.setScene(scene);
     window.showAndWait();
 
-    return result;
+    return propResult;
   }
 
-  public String displayFloatBox() {
+  public StringProperty displayFloatBox() {
     result = "";
     propResult = new SimpleStringProperty(this, "result", result);
 
@@ -263,57 +289,70 @@ public class NumbersPane {
     column3.setPercentWidth(34);
 
     RowConstraints row1 = new RowConstraints();
-    row1.setPercentHeight(25);
+    row1.setPercentHeight(10);
     RowConstraints row2 = new RowConstraints();
-    row2.setPercentHeight(25);
+    row2.setPercentHeight(22.5);
     RowConstraints row3 = new RowConstraints();
-    row3.setPercentHeight(25);
+    row3.setPercentHeight(22.5);
     RowConstraints row4 = new RowConstraints();
-    row4.setPercentHeight(25);
+    row4.setPercentHeight(22.5);
+    RowConstraints row5 = new RowConstraints();
+    row5.setPercentHeight(22.5);
 
     gridPane.getColumnConstraints().addAll(column1, column2, column3);
-    gridPane.getRowConstraints().addAll(row1, row2, row3, row4);
+    gridPane.getRowConstraints().addAll(row1, row2, row3, row4, row5);
+
+    Label numberLabel = new Label("Float number: ");
+    Label resultLabel = new Label();
+    resultLabel.setMaxWidth(200);
+
+    //Add first label
+    gridPane.add(numberLabel, 0, 0);
+
+    //Add second label
+    gridPane.add(resultLabel, 1, 0, 2, 1);
+    resultLabel.textProperty().bind(propResult);
 
     //Button 1
-    gridPane.add(button1, 0, 0);
+    gridPane.add(button1, 0, 1);
 
     //Button 2
-    gridPane.add(button2, 1, 0);
+    gridPane.add(button2, 1, 1);
 
     //Button 3
-    gridPane.add(button3, 2, 0);
+    gridPane.add(button3, 2, 1);
 
     //Button 4
-    gridPane.add(button4, 0, 1);
+    gridPane.add(button4, 0, 2);
 
     //Button 5
-    gridPane.add(button5, 1, 1);
+    gridPane.add(button5, 1, 2);
 
     //Button 6
-    gridPane.add(button6, 2, 1);
+    gridPane.add(button6, 2, 2);
 
     //Button 7
-    gridPane.add(button7, 0, 2);
+    gridPane.add(button7, 0, 3);
 
     //Button 8
-    gridPane.add(button8, 1, 2);
+    gridPane.add(button8, 1, 3);
 
     //Button 9
-    gridPane.add(button9, 2, 2);
+    gridPane.add(button9, 2, 3);
 
     //Button 0
-    gridPane.add(button0, 1, 3);
+    gridPane.add(button0, 1, 4);
 
     //Confirm button
-    gridPane.add(confirmButton, 2, 3);
+    gridPane.add(confirmButton, 2, 4);
 
     //Dot button
-    gridPane.add(dotButton, 0, 3);
+    gridPane.add(dotButton, 0, 4);
 
     Scene scene = new Scene(gridPane, 400, 400);
     window.setScene(scene);
     window.showAndWait();
 
-    return result;
+    return propResult;
   }
 }
