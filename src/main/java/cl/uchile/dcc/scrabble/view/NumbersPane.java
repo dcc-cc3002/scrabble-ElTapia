@@ -1,5 +1,9 @@
 package cl.uchile.dcc.scrabble.view;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -15,7 +19,10 @@ import javafx.stage.Stage;
 
 public class NumbersPane {
 
-  static String result;
+  private String result;
+  private StringProperty propResult;
+
+  //Init buttons
   static Button button1;
   static Button button2;
   static Button button3;
@@ -40,55 +47,97 @@ public class NumbersPane {
     //Create numbers buttons
     button1 = new Button("1");
     button1.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    button1.setOnAction(e -> result += 1);
+    button1.setOnAction(e -> {
+      result += 1;
+      propResult.concat(1);
+    });
 
     button2 = new Button("2");
     button2.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    button2.setOnAction(e -> result += 2);
+    button2.setOnAction(e -> {
+      result += 2;
+      propResult.concat(2);
+    });
 
     button3 = new Button("3");
     button3.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    button3.setOnAction(e -> result += 3);
+    button3.setOnAction(e -> {
+      result += 3;
+      propResult.concat(3);
+    });
 
     button4 = new Button("4");
     button4.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    button4.setOnAction(e -> result += 4);
+    button4.setOnAction(e -> {
+      result += 4;
+      propResult.concat(4);
+    });
 
     button5 = new Button("5");
     button5.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    button5.setOnAction(e -> result += 5);
+    button5.setOnAction(e -> {
+      result += 5;
+      propResult.concat(5);
+    });
 
     button6 = new Button("6");
     button6.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    button6.setOnAction(e -> result += 6);
+    button6.setOnAction(e -> {
+      result += 6;
+      propResult.concat(6);
+    });
 
     button7 = new Button("7");
     button7.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    button7.setOnAction(e -> result += 7);
+    button7.setOnAction(e -> {
+      result += 7;
+      propResult.concat(7);
+    });
 
     button8 = new Button("8");
     button8.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    button8.setOnAction(e -> result += 8);
+    button8.setOnAction(e -> {
+      result += 8;
+      propResult.concat(8);
+    });
 
     button9 = new Button("9");
     button9.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    button9.setOnAction(e -> result += 9);
+    button9.setOnAction(e -> {
+      result += 9;
+      propResult.concat(9);
+    });
 
     button0 = new Button("0");
     button0.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    button0.setOnAction(e -> result += 0);
+    button0.setOnAction(e -> {
+      result += 0;
+      propResult.concat(0);
+    });
 
     dotButton = new Button(".");
+
+    BooleanProperty isDisabled = new SimpleBooleanProperty();
+    dotButton.disableProperty().bind(isDisabled);
+
     dotButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    dotButton.setOnAction(e -> result += ".");
+    dotButton.setOnAction(e -> {
+      result += ".";
+      propResult.concat(".");
+      isDisabled.setValue(true);
+    });
 
     confirmButton = new Button("Confirm");
     confirmButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    confirmButton.setOnAction(e->window.close());
+    confirmButton.setOnAction(e->{
+      window.close();
+      isDisabled.setValue(false);
+    });
   }
 
   public String displayIntBox() {
     result = "";
+    propResult = new SimpleStringProperty(this, "result", result);
 
     window.setTitle("Int numbers pane");
 
@@ -158,6 +207,7 @@ public class NumbersPane {
 
   public String displayBinaryBox() {
     result = "";
+    propResult = new SimpleStringProperty(this, "result", result);
 
     window.setTitle("Binary numbers pane");
 
@@ -196,8 +246,9 @@ public class NumbersPane {
 
   public String displayFloatBox() {
     result = "";
+    propResult = new SimpleStringProperty(this, "result", result);
 
-    window.setTitle("Binary numbers pane");
+    window.setTitle("Float numbers pane");
 
     gridPane = new GridPane();
     gridPane.setPadding(new Insets(10));
