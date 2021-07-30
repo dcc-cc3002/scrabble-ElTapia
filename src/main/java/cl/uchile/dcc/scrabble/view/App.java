@@ -3,6 +3,7 @@ package cl.uchile.dcc.scrabble.view;
 import cl.uchile.dcc.scrabble.Controller.DualOpPane;
 import cl.uchile.dcc.scrabble.Controller.NumbersPane;
 import cl.uchile.dcc.scrabble.Controller.SingleOpPane;
+import cl.uchile.dcc.scrabble.Controller.TypesPane;
 import javafx.application.Application;
 import javafx.beans.property.StringProperty;
 import javafx.geometry.Insets;
@@ -20,7 +21,6 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
 
-    StringProperty calcResult;
     Stage window;
 
     @Override
@@ -28,25 +28,6 @@ public class App extends Application {
         window = stage;
         window.setTitle("Display panes");
 
-        NumbersPane numberPane = new NumbersPane();
-
-        Button intButton = new Button("Display int pane");
-        intButton.setOnAction(e -> {
-            calcResult = numberPane.displayIntBox();
-            System.out.println(calcResult.getValue());
-        });
-
-        Button binaryButton = new Button("Display binary pane");
-        binaryButton.setOnAction(e -> {
-            calcResult = numberPane.displayBinaryBox();
-            System.out.println(calcResult.getValue());
-        });
-
-        Button floatButton = new Button("Display float pane");
-        floatButton.setOnAction(e -> {
-            calcResult = numberPane.displayFloatBox();
-            System.out.println(calcResult.getValue());
-        });
 
         GridPane completeLayout = new GridPane();
 
@@ -60,19 +41,16 @@ public class App extends Application {
         completeLayout.getColumnConstraints().addAll(column1, column2, column3);
 
         RowConstraints row1 = new RowConstraints();
-        row1.setPercentHeight(70);
+        row1.setPercentHeight(60);
         RowConstraints row2 = new RowConstraints();
-        row2.setPercentHeight(30);
+        row2.setPercentHeight(40);
         completeLayout.getRowConstraints().addAll(row1, row2);
 
         GridPane dualOp = DualOpPane.getGridPane();
         GridPane singleOp = SingleOpPane.getGridPane();
+        GridPane types = TypesPane.getGridPane();
 
-        completeLayout.add(singleOp, 1, 1);
-
-        VBox layout = new VBox(10);
-        layout.setPadding(new Insets(20));
-        layout.getChildren().addAll(intButton, binaryButton, floatButton);
+        completeLayout.add(types, 1, 1);
 
         Scene scene = new Scene(completeLayout, 500, 500);
         window.setScene(scene);
