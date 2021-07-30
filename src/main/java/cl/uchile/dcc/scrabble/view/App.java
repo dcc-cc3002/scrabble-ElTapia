@@ -2,6 +2,7 @@ package cl.uchile.dcc.scrabble.view;
 
 import cl.uchile.dcc.scrabble.Controller.DualOpPane;
 import cl.uchile.dcc.scrabble.Controller.NumbersPane;
+import cl.uchile.dcc.scrabble.Controller.SingleOpPane;
 import javafx.application.Application;
 import javafx.beans.property.StringProperty;
 import javafx.geometry.Insets;
@@ -65,7 +66,9 @@ public class App extends Application {
         completeLayout.getRowConstraints().addAll(row1, row2);
 
         GridPane dualOp = DualOpPane.getGridPane();
-        completeLayout.add(dualOp, 1, 1);
+        GridPane singleOp = SingleOpPane.getGridPane();
+
+        completeLayout.add(singleOp, 1, 1);
 
         VBox layout = new VBox(10);
         layout.setPadding(new Insets(20));
