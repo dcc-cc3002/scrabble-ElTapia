@@ -1,19 +1,16 @@
-package cl.uchile.dcc.scrabble.view;
+package cl.uchile.dcc.scrabble.Controller;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -36,6 +33,8 @@ public class NumbersPane {
   static Button dotButton;
   static Button confirmButton;
 
+  static Label resultLabel;
+
   static Stage window;
   static GridPane gridPane;
 
@@ -43,6 +42,9 @@ public class NumbersPane {
     window = new Stage();
     window.initModality(Modality.APPLICATION_MODAL);
     window.setMinWidth(250);
+
+    resultLabel = new Label();
+    resultLabel.setMaxWidth(200);
 
     //Create numbers buttons
     button1 = new Button("1");
@@ -162,14 +164,12 @@ public class NumbersPane {
     RowConstraints row4 = new RowConstraints();
     row4.setPercentHeight(22.5);
     RowConstraints row5 = new RowConstraints();
-    row4.setPercentHeight(22.5);
+    row5.setPercentHeight(22.5);
 
     gridPane.getColumnConstraints().addAll(column1, column2, column3);
     gridPane.getRowConstraints().addAll(row1, row2, row3, row4, row5);
 
     Label numberLabel = new Label("Int number: ");
-    Label resultLabel = new Label();
-    resultLabel.setMaxWidth(200);
 
     //Add first label
     gridPane.add(numberLabel, 0, 0);
@@ -244,8 +244,6 @@ public class NumbersPane {
     gridPane.getRowConstraints().addAll(row1, row2);
 
     Label numberLabel = new Label("Binary number: ");
-    Label resultLabel = new Label();
-    resultLabel.setMaxWidth(200);
 
     //Add first label
     gridPane.add(numberLabel, 0, 0);
@@ -303,8 +301,6 @@ public class NumbersPane {
     gridPane.getRowConstraints().addAll(row1, row2, row3, row4, row5);
 
     Label numberLabel = new Label("Float number: ");
-    Label resultLabel = new Label();
-    resultLabel.setMaxWidth(200);
 
     //Add first label
     gridPane.add(numberLabel, 0, 0);
