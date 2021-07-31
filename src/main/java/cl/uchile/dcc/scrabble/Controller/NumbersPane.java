@@ -14,6 +14,8 @@ import javafx.scene.layout.RowConstraints;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+//TODO: Setear resultado al controlador del AST
+
 public class NumbersPane {
 
   private String result;
@@ -169,7 +171,7 @@ public class NumbersPane {
     gridPane.getColumnConstraints().addAll(column1, column2, column3);
     gridPane.getRowConstraints().addAll(row1, row2, row3, row4, row5);
 
-    Label numberLabel = new Label("Int number: ");
+    Label numberLabel = new Label("Insert Int: ");
 
     //Add first label
     gridPane.add(numberLabel, 0, 0);
@@ -243,7 +245,7 @@ public class NumbersPane {
     gridPane.getColumnConstraints().addAll(column1, column2, column3);
     gridPane.getRowConstraints().addAll(row1, row2);
 
-    Label numberLabel = new Label("Binary number: ");
+    Label numberLabel = new Label("Insert Binary: ");
 
     //Add first label
     gridPane.add(numberLabel, 0, 0);
@@ -300,7 +302,7 @@ public class NumbersPane {
     gridPane.getColumnConstraints().addAll(column1, column2, column3);
     gridPane.getRowConstraints().addAll(row1, row2, row3, row4, row5);
 
-    Label numberLabel = new Label("Float number: ");
+    Label numberLabel = new Label("Insert Float: ");
 
     //Add first label
     gridPane.add(numberLabel, 0, 0);

@@ -18,7 +18,7 @@ public class TypesPane {
   static GridPane gridPane;
   static String chosenType;
 
-  static StringProperty calcResult;
+  static StringProperty input;
 
   public static GridPane getGridPane(){
 
@@ -48,22 +48,26 @@ public class TypesPane {
     intButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     intButton.setOnAction(e -> {
       chosenType = "Int";
-      calcResult = numberPane.displayIntBox();
-      System.out.println(calcResult.getValue());
+      input = numberPane.displayIntBox();
+      System.out.println(input.getValue());
     });
     gridPane.add(intButton, 0, 0);
 
     stringButton = new Button("String");
     stringButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    stringButton.setOnAction(e -> chosenType = "String");
+    stringButton.setOnAction(e -> {
+      chosenType = "String";
+      input = StringPane.displayStringBox();
+      System.out.println(input.getValue());
+    });
     gridPane.add(stringButton, 1, 0);
 
     floatButton = new Button("Float");
     floatButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     floatButton.setOnAction(e -> {
       chosenType = "Float";
-      calcResult = numberPane.displayFloatBox();
-      System.out.println(calcResult.getValue());
+      input = numberPane.displayFloatBox();
+      System.out.println(input.getValue());
     });
     gridPane.add(floatButton, 2, 0);
 
@@ -71,14 +75,18 @@ public class TypesPane {
     binaryButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     binaryButton.setOnAction(e -> {
       chosenType = "Binary";
-      calcResult = numberPane.displayBinaryBox();
-      System.out.println(calcResult.getValue());
+      input = numberPane.displayBinaryBox();
+      System.out.println(input.getValue());
     });
     gridPane.add(binaryButton, 0, 1);
 
     boolButton = new Button("Bool");
     boolButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    boolButton.setOnAction(e -> chosenType = "Bool");
+    boolButton.setOnAction(e -> {
+      chosenType = "Bool";
+      input = BoolPane.displayBoolBox();
+      System.out.println(input.getValue());
+    });
     gridPane.add(boolButton, 2, 1);
 
     return gridPane;
