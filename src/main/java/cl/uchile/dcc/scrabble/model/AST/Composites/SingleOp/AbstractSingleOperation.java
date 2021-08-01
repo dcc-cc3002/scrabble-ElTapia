@@ -50,7 +50,6 @@ public abstract class AbstractSingleOperation implements IComponent {
       Op.insert(component);
   }
 
-
   /**
    * Function that check if some node has null nodes
    * @return boolean

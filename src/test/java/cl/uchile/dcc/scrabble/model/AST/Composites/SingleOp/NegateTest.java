@@ -33,6 +33,15 @@ class NegateTest extends CompositeTest {
     Negate voidNegate = new Negate();
     assertTrue(voidNegate.hasNull());
 
+    negateTest = new Negate(new Negate(testConsBinary[0]));
+
+    Negate expectedInsertNegateTest = new Negate();
+    expectedInsertNegateTest.insert(new Negate());
+    expectedInsertNegateTest.insert(testConsBinary[0]);
+
+    assertEquals(expectedInsertNegateTest, negateTest);
+    assertFalse(expectedInsertNegateTest.hasNull());
+
   }
 
   @RepeatedTest(100)

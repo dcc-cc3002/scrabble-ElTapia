@@ -33,6 +33,15 @@ class ToBoolTest extends CompositeTest {
     ToBool voidToBool = new ToBool();
     assertTrue(voidToBool.hasNull());
 
+    toBoolTest = new ToBool(new ToBool(testFalseConsBool));
+
+    ToBool expectedInsertToBoolTest = new ToBool();
+    expectedInsertToBoolTest.insert(new ToBool());
+    expectedInsertToBoolTest.insert(testFalseConsBool);
+
+    assertEquals(expectedInsertToBoolTest, toBoolTest);
+    assertFalse(expectedInsertToBoolTest.hasNull());
+
   }
 
   @RepeatedTest(100)
