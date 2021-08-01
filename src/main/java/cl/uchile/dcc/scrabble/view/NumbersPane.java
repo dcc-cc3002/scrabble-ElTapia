@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.Controller;
+package cl.uchile.dcc.scrabble.view;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;

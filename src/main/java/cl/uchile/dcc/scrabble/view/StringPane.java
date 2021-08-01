@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.Controller;
+package cl.uchile.dcc.scrabble.view;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

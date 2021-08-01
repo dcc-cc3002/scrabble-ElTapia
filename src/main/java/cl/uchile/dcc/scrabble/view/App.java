@@ -1,8 +1,5 @@
 package cl.uchile.dcc.scrabble.view;
 
-import cl.uchile.dcc.scrabble.Controller.DualOpPane;
-import cl.uchile.dcc.scrabble.Controller.SingleOpPane;
-import cl.uchile.dcc.scrabble.Controller.TypesPane;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;

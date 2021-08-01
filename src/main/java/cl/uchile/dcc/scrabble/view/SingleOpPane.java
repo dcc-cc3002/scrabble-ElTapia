@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.Controller;
+package cl.uchile.dcc.scrabble.view;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
