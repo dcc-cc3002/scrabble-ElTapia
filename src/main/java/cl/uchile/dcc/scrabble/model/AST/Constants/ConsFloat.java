@@ -45,7 +45,7 @@ public class ConsFloat extends AbstractConstant{
    */
   @Override
   public String toString() {
-    return this.consFloat.toString();
+    return "\t" + this.consFloat.toString();
   }
 
   /**

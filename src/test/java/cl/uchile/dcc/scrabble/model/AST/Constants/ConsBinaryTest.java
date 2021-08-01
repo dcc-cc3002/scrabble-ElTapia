@@ -78,8 +78,8 @@ public class ConsBinaryTest {
     assertNotEquals(differentConsSBinary, consBinary, "ConsBinary match. Seed " + seed);
     assertNotEquals(differentSBinary, consBinary.getSType());
 
-    assertEquals(testBinary, consBinary.toString(), "String don't match. Seed " + seed);
-    assertNotEquals(differentBinary, consBinary.toString(), "String match. Seed " + seed);
+    assertEquals("\t" + testBinary, consBinary.toString(), "String don't match. Seed " + seed);
+    assertNotEquals("\t" + differentBinary, consBinary.toString(), "String match. Seed " + seed);
 
     assertFalse(consBinary.hasNull());
 

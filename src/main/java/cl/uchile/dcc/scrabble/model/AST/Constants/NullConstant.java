@@ -40,6 +40,6 @@ public class NullConstant implements IConstant {
    * @return String
    */
   public String toString(){
-    return "null";
+    return "";
   }
 }

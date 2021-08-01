@@ -57,8 +57,8 @@ public class ConsStringTest {
     assertNotEquals(differentSString, consString.getSType());
     assertNotEquals(differentConsString, consString.eval());
 
-    assertEquals(testString, consString.toString(), "ConsString don't match. Seed " + seed);
-    assertNotEquals(differentString, consString.toString(), "ConsString match. Seed " + seed);
+    assertEquals("\t" + testString, consString.toString(), "ConsString don't match. Seed " + seed);
+    assertNotEquals("\t" + differentString, consString.toString(), "ConsString match. Seed " + seed);
 
     assertFalse(consString.hasNull());
 

@@ -34,7 +34,7 @@ class NullConstantTest {
 
   @RepeatedTest(50)
   void testToString() {
-    String expectedString = "null";
+    String expectedString = "";
     assertEquals(expectedString, nullConstant.toString());
 
     String differentString;

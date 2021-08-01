@@ -45,7 +45,7 @@ public class ConsBinary extends AbstractConstant{
    */
   @Override
   public String toString() {
-    return this.consBinary.toString();
+    return "\t" + this.consBinary.toString();
   }
 
   /**

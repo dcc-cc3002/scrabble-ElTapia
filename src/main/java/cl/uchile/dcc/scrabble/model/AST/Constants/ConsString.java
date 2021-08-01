@@ -54,7 +54,7 @@ public class ConsString extends AbstractConstant {
    */
   @Override
   public String toString(){
-    return this.consString.toString();
+    return "\t" + this.consString.toString();
   }
 
   /**

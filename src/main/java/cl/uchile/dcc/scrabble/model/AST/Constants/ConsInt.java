@@ -48,7 +48,7 @@ public class ConsInt extends AbstractConstant {
    */
   @Override
   public String toString() {
-    return this.consInt.toString();
+    return "\t" + this.consInt.toString();
   }
 
   /**

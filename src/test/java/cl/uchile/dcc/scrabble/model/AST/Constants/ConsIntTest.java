@@ -49,8 +49,8 @@ public class ConsIntTest {
     assertNotEquals(differentConsSInt, consInt, "ConsInt match. Seed " + seed);
     assertNotEquals(differentConsInt, consInt, "ConsInt match. Seed " + seed);
 
-    assertEquals(String.valueOf(testInt), consInt.toString(), "String don't match. Seed " + seed);
-    assertNotEquals(String.valueOf(differentInt), consInt.toString(), "String match. Seed " + seed);
+    assertEquals("\t" + testInt, consInt.toString(), "String don't match. Seed " + seed);
+    assertNotEquals("\t" + differentInt, consInt.toString(), "String match. Seed " + seed);
 
     assertFalse(consInt.hasNull());
 
