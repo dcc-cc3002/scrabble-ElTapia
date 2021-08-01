@@ -15,6 +15,28 @@ public class And extends AbstractDualOperation {
   }
 
   /**
+   * Compares an object with an And
+   * @param obj Object
+   * @return boolean
+   */
+  @Override
+  public boolean equals(Object obj){
+    if (obj instanceof And){
+      var o = (And) obj;
+      return o.getLeftOp().equals(this.leftOp) & o.getRightOp().equals(this.rightOp);
+    }
+    return false;
+  }
+
+  /**
+   * Void constructor. Used to insert components.
+   */
+  public And(){
+    super();
+  }
+
+
+  /**
    * Eval an operation
    * @return Constant
    */

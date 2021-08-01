@@ -59,6 +59,11 @@ public class ConsStringTest {
 
     assertEquals(testString, consString.toString(), "ConsString don't match. Seed " + seed);
     assertNotEquals(differentString, consString.toString(), "ConsString match. Seed " + seed);
+
+    assertFalse(consString.hasNull());
+
+    expectedConsSString.insert(expectedConsSString);
+    assertEquals(expectedConsSString, consString);
   }
 
   @RepeatedTest(50)

@@ -7,6 +7,8 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
+//TODO: Agregar setter para controller
+
 public class DualOpPane {
   static Button addButton;
   static Button subButton;

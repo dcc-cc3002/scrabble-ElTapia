@@ -5,10 +5,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import cl.uchile.dcc.scrabble.model.AST.Composites.CompositeTest;
 import cl.uchile.dcc.scrabble.model.AST.Composites.SingleOp.*;
 import cl.uchile.dcc.scrabble.model.AST.Constants.*;
+import cl.uchile.dcc.scrabble.model.AST.IComponent;
 import cl.uchile.dcc.scrabble.model.AST.Wrappers.IConstant;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 class AddTest extends CompositeTest {
   protected Add addTest;
@@ -16,6 +18,46 @@ class AddTest extends CompositeTest {
   @BeforeEach
   protected void setUp() {
     super.setUp();
+  }
+
+  @RepeatedTest(100)
+  void constructorsTest(){
+    addTest = new Add(
+        new Add(testConsString,
+            testConsInt),
+        new Add(testConsFloat,
+            testConsBinary[0]));
+
+    Add expectedInsertAdd = new Add();
+
+    expectedInsertAdd.insert(new Add());
+    expectedInsertAdd.insert(testConsString);
+    expectedInsertAdd.insert(testConsInt);
+
+    expectedInsertAdd.insert(new Add());
+    expectedInsertAdd.insert(testConsFloat);
+    expectedInsertAdd.insert(testConsBinary[0]);
+
+    Add expectedAddTest = new Add(
+        new Add(testConsString,
+            testConsInt),
+        new Add(testConsFloat,
+            testConsBinary[0]));
+
+    assertEquals(addTest, expectedInsertAdd);
+    assertEquals(expectedAddTest, addTest);
+    assertEquals(expectedInsertAdd, expectedInsertAdd);
+    assertNotEquals(expectedInsertAdd, new Add());
+    assertNotEquals(addTest, new Add());
+    assertNotEquals(addTest, testConsInt);
+
+    assertFalse(addTest.hasNull());
+    assertFalse(expectedAddTest.hasNull());
+    assertFalse(expectedInsertAdd.hasNull());
+
+    Add voidAdd = new Add();
+    assertTrue(voidAdd.hasNull());
+
   }
 
   @RepeatedTest(100)

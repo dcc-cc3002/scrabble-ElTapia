@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
 class NegateTest extends CompositeTest {
-  protected Negate toBinaryTest;
+  protected Negate negateTest;
 
   @BeforeEach
   public void setUp() {
@@ -15,44 +15,65 @@ class NegateTest extends CompositeTest {
   }
 
   @RepeatedTest(100)
+  void constructorsTest(){
+
+    negateTest = new Negate(testConsBinary[0]);
+
+    Negate expectedInsertTest = new Negate();
+    expectedInsertTest.insert(testConsBinary[0]);
+
+    Negate expectedNegateTest = new Negate(testConsBinary[0]);
+
+    assertEquals(expectedInsertTest, this.negateTest);
+    assertEquals(expectedNegateTest, negateTest);
+    assertNotEquals(this.negateTest, testTrueConsBool);
+    assertFalse(negateTest.hasNull());
+    assertFalse(expectedInsertTest.hasNull());
+
+    Negate voidNegate = new Negate();
+    assertTrue(voidNegate.hasNull());
+
+  }
+
+  @RepeatedTest(100)
   void eval(){
     //negate binary
-    toBinaryTest = new Negate(testConsBinary[0]);
+    negateTest = new Negate(testConsBinary[0]);
 
-    assertEquals(toBinaryTest.eval(), testConsBinary[0].negateConstant());
-    assertNotSame(nullConstant, toBinaryTest.eval());
+    assertEquals(negateTest.eval(), testConsBinary[0].negateConstant());
+    assertNotSame(nullConstant, negateTest.eval());
 
     //negate false bool
-    toBinaryTest = new Negate(testFalseConsBool);
+    negateTest = new Negate(testFalseConsBool);
 
-    assertEquals(toBinaryTest.eval(), testFalseConsBool.negateConstant());
-    assertNotSame(nullConstant, toBinaryTest.eval());
+    assertEquals(negateTest.eval(), testFalseConsBool.negateConstant());
+    assertNotSame(nullConstant, negateTest.eval());
 
     //negate true bool
-    toBinaryTest = new Negate(testTrueConsBool);
+    negateTest = new Negate(testTrueConsBool);
 
-    assertEquals(toBinaryTest.eval(), testTrueConsBool.negateConstant());
-    assertNotSame(nullConstant, toBinaryTest.eval());
+    assertEquals(negateTest.eval(), testTrueConsBool.negateConstant());
+    assertNotSame(nullConstant, negateTest.eval());
   }
 
   @RepeatedTest(100)
   void nullOps(){
     //negate int
-    toBinaryTest = new Negate(testConsInt);
+    negateTest = new Negate(testConsInt);
 
-    assertSame(toBinaryTest.eval(), testConsInt.negateConstant());
-    assertSame(nullConstant, toBinaryTest.eval());
+    assertSame(negateTest.eval(), testConsInt.negateConstant());
+    assertSame(nullConstant, negateTest.eval());
 
     //negate float
-    toBinaryTest = new Negate(testConsFloat);
+    negateTest = new Negate(testConsFloat);
 
-    assertSame(toBinaryTest.eval(), testConsFloat.negateConstant());
-    assertSame(nullConstant, toBinaryTest.eval());
+    assertSame(negateTest.eval(), testConsFloat.negateConstant());
+    assertSame(nullConstant, negateTest.eval());
 
     //negate string
-    toBinaryTest = new Negate(testConsString);
+    negateTest = new Negate(testConsString);
 
-    assertSame(toBinaryTest.eval(), testConsString.negateConstant());
-    assertSame(nullConstant, toBinaryTest.eval());
+    assertSame(negateTest.eval(), testConsString.negateConstant());
+    assertSame(nullConstant, negateTest.eval());
   }
 }

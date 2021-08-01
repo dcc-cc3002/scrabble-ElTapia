@@ -6,6 +6,8 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
+//TODO: Agregar setter para controller
+
 public class SingleOpPane {
   static Button negateButton;
   static Button toStrButton;

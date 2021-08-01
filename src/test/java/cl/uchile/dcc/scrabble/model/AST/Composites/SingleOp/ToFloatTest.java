@@ -15,6 +15,27 @@ class ToFloatTest extends CompositeTest {
   }
 
   @RepeatedTest(100)
+  void constructorsTest(){
+
+    toFloatTest = new ToFloat(testConsInt);
+
+    ToFloat expectedInsertTest = new ToFloat();
+    expectedInsertTest.insert(testConsInt);
+
+    ToFloat expectedToFloatTest = new ToFloat(testConsInt);
+
+    assertEquals(expectedInsertTest, this.toFloatTest);
+    assertEquals(expectedToFloatTest, toFloatTest);
+    assertNotEquals(this.toFloatTest, testTrueConsBool);
+    assertFalse(toFloatTest.hasNull());
+    assertFalse(expectedInsertTest.hasNull());
+
+    ToFloat voidToFloat = new ToFloat();
+    assertTrue(voidToFloat.hasNull());
+
+  }
+
+  @RepeatedTest(100)
   void eval(){
     //int to float
     toFloatTest = new ToFloat(testConsInt);

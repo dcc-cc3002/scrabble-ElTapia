@@ -80,6 +80,11 @@ public class ConsBinaryTest {
 
     assertEquals(testBinary, consBinary.toString(), "String don't match. Seed " + seed);
     assertNotEquals(differentBinary, consBinary.toString(), "String match. Seed " + seed);
+
+    assertFalse(consBinary.hasNull());
+
+    expectedConsBinary.insert(expectedConsBinary);
+    assertEquals(expectedConsBinary, consBinary);
   }
   @Test
   void toConsIntAndConsFloatTest() {

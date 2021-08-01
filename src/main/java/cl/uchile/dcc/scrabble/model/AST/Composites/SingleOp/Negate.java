@@ -17,6 +17,27 @@ public class Negate extends AbstractSingleOperation {
   }
 
   /**
+   * Compares an object with a Negate
+   * @param obj Object
+   * @return boolean
+   */
+  @Override
+  public boolean equals(Object obj){
+    if (obj instanceof Negate){
+      var o = (Negate) obj;
+      return o.getOp().equals(this.Op);
+    }
+    return false;
+  }
+
+  /**
+   * Void constructor. Used to insert components.
+   */
+  public Negate(){
+    super();
+  }
+
+  /**
    * Eval an operation
    * @return Constant
    */

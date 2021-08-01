@@ -14,6 +14,28 @@ public class Or extends AbstractDualOperation {
     super(leftOp, rightOp);
   }
 
+
+  /**
+   * Compares an object with an Or
+   * @param obj Object
+   * @return boolean
+   */
+  @Override
+  public boolean equals(Object obj){
+    if (obj instanceof Or){
+      var o = (Or) obj;
+      return o.getLeftOp().equals(this.leftOp) & o.getRightOp().equals(this.rightOp);
+    }
+    return false;
+  }
+
+  /**
+   * Void constructor. Used to insert components.
+   */
+  public Or(){
+    super();
+  }
+
   /**
    * Eval an operation
    * @return Constant

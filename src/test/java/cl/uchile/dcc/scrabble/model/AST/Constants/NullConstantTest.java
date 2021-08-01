@@ -25,6 +25,11 @@ class NullConstantTest {
   void constructorTest() {
     assertSame(nullConstant, NullConstant.getInstance());
     assertSame(nullConstant, nullConstant.eval());
+
+    assertFalse(nullConstant.hasNull());
+
+    nullConstant.insert(nullConstant);
+    assertEquals(nullConstant, NullConstant.getInstance());
   }
 
   @RepeatedTest(50)

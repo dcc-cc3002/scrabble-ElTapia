@@ -1,8 +1,11 @@
 package cl.uchile.dcc.scrabble.model.AST.Composites.DualOp;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import cl.uchile.dcc.scrabble.model.AST.Composites.CompositeTest;
 import cl.uchile.dcc.scrabble.model.AST.Constants.*;
@@ -18,6 +21,46 @@ class SubTest extends CompositeTest {
   @BeforeEach
   protected void setUp() {
     super.setUp();
+  }
+
+  @RepeatedTest(100)
+  void constructorsTest(){
+    subTest = new Sub(
+        new Sub(testConsFloat,
+            testConsInt),
+        new Sub(testConsFloat,
+            testConsBinary[0]));
+
+    Sub expectedInsertSub = new Sub();
+
+    expectedInsertSub.insert(new Sub());
+    expectedInsertSub.insert(testConsFloat);
+    expectedInsertSub.insert(testConsInt);
+
+    expectedInsertSub.insert(new Sub());
+    expectedInsertSub.insert(testConsFloat);
+    expectedInsertSub.insert(testConsBinary[0]);
+
+    Sub expectedSubTest = new Sub(
+        new Sub(testConsFloat,
+            testConsInt),
+        new Sub(testConsFloat,
+            testConsBinary[0]));
+
+    assertEquals(subTest, expectedInsertSub);
+    assertEquals(expectedSubTest, subTest);
+    assertEquals(expectedInsertSub, expectedInsertSub);
+    assertNotEquals(expectedInsertSub, new Sub());
+    assertNotEquals(subTest, new Sub());
+    assertNotEquals(subTest, testConsInt);
+
+    assertFalse(subTest.hasNull());
+    assertFalse(expectedSubTest.hasNull());
+    assertFalse(expectedInsertSub.hasNull());
+
+    Sub voidSub = new Sub();
+    assertTrue(voidSub.hasNull());
+
   }
 
 

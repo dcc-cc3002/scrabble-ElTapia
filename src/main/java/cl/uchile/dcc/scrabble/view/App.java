@@ -61,6 +61,7 @@ public class App extends Application {
         comboBox.setPromptText("Dual operations");
         comboBox.setOnAction(e -> {
             selectPane(comboBox);
+            completeLayout.getChildren().remove(toShowPane);
             completeLayout.add(toShowPane, 1, 1);
         });
 

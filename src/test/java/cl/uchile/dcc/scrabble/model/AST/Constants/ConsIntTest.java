@@ -51,6 +51,11 @@ public class ConsIntTest {
 
     assertEquals(String.valueOf(testInt), consInt.toString(), "String don't match. Seed " + seed);
     assertNotEquals(String.valueOf(differentInt), consInt.toString(), "String match. Seed " + seed);
+
+    assertFalse(consInt.hasNull());
+
+    expectedConsSInt.insert(expectedConsSInt);
+    assertEquals(expectedConsSInt, consInt);
   }
   @RepeatedTest(50)
   void toConsStringTest(){

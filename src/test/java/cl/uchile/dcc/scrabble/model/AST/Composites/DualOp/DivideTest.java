@@ -22,6 +22,54 @@ class DivideTest extends CompositeTest {
   }
 
   @RepeatedTest(100)
+  void constructorsTest(){
+    int toDivideInt1;
+    do {toDivideInt1 = rng.nextInt();}
+    while(toDivideInt1 == 0);
+
+    ConsInt toDivideConsInt1= new ConsInt(toDivideInt1);
+
+    int toDivideInt3;
+    do {toDivideInt3 = rng.nextInt();}
+    while(toDivideInt3 == 0);
+
+    ConsInt toDivideConsInt3= new ConsInt(toDivideInt3);
+
+    divideTest = new Divide(
+        new Divide(testConsInt,
+            toDivideConsInt1),
+        toDivideConsInt3);
+
+    Divide expectedInsertDivide = new Divide();
+
+    expectedInsertDivide.insert(new Divide());
+    expectedInsertDivide.insert(testConsInt);
+    expectedInsertDivide.insert(toDivideConsInt1);
+
+    expectedInsertDivide.insert(toDivideConsInt3);
+
+    Divide expectedDivideTest =new Divide(
+        new Divide(testConsInt,
+            toDivideConsInt1),
+        toDivideConsInt3);
+
+    assertEquals(divideTest, expectedInsertDivide);
+    assertEquals(expectedDivideTest, divideTest);
+    assertEquals(expectedInsertDivide, expectedInsertDivide);
+    assertNotEquals(expectedInsertDivide, new Divide());
+    assertNotEquals(divideTest, new Divide());
+    assertNotEquals(divideTest, testConsInt);
+
+    assertFalse(divideTest.hasNull());
+    assertFalse(expectedDivideTest.hasNull());
+    assertFalse(expectedInsertDivide.hasNull());
+
+    Divide voidDivide = new Divide();
+    assertTrue(voidDivide.hasNull());
+
+  }
+
+  @RepeatedTest(100)
   void evalIntsTest() {
 
     int toDivideInt1;

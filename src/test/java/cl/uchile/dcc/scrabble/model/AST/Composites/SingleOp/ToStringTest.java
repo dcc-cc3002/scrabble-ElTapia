@@ -16,6 +16,27 @@ class ToStringTest extends CompositeTest {
   }
 
   @RepeatedTest(100)
+  void constructorsTest(){
+
+    toStringTest = new ToString(testConsInt);
+
+    ToString expectedInsertTest = new ToString();
+    expectedInsertTest.insert(testConsInt);
+
+    ToString expectedToStringTest = new ToString(testConsInt);
+
+    assertEquals(expectedInsertTest, this.toStringTest);
+    assertEquals(expectedToStringTest, toStringTest);
+    assertNotEquals(this.toStringTest, testTrueConsBool);
+    assertFalse(toStringTest.hasNull());
+    assertFalse(expectedInsertTest.hasNull());
+
+    ToString voidToString = new ToString();
+    assertTrue(voidToString.hasNull());
+
+  }
+
+  @RepeatedTest(100)
   void eval(){
 
     //string to string

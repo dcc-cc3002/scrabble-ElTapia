@@ -69,6 +69,11 @@ public class ConsBoolTest {
     assertNotEquals(negateExpectedConsBool, consBool.eval(), "ConsBool match. Seed " + seed);
     assertNotEquals(negateExpectedSBool, consBool.getSType(), "ConsBool match. Seed " + seed);
     assertNotEquals(expectedSBool, negateTestConsBool.getSType(), "SBool match. Seed " + seed);
+
+    assertFalse(consBool.hasNull());
+
+    expectedConsSBool.insert(expectedConsSBool);
+    assertEquals(expectedConsSBool, consBool);
   }
 
   @RepeatedTest(10)

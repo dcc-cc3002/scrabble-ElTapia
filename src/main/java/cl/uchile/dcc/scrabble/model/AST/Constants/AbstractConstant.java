@@ -19,14 +19,6 @@ public abstract class AbstractConstant implements IConstant {
   }
 
   /**
-   * Compares an object with a constan
-   * @param obj Object
-   * @return boolean
-   */
-  @Override
-  public abstract boolean equals(Object obj);
-
-  /**
    * String representation of a constant
    * @return String
    */
@@ -38,5 +30,4 @@ public abstract class AbstractConstant implements IConstant {
    * @return AbstractType
    */
   public abstract SType getSType();
-
 }

@@ -15,6 +15,28 @@ public class Sub extends AbstractDualOperation {
     super(leftOp, rightOp);
   }
 
+
+  /**
+   * Compares an object with a Sub
+   * @param obj Object
+   * @return boolean
+   */
+  @Override
+  public boolean equals(Object obj){
+    if (obj instanceof Sub){
+      var o = (Sub) obj;
+      return o.getLeftOp().equals(this.leftOp) & o.getRightOp().equals(this.rightOp);
+    }
+    return false;
+  }
+
+  /**
+   * Void constructor. Used to insert components.
+   */
+  public Sub(){
+    super();
+  }
+
   /**
    * Eval an operation
    * @return Constant

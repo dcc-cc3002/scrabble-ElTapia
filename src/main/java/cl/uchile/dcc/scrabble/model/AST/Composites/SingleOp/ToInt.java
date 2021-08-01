@@ -17,6 +17,27 @@ public class ToInt extends AbstractSingleOperation {
   }
 
   /**
+   * Compares an object with a ToInt
+   * @param obj Object
+   * @return boolean
+   */
+  @Override
+  public boolean equals(Object obj){
+    if (obj instanceof ToInt){
+      var o = (ToInt) obj;
+      return o.getOp().equals(this.Op);
+    }
+    return false;
+  }
+
+  /**
+   * Void constructor. Used to insert components.
+   */
+  public ToInt(){
+    super();
+  }
+
+  /**
    * Eval an operation
    * @return Constant
    */

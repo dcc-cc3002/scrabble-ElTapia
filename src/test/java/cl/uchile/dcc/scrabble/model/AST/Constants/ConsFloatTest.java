@@ -51,6 +51,11 @@ public class ConsFloatTest {
 
     assertEquals(String.valueOf(testDouble), consFloat.toString(), "String don't match. Seed " + seed);
     assertNotEquals(String.valueOf(differentDouble), consFloat.toString(), "String match. Seed " + seed);
+
+    assertFalse(consFloat.hasNull());
+
+    expectedConsSFloat.insert(expectedConsSFloat);
+    assertEquals(expectedConsSFloat, consFloat);
   }
 
   @RepeatedTest(50)

@@ -15,6 +15,27 @@ public class Divide extends AbstractDualOperation {
   }
 
   /**
+   * Compares an object with a Divide
+   * @param obj Object
+   * @return boolean
+   */
+  @Override
+  public boolean equals(Object obj){
+    if (obj instanceof Divide){
+      var o = (Divide) obj;
+      return o.getLeftOp().equals(this.leftOp) & o.getRightOp().equals(this.rightOp);
+    }
+    return false;
+  }
+
+  /**
+   * Void constructor. Used to insert components.
+   */
+  public Divide(){
+    super();
+  }
+
+  /**
    * Eval an operation
    * @return Constant
    */

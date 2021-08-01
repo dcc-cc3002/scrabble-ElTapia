@@ -17,6 +17,27 @@ public class ToBool extends AbstractSingleOperation {
   }
 
   /**
+   * Compares an object with a ToBool
+   * @param obj Object
+   * @return boolean
+   */
+  @Override
+  public boolean equals(Object obj){
+    if (obj instanceof ToBool){
+      var o = (ToBool) obj;
+      return o.getOp().equals(this.Op);
+    }
+    return false;
+  }
+
+  /**
+   * Void constructor. Used to insert components.
+   */
+  public ToBool(){
+    super();
+  }
+
+  /**
    * Eval an operation
    * @return Constant
    */

@@ -15,6 +15,27 @@ class ToBinaryTest extends CompositeTest {
   }
 
   @RepeatedTest(100)
+  void constructorsTest(){
+
+    toBinaryTest = new ToBinary(testConsInt);
+
+    ToBinary expectedInsertTest = new ToBinary();
+    expectedInsertTest.insert(testConsInt);
+
+    ToBinary expectedToBinaryTest = new ToBinary(testConsInt);
+
+    assertEquals(expectedInsertTest, this.toBinaryTest);
+    assertEquals(expectedToBinaryTest, toBinaryTest);
+    assertNotEquals(this.toBinaryTest, testTrueConsBool);
+    assertFalse(toBinaryTest.hasNull());
+    assertFalse(expectedInsertTest.hasNull());
+
+    ToBinary voidToBinary = new ToBinary();
+    assertTrue(voidToBinary.hasNull());
+
+  }
+
+  @RepeatedTest(100)
   void eval(){
     //int to binary
     toBinaryTest = new ToBinary(testConsInt);

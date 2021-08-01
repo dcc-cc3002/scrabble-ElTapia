@@ -15,6 +15,27 @@ class ToIntTest extends CompositeTest{
   }
 
   @RepeatedTest(100)
+  void constructorsTest(){
+
+    toIntTest = new ToInt(testConsInt);
+
+    ToInt expectedInsertTest = new ToInt();
+    expectedInsertTest.insert(testConsInt);
+
+    ToInt expectedToIntTest = new ToInt(testConsInt);
+
+    assertEquals(expectedInsertTest, this.toIntTest);
+    assertEquals(expectedToIntTest, toIntTest);
+    assertNotEquals(this.toIntTest, testTrueConsBool);
+    assertFalse(toIntTest.hasNull());
+    assertFalse(expectedInsertTest.hasNull());
+
+    ToInt voidToInt = new ToInt();
+    assertTrue(voidToInt.hasNull());
+
+  }
+
+  @RepeatedTest(100)
   void eval(){
     //int to int
     toIntTest = new ToInt(testConsInt);

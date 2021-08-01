@@ -21,6 +21,46 @@ class TimesTest extends CompositeTest {
   }
 
   @RepeatedTest(100)
+  void constructorsTest(){
+    timesTest = new Times(
+        new Times(testConsFloat,
+            testConsInt),
+        new Times(testConsFloat,
+            testConsBinary[0]));
+
+    Times expectedInsertTimes = new Times();
+
+    expectedInsertTimes.insert(new Times());
+    expectedInsertTimes.insert(testConsFloat);
+    expectedInsertTimes.insert(testConsInt);
+
+    expectedInsertTimes.insert(new Times());
+    expectedInsertTimes.insert(testConsFloat);
+    expectedInsertTimes.insert(testConsBinary[0]);
+
+    Times expectedTimesTest = new Times(
+        new Times(testConsFloat,
+            testConsInt),
+        new Times(testConsFloat,
+            testConsBinary[0]));
+
+    assertEquals(timesTest, expectedInsertTimes);
+    assertEquals(expectedTimesTest, timesTest);
+    assertEquals(expectedInsertTimes, expectedInsertTimes);
+    assertNotEquals(expectedInsertTimes, new Times());
+    assertNotEquals(timesTest, new Times());
+    assertNotEquals(timesTest, testConsInt);
+
+    assertFalse(timesTest.hasNull());
+    assertFalse(expectedTimesTest.hasNull());
+    assertFalse(expectedInsertTimes.hasNull());
+
+    Times voidTimes = new Times();
+    assertTrue(voidTimes.hasNull());
+
+  }
+
+  @RepeatedTest(100)
   void evalIntsTest() {
 
     int toTimesInt1 = rng.nextInt();
