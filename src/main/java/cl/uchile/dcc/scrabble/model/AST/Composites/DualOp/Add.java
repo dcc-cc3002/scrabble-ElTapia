@@ -18,11 +18,41 @@ public class Add extends AbstractDualOperation {
   }
 
   /**
+   * Compares an object with an Add
+   * @param obj Object
+   * @return boolean
+   */
+  @Override
+  public boolean equals(Object obj){
+    if (obj instanceof Add){
+      var o = (Add) obj;
+      return o.getLeftOp().equals(this.leftOp) & o.getRightOp().equals(this.rightOp);
+    }
+    return false;
+  }
+
+  /**
+   * Void constructor. Used to insert components.
+   */
+  public Add(){
+    super();
+  }
+
+  /**
    * Eval an operation
    * @return Constant
    */
   @Override
   public IConstant eval() {
     return this.leftOp.eval().add(this.rightOp.eval());
+  }
+
+  /**
+   * String representation of a component
+   * @return String
+   */
+  @Override
+  public String toString(){
+    return "Add( \n\t" + leftOp.toString() + "\n\t" + rightOp.toString() + "\n\t)";
   }
 }

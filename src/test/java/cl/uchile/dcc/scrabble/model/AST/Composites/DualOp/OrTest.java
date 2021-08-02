@@ -22,6 +22,48 @@ class OrTest extends CompositeTest {
   }
 
   @RepeatedTest(100)
+  void constructorsTest(){
+    orTest = new Or(
+        new Or(testTrueConsBool,
+            testFalseConsBool),
+        testTrueConsBool);
+
+    Or expectedInsertOr = new Or();
+
+    expectedInsertOr.insert(new Or());
+    expectedInsertOr.insert(testTrueConsBool);
+    expectedInsertOr.insert(testFalseConsBool);
+
+    expectedInsertOr.insert(testTrueConsBool);;
+
+    Or expectedOrTest = new Or(
+        new Or(testTrueConsBool,
+            testFalseConsBool),
+        testTrueConsBool);
+
+    assertEquals(orTest, expectedInsertOr);
+    assertEquals(expectedOrTest, orTest);
+    assertEquals(expectedInsertOr, expectedInsertOr);
+    assertNotEquals(expectedInsertOr, new Or());
+    assertNotEquals(orTest, new Or());
+    assertNotEquals(orTest, testConsInt);
+
+    assertFalse(orTest.hasNull());
+    assertFalse(expectedOrTest.hasNull());
+    assertFalse(expectedInsertOr.hasNull());
+
+    Or voidOr = new Or();
+    assertTrue(voidOr.hasNull());
+
+    orTest = new Or();
+    orTest.insert(testConsString);
+    orTest.insert(testConsInt);
+
+    String expectedString = "Or( \n\t" + testConsString.toString() + "\n\t" + testConsInt.toString() + "\n\t)";
+    assertEquals(expectedString, orTest.toString());
+  }
+
+  @RepeatedTest(100)
   void evalBooleansTest() {
     ConsBinary consBinary = testConsBinary[0];
 

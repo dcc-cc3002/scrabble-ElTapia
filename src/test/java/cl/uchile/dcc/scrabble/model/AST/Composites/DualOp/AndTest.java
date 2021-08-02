@@ -21,6 +21,49 @@ class AndTest extends CompositeTest {
   }
 
   @RepeatedTest(100)
+  void constructorsTest(){
+    andTest = new And(
+        new And(testTrueConsBool,
+            testFalseConsBool),
+        testTrueConsBool);
+
+    And expectedInsertAnd = new And();
+
+    expectedInsertAnd.insert(new And());
+    expectedInsertAnd.insert(testTrueConsBool);
+    expectedInsertAnd.insert(testFalseConsBool);
+
+    expectedInsertAnd.insert(testTrueConsBool);;
+
+    And expectedAndTest = new And(
+        new And(testTrueConsBool,
+            testFalseConsBool),
+        testTrueConsBool);
+
+    assertEquals(andTest, expectedInsertAnd);
+    assertEquals(expectedAndTest, andTest);
+    assertEquals(expectedInsertAnd, expectedInsertAnd);
+    assertNotEquals(expectedInsertAnd, new And());
+    assertNotEquals(andTest, new And());
+    assertNotEquals(andTest, testConsInt);
+
+    assertFalse(andTest.hasNull());
+    assertFalse(expectedAndTest.hasNull());
+    assertFalse(expectedInsertAnd.hasNull());
+
+    And voidAnd = new And();
+    assertTrue(voidAnd.hasNull());
+
+    andTest = new And();
+    andTest.insert(testConsString);
+    andTest.insert(testConsInt);
+
+    String expectedString = "And( \n\t" + testConsString.toString() + "\n\t" + testConsInt.toString() + "\n\t)";
+    assertEquals(expectedString, andTest.toString());
+
+  }
+
+  @RepeatedTest(100)
   void evalBooleansTest() {
     ConsBinary consBinary = testConsBinary[0];
 

@@ -19,24 +19,8 @@ public abstract class AbstractConstant implements IConstant {
   }
 
   /**
-   * Compares an object with a constan
-   * @param obj Object
-   * @return boolean
-   */
-  @Override
-  public abstract boolean equals(Object obj);
-
-  /**
-   * String representation of a constant
-   * @return String
-   */
-  @Override
-  public abstract String toString();
-
-  /**
    * Get SType that the constant encapsulate
    * @return AbstractType
    */
   public abstract SType getSType();
-
 }

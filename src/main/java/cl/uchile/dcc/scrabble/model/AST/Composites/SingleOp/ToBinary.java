@@ -17,11 +17,42 @@ public class ToBinary extends AbstractSingleOperation {
   }
 
   /**
+   * Compares an object with a ToBinary
+   * @param obj Object
+   * @return boolean
+   */
+  @Override
+  public boolean equals(Object obj){
+    if (obj instanceof ToBinary){
+      var o = (ToBinary) obj;
+      return o.getOp().equals(this.Op);
+    }
+    return false;
+  }
+
+  /**
+   * Void constructor. Used to insert components.
+   */
+  public ToBinary(){
+    super();
+  }
+
+  /**
    * Eval an operation
    * @return Constant
    */
   @Override
   public IConstant eval() {
     return this.Op.eval().toConstantBinary();
+  }
+
+
+  /**
+   * String representation of a component
+   * @return String
+   */
+  @Override
+  public String toString(){
+    return "ToBinary( \n\t" + Op.toString() + "\n\t)";
   }
 }

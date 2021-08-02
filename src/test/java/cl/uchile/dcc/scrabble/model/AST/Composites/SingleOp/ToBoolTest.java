@@ -15,6 +15,41 @@ class ToBoolTest extends CompositeTest {
   }
 
   @RepeatedTest(100)
+  void constructorsTest(){
+
+    toBoolTest = new ToBool(testFalseConsBool);
+
+    ToBool expectedInsertTest = new ToBool();
+    expectedInsertTest.insert(testFalseConsBool);
+
+    ToBool expectedToBoolTest = new ToBool(testFalseConsBool);
+
+    assertEquals(expectedInsertTest, this.toBoolTest);
+    assertEquals(expectedToBoolTest, toBoolTest);
+    assertNotEquals(this.toBoolTest, testTrueConsBool);
+    assertFalse(toBoolTest.hasNull());
+    assertFalse(expectedInsertTest.hasNull());
+
+    ToBool voidToBool = new ToBool();
+    assertTrue(voidToBool.hasNull());
+
+    toBoolTest = new ToBool(new ToBool(testFalseConsBool));
+
+    ToBool expectedInsertToBoolTest = new ToBool();
+    expectedInsertToBoolTest.insert(new ToBool());
+    expectedInsertToBoolTest.insert(testFalseConsBool);
+
+    assertEquals(expectedInsertToBoolTest, toBoolTest);
+    assertFalse(expectedInsertToBoolTest.hasNull());
+
+    toBoolTest = new ToBool();
+    toBoolTest.insert(testConsString);
+
+    String expectedString = "ToBool( \n\t" + testConsString.toString() + "\n\t)";
+    assertEquals(expectedString, toBoolTest.toString());
+  }
+
+  @RepeatedTest(100)
   void eval(){
     // false bool to bool
     toBoolTest = new ToBool(testFalseConsBool);

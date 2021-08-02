@@ -1,15 +1,10 @@
 package cl.uchile.dcc.scrabble.model.AST.Composites;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import cl.uchile.dcc.scrabble.model.AST.Composites.DualOp.*;
-import cl.uchile.dcc.scrabble.model.AST.Composites.SingleOp.*;
 import cl.uchile.dcc.scrabble.model.AST.Constants.*;
 import cl.uchile.dcc.scrabble.model.AST.Wrappers.IConstant;
 import java.util.Random;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 public abstract class CompositeTest {
   protected int strSize;
@@ -63,32 +58,4 @@ public abstract class CompositeTest {
     nullConstant = NullConstant.getInstance();
   }
 
-  @Test
-  void examples() {
-    Add example = new Add(
-        new Or(
-            new ConsBinary("01000"),
-            new ToBinary(
-                new Sub(
-                    new ConsInt(25),
-                    new ConsBinary("0101")
-                ))
-        )
-        ,new ConsFloat(6.9)
-    );
-    assertSame(NullConstant.getInstance(), example.eval());
-
-    Add example2 = new Add(
-        new ConsFloat(6.9),
-        new Or(
-            new ConsBinary("01000"),
-            new ToBinary(
-                new Sub(
-                    new ConsInt(25),
-                    new ConsBinary("0101")
-                ))
-        )
-    );
-    assertEquals(new ConsFloat(34.9), example2.eval());
-  }
 }

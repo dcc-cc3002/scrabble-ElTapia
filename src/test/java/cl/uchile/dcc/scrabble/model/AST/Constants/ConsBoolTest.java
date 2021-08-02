@@ -69,6 +69,11 @@ public class ConsBoolTest {
     assertNotEquals(negateExpectedConsBool, consBool.eval(), "ConsBool match. Seed " + seed);
     assertNotEquals(negateExpectedSBool, consBool.getSType(), "ConsBool match. Seed " + seed);
     assertNotEquals(expectedSBool, negateTestConsBool.getSType(), "SBool match. Seed " + seed);
+
+    assertFalse(consBool.hasNull());
+
+    expectedConsSBool.insert(expectedConsSBool);
+    assertEquals(expectedConsSBool, consBool);
   }
 
   @RepeatedTest(10)
@@ -76,12 +81,12 @@ public class ConsBoolTest {
     String expectedString = String.valueOf(boolTest);
     String negateExpectedString = String.valueOf(!boolTest);
 
-    assertEquals(expectedString, consBool.toString(), "String don't match. Seed " + seed);
-    assertEquals(negateExpectedString, negateTestConsBool.toString(),
+    assertEquals("\t" + expectedString, consBool.toString(), "String don't match. Seed " + seed);
+    assertEquals("\t" + negateExpectedString, negateTestConsBool.toString(),
         "String don't match. Seed " + seed);
 
-    assertNotEquals(expectedString, negateTestConsBool.toString(), "String match. Seed " + seed);
-    assertNotEquals(negateExpectedString, consBool.toString(), "String match. Seed " + seed);
+    assertNotEquals("\t" + expectedString, negateTestConsBool.toString(), "String match. Seed " + seed);
+    assertNotEquals("\t" + negateExpectedString, consBool.toString(), "String match. Seed " + seed);
   }
 
   @RepeatedTest(10)

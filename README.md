@@ -12,6 +12,33 @@ _CC3002 Metodologías de Diseño y programación_ of the
 _University of Chile_.
 
 ---
+
+## Intrucciones de uso
+Para ejecutar el programa, se debe correr el archivo "App".
+
+Con el programa abierto, se pueden añadir las expresiones que desee, utilizando la barra de selección ubicada en la parte superior de la ventana.
+Dependiendo de lo que se desee agregar, ocurrirá lo siguiente:
+
+* Si desea ingresar una operación (sea una dual o unaria), debe seleccionar el tipo de operación en la barra de selecciones.
+Se desplegará un menú con todas las operaciones disponibles. Para agregar una, basta con clickear en el botón correspondiente a la operación.
+
+* Si desea ingresar un tipo (entero, float, etc.), debe seleccionar "Type" en la barra de selección. Se desplegarán todos los tipos que se pueden ingresar.
+Haga click en el tipo deseado y se desplegará una ventana, en la cuál debe anotar el valor que desee.
+
+  Las ventanas son distintas dependiendo del tipo a ingresar. Los números poseen teclados, en los cuáles debe clickear en los números, como si fuese una calculadora. 
+Para strings, sencillamente se escribe lo que desea y en bool se selecciona entre true y false con los botones de la ventana.
+
+  En caso de cancelar el ingreso del tipo, basta con cerrar la ventana. Si desea ingresar al árbol el valor escrito, debe presionar el botón confirm.
+
+El árbol se irá rellenando de izquierda a derecha, es decir, un nuevo elemento será incluído en el nodo disponible más a la izquierda posible, y si se encuentra ocupado por un Type, se ocupa el nodo derecho.
+Si un árbol posee todas sus hojas llenas con Types, **no se podrá seguir agregando nuevas expresiones.**
+
+Para limpiar el árbol, basta presionar el botón clear y para evaluar el resultado, el botón Eval. Este último abrirá una nueva ventana con el resultado. Si hay una operación inválida (explicada en las consideraciones más abajo) o el árbol se encuentra incompleto, el mensaje al evaluar será Syntax Error.
+
+La representación del árbol es en pseudocódigo.
+
+
+## Consideraciones
 Se realizan los siguientes supuestos de entradas al programa:
 * Los números binarios reciben strings de largo a lo más 32 y con solo 0's y 1's. 
   Largos mayores provocarán que el programa no funcione correctamente.

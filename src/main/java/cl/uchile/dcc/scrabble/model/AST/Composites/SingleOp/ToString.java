@@ -17,11 +17,41 @@ public class ToString extends AbstractSingleOperation {
   }
 
   /**
+   * Compares an object with a ToString
+   * @param obj Object
+   * @return boolean
+   */
+  @Override
+  public boolean equals(Object obj){
+    if (obj instanceof ToString){
+      var o = (ToString) obj;
+      return o.getOp().equals(this.Op);
+    }
+    return false;
+  }
+
+  /**
+   * Void constructor. Used to insert components.
+   */
+  public ToString(){
+    super();
+  }
+
+  /**
    * Eval an operation
    * @return Constant
    */
   @Override
   public IConstant eval() {
     return this.Op.eval().toConstantStr();
+  }
+
+  /**
+   * String representation of a component
+   * @return String
+   */
+  @Override
+  public String toString(){
+    return "ToString( \n\t" + Op.toString() + "\n\t)";
   }
 }

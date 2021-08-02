@@ -17,11 +17,41 @@ public class ToFloat extends AbstractSingleOperation {
   }
 
   /**
+   * Compares an object with a ToFloat
+   * @param obj Object
+   * @return boolean
+   */
+  @Override
+  public boolean equals(Object obj){
+    if (obj instanceof ToFloat){
+      var o = (ToFloat) obj;
+      return o.getOp().equals(this.Op);
+    }
+    return false;
+  }
+
+  /**
+   * Void constructor. Used to insert components.
+   */
+  public ToFloat(){
+    super();
+  }
+
+  /**
    * Eval an operation
    * @return Constant
    */
   @Override
   public IConstant eval() {
     return this.Op.eval().toConstantFloat();
+  }
+
+  /**
+   * String representation of a component
+   * @return String
+   */
+  @Override
+  public String toString(){
+    return "ToFloat( \n\t" + Op.toString() + "\n\t)";
   }
 }

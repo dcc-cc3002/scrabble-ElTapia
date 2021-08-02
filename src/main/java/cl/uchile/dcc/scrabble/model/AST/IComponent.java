@@ -9,4 +9,36 @@ public interface IComponent {
    * @return Constant
    */
   IConstant eval();
+
+  /**
+   * Insert a Component
+   * @param component IComponent
+   */
+  default void insert(IComponent component){}
+
+
+  /**
+   * Function that check if some node has null nodes
+   * @return boolean
+   */
+  default boolean hasNull(){
+    return false;
+  }
+
+
+  /**
+   * Compares an object with a Component
+   * @param obj Object
+   * @return boolean
+   */
+  @Override
+  boolean equals(Object obj);
+
+
+  /**
+   * String representation of a component
+   * @return String
+   */
+  @Override
+  String toString();
 }

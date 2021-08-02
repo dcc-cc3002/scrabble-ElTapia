@@ -58,7 +58,7 @@ public class ConsBool extends AbstractConstant{
    */
   @Override
   public String toString(){
-    return this.consBool.toString();
+    return "\t" + this.consBool.toString();
   }
 
   /**
