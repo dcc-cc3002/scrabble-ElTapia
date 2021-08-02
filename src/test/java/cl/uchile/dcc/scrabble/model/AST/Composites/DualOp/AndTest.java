@@ -54,6 +54,13 @@ class AndTest extends CompositeTest {
     And voidAnd = new And();
     assertTrue(voidAnd.hasNull());
 
+    andTest = new And();
+    andTest.insert(testConsString);
+    andTest.insert(testConsInt);
+
+    String expectedString = "And( \n\t" + testConsString.toString() + "\n\t" + testConsInt.toString() + "\n\t)";
+    assertEquals(expectedString, andTest.toString());
+
   }
 
   @RepeatedTest(100)

@@ -3,6 +3,7 @@ package cl.uchile.dcc.scrabble.model.AST.Composites.SingleOp;
 import static org.junit.jupiter.api.Assertions.*;
 
 import cl.uchile.dcc.scrabble.model.AST.Composites.CompositeTest;
+import cl.uchile.dcc.scrabble.model.AST.Composites.DualOp.Divide;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
@@ -42,6 +43,11 @@ class NegateTest extends CompositeTest {
     assertEquals(expectedInsertNegateTest, negateTest);
     assertFalse(expectedInsertNegateTest.hasNull());
 
+    negateTest = new Negate();
+    negateTest.insert(testConsString);
+
+    String expectedString = "Negate( \n\t" + testConsString.toString() + "\n\t)";
+    assertEquals(expectedString, negateTest.toString());
   }
 
   @RepeatedTest(100)

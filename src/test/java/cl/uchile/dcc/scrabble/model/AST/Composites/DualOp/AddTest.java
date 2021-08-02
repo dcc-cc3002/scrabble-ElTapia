@@ -59,6 +59,13 @@ class AddTest extends CompositeTest {
     Add voidAdd = new Add();
     assertTrue(voidAdd.hasNull());
 
+    addTest = new Add();
+    addTest.insert(testConsString);
+    addTest.insert(testConsInt);
+
+    String expectedString = "Add( \n\t" + testConsString.toString() + "\n\t" + testConsInt.toString() + "\n\t)";
+    assertEquals(expectedString, addTest.toString());
+
   }
 
   @RepeatedTest(100)

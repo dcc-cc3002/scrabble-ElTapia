@@ -42,6 +42,11 @@ class ToBoolTest extends CompositeTest {
     assertEquals(expectedInsertToBoolTest, toBoolTest);
     assertFalse(expectedInsertToBoolTest.hasNull());
 
+    toBoolTest = new ToBool();
+    toBoolTest.insert(testConsString);
+
+    String expectedString = "ToBool( \n\t" + testConsString.toString() + "\n\t)";
+    assertEquals(expectedString, toBoolTest.toString());
   }
 
   @RepeatedTest(100)

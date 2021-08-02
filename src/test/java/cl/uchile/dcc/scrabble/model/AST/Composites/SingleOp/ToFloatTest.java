@@ -42,6 +42,11 @@ class ToFloatTest extends CompositeTest {
     assertEquals(expectedInsertToFloatTest, toFloatTest);
     assertFalse(expectedInsertToFloatTest.hasNull());
 
+    toFloatTest = new ToFloat();
+    toFloatTest.insert(testConsString);
+
+    String expectedString = "ToFloat( \n\t" + testConsString.toString() + "\n\t)";
+    assertEquals(expectedString, toFloatTest.toString());
   }
 
   @RepeatedTest(100)

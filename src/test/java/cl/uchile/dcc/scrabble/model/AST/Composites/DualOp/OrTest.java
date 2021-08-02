@@ -55,6 +55,12 @@ class OrTest extends CompositeTest {
     Or voidOr = new Or();
     assertTrue(voidOr.hasNull());
 
+    orTest = new Or();
+    orTest.insert(testConsString);
+    orTest.insert(testConsInt);
+
+    String expectedString = "Or( \n\t" + testConsString.toString() + "\n\t" + testConsInt.toString() + "\n\t)";
+    assertEquals(expectedString, orTest.toString());
   }
 
   @RepeatedTest(100)

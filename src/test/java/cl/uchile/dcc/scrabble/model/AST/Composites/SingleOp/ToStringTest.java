@@ -43,6 +43,11 @@ class ToStringTest extends CompositeTest {
     assertEquals(expectedInsertToStringTest, toStringTest);
     assertFalse(expectedInsertToStringTest.hasNull());
 
+    toStringTest = new ToString();
+    toStringTest.insert(testConsString);
+
+    String expectedString = "ToString( \n\t" + testConsString.toString() + "\n\t)";
+    assertEquals(expectedString, toStringTest.toString());
   }
 
   @RepeatedTest(100)

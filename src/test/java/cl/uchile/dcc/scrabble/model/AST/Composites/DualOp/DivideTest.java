@@ -67,6 +67,12 @@ class DivideTest extends CompositeTest {
     Divide voidDivide = new Divide();
     assertTrue(voidDivide.hasNull());
 
+    divideTest = new Divide();
+    divideTest.insert(testConsString);
+    divideTest.insert(testConsInt);
+
+    String expectedString = "Divide( \n\t" + testConsString.toString() + "\n\t" + testConsInt.toString() + "\n\t)";
+    assertEquals(expectedString, divideTest.toString());
   }
 
   @RepeatedTest(100)

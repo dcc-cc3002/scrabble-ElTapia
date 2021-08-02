@@ -42,6 +42,11 @@ class ToIntTest extends CompositeTest{
     assertEquals(expectedInsertToIntTest, toIntTest);
     assertFalse(expectedInsertToIntTest.hasNull());
 
+    toIntTest = new ToInt();
+    toIntTest.insert(testConsString);
+
+    String expectedString = "ToInt( \n\t" + testConsString.toString() + "\n\t)";
+    assertEquals(expectedString, toIntTest.toString());
   }
 
   @RepeatedTest(100)

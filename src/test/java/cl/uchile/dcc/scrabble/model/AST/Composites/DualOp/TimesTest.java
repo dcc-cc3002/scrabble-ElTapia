@@ -58,6 +58,13 @@ class TimesTest extends CompositeTest {
     Times voidTimes = new Times();
     assertTrue(voidTimes.hasNull());
 
+    timesTest = new Times();
+    timesTest.insert(testConsString);
+    timesTest.insert(testConsInt);
+
+    String expectedString = "Times( \n\t" + testConsString.toString() + "\n\t" + testConsInt.toString() + "\n\t)";
+    assertEquals(expectedString, timesTest.toString());
+
   }
 
   @RepeatedTest(100)

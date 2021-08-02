@@ -61,6 +61,12 @@ class SubTest extends CompositeTest {
     Sub voidSub = new Sub();
     assertTrue(voidSub.hasNull());
 
+    subTest = new Sub();
+    subTest.insert(testConsString);
+    subTest.insert(testConsInt);
+
+    String expectedString = "Sub( \n\t" + testConsString.toString() + "\n\t" + testConsInt.toString() + "\n\t)";
+    assertEquals(expectedString, subTest.toString());
   }
 
 

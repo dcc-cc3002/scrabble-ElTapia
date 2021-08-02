@@ -42,6 +42,11 @@ class ToBinaryTest extends CompositeTest {
     assertEquals(expectedInsertToBinaryTest, toBinaryTest);
     assertFalse(expectedInsertToBinaryTest.hasNull());
 
+    toBinaryTest = new ToBinary();
+    toBinaryTest.insert(testConsString);
+
+    String expectedString = "ToBinary( \n\t" + testConsString.toString() + "\n\t)";
+    assertEquals(expectedString, toBinaryTest.toString());
   }
 
   @RepeatedTest(100)
