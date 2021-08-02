@@ -33,7 +33,7 @@ Para strings, sencillamente se escribe lo que desea y en bool se selecciona entr
 El árbol se irá rellenando de izquierda a derecha, es decir, un nuevo elemento será incluído en el nodo disponible más a la izquierda posible, y si se encuentra ocupado por un Type, se ocupa el nodo derecho.
 Si un árbol posee todas sus hojas llenas con Types, **no se podrá seguir agregando nuevas expresiones.**
 
-Para limpiar el árbol, basta presionar el botón clear y para evaluar el resultado, el botón Eval. Este último abrirá una nueva ventana con el resultado.
+Para limpiar el árbol, basta presionar el botón clear y para evaluar el resultado, el botón Eval. Este último abrirá una nueva ventana con el resultado. Si hay una operación inválida (explicada en las consideraciones más abajo) o el árbol se encuentra incompleto, el mensaje al evaluar será Syntax Error.
 
 La representación del árbol es en pseudocódigo.
 
