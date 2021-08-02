@@ -51,7 +51,6 @@ public class TypesPane {
     intButton.setOnAction(e -> {
       chosenType = "Int";
       input = numberPane.displayIntBox();
-      System.out.println(input.getValue());
     });
     gridPane.add(intButton, 0, 0);
 
@@ -60,7 +59,6 @@ public class TypesPane {
     stringButton.setOnAction(e -> {
       chosenType = "String";
       input = StringPane.displayStringBox();
-      System.out.println(input.getValue());
     });
     gridPane.add(stringButton, 1, 0);
 
@@ -69,7 +67,6 @@ public class TypesPane {
     floatButton.setOnAction(e -> {
       chosenType = "Float";
       input = numberPane.displayFloatBox();
-      System.out.println(input.getValue());
     });
     gridPane.add(floatButton, 2, 0);
 
@@ -78,7 +75,6 @@ public class TypesPane {
     binaryButton.setOnAction(e -> {
       chosenType = "Binary";
       input = numberPane.displayBinaryBox();
-      System.out.println(input.getValue());
     });
     gridPane.add(binaryButton, 0, 1);
 
@@ -87,7 +83,6 @@ public class TypesPane {
     boolButton.setOnAction(e -> {
       chosenType = "Bool";
       input = BoolPane.displayBoolBox();
-      System.out.println(input.getValue());
     });
     gridPane.add(boolButton, 2, 1);
 

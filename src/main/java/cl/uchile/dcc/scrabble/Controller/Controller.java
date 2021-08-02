@@ -142,6 +142,7 @@ public class Controller {
 
   public static void update(){
     tree.setValue(root.toString());
+    System.out.println(tree.getValue());
   }
 
   public static String eval(){

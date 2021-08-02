@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.view;
 
+import cl.uchile.dcc.scrabble.Controller.Controller;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -39,6 +40,7 @@ public class NumbersPane {
 
   static Stage window;
   static GridPane gridPane;
+  static BooleanProperty isDisabled;
 
   public NumbersPane(){
     window = new Stage();
@@ -121,7 +123,7 @@ public class NumbersPane {
 
     dotButton = new Button(".");
 
-    BooleanProperty isDisabled = new SimpleBooleanProperty();
+    isDisabled = new SimpleBooleanProperty();
     dotButton.disableProperty().bind(isDisabled);
 
     dotButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
@@ -133,10 +135,6 @@ public class NumbersPane {
 
     confirmButton = new Button("Confirm");
     confirmButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    confirmButton.setOnAction(e->{
-      window.close();
-      isDisabled.setValue(false);
-    });
   }
 
   public StringProperty displayIntBox() {
@@ -172,6 +170,13 @@ public class NumbersPane {
     gridPane.getRowConstraints().addAll(row1, row2, row3, row4, row5);
 
     Label numberLabel = new Label("Insert Int: ");
+
+    confirmButton.setOnAction(e->{
+      Controller.insertInt(Integer.parseInt(result));
+      Controller.update();
+      window.close();
+      isDisabled.setValue(false);
+    });
 
     //Add first label
     gridPane.add(numberLabel, 0, 0);
@@ -247,6 +252,13 @@ public class NumbersPane {
 
     Label numberLabel = new Label("Insert Binary: ");
 
+    confirmButton.setOnAction(e-> {
+          Controller.insertBinary(result);
+          Controller.update();
+          window.close();
+          isDisabled.setValue(false);
+        });
+
     //Add first label
     gridPane.add(numberLabel, 0, 0);
 
@@ -303,6 +315,13 @@ public class NumbersPane {
     gridPane.getRowConstraints().addAll(row1, row2, row3, row4, row5);
 
     Label numberLabel = new Label("Insert Float: ");
+
+    confirmButton.setOnAction(e-> {
+          Controller.insertFloat(Double.parseDouble(result));
+          Controller.update();
+          window.close();
+          isDisabled.setValue(false);
+        });
 
     //Add first label
     gridPane.add(numberLabel, 0, 0);

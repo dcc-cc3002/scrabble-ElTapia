@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.view;
 
+import cl.uchile.dcc.scrabble.Controller.Controller;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.geometry.Insets;
@@ -34,7 +35,10 @@ public class StringPane {
     propResult.bind(input.textProperty());
 
     Button confirmButton = new Button("Confirm");
-    confirmButton.setOnAction(e-> window.close());
+    confirmButton.setOnAction(e-> {
+      Controller.insertString(propResult.getValue());
+      Controller.update();
+      window.close();});
 
     //Add label and user input
     layout.getChildren().addAll(stringLabel, input, confirmButton);
