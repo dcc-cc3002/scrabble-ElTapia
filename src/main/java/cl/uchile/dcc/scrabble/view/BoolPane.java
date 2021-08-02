@@ -1,4 +1,5 @@
 package cl.uchile.dcc.scrabble.view;
+import cl.uchile.dcc.scrabble.Controller.Controller;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.geometry.Insets;
@@ -56,20 +57,24 @@ public class BoolPane {
     Button trueButton = new Button("True");
     trueButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     trueButton.setOnAction(e -> {
-      result = "True";
+      result = "true";
       propResult.setValue(result);
     });
 
     Button falseButton = new Button("False");
     falseButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     falseButton.setOnAction(e -> {
-      result = "False";
+      result = "false";
       propResult.setValue(result);
     });
 
     Button confirmButton = new Button("Confirm");
     confirmButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    confirmButton.setOnAction(e-> window.close());
+    confirmButton.setOnAction(e-> {
+      Controller.insertBool(Boolean.parseBoolean(propResult.getValue()));
+      Controller.update();
+      window.close();
+    });
 
     //Add first label
     layout.add(boolLabel, 0, 0);
@@ -78,10 +83,10 @@ public class BoolPane {
     layout.add(resultLabel, 1, 0, 2, 1);
     resultLabel.textProperty().bind(propResult);
 
-    //Button 1
+    //Button true
     layout.add(trueButton, 0, 1);
 
-    //Button 0
+    //Button false
     layout.add(falseButton, 1, 1);
 
     //Confirm button

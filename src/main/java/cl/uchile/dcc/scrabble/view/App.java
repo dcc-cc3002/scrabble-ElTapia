@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.view;
 
+import cl.uchile.dcc.scrabble.Controller.Controller;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -67,6 +68,8 @@ public class App extends Application {
         choicePane.getChildren().addAll(label, comboBox);
 
         completeLayout.add(choicePane, 1, 0);
+
+        System.out.println(Controller.getTree().getValue());
 
         Scene scene = new Scene(completeLayout, 500, 500);
         window.setScene(scene);
