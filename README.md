@@ -35,6 +35,8 @@ Si un árbol posee todas sus hojas llenas con Types, **no se podrá seguir agreg
 
 Para limpiar el árbol, basta presionar el botón clear y para evaluar el resultado, el botón Eval. Este último abrirá una nueva ventana con el resultado.
 
+La representación del árbol es en pseudocódigo.
+
 
 ## Consideraciones
 Se realizan los siguientes supuestos de entradas al programa:
