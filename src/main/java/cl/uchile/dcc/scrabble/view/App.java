@@ -3,7 +3,9 @@ package cl.uchile.dcc.scrabble.view;
 import cl.uchile.dcc.scrabble.Controller.Controller;
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
@@ -32,21 +34,23 @@ public class App extends Application {
 
         //Set columns constraints
         ColumnConstraints column1 = new ColumnConstraints();
-        column1.setPercentWidth(10);
+        column1.setPercentWidth(20);
         ColumnConstraints column2 = new ColumnConstraints();
-        column2.setPercentWidth(80);
+        column2.setPercentWidth(60);
         ColumnConstraints column3 = new ColumnConstraints();
-        column3.setPercentWidth(10);
+        column3.setPercentWidth(20);
 
         completeLayout.getColumnConstraints().addAll(column1, column2, column3);
 
         //Set rows constraints
         RowConstraints row1 = new RowConstraints();
-        row1.setPercentHeight(60);
+        row1.setPercentHeight(10);
         RowConstraints row2 = new RowConstraints();
-        row2.setPercentHeight(40);
+        row2.setPercentHeight(60);
+        RowConstraints row3 = new RowConstraints();
+        row3.setPercentHeight(30);
 
-        completeLayout.getRowConstraints().addAll(row1, row2);
+        completeLayout.getRowConstraints().addAll(row1, row2, row3);
 
         //ComboBox to choose node to add
         Label label = new Label("Select expression: ");
@@ -60,7 +64,7 @@ public class App extends Application {
         comboBox.setOnAction(e -> {
             selectPane(comboBox);
             completeLayout.getChildren().remove(toShowPane);
-            completeLayout.add(toShowPane, 1, 1);
+            completeLayout.add(toShowPane, 1, 2);
         });
 
         VBox choicePane = new VBox(10);
@@ -68,6 +72,20 @@ public class App extends Application {
         choicePane.getChildren().addAll(label, comboBox);
 
         completeLayout.add(choicePane, 1, 0);
+
+        Label resultLabel = new Label();
+        resultLabel.textProperty().bind(Controller.getTree());
+
+        completeLayout.add(resultLabel, 1, 1);
+
+        Button clearButton = new Button("Clear");
+        clearButton.setOnAction(e -> {
+            Controller.clear();
+            Controller.update();
+        });
+        clearButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+        completeLayout.add(clearButton, 0, 2);
 
 
         Scene scene = new Scene(completeLayout, 500, 500);
