@@ -14,6 +14,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Pane with booleans buttons
+ */
 public class BoolPane {
 
   static Stage window;
@@ -35,6 +38,7 @@ public class BoolPane {
     layout.setVgap(8);
     layout.setHgap(10);
 
+    //Set columns constraints
     ColumnConstraints column1 = new ColumnConstraints();
     column1.setPercentWidth(33);
     ColumnConstraints column2 = new ColumnConstraints();
@@ -42,6 +46,7 @@ public class BoolPane {
     ColumnConstraints column3 = new ColumnConstraints();
     column3.setPercentWidth(34);
 
+    //Set rows constraints
     RowConstraints row1 = new RowConstraints();
     RowConstraints row2 = new RowConstraints();
     row1.setPercentHeight(50);
@@ -49,11 +54,12 @@ public class BoolPane {
     layout.getColumnConstraints().addAll(column1, column2, column3);
     layout.getRowConstraints().addAll(row1, row2);
 
-
+    //Set labels to insert bool
     Label boolLabel = new Label("Insert Bool: ");
     Label resultLabel = new Label();
     resultLabel.setMaxWidth(200);
 
+    //Init button with true option
     Button trueButton = new Button("True");
     trueButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     trueButton.setOnAction(e -> {
@@ -61,6 +67,7 @@ public class BoolPane {
       propResult.setValue(result);
     });
 
+    //Init button with false option
     Button falseButton = new Button("False");
     falseButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     falseButton.setOnAction(e -> {
@@ -68,6 +75,7 @@ public class BoolPane {
       propResult.setValue(result);
     });
 
+    //Init confirm button
     Button confirmButton = new Button("Confirm");
     confirmButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     confirmButton.setOnAction(e-> {

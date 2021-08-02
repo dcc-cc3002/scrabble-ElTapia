@@ -9,11 +9,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-//TODO: Arreglar cambio de layouts
 
 /**
  * JavaFX App
@@ -28,7 +27,7 @@ public class App extends Application {
         window = stage;
         window.setTitle("Scrabble");
 
-        //Create layout
+        //Create complete layout
         GridPane completeLayout = new GridPane();
 
         //Set columns constraints
@@ -66,18 +65,21 @@ public class App extends Application {
             completeLayout.add(toShowPane, 1, 2);
         });
 
-        VBox choicePane = new VBox(10);
+        //Add to a pane
+        HBox choicePane = new HBox(10);
         choicePane.setPadding(new Insets(20));
         choicePane.getChildren().addAll(label, comboBox);
 
         completeLayout.add(choicePane, 1, 0);
 
+        //Label to show the actual tree
         Label resultLabel = new Label();
         resultLabel.setMaxHeight(300);
         resultLabel.textProperty().bind(Controller.getTree());
 
         completeLayout.add(resultLabel, 1, 1);
 
+        //Clear button
         Button clearButton = new Button("Clear");
         clearButton.setOnAction(e -> {
             Controller.clear();
@@ -87,12 +89,14 @@ public class App extends Application {
 
         completeLayout.add(clearButton, 0, 2);
 
+        //Eval button. It shows the result in a new window
         Button evalButton = new Button("Eval");
         evalButton.setOnAction(e -> ResultBox.display("Result", Controller.eval()));
         evalButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
         completeLayout.add(evalButton, 2, 2);
 
+        //Set scene
         Scene scene = new Scene(completeLayout, 500, 500);
         window.setScene(scene);
         window.show();
@@ -102,6 +106,10 @@ public class App extends Application {
         launch();
     }
 
+    /**
+     * Select pane to appear in scene
+     * @param comboBox ComboBox
+     */
     private static void selectPane(ComboBox<String> comboBox){
         toShowPane = DualOpPane.getGridPane();
 

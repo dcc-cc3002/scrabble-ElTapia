@@ -7,8 +7,10 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
-//TODO: Agregar setter para controller
 
+/**
+ * Pane with single operations
+ */
 public class SingleOpPane {
   static Button negateButton;
   static Button toStrButton;
@@ -26,6 +28,7 @@ public class SingleOpPane {
     gridPane.setVgap(8);
     gridPane.setHgap(10);
 
+    //Set columns constraints
     ColumnConstraints column1 = new ColumnConstraints();
     column1.setPercentWidth(33);
     ColumnConstraints column2 = new ColumnConstraints();
@@ -33,6 +36,7 @@ public class SingleOpPane {
     ColumnConstraints column3 = new ColumnConstraints();
     column3.setPercentWidth(34);
 
+    //Set rows constraints
     RowConstraints row1 = new RowConstraints();
     row1.setPercentHeight(50);
     RowConstraints row2 = new RowConstraints();
@@ -41,6 +45,7 @@ public class SingleOpPane {
     gridPane.getColumnConstraints().addAll(column1, column2, column3);
     gridPane.getRowConstraints().addAll(row1, row2);
 
+    //Init negate button
     negateButton = new Button("Negate");
     negateButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     negateButton.setOnAction(e -> {
@@ -49,6 +54,7 @@ public class SingleOpPane {
     });
     gridPane.add(negateButton, 0, 0);
 
+    //Init to string button
     toStrButton = new Button("To String");
     toStrButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     toStrButton.setOnAction(e -> {
@@ -57,6 +63,7 @@ public class SingleOpPane {
     });
     gridPane.add(toStrButton, 1, 0);
 
+    //Init to int button
     toIntButton = new Button("To Int");
     toIntButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     toIntButton.setOnAction(e -> {
@@ -65,6 +72,7 @@ public class SingleOpPane {
     });
     gridPane.add(toIntButton, 2, 0);
 
+    //Init to float button
     toFloatButton = new Button("To Float");
     toFloatButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     toFloatButton.setOnAction(e -> {
@@ -73,6 +81,7 @@ public class SingleOpPane {
     });
     gridPane.add(toFloatButton, 0, 1);
 
+    //Init to binary button
     toBinaryButton = new Button("To Binary");
     toBinaryButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     toBinaryButton.setOnAction(e -> {
@@ -81,6 +90,7 @@ public class SingleOpPane {
     });
     gridPane.add(toBinaryButton, 1, 1);
 
+    //Init to bool button
     toBoolButton = new Button("To Bool");
     toBoolButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     toBoolButton.setOnAction(e -> {

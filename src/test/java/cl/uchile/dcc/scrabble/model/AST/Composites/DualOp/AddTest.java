@@ -449,19 +449,6 @@ class AddTest extends CompositeTest {
   }
 
   @Test
-  void hi(){
-    addTest = new Add();
-    addTest.insert(new Add());
-    addTest.insert(new Add());
-    addTest.insert(new ConsInt(25));
-    addTest.insert(new ConsFloat(12.5));
-    addTest.insert(new ConsFloat(-5.1));
-    addTest.insert(new ConsInt(15));
-
-    System.out.println(addTest);
-  }
-
-  @Test
   void examples() {
     Add example = new Add(
         new Or(
@@ -488,6 +475,5 @@ class AddTest extends CompositeTest {
         )
     );
     assertEquals(new ConsFloat(34.9), example2.eval());
-    System.out.println(example2);
   }
 }

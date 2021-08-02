@@ -8,8 +8,10 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
-//TODO: Agregar setter para controller
 
+/**
+ * Pane with dual operations
+ */
 public class DualOpPane {
   static Button addButton;
   static Button subButton;
@@ -27,6 +29,7 @@ public class DualOpPane {
     gridPane.setVgap(8);
     gridPane.setHgap(10);
 
+    //Set columns constraints
     ColumnConstraints column1 = new ColumnConstraints();
     column1.setPercentWidth(33);
     ColumnConstraints column2 = new ColumnConstraints();
@@ -34,6 +37,7 @@ public class DualOpPane {
     ColumnConstraints column3 = new ColumnConstraints();
     column3.setPercentWidth(34);
 
+    //Set rows constraints
     RowConstraints row1 = new RowConstraints();
     row1.setPercentHeight(50);
     RowConstraints row2 = new RowConstraints();
@@ -42,6 +46,7 @@ public class DualOpPane {
     gridPane.getColumnConstraints().addAll(column1, column2, column3);
     gridPane.getRowConstraints().addAll(row1, row2);
 
+    //Init add button
     addButton = new Button("+");
     addButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     addButton.setOnAction(e -> {
@@ -50,6 +55,7 @@ public class DualOpPane {
     });
     gridPane.add(addButton, 0, 0);
 
+    //Init sub button
     subButton = new Button("-");
     subButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     subButton.setOnAction(e -> {
@@ -58,6 +64,7 @@ public class DualOpPane {
     });
     gridPane.add(subButton, 1, 0);
 
+    //Init times button
     timesButton = new Button("*");
     timesButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     timesButton.setOnAction(e -> {
@@ -66,6 +73,7 @@ public class DualOpPane {
     });
     gridPane.add(timesButton, 2, 0);
 
+    //Init divide button
     divideButton = new Button("÷");
     divideButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     divideButton.setOnAction(e -> {
@@ -74,6 +82,7 @@ public class DualOpPane {
     });
     gridPane.add(divideButton, 0, 1);
 
+    //Init or button
     orButton = new Button("∨");
     orButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     orButton.setOnAction(e -> {
@@ -82,6 +91,7 @@ public class DualOpPane {
     });
     gridPane.add(orButton, 1, 1);
 
+    //Init and button
     andButton = new Button("∧");
     andButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     andButton.setOnAction(e -> {

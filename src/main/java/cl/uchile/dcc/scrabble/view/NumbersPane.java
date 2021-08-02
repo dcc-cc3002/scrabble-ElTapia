@@ -15,8 +15,10 @@ import javafx.scene.layout.RowConstraints;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-//TODO: Setear resultado al controlador del AST
 
+/**
+ * Pane with int, binary and float buttons
+ */
 public class NumbersPane {
 
   private String result;
@@ -50,7 +52,7 @@ public class NumbersPane {
     resultLabel = new Label();
     resultLabel.setMaxWidth(200);
 
-    //Create numbers buttons
+    //Create confirm, dot and numbers buttons
     button1 = new Button("1");
     button1.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     button1.setOnAction(e -> {
@@ -137,6 +139,10 @@ public class NumbersPane {
     confirmButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
   }
 
+  /**
+   * Display int buttons on window
+   * @return StringProperty
+   */
   public StringProperty displayIntBox() {
     result = "";
     propResult = new SimpleStringProperty(this, "result", result);
@@ -148,6 +154,7 @@ public class NumbersPane {
     gridPane.setVgap(8);
     gridPane.setHgap(10);
 
+    //Set columns constraints
     ColumnConstraints column1 = new ColumnConstraints();
     column1.setPercentWidth(33);
     ColumnConstraints column2 = new ColumnConstraints();
@@ -155,6 +162,7 @@ public class NumbersPane {
     ColumnConstraints column3 = new ColumnConstraints();
     column3.setPercentWidth(34);
 
+    //Set rows constraints
     RowConstraints row1 = new RowConstraints();
     row1.setPercentHeight(10);
     RowConstraints row2 = new RowConstraints();
@@ -169,8 +177,10 @@ public class NumbersPane {
     gridPane.getColumnConstraints().addAll(column1, column2, column3);
     gridPane.getRowConstraints().addAll(row1, row2, row3, row4, row5);
 
+    //Set label insert int
     Label numberLabel = new Label("Insert Int: ");
 
+    //Set Confirm button action
     confirmButton.setOnAction(e->{
       Controller.insertInt(Integer.parseInt(result));
       Controller.update();
@@ -225,6 +235,10 @@ public class NumbersPane {
     return propResult;
   }
 
+  /**
+   * Display binary buttons on window
+   * @return StringProperty
+   */
   public StringProperty displayBinaryBox() {
     result = "";
     propResult = new SimpleStringProperty(this, "result", result);
@@ -236,6 +250,7 @@ public class NumbersPane {
     gridPane.setVgap(8);
     gridPane.setHgap(10);
 
+    //Set columns constraints
     ColumnConstraints column1 = new ColumnConstraints();
     column1.setPercentWidth(33);
     ColumnConstraints column2 = new ColumnConstraints();
@@ -243,6 +258,7 @@ public class NumbersPane {
     ColumnConstraints column3 = new ColumnConstraints();
     column3.setPercentWidth(34);
 
+    //Set rows constraints
     RowConstraints row1 = new RowConstraints();
     RowConstraints row2 = new RowConstraints();
     row1.setPercentHeight(50);
@@ -250,8 +266,10 @@ public class NumbersPane {
     gridPane.getColumnConstraints().addAll(column1, column2, column3);
     gridPane.getRowConstraints().addAll(row1, row2);
 
+    //Set label insert binary
     Label numberLabel = new Label("Insert Binary: ");
 
+    //Set Confirm button action
     confirmButton.setOnAction(e-> {
           Controller.insertBinary(result);
           Controller.update();
@@ -282,6 +300,10 @@ public class NumbersPane {
     return propResult;
   }
 
+  /**
+   * Display float buttons on window
+   * @return StringProperty
+   */
   public StringProperty displayFloatBox() {
     result = "";
     propResult = new SimpleStringProperty(this, "result", result);
@@ -293,6 +315,7 @@ public class NumbersPane {
     gridPane.setVgap(8);
     gridPane.setHgap(10);
 
+    //Set columns constraints
     ColumnConstraints column1 = new ColumnConstraints();
     column1.setPercentWidth(33);
     ColumnConstraints column2 = new ColumnConstraints();
@@ -300,6 +323,7 @@ public class NumbersPane {
     ColumnConstraints column3 = new ColumnConstraints();
     column3.setPercentWidth(34);
 
+    //Set rows constraints
     RowConstraints row1 = new RowConstraints();
     row1.setPercentHeight(10);
     RowConstraints row2 = new RowConstraints();
@@ -314,8 +338,10 @@ public class NumbersPane {
     gridPane.getColumnConstraints().addAll(column1, column2, column3);
     gridPane.getRowConstraints().addAll(row1, row2, row3, row4, row5);
 
+    //Set label insert float
     Label numberLabel = new Label("Insert Float: ");
 
+    //Set Confirm button action
     confirmButton.setOnAction(e-> {
           Controller.insertFloat(Double.parseDouble(result));
           Controller.update();
