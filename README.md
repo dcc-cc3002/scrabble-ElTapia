@@ -13,7 +13,7 @@ _University of Chile_.
 
 ---
 
-##Intrucciones de uso
+## Intrucciones de uso
 Para ejecutar el programa, se debe correr el archivo "App".
 
 Con el programa abierto, se pueden añadir las expresiones que desee, utilizando la barra de selección ubicada en la parte superior de la ventana.
