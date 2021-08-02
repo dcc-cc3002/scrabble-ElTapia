@@ -45,4 +45,13 @@ public class ToFloat extends AbstractSingleOperation {
   public IConstant eval() {
     return this.Op.eval().toConstantFloat();
   }
+
+  /**
+   * String representation of a component
+   * @return String
+   */
+  @Override
+  public String toString(){
+    return "ToFloat( \n\t" + Op.toString() + "\n\t)";
+  }
 }

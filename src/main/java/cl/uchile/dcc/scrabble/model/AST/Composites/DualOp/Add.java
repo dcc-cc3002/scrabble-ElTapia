@@ -46,4 +46,13 @@ public class Add extends AbstractDualOperation {
   public IConstant eval() {
     return this.leftOp.eval().add(this.rightOp.eval());
   }
+
+  /**
+   * String representation of a component
+   * @return String
+   */
+  @Override
+  public String toString(){
+    return "Add( \n\t" + leftOp.toString() + "\n\t" + rightOp.toString() + "\n\t)";
+  }
 }

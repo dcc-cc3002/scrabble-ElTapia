@@ -20,6 +20,7 @@ class AddTest extends CompositeTest {
     super.setUp();
   }
 
+
   @RepeatedTest(100)
   void constructorsTest(){
     addTest = new Add(
@@ -445,5 +446,48 @@ class AddTest extends CompositeTest {
     IConstant expectedAddBoolBool = (testFalseConsBool.add(testTrueConsBool)).add(testTrueConsBool);
     assertSame(expectedAddBoolBool, addTest.eval());
     assertSame(nullConstant, addTest.eval());
+  }
+
+  @Test
+  void hi(){
+    addTest = new Add();
+    addTest.insert(new Add());
+    addTest.insert(new Add());
+    addTest.insert(new ConsInt(25));
+    addTest.insert(new ConsFloat(12.5));
+    addTest.insert(new ConsFloat(-5.1));
+    addTest.insert(new ConsInt(15));
+
+    System.out.println(addTest);
+  }
+
+  @Test
+  void examples() {
+    Add example = new Add(
+        new Or(
+            new ConsBinary("01000"),
+            new ToBinary(
+                new Sub(
+                    new ConsInt(25),
+                    new ConsBinary("0101")
+                ))
+        )
+        ,new ConsFloat(6.9)
+    );
+    assertSame(NullConstant.getInstance(), example.eval());
+
+    Add example2 = new Add(
+        new ConsFloat(6.9),
+        new Or(
+            new ConsBinary("01000"),
+            new ToBinary(
+                new Sub(
+                    new ConsInt(25),
+                    new ConsBinary("0101")
+                ))
+        )
+    );
+    assertEquals(new ConsFloat(34.9), example2.eval());
+    System.out.println(example2);
   }
 }

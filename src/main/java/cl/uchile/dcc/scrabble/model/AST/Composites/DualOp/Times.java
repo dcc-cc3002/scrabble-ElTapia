@@ -43,4 +43,14 @@ public class Times extends AbstractDualOperation {
   public IConstant eval() {
     return leftOp.eval().times(rightOp.eval());
   }
+
+
+  /**
+   * String representation of a component
+   * @return String
+   */
+  @Override
+  public String toString(){
+    return "Times( \n\t" + leftOp.toString() + "\n\t" + rightOp.toString() + "\n\t)";
+  }
 }

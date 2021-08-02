@@ -45,4 +45,13 @@ public class ToBool extends AbstractSingleOperation {
   public IConstant eval() {
     return this.Op.eval().toConstantBool();
   }
+
+  /**
+   * String representation of a component
+   * @return String
+   */
+  @Override
+  public String toString(){
+    return "ToBool( \n\t" + Op.toString() + "\n\t)";
+  }
 }

@@ -44,4 +44,14 @@ public class Or extends AbstractDualOperation {
   public IConstant eval() {
     return leftOp.eval().or(rightOp.eval());
   }
+
+
+  /**
+   * String representation of a component
+   * @return String
+   */
+  @Override
+  public String toString(){
+    return "Or( \n\t" + leftOp.toString() + "\n\t" + rightOp.toString() + "\n\t)";
+  }
 }

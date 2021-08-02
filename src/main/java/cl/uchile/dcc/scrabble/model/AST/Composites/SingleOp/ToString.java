@@ -45,4 +45,13 @@ public class ToString extends AbstractSingleOperation {
   public IConstant eval() {
     return this.Op.eval().toConstantStr();
   }
+
+  /**
+   * String representation of a component
+   * @return String
+   */
+  @Override
+  public String toString(){
+    return "ToString( \n\t" + Op.toString() + "\n\t)";
+  }
 }

@@ -44,4 +44,14 @@ public class Divide extends AbstractDualOperation {
     return leftOp.eval().divide(rightOp.eval());
   }
 
+
+  /**
+   * String representation of a component
+   * @return String
+   */
+  @Override
+  public String toString(){
+    return "Divide( \n\t" + leftOp.toString() + "\n\t" + rightOp.toString() + "\n\t)";
+  }
+
 }

@@ -45,4 +45,13 @@ public class ToInt extends AbstractSingleOperation {
   public IConstant eval() {
     return this.Op.eval().toConstantInt();
   }
+
+  /**
+   * String representation of a component
+   * @return String
+   */
+  @Override
+  public String toString(){
+    return "ToInt( \n\t" + Op.toString() + "\n\t)";
+  }
 }

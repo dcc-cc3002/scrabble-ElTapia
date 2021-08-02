@@ -33,4 +33,12 @@ public interface IComponent {
    */
   @Override
   boolean equals(Object obj);
+
+
+  /**
+   * String representation of a component
+   * @return String
+   */
+  @Override
+  String toString();
 }

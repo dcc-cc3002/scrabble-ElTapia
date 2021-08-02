@@ -45,4 +45,14 @@ public class ToBinary extends AbstractSingleOperation {
   public IConstant eval() {
     return this.Op.eval().toConstantBinary();
   }
+
+
+  /**
+   * String representation of a component
+   * @return String
+   */
+  @Override
+  public String toString(){
+    return "ToBinary( \n\t" + Op.toString() + "\n\t)";
+  }
 }

@@ -19,13 +19,6 @@ public abstract class AbstractConstant implements IConstant {
   }
 
   /**
-   * String representation of a constant
-   * @return String
-   */
-  @Override
-  public abstract String toString();
-
-  /**
    * Get SType that the constant encapsulate
    * @return AbstractType
    */

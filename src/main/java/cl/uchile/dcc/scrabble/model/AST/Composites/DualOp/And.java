@@ -45,4 +45,13 @@ public class And extends AbstractDualOperation {
     return leftOp.eval().and(rightOp.eval());
   }
 
+  /**
+   * String representation of a component
+   * @return String
+   */
+  @Override
+  public String toString(){
+    return "And( \n\t" + leftOp.toString() + "\n\t" + rightOp.toString() + "\n\t)";
+  }
+
 }

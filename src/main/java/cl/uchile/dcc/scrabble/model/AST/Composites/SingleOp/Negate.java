@@ -45,4 +45,15 @@ public class Negate extends AbstractSingleOperation {
   public IConstant eval() {
     return this.Op.eval().negateConstant();
   }
+
+
+  /**
+   * String representation of a component
+   * @return String
+   */
+  @Override
+  public String toString(){
+    return "Negate( \n\t" + Op.toString() + "\n\t)";
+  }
+
 }
