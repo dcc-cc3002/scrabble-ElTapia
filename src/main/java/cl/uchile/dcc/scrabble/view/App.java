@@ -3,7 +3,6 @@ package cl.uchile.dcc.scrabble.view;
 import cl.uchile.dcc.scrabble.Controller.Controller;
 import javafx.application.Application;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -46,9 +45,9 @@ public class App extends Application {
         RowConstraints row1 = new RowConstraints();
         row1.setPercentHeight(10);
         RowConstraints row2 = new RowConstraints();
-        row2.setPercentHeight(60);
+        row2.setPercentHeight(70);
         RowConstraints row3 = new RowConstraints();
-        row3.setPercentHeight(30);
+        row3.setPercentHeight(20);
 
         completeLayout.getRowConstraints().addAll(row1, row2, row3);
 
@@ -74,6 +73,7 @@ public class App extends Application {
         completeLayout.add(choicePane, 1, 0);
 
         Label resultLabel = new Label();
+        resultLabel.setMaxHeight(300);
         resultLabel.textProperty().bind(Controller.getTree());
 
         completeLayout.add(resultLabel, 1, 1);
@@ -87,6 +87,11 @@ public class App extends Application {
 
         completeLayout.add(clearButton, 0, 2);
 
+        Button evalButton = new Button("Eval");
+        evalButton.setOnAction(e -> ResultBox.display("Result", Controller.eval()));
+        evalButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+        completeLayout.add(evalButton, 2, 2);
 
         Scene scene = new Scene(completeLayout, 500, 500);
         window.setScene(scene);
