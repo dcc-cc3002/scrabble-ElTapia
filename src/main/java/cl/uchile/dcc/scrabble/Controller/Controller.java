@@ -48,6 +48,22 @@ public class Controller {
     else root.insert(toInsert);
   }
 
+  public static void insertOr(){
+    Or toInsert = new Or();
+    if (root.equals(NullConstant.getInstance()))
+      root = toInsert;
+
+    else root.insert(toInsert);
+  }
+
+  public static void insertAnd(){
+    And toInsert = new And();
+    if (root.equals(NullConstant.getInstance()))
+      root = toInsert;
+
+    else root.insert(toInsert);
+  }
+
   public static void insertNegate(){
     Negate toInsert = new Negate();
     if (root.equals(NullConstant.getInstance()))

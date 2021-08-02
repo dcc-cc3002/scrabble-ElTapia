@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.view;
 
+import cl.uchile.dcc.scrabble.Controller.Controller;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.ColumnConstraints;
@@ -17,7 +18,6 @@ public class SingleOpPane {
   static Button toBoolButton;
 
   static GridPane gridPane;
-  static String chosenOp;
 
   public static GridPane getGridPane(){
 
@@ -43,39 +43,54 @@ public class SingleOpPane {
 
     negateButton = new Button("Negate");
     negateButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    negateButton.setOnAction(e -> chosenOp = "Negate");
+    negateButton.setOnAction(e -> {
+      Controller.insertNegate();
+      Controller.update();
+    });
     gridPane.add(negateButton, 0, 0);
 
     toStrButton = new Button("To String");
     toStrButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    toStrButton.setOnAction(e -> chosenOp = "ToString");
+    toStrButton.setOnAction(e -> {
+      Controller.insertToString();
+      Controller.update();
+    });
     gridPane.add(toStrButton, 1, 0);
 
     toIntButton = new Button("To Int");
     toIntButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    toIntButton.setOnAction(e -> chosenOp = "ToInt");
+    toIntButton.setOnAction(e -> {
+      Controller.insertToInt();
+      Controller.update();
+    });
     gridPane.add(toIntButton, 2, 0);
 
     toFloatButton = new Button("To Float");
     toFloatButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    toFloatButton.setOnAction(e -> chosenOp = "ToFloat");
+    toFloatButton.setOnAction(e -> {
+      Controller.insertToFloat();
+      Controller.update();
+    });
     gridPane.add(toFloatButton, 0, 1);
 
     toBinaryButton = new Button("To Binary");
     toBinaryButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    toBinaryButton.setOnAction(e -> chosenOp = "ToBinary");
+    toBinaryButton.setOnAction(e -> {
+      Controller.insertToBinary();
+      Controller.update();
+    });
     gridPane.add(toBinaryButton, 1, 1);
 
     toBoolButton = new Button("To Bool");
     toBoolButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    toBoolButton.setOnAction(e -> chosenOp = "ToBool");
+    toBoolButton.setOnAction(e -> {
+      Controller.insertToBool();
+      Controller.update();
+    });
     gridPane.add(toBoolButton, 2, 1);
 
     return gridPane;
   }
 
-  public static String getChosenOp(){
-    return chosenOp;
-  }
 
 }

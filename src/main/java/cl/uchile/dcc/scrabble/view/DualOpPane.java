@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.view;
 
 
+import cl.uchile.dcc.scrabble.Controller.Controller;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.ColumnConstraints;
@@ -18,7 +19,6 @@ public class DualOpPane {
   static Button andButton;
 
   static GridPane gridPane;
-  static String chosenOp;
 
   public static GridPane getGridPane(){
 
@@ -44,38 +44,52 @@ public class DualOpPane {
 
     addButton = new Button("+");
     addButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    addButton.setOnAction(e -> chosenOp = "Add");
+    addButton.setOnAction(e -> {
+      Controller.insertAdd();
+      Controller.update();
+    });
     gridPane.add(addButton, 0, 0);
 
     subButton = new Button("-");
     subButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    subButton.setOnAction(e -> chosenOp = "Sub");
+    subButton.setOnAction(e -> {
+      Controller.insertSub();
+      Controller.update();
+    });
     gridPane.add(subButton, 1, 0);
 
     timesButton = new Button("*");
     timesButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    timesButton.setOnAction(e -> chosenOp = "Times");
+    timesButton.setOnAction(e -> {
+      Controller.insertTimes();
+      Controller.update();
+    });
     gridPane.add(timesButton, 2, 0);
 
     divideButton = new Button("÷");
     divideButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    divideButton.setOnAction(e -> chosenOp = "Divide");
+    divideButton.setOnAction(e -> {
+      Controller.insertDivide();
+      Controller.update();
+    });
     gridPane.add(divideButton, 0, 1);
 
     orButton = new Button("∨");
     orButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    orButton.setOnAction(e -> chosenOp = "Or");
+    orButton.setOnAction(e -> {
+      Controller.insertOr();
+      Controller.update();
+    });
     gridPane.add(orButton, 1, 1);
 
     andButton = new Button("∧");
     andButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    andButton.setOnAction(e -> chosenOp = "And");
+    andButton.setOnAction(e -> {
+      Controller.insertAnd();
+      Controller.update();
+    });
     gridPane.add(andButton, 2, 1);
 
     return gridPane;
-  }
-
-  public static String getChosenOp(){
-    return chosenOp;
   }
 }
